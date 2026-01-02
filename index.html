@@ -1,0 +1,748 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Eugen Dimant - Associate Professor of Practice in Behavioral & Decision Sciences at the University of Pennsylvania">
+    <title>Eugen Dimant | Research Website</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-color: #011f4b;
+            --accent-color: #990000;
+            --text-color: #333;
+            --light-bg: #f8f9fa;
+            --border-color: #dee2e6;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+        }
+
+        header {
+            background: var(--primary-color);
+            color: white;
+            padding: 1.5rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.3rem;
+            font-weight: 600;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #ccc;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+        }
+
+        .hero {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 3rem;
+            align-items: start;
+            margin-bottom: 3rem;
+        }
+
+        .profile-image {
+            width: 100%;
+            max-width: 300px;
+            border-radius: 8px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+
+        h2 {
+            font-size: 2rem;
+            color: var(--primary-color);
+            margin: 2rem 0 1rem;
+            border-bottom: 3px solid var(--accent-color);
+            padding-bottom: 0.5rem;
+        }
+
+        h3 {
+            font-size: 1.3rem;
+            color: var(--accent-color);
+            margin: 1.5rem 0 0.5rem;
+        }
+
+        .section {
+            display: none;
+        }
+
+        .section.active {
+            display: block;
+        }
+
+        .about-text {
+            margin-bottom: 2rem;
+        }
+
+        .news-item {
+            background: var(--light-bg);
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            border-left: 4px solid var(--accent-color);
+            border-radius: 4px;
+        }
+
+        .publication {
+            background: white;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+
+        .publication-title {
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+        }
+
+        .publication-venue {
+            font-style: italic;
+            color: #666;
+            margin-bottom: 0.5rem;
+        }
+
+        .publication-links {
+            margin-top: 0.75rem;
+        }
+
+        .publication-links a {
+            color: var(--accent-color);
+            text-decoration: none;
+            margin-right: 1rem;
+            font-size: 0.9rem;
+        }
+
+        .publication-links a:hover {
+            text-decoration: underline;
+        }
+
+        .year-section {
+            margin-bottom: 2rem;
+        }
+
+        .cv-link {
+            display: inline-block;
+            background: var(--accent-color);
+            color: white;
+            padding: 1rem 2rem;
+            text-decoration: none;
+            border-radius: 4px;
+            margin: 2rem 0;
+            transition: background 0.3s;
+        }
+
+        .cv-link:hover {
+            background: #770000;
+        }
+
+        .contact-info {
+            background: var(--light-bg);
+            padding: 2rem;
+            border-radius: 8px;
+            margin-top: 2rem;
+        }
+
+        .contact-info p {
+            margin-bottom: 0.5rem;
+        }
+
+        footer {
+            background: var(--primary-color);
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 4rem;
+        }
+
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        @media (max-width: 768px) {
+            .hero {
+                grid-template-columns: 1fr;
+            }
+
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: var(--primary-color);
+                padding: 1rem 2rem;
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .menu-toggle {
+                display: block;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+
+            h2 {
+                font-size: 1.5rem;
+            }
+        }
+
+        .badge {
+            display: inline-block;
+            background: var(--accent-color);
+            color: white;
+            padding: 0.25rem 0.5rem;
+            border-radius: 3px;
+            font-size: 0.85rem;
+            margin-left: 0.5rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">Eugen Dimant</div>
+            <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#" onclick="showSection('home')">Home</a></li>
+                <li><a href="#" onclick="showSection('research')">Research</a></li>
+                <li><a href="#" onclick="showSection('vita')">Vita</a></li>
+                <li><a href="#" onclick="showSection('contact')">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="container">
+        <!-- HOME SECTION -->
+        <section id="home" class="section active">
+            <div class="hero">
+                <div>
+                    <img src="https://lh3.googleusercontent.com/sitesv/AAzXCkcb5lp6LIrX9K2u-PIF4Mwv0vPoYJZsmCqP-S9Er3vGCjVg-xgk9EDDkqTLfFvHw1pRtM1LSkkRdrhdchTfINUPQtCONe-pQOJT3OC7Zpst-xNagg-fmbGOwBGO3D_rj6i_SiDGpQuygYTSghWL9NRoF9ktxXxWtqojIhHTieMHeKiMzBdymT9gK7A5V8MphpXFNPtRrkEUseKNWGaYgQXvu0UbGXX1PrgsPAg=w1280" alt="Eugen Dimant" class="profile-image">
+                </div>
+                <div>
+                    <h1>Eugen Dimant</h1>
+                    <p style="font-size: 1.1rem; color: #666; margin-bottom: 1.5rem;">Associate Professor of Practice in Behavioral & Decision Sciences<br>University of Pennsylvania</p>
+                </div>
+            </div>
+
+            <h2>About Me</h2>
+            <div class="about-text">
+                <p style="margin-bottom: 1rem;">I am an Associate Professor of Practice in Behavioral & Decision Sciences at the University of Pennsylvania and a Visiting Professor at Stanford University. I'm also a fellow at both the <a href="https://www.sas.upenn.edu/lps/graduate/mbds" target="_blank">Behavioral and Decision Sciences Program</a> and the <a href="https://normsandbehavior.sas.upenn.edu/" target="_blank">Center for Social Norms and Behavioral Dynamics</a> at the University of Pennsylvania, a collaborator at the Behavior Change for Good Initiative (<a href="https://bcfg.wharton.upenn.edu/" target="_blank">BCFG</a>) at Wharton & a Network Fellow at <a href="https://www.cesifo.org/en/node/51520" target="_blank">CESifo</a>. From 2022 - 2023, I was also part of the former White House Behavioral Science Team (now: <a href="https://oes.gsa.gov/" target="_blank">OES</a>) and worked on high-impact RCTs related to the opioid epidemic.</p>
+
+                <p style="margin-bottom: 1rem;">My research lies at the intersection of behavioral economics, sociology, and political psychology. I study how social norms emerge, how they are enforced or eroded, and how norm disagreement and polarization influence both what people view as acceptable and how it influences their actions. My recent work develops and applies measures of norm pluralism and perceived polarization, examining how polarization shapes social preferences and cooperation.</p>
+
+                <p style="margin-bottom: 1rem;">A second strand of my work examines institutions and large-scale social outcomes, including corruption, crime, terrorism, and migration, often combining experimental tools with applied empirical methods. My interest in migration is deeply personal. I emigrated from Moldova as a refugee following the collapse of the Soviet Union, and that experience continues to shape the questions I ask about identity, institutions, and social cohesion.</p>
+
+                <p>My <a href="https://scholar.google.com/citations?user=3Ylbe0YAAAAJ&hl=en" target="_blank">Google Scholar page</a> provides a good overview.</p>
+            </div>
+
+            <h2>Research News</h2>
+
+            <div class="news-item">
+                <h3>September 2025: Award</h3>
+                <p>Excited and deeply honored to be included in this year's <a href="https://www.capital.de/karriere/capital-ranking--das-sind-deutschlands-top-40-unter-40-fuer-2025-36192498.html" target="_blank">Capital Magazine</a> German 40-under-40 list. Grateful to be in such great company with people whose ongoing work is helping make our society a better place. Thank you! 🙏🏻</p>
+            </div>
+
+            <div class="news-item">
+                <h3>September 2025: New Working Paper</h3>
+                <p>We have published a new working paper titled 'Aid and Exodus: U.S. Military Assistance and Refugee Flows to the United States'. There, we study how a specific U.S. policy choice, the provision of military aid to foreign countries, affects refugee flows to the United States from recipient countries for a sample of 170 countries between 1991 and 2018. We find that higher levels of military aid increase the flow of refugees from aid-receiving countries to the U.S. The paper can be found here: <a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=5414817" target="_blank">link</a>.</p>
+            </div>
+
+            <div class="news-item">
+                <h3>August 2025: New Publication</h3>
+                <p>We have a new paper called 'Experimental Methods: Eliciting and Measuring Social Norms' (joint with G. Charness, U. Gneezy & E. Krupka) published in JEBO. In it, we provide an overview of different social norms elicitation methods and offer guidance on when each method is most appropriate. Sadly, Gary passed away during the conceptualization stage of the paper, but we'd like to believe that he'd be proud of how it turned out. The paper can be downloaded here: <a href="https://doi.org/10.1016/j.jebo.2025.107187" target="_blank">link</a>.</p>
+            </div>
+
+            <div class="news-item">
+                <h3>June 2025: New Announcement</h3>
+                <p>We have now launched the call for applications to our Workshop on Directions of Polarization, Social Norms, and Trust in Societies (jointly organized by Kati Kish Bar-On, Adam Berinsky, Eugen Dimant, Yphtach Lelkes, and David G. Rand), taking place at MIT on December 5–6, 2025. Registrations are open now, find more information here: <a href="https://sites.google.com/view/polarization-workshop" target="_blank">link</a>.</p>
+            </div>
+
+            <div class="news-item">
+                <h3>March 2025: New Publication</h3>
+                <p>In joint work with Angela Duckworth, Katy Milkman, and the Behavior Change for Good Initiative (BCFG), we published a new Megastudy in the Proceedings of the National Academy of Sciences (PNAS). In it, we evaluate the most effective interventions to boost math performance among nearly 3 million elementary students. The paper can be downloaded here: <a href="https://doi.org/10.1073/pnas.2418616122" target="_blank">link</a>.</p>
+            </div>
+
+            <h2>Selected Publications</h2>
+
+            <div class="publication">
+                <div class="publication-title">Nudging Teachers: A Megastudy To Increase Math Achievement Among 3 Million Elementary School Students</div>
+                <div class="publication-venue">Proceedings of the National Academy of Sciences (PNAS), 2025</div>
+                <p>Aiming to improve math achievement among nearly 3 million elementary students, we conducted a megastudy with more than 140,000 teachers in partnership with Zearn Math, a nonprofit educational platform. The most effective of 15 email interventions prompted teachers to log into the platform's dashboard weekly to check their students' progress.</p>
+                <div class="publication-links">
+                    <a href="https://doi.org/10.1073/pnas.2418616122" target="_blank">Paper</a>
+                    <a href="https://drive.google.com/file/d/1b5fPBMT2eOilEqVr1pFjf6_Ytp6NENCx/view?usp=drive_link" target="_blank">Ungated Version</a>
+                    <a href="https://scholar.google.com/scholar?hl=de&as_sdt=0%2C5&q=duckworth+milkman+dimant+2025&btnG=" target="_blank">Citation</a>
+                </div>
+            </div>
+
+            <div class="publication">
+                <div class="publication-title">Hate Trumps Love: The Impact of Political Polarization on Social Preferences</div>
+                <div class="publication-venue">Management Science, 2024</div>
+                <p>This paper provides a comprehensive assessment of the impact of political polarization on social preferences, suggesting that negative expectations about an opposing group's cooperativeness drive intergroup conflict and that popular behavioral interventions—such as norm-nudges and defaults—do not significantly reduce the polarization gap.</p>
+                <div class="publication-links">
+                    <a href="https://doi.org/10.1287/mnsc.2023.4701" target="_blank">Paper</a>
+                    <a href="https://drive.google.com/file/d/15aVL3kOh-A6L0XJbgJblNEazKpsypdUC/view?usp=drive_link" target="_blank">Ungated Version</a>
+                    <a href="https://scholar.google.com/scholar?hl=en&as_sdt=0%2C39&q=Hate+Trumps+Love%3A+The+Impact+of+Political+Polarization+on+Social+Preferences&btnG=" target="_blank">Citation</a>
+                </div>
+            </div>
+
+            <div class="publication">
+                <div class="publication-title">Strategic Behavior with Tight, Loose & Polarized Norms</div>
+                <div class="publication-venue">Management Science, 2024</div>
+                <p>This study explores how individuals respond to different distributions of descriptive norms—tight, loose, and polarized—in strategic contexts. It empirically demonstrates that the variance and shape of behavioral norms significantly impact decision-making, with polarized environments prompting extreme actions, and personal traits and values becoming more influential in loose and polarized settings.</p>
+                <div class="publication-links">
+                    <a href="https://doi.org/10.1287/mnsc.2023.01022" target="_blank">Paper</a>
+                    <a href="https://drive.google.com/file/d/1N_ugrMwPomlefoFRgILd9vSqW33TzkvZ/view?usp=drive_link" target="_blank">Ungated Version</a>
+                    <a href="https://scholar.google.com/scholar?hl=en&as_sdt=0%2C5&q=Strategic+Behavior+with+Tight%2C+Loose%2C+and+Polarized+Norms&btnG=" target="_blank">Citation</a>
+                </div>
+            </div>
+
+            <div class="publication">
+                <div class="publication-title">A Synthesis of Evidence for Policy from Behavioural Science During COVID-19</div>
+                <div class="publication-venue">Nature, 2023</div>
+                <p>Behavioral science played a pivotal role in shaping public health responses during the COVID-19 pandemic, leading to an influx of studies. This review systematically assessed 19 major policy recommendations, finding that at least 16 were supported by evidence. Emphasis was placed on the importance of evidence-backed interventions, especially in areas like combating misinformation and utilizing effective messaging strategies.</p>
+                <div class="publication-links">
+                    <a href="https://www.nature.com/articles/s41586-023-06840-9" target="_blank">Paper</a>
+                    <a href="https://drive.google.com/file/d/1sHiKmZmDvhquJPM27u_XzcT3_9c3mJ23/view?usp=drive_link" target="_blank">Ungated Version</a>
+                </div>
+            </div>
+
+            <div class="publication">
+                <div class="publication-title">Competition & Moral Behavior: Meta-Analysis of 45 Crowd-Sourced Experimental Designs</div>
+                <div class="publication-venue">Proceedings of the National Academy of Sciences (PNAS), 2023</div>
+                <p>Through collaboration with 45 research teams, the study reveals a minor adverse effect of competition on moral behavior but emphasizes substantial "design heterogeneity," indicating that conclusions drawn from a single experimental design may be limited in their applicability.</p>
+                <div class="publication-links">
+                    <a href="https://www.pnas.org/doi/10.1073/pnas.2215572120" target="_blank">Paper</a>
+                    <a href="https://drive.google.com/file/d/1YSrvHciP3zGp1-nm3KBRbr9ylxeejREy/view?usp=drive_link" target="_blank">Ungated Version</a>
+                    <a href="https://scholar.google.com/scholar?hl=en&as_sdt=0%2C39&q=%22Competition+%26+Moral+Behavior%3A+Meta-Analysis+of+forty-five+Crowd-Sourced+Experimental+Designs%22&btnG=" target="_blank">Citation</a>
+                </div>
+            </div>
+
+            <div class="publication">
+                <div class="publication-title">Nudging Enforcers: How Norm Perceptions and Motives for Lying Shape Sanctions</div>
+                <div class="publication-venue">Proceedings of the National Academy of Sciences (PNAS): Nexus, 2023</div>
+                <p>We show that enforcement and perception of norms, particularly in instances of dishonesty, are both subject to change based on the severity and consequences of the violation, and can be modified successfully using established norm-nudging interventions following Bicchieri & Dimant (2019).</p>
+                <div class="publication-links">
+                    <a href="https://doi.org/10.1093/pnasnexus/pgad224" target="_blank">Paper</a>
+                    <a href="https://drive.google.com/file/d/1L_4s_P2eNMlsx-5X-j8EsMIDIy3CVBIm/view?usp=drive_link" target="_blank">Ungated Version</a>
+                    <a href="https://scholar.google.com/scholar?hl=en&as_sdt=0%2C5&q=Dimant+Gesche+2023+Nudging+enforcers%3A+How+norm+perceptions+and+motives+for+lying+shape+sanctions&btnG=" target="_blank">Citation</a>
+                </div>
+            </div>
+
+            <div class="publication">
+                <div class="publication-title">It's Not A Lie if You Believe the Norm Does Not Apply: Conditional Norm-Following and Belief Distortion</div>
+                <div class="publication-venue">Games & Economic Behavior, 2023</div>
+                <p>Through theory and experiments, this paper explores the strategic distortion of beliefs about honesty norms, showing that individuals tend to manipulate their views of what others do and approve of to justify self-serving behavior.</p>
+                <div class="publication-links">
+                    <a href="https://doi.org/10.1016/j.geb.2023.01.005" target="_blank">Paper</a>
+                    <a href="https://drive.google.com/file/d/1YxNfVuI_yArjgmCLJKmsWSuC1Q-_z034/view?usp=drive_link" target="_blank">Ungated Version</a>
+                    <a href="https://scholar.google.com/scholar?hl=en&as_sdt=0%2C39&q=%22It%27s+Not+A+Lie+if+You+Believe+the+Norm+Does+Not+Apply%3A+Conditional+Norm-Following+and+Belief+Distortion%22&btnG=" target="_blank">Citation</a>
+                </div>
+            </div>
+
+            <div class="publication">
+                <div class="publication-title">Social Proximity and the Erosion of Norm Compliance</div>
+                <div class="publication-venue">Games and Economic Behavior, 2022</div>
+                <p>In a series of studies that capture a dynamic but non-strategic experimental setting, we show how compliance with norms of pro-social behavior is influenced by peers' norm compliance. We show that norm compliance can erode quickly but that social proximity among peers can mute this deterioration.</p>
+                <div class="publication-links">
+                    <a href="https://doi.org/10.1016/j.geb.2021.11.012" target="_blank">Paper</a>
+                    <a href="https://drive.google.com/file/d/14rF-R8gkZQk9PpYxfztuAZI80ZuFpi-_/view?usp=drive_link" target="_blank">Ungated Version</a>
+                    <a href="https://scholar.google.com/scholar?hl=en&as_sdt=0%2C39&q=Social+Proximity+and+the+Erosion+of+Norm+Compliance&btnG=" target="_blank">Citation</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- RESEARCH SECTION -->
+        <section id="research" class="section">
+            <h1>Research</h1>
+            <p style="margin-bottom: 2rem;">Complete list of peer-reviewed publications</p>
+
+            <div class="year-section">
+                <h2>2025</h2>
+                
+                <div class="publication">
+                    <div class="publication-title">Nudging Teachers: A Megastudy To Increase Math Achievement Among 3 Million Elementary School Students</div>
+                    <div class="publication-venue">(with A. Duckworth, K. Milkman & BCFG Collective). Proceedings of the National Academy of Sciences (PNAS)</div>
+                    <div class="publication-links">
+                        <a href="https://doi.org/10.1073/pnas.2418616122" target="_blank">Paper</a>
+                        <a href="https://drive.google.com/file/d/1b5fPBMT2eOilEqVr1pFjf6_Ytp6NENCx/view?usp=drive_link" target="_blank">Ungated</a>
+                        <a href="https://drive.google.com/file/d/12rKoz4vAaE74YL0GNXsLaiLw4AxqdUEO/view?usp=drive_link" target="_blank">AI Podcast</a>
+                    </div>
+                </div>
+
+                <div class="publication">
+                    <div class="publication-title">Experimental Methods: Eliciting and Measuring Social Norms</div>
+                    <div class="publication-venue">(with G. Charness, U. Gneezy & E. Krupka). Journal of Economic Behavior & Organization</div>
+                    <div class="publication-links">
+                        <a href="https://doi.org/10.1016/j.jebo.2025.107187" target="_blank">Paper</a>
+                        <a href="https://drive.google.com/file/d/1CNBQk56U7WSVGSKSwGo9Ws-OPTK6sy3L/view?usp=drive_link" target="_blank">Ungated</a>
+                    </div>
+                </div>
+
+                <div class="publication">
+                    <div class="publication-title">The 'I' in Egalitarianism: Hadza Hunter-Gatherers Averse to Inequality Primarily when Personally Unfavourable</div>
+                    <div class="publication-venue">(with K. Smith, D. N. E. Stibbard-Hawkes, I. A. Mabulla, C. Bicchieri & C. Apicella). Proceedings of the National Academy of Sciences (PNAS) Nexus</div>
+                    <div class="publication-links">
+                        <a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=5193882" target="_blank">Paper</a>
+                    </div>
+                </div>
+
+                <div class="publication">
+                    <div class="publication-title">Racial Identity, Reactions to Inequality & Fairness Concepts Among Americans</div>
+                    <div class="publication-venue">(with L. Reinhardt & N. Sambanis). Accepted at: Journal of Experimental Political Science</div>
+                    <div class="publication-links">
+                        <a href="https://ssrn.com/abstract=4706524" target="_blank">Working Paper</a>
+                    </div>
+                </div>
+
+                <div class="publication">
+                    <div class="publication-title">The Science of Honesty: A Review and Research Agenda</div>
+                    <div class="publication-venue">(Collaboration led by S. Shalvi). Advances in Experimental Social Psychology</div>
+                    <div class="publication-links">
+                        <a href="https://doi.org/10.1016/bs.aesp.2025.04.004" target="_blank">Paper</a>
+                        <a href="https://drive.google.com/file/d/1aG9KVUHWwHAS9laY0DfN5v3PJ4_QXKle/view?usp=drive_link" target="_blank">Ungated</a>
+                        <a href="https://drive.google.com/file/d/1MnPK0mPc34OAyWXto4KMZhgQB4fApeXA/view?usp=drive_link" target="_blank">AI Podcast</a>
+                    </div>
+                </div>
+
+                <div class="publication">
+                    <div class="publication-title">Norm-Nudging: Harnessing Social Expectations for Behavior Change</div>
+                    <div class="publication-venue">(with C. Bicchieri). Elgar Encyclopedia of Behavioural and Experimental Economics</div>
+                    <div class="publication-links">
+                        <a href="https://www.elgaronline.com/display/book/9781802207736/9781802207736.xml" target="_blank">Paper</a>
+                        <a href="https://drive.google.com/file/d/1SnQjjADt01u_JYPE2at-Vc7X0Zwf5rJF/view?usp=drive_link" target="_blank">Ungated</a>
+                        <a href="https://drive.google.com/file/d/1TZ4H2u4NKEcafxkWg-pwA49Xo4eSVhH8/view?usp=drive_link" target="_blank">AI Podcast</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="year-section">
+                <h2>2024</h2>
+                
+                <div class="publication">
+                    <div class="publication-title">Strategic Behavior with Tight, Loose, and Polarized Norms</div>
+                    <div class="publication-venue">(with M. Gelfand, A. Hochleitner & S. Sonderegger). Management Science</div>
+                    <div class="publication-links">
+                        <a href="https://doi.org/10.1287/mnsc.2023.01022" target="_blank">Paper</a>
+                        <a href="https://drive.google.com/file/d/1N_ugrMwPomlefoFRgILd9vSqW33TzkvZ/view?usp=drive_link" target="_blank">Ungated</a>
+                        <a href="https://drive.google.com/file/d/1G1hhIXN-EMpajPtPyPu0zl5eNKl3PEhL/view?usp=drive_link" target="_blank">AI Podcast</a>
+                    </div>
+                </div>
+
+                <div class="publication">
+                    <div class="publication-title">Hate Trumps Love: The Impact of Political Polarization on Social Preferences</div>
+                    <div class="publication-venue">Management Science</div>
+                    <div class="publication-links">
+                        <a href="https://doi.org/10.1287/mnsc.2023.4701" target="_blank">Paper</a>
+                        <a href="https://drive.google.com/file/d/15aVL3kOh-A6L0XJbgJblNEazKpsypdUC/view?usp=drive_link" target="_blank">Ungated</a>
+                        <a href="https://drive.google.com/file/d/1LhrlfeGNBamsVUm8NJ_9ozhYjuwPpRhq/view?usp=drive_link" target="_blank">AI Podcast</a>
+                    </div>
+                </div>
+
+                <div class="publication">
+                    <div class="publication-title">Paying Them to Hate US: Effect of U.S. Military Aid on Anti-American Terrorism, 1968-2018</div>
+                    <div class="publication-venue">(with T. Krieger & D. Meierrieks). The Economic Journal</div>
+                    <div class="publication-links">
+                        <a href="https://doi.org/10.1093/ej/ueae034" target="_blank">Paper</a>
+                        <a href="https://drive.google.com/file/d/1YHvdv6fOfoQUbydwCObyPQAIQ-qjM_0C/view?usp=drive_link" target="_blank">Ungated</a>
+                        <a href="https://drive.google.com/file/d/1dYTIkyY_TU4vq3z01OFheIMGiuqIUtUj/view?usp=drive_link" target="_blank">AI Podcast</a>
+                    </div>
+                </div>
+
+                <div class="publication">
+                    <div class="publication-title">Measuring Norm Pluralism and Perceived Polarization in U.S. Politics</div>
+                    <div class="publication-venue">(with F. Panizza, E. Kimbrough & A. Vostroknutov). Proceedings of the National Academy of Sciences (PNAS) Nexus</div>
+                    <div class="publication-links">
+                        <a href="https://doi.org/10.1093/pnasnexus/pgae413" target="_blank">Paper</a>
+                        <a href="https://drive.google.com/file/d/1-t7OuZUAh0CHNVcRpBzYVVIk8KU-Zurp/view?usp=drive_link" target="_blank">Ungated</a>
+                        <a href="https://drive.google.com/file/d/1EhGA6-MeFGuULtrAPvCC70q1vBrW36NU/view?usp=drive_link" target="_blank">AI Podcast</a>
+                    </div>
+                </div>
+
+                <div class="publication">
+                    <div class="publication-title">Unraveling Polarization: Insight into Individual & Collective Dynamics</div>
+                    <div class="publication-venue">(with K. Kish Bar-On, Y. Lelkes & D. Rand). Proceedings of the National Academy of Sciences (PNAS) Nexus</div>
+                    <div class="publication-links">
+                        <a href="https://doi.org/10.1093/pnasnexus/pgae426" target="_blank">Paper</a>
+                        <a href="https://drive.google.com/file/d/13hRDYbCGYZkBynmfeeWEPKTJshS9HP7O/view?usp=drive_link" target="_blank">Ungated</a>
+                        <a href="https://drive.google.com/file/d/1DSrYyX8vBcJMOEq8HD9t51BUClvQedHw/view?usp=drive_link" target="_blank">AI Podcast</a>
+                    </div>
+                </div>
+
+                <div class="publication">
+                    <div class="publication-title">Polarization in Multidisciplinary Perspective</div>
+                    <div class="publication-venue">(with E. Kimbrough). Proceedings of the National Academy of Sciences (PNAS) Nexus</div>
+                    <div class="publication-links">
+                        <a href="https://doi.org/10.1093/pnasnexus/pgae425" target="_blank">Paper</a>
+                        <a href="https://drive.google.com/file/d/1jmNLb6ddDDE25_6zG19HjiFGnoDMMokO/view?usp=drive_link" target="_blank">Ungated</a>
+                    </div>
+                </div>
+
+                <div class="publication">
+                    <div class="publication-title">Motivated Information Acquisition and Social Norm Formation</div>
+                    <div class="publication-venue">(with F. Galeotti & M. C. Villeval). European Economic Review</div>
+                    <div class="publication-links">
+                        <a href="https://doi.org/10.1016/j.euroecorev.2024.104778" target="_blank">Paper</a>
+                        <a href="https://drive.google.com/file/d/1ZsKCqS5vjcYX6ylksCtAA2j2UfAW6PE9/view?usp=drive_link" target="_blank">Ungated</a>
+                        <a href="https://drive.google.com/file/d/1p1D0EzEVzuLiKogiTLa_0QZBkz0ZVkwq/view?usp=drive_link" target="_blank">AI Podcast</a>
+                    </div>
+                </div>
+
+                <div class="publication">
+                    <div class="publication-title">Social norms: Enforcement, Breakdown & Polarization</div>
+                    <div class="publication-venue">(with L. Balafoutas, S. Gächter & E. Krupka). European Economic Review</div>
+                    <div class="publication-links">
+                        <a href="https://doi.org/10.1016/j.euroecorev.2024.104885" target="_blank">Paper</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="year-section">
+                <h2>2023</h2>
+                
+                <div class="publication">
+                    <div class="publication-title">Beyond Average: A Method for Measuring the Tightness, Looseness, and Polarization of Social Norms</div>
+                    <div class="publication-venue">Economics Letters</div>
+                    <div class="publication-links">
+                        <a href="https://doi.org/10.1016/j.econlet.2023.111417" target="_blank">Paper</a>
+                        <a href="https://drive.google.com/drive/u/0/folders/1PoqgVvW3Go0SeK9G-UOoBqpjvG6DIByT" target="_blank">Ungated</a>
+                        <a href="https://drive.google.com/file/d/1I_hLKS3UiyAlCVUhQ5XILyL6lQtpDWY3/view?usp=drive_link" target="_blank">AI Podcast</a>
+                    </div>
+                </div>
+
+                <div class="publication">
+                    <div class="publication-title">Synthesis of Evidence for Policy from Behavioural Science During COVID-19</div>
+                    <div class="publication-venue">(collaboration led by K. Ruggeri & J. van Bavel). Nature</div>
+                    <div class="publication-links">
+                        <a href="https://www.nature.com/articles/s41586-023-06840-9" target="_blank">Paper</a>
+                        <a href="https://drive.google.com/file/d/1bmAZknhkOd6Yj-DtEo2MOReGQniCrq_e/view?usp=drive_link" target="_blank">AI Podcast</a>
+                    </div>
+                </div>
+
+                <div class="publication">
+                    <div class="publication-title">Competition & Moral Behavior: Meta-Analysis of 45 Crowd-Sourced Experimental Designs</div>
+                    <div class="publication-venue">(collaboration led by C. Huber, A. Dreber, et al.). Proceedings of the National Academy of Sciences (PNAS)</div>
+                    <div class="publication-links">
+                        <a href="https://www.pnas.org/doi/10.1073/pnas.2215572120" target="_blank">Paper</a>
+                        <a href="https://drive.google.com/file/d/1YSrvHciP3zGp1-nm3KBRbr9ylxeejREy/view?usp=drive_link" target="_blank">Ungated</a>
+                        <a href="https://drive.google.com/file/d/18FJpDClPZSX1TZqAt7wEJnrO7yBO_wh-/view?usp=drive_link" target="_blank">AI Podcast</a>
+                    </div>
+                </div>
+
+                <div class="publication">
+                    <div class="publication-title">Nudging Enforcers: How Norm Perceptions and Motives for Lying Shape Sanctions</div>
+                    <div class="publication-venue">(with T. Gesche). Proceedings of the National Academy of Sciences (PNAS) Nexus</div>
+                    <div class="publication-links">
+                        <a href="https://doi.org/10.1093/pnasnexus/pgad224" target="_blank">Paper</a>
+                        <a href="https://drive.google.com/file/d/1L_4s_P2eNMlsx-5X-j8EsMIDIy3CVBIm/view?usp=drive_link" target="_blank">Ungated</a>
+                        <a href="https://drive.google.com/file/d/12-o9Hi2gaEV_JM2Yte_q4oGNnnNhJSb_/view?usp=drive_link" target="_blank">AI Podcast</a>
+                    </div>
+                </div>
+
+                <div class="publication">
+                    <div class="publication-title">It's Not A Lie if You Believe the Norm Does Not Apply: Conditional Norm-Following and Belief Distortion</div>
+                    <div class="publication-venue">(with C. Bicchieri & S. Sonderegger). Games & Economic Behavior</div>
+                    <div class="publication-links">
+                        <a href="https://doi.org/10.1016/j.geb.2023.01.005" target="_blank">Paper</a>
+                        <a href="https://drive.google.com/file/d/1YxNfVuI_yArjgmCLJKmsWSuC1Q-_z034/view?usp=drive_link" target="_blank">Ungated</a>
+                        <a href="https://drive.google.com/file/d/1xKBnHi_Of_nwvogJ34SmlddwTMDtznHV/view?usp=drive_link" target="_blank">AI Podcast</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="year-section">
+                <h2>2022</h2>
+                
+                <div class="publication">
+                    <div class="publication-title">Social Norms and Behavior Change: The Interdisciplinary Research Frontier</div>
+                    <div class="publication-venue">(with C. Bicchieri, M. Gelfand & S. Sonderegger). Journal of Economic Behavior & Organization</div>
+                    <div class="publication-links">
+                        <a href="https://doi.org/10.1016/j.jebo.2022.11.007" target="_blank">Paper</a>
+                        <a href="https://drive.google.com/file/d/1t3WsxAQpCpcAyt0kSHkgHgpRZjbmd4Fu/view?usp=drive_link" target="_blank">Ungated</a>
+                    </div>
+                </div>
+
+                <div class="publication">
+                    <div class="publication-title">Politicizing Mask-Wearing: Predicting the Success of Behavioral Interventions Among Republicans and Democrats in the U.S.</div>
+                    <div class="publication-venue">(with Pieper, Clemente, Dreber, Gelfand & consortium co-authors). Nature Scientific Reports</div>
+                    <div class="publication-links">
+                        <a href="https://doi.org/10.1038/s41598-022-10524-1" target="_blank">Paper</a>
+                        <a href="https://drive.google.com/file/d/1L4xDXjuRE3dW7QsqQcKdvDqIjp6DBs77/view?usp=drive_link" target="_blank">Ungated</a>
+                    </div>
+                </div>
+
+                <div class="publication">
+                    <div class="publication-title">Social Proximity and the Erosion of Norm Compliance</div>
+                    <div class="publication-venue">(with C. Bicchieri, S. Gächter & D. Nosenzo). Games and Economic Behavior</div>
+                    <div class="publication-links">
+                        <a href="https://doi.org/10.1016/j.geb.2021.11.012" target="_blank">Paper</a>
+                        <a href="https://drive.google.com/file/d/14rF-R8gkZQk9PpYxfztuAZI80ZuFpi-_/view?usp=drive_link" target="_blank">Ungated</a>
+                    </div>
+                </div>
+
+                <div class="publication">
+                    <div class="publication-title">Beyond Belief: How Social Engagement Motives Influence the Spread of Conspiracy Theories</div>
+                    <div class="publication-venue">(with Z. Ren & M. Schweitzer). Journal of Experimental Social Psychology</div>
+                    <div class="publication-links">
+                        <a href="https://doi.org/10.1016/j.jesp.2022.104421" target="_blank">Paper</a>
+                        <a href="https://drive.google.com/file/d/1t8FUvtElykVdrc_ducEe46rH9Ota9pQC/view?usp=drive_link" target="_blank">Ungated</a>
+                    </div>
+                </div>
+
+                <div class="publication">
+                    <div class="publication-title">Persuading Republicans & Democrats to Comply with Mask Wearing: An Intervention Tournament</div>
+                    <div class="publication-venue">(with Gelfand, Li, Stamkou, Denison, Fernandez, Choi, Chatman, Jackson & Pieper). Journal of Experimental Social Psychology</div>
+                    <div class="publication-links">
+                        <a href="https://doi.org/10.1016/j.jesp.2022.104299" target="_blank">Paper</a>
+                        <a href="https://drive.google.com/file/d/18Cn35day_7MZLj7aGq6iEEtWtugBK69T/view?usp=drive_link" target="_blank">Ungated</a>
+                    </div>
+                </div>
+
+                <div class="publication">
+                    <div class="publication-title">Meta-Nudging Honesty: Past, Present, and Future of the Research Frontier</div>
+                    <div class="publication-venue">(with S. Shalvi). Current Opinion in Psychology</div>
+                    <div class="publication-links">
+                        <a href="https://doi.org/10.1016/j.copsyc.2022.101426" target="_blank">Paper</a>
+                        <a href="https://drive.google.com/file/d/1C7aeGsZ5kLI0ZsTOKVs0P_GbO5tJFWrs/view?usp=drive_link" target="_blank">Ungated</a>
+                    </div>
+                </div>
+
+                <div class="publication">
+                    <div class="publication-title">Authoritarian Leaders Share Conspiracy Theories to Attack Opponents, Promote In-Group Unity, Shift Blame, and Undermine Democratic Institutions</div>
+                    <div class="publication-venue">(with Z. Ren, A. Carton & M. Schweitzer). Current Opinion in Psychology</div>
+                    <div class="publication-links">
+                        <a href="https://doi.org/10.1016/j.copsyc.2022.101388" target="_blank">Paper</a>
+                        <a href="https://drive.google.com/file/d/1YEIMRLz2jg0fQw_UDp13d9fWKB6490eC/view?usp=drive_link" target="_blank">Ungated</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="year-section">
+                <h2>Earlier Publications (2013-2021)</h2>
+                <p style="margin-bottom: 1rem; color: #666;">Publications from 2013-2021 available. Key publications include work in Journal of Economic Behavior & Organization, Journal of Risk & Uncertainty, Economics Letters, Public Choice, German Economic Review, and Applied Economics Letters. For the complete list with links, please visit my <a href="https://scholar.google.com/citations?user=3Ylbe0YAAAAJ&hl=en" target="_blank">Google Scholar page</a>.</p>
+            </div>
+
+            <h2>Work in Progress</h2>
+            
+            <h3>Revise & Resubmit</h3>
+            <div class="publication">
+                <div class="publication-title">Promoting Responsible Disposal of Opioids: A Randomized Evaluation of Behaviorally Informed Messaging Combined with a Financial Incentive</div>
+                <div class="publication-venue">(with M. Tomma and colleagues from the Department of Justice, Department of State, Department of Veterans Affairs, and Office of Evaluation Sciences). Revise & Resubmit: Health Economics</div>
+                <div class="publication-links">
+                    <a href="https://dx.doi.org/10.2139/ssrn.4502634" target="_blank">Working Paper</a>
+                </div>
+            </div>
+
+            <h3>Under Review</h3>
+            <div class="publication">
+                <div class="publication-title">Aid and Exodus: U.S. Military Assistance and Refugee Flows to the U.S.</div>
+                <div class="publication-venue">(with T. Krieger, D. Meierrieks & L. Renner)</div>
+                <div class="publication-links">
+                    <a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=5414817" target="_blank">Working Paper</a>
+                </div>
+            </div>
+
+            <div class="publication">
+                <div class="publication-title">Pluralism Breeds Tolerance</div>
+                <div class="publication-venue">(with F. Panizza, E. Kimbrough & A. Vostroknutov)</div>
+                <div class="publication-links">
+                    <a href="https://dx.doi.org/10.2139/ssrn.4649792" target="_blank">Working Paper</a>
+                    <a href="https://osf.io/7hc9v" target="_blank">Norm-Drawing Task (Qualtrics)</a>
+                </div>
+            </div>
+
+            <div class="publication">
+                <div class="publication-title">The Price of Identity: Overoptimism and Congruence Concerns</div>
+                <div class="publication-venue">(with K. Donkor, L. Götte, M. Kurschilgen & M. Müller)</div>
+                <div class="publication-links">
+                    <a href="https://papers.ssrn.com/abstract=4670092" target="_blank">Working Paper</a>
+                </div>
+            </div>
+
+            <div class="publication">
+                <div class="publication-title">Making Information Stick: Goal Setting and Attention</div>
+                <div class="publication-venue">(with A. Guido et al.)</div>
+                <div class="publication-links">
+                    <a href="https://dx.doi.org/10.2139/ssrn.4989494" target="_blank">Working Paper</a>
+                </div>
+            </div>
+
+            <div class="publication">
+                <div class="publication-title">Do Planning Prompts Suggesting a Default Plan Increase Follow-through? Two, 1-million-person Field Experiments</div>
+                <div class="publication-venue">(with A. Duckworth, K. Milkman & BCFG Collective)</div>
+            </div>
+
+            <div class="publication">
+                <div class="publication-title">Divided we Act: The Role of Social Sanctions in a Polarized World</div>
+                <div class="publication-venue">(with M. Gelfand, A. Hochleitner & S. Sonderegger)</div>
+                <div class="publication-links">
+                    <a href="https://dx.doi.org/10.2139/ssrn.5636792" target="_blank">Working Paper</a>
+                </div>
+            </div>
+
+            <div class="publication">
+                <div class="publication-title">Becoming Friends or Foes? How Competitive Environments Shape Altruistic Preferences</div>
+                <div class="publication-venue">(with A. Cao, K. Hyndman & N. Yang)</div>
+                <div class="publication-links">
+                    <a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3326107" target="_blank">Working Paper</a>
+                </div>
+            </div>
+                
