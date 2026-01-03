@@ -4,585 +4,342 @@
   <meta charset="utf-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <title>Eugen Dimant | Research</title>
-  <meta name="description" content="Research website of Eugen Dimant - Behavioral Economics, Social Norms, Polarization"/>
+  <meta name="description" content="Research website of Eugen Dimant – Behavioral Economics, Social Norms, Polarization"/>
   <style>
     :root{
       --bg:#0b0d10;
       --bg2:#0f1216;
       --card:#121720;
       --card2:#0f141d;
-      --text:#eaf0f8;
-      --muted:#b4c0d3;
-      --muted2:#8ea0ba;
-      --border:rgba(255,255,255,.12);
-      --shadow:0 18px 44px rgba(0,0,0,.40);
-      --shadow2:0 10px 28px rgba(0,0,0,.26);
+      --text:#e9edf3;
+      --muted:#aab4c0;
+      --muted2:#7f8a97;
+      --border:rgba(255,255,255,.10);
       --accent:#7dd3fc;
       --accent2:#a78bfa;
-      --venue-red:#BE7D9F;
-      --ok:#34d399;
-      --warn:#fbbf24;
       --radius:18px;
-      --radius2:26px;
-      --max:1320px;
-      --pad:clamp(18px,3.2vw,28px);
-      --pad2:clamp(12px,2.4vw,18px);
+      --shadow: 0 10px 28px rgba(0,0,0,.40);
+      --shadow2: 0 4px 14px rgba(0,0,0,.30);
+      --pad:18px;
+      --pad2:20px;
+      --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      --sans: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
     }
-
     *{box-sizing:border-box}
-    html{scroll-behavior:smooth}
+    html,body{height:100%}
     body{
       margin:0;
-      font-family:ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;
+      font-family:var(--sans);
       color:var(--text);
       background:
-        radial-gradient(1200px 800px at 18% -10%, rgba(125,211,252,.22), transparent 55%),
-        radial-gradient(1000px 700px at 110% 10%, rgba(167,139,250,.18), transparent 55%),
-        linear-gradient(180deg, var(--bg) 0%, var(--bg2) 55%, var(--bg) 100%);
-      line-height:1.55;
+        radial-gradient(900px 500px at 20% 0%, rgba(125,211,252,.12), transparent 55%),
+        radial-gradient(900px 500px at 90% 10%, rgba(167,139,250,.10), transparent 55%),
+        linear-gradient(180deg, var(--bg) 0%, var(--bg2) 100%);
     }
-    a{color:inherit; text-decoration:none;}
-    a:hover{text-decoration:underline}
-    .wrap{max-width:var(--max); margin:0 auto; padding:0 var(--pad}}
-
-    header{
-      position:sticky; top:0; z-index:50;
-      backdrop-filter:blur(12px);
-      background:color-mix(in srgb, var(--bg2) 78%, transparent);
-      border-bottom:1px solid var(--border);
-    }
-    .nav{display:flex; align-items:center; justify-content:space-between; padding:12px 0; gap:14px;}
-    .brand{display:flex; flex-direction:column; line-height:1.12;}
-    .brand strong{font-size:16px; letter-spacing:.2px}
-    .brand span{font-size:12px; color:var(--muted2); margin-top:2px}
-    nav ul{list-style:none; margin:0; padding:0; display:flex; gap:12px; align-items:center; flex-wrap:wrap;}
-    nav a{
-      display:inline-flex; align-items:center; padding:9px 12px;
-      border:1px solid transparent; border-radius:999px;
-      color:var(--muted); font-size:13px;
-      transition:all 140ms ease; white-space:nowrap;
-    }
-    nav a:hover{background:color-mix(in srgb, var(--card) 70%, transparent); border-color:var(--border); color:var(--text); transform:translateY(-1px); text-decoration:none;}
-    nav a.active{background:color-mix(in srgb, var(--card) 88%, transparent); border-color:color-mix(in srgb, var(--accent) 60%, var(--border)); color:var(--text);}
-
-    .btn{
-      display:inline-flex; align-items:center; justify-content:center;
-      padding:10px 14px; border-radius:999px;
-      border:1px solid var(--border);
-      background:color-mix(in srgb, var(--card) 88%, transparent);
-      color:var(--text); font-size:13px; cursor:pointer;
-      transition:all 120ms ease; white-space:nowrap;
-    }
-    .btn:hover{transform:translateY(-1px); border-color:color-mix(in srgb, var(--accent) 55%, var(--border)); background:color-mix(in srgb, var(--card) 95%, transparent); text-decoration:none;}
-    .btn-primary{border-color:color-mix(in srgb, var(--accent) 65%, var(--border)); background:linear-gradient(135deg, color-mix(in srgb, var(--accent) 34%, var(--card)) 0%, color-mix(in srgb, var(--accent2) 28%, var(--card)) 100%);}
-    .btn.xs{padding:8px 12px; font-size:12px;}
-
-    main{padding:22px 0 70px;}
-    section{scroll-margin-top:90px;}
-
-    .panel{
-      background:color-mix(in srgb, var(--card) 88%, transparent);
-      border:1px solid var(--border);
-      box-shadow:var(--shadow);
-      border-radius:var(--radius2);
-      padding:var(--pad);
-    }
+    a{color:inherit}
+    .wrap{max-width:1180px; margin:0 auto; padding:22px 18px 64px}
+    header{display:flex; align-items:center; justify-content:space-between; gap:14px; padding:8px 0 18px}
+    .brand{display:flex; flex-direction:column; gap:4px}
+    .brand .name{font-size:18px; font-weight:750; letter-spacing:.2px}
+    .brand .sub{font-size:13px; color:var(--muted)}
+    .nav{display:flex; align-items:center; gap:10px; flex-wrap:wrap}
+    .nav a{text-decoration:none; padding:8px 10px; border:1px solid transparent; border-radius:999px; color:var(--muted); font-size:13px}
+    .nav a:hover{border-color:var(--border); color:var(--text)}
 
     .hero{
-      padding:22px 0 12px;
-      display:grid;
-      grid-template-columns:minmax(520px, 1.35fr) minmax(360px, 1fr) minmax(360px, 1fr);
-      gap:22px;
-      align-items:stretch;
-    }
-    @media (max-width:1100px){.hero{grid-template-columns:1fr;}}
-
-    .hero-left-top{display:grid; grid-template-columns:112px 1fr; gap:16px; align-items:center;}
-    @media (max-width:560px){.hero-left-top{grid-template-columns:1fr;}}
-
-    .avatar{
-      width:112px; height:112px; border-radius:24px;
       border:1px solid var(--border);
-      background:linear-gradient(135deg, color-mix(in srgb, var(--accent) 28%, var(--card)) 0%, color-mix(in srgb, var(--accent2) 24%, var(--card)) 100%);
-      box-shadow:var(--shadow2);
-      overflow:hidden;
+      background:color-mix(in srgb, var(--card) 86%, transparent);
+      border-radius:calc(var(--radius) + 8px);
+      box-shadow:var(--shadow);
+      padding:22px;
+      display:flex;
+      flex-direction:column;
+      gap:10px;
+      margin-bottom:18px;
     }
-    .avatar img{width:100%; height:100%; object-fit:cover; display:block;}
-
-    .hero h1{margin:0 0 6px; font-size:clamp(26px, 3.0vw, 40px); line-height:1.12; letter-spacing:-0.4px;}
-    .hero .role{margin:0; color:var(--muted); font-size:15px;}
-    .hero .bio{margin:12px 0 14px; color:var(--muted); font-size:15px; max-width:78ch;}
-
-    .actions{display:flex; gap:10px; flex-wrap:wrap; margin-top:12px;}
-    .pillrow{display:flex; gap:10px; flex-wrap:wrap; margin-top:14px;}
-    .pill{
-      display:inline-flex; gap:8px; align-items:center;
-      padding:8px 10px; border-radius:999px;
-      border:1px solid var(--border);
-      background:color-mix(in srgb, var(--card2) 78%, transparent);
-      color:var(--muted); font-size:12px;
-    }
-    .pill b{color:var(--text); font-weight:650;}
-
-    .card{
-      background:color-mix(in srgb, var(--card) 90%, transparent);
-      border:1px solid var(--border);
-      border-radius:var(--radius);
-      box-shadow:var(--shadow2);
-      padding:var(--pad2);
-    }
-    .card h2{margin:2px 0 10px; font-size:16px; letter-spacing:.2px;}
-    .card p, .card li{margin:0; color:var(--muted); font-size:15px;}
-    .card ul{margin:10px 0 0; padding-left:18px;}
-    .card li{margin:6px 0;}
-
-    .about-section{margin-top:28px;}
-    .about-panel{
-      background:color-mix(in srgb, var(--card) 88%, transparent);
-      border:1px solid var(--border);
-      box-shadow:var(--shadow2);
-      border-radius:var(--radius);
-      padding:var(--pad2);
-    }
-    .about-panel h2{margin:0 0 14px; font-size:18px; letter-spacing:.2px;}
-    .about-panel p{margin:0 0 12px; color:var(--muted); font-size:15px; line-height:1.6;}
-    .about-panel p:last-child{margin-bottom:0;}
-
-    .section-title{margin:34px 0 10px; font-size:14px; letter-spacing:.16em; text-transform:uppercase; color:var(--muted2);}
-
-    .explorer{display:grid; grid-template-columns:360px 1fr; gap:16px; align-items:start;}
-    @media (max-width:980px){.explorer{grid-template-columns:1fr;}}
-
-    .filters{position:sticky; top:84px;}
-    @media (max-width:980px){.filters{position:static;}}
-
-    label{display:block; font-size:12px; color:var(--muted2); margin:12px 0 6px;}
-    input[type="text"]{
-      width:100%; padding:11px 12px; border-radius:14px;
-      border:1px solid var(--border);
-      background:color-mix(in srgb, var(--card2) 84%, transparent);
-      color:var(--text); outline:none;
-    }
-    input[type="text"]::placeholder{color:color-mix(in srgb, var(--muted2) 78%, transparent);}
-
-    .chip-row{display:flex; gap:10px; flex-wrap:wrap; margin-top:12px;}
-    .chip{
-      display:inline-flex; align-items:center; gap:8px;
-      padding:8px 10px; border-radius:999px;
-      border:1px solid var(--border);
-      background:color-mix(in srgb, var(--card2) 78%, transparent);
-      color:var(--muted); font-size:12px;
-      cursor:pointer; user-select:none;
-      transition:all 140ms ease;
-    }
-    .chip:hover{transform:translateY(-1px); border-color:color-mix(in srgb, var(--accent) 55%, var(--border)); color:var(--text);}
-    .chip.active{background:color-mix(in srgb, var(--accent) 18%, var(--card)); border-color:color-mix(in srgb, var(--accent) 60%, var(--border)); color:var(--text);}
-    .chip small{color:var(--muted2); font-size:11px;}
-
-    .tabs{display:flex; gap:10px; flex-wrap:wrap; margin-bottom:10px;}
-    .tab{
-      padding:9px 12px; border-radius:999px;
-      border:1px solid var(--border);
-      background:transparent; color:var(--muted);
-      cursor:pointer; font-size:13px;
-    }
-    .tab.active{background:color-mix(in srgb, var(--card) 88%, transparent); border-color:color-mix(in srgb, var(--accent) 60%, var(--border)); color:var(--text);}
-
-    .count{color:var(--muted); font-size:13px; margin-bottom:10px;}
-
-    .pub-list{display:flex; flex-direction:column; gap:12px;}
-    .pub{
-      border-radius:var(--radius);
-      border:1px solid var(--border);
-      background:color-mix(in srgb, var(--card) 90%, transparent);
-      box-shadow:var(--shadow2);
-      padding:var(--pad2);
-    }
-    .pub h4{margin:0 0 6px; font-size:14px; letter-spacing:.1px; line-height:1.35;}
-    .pub .meta{margin-top:6px; color:var(--muted); font-size:13px; display:flex; flex-wrap:wrap; gap:8px; align-items:center;}
-    .pub .meta .venue{color:var(--venue-red); font-weight:500;}
-    .pub .meta .dot{opacity:.6;}
-    .pub .badges{display:flex; gap:8px; flex-wrap:wrap; margin-top:10px;}
-    .badge{
-      display:inline-flex; align-items:center; gap:6px;
-      padding:6px 8px; border-radius:999px;
-      border:1px solid var(--border);
-      background:color-mix(in srgb, var(--card2) 78%, transparent);
-      color:var(--muted); font-size:11px;
-    }
-    .badge strong{color:var(--text); font-weight:650;}
-    .badge.ok{border-color:color-mix(in srgb, var(--ok) 55%, var(--border));}
-    .badge.cite{
-      background:color-mix(in srgb, var(--accent) 20%, var(--card2));
-      border-color:color-mix(in srgb, var(--accent) 55%, var(--border));
+    .hero h1{margin:0; font-size:26px; letter-spacing:.2px}
+    .hero p{margin:0; color:var(--muted); line-height:1.5; max-width:980px}
+    .hero .cta{display:flex; gap:10px; flex-wrap:wrap; margin-top:6px}
+    .btn{
+      appearance:none; border:none; cursor:pointer;
+      border-radius:999px;
+      padding:10px 12px;
+      font-size:13px;
       color:var(--text);
+      background:color-mix(in srgb, var(--card2) 86%, transparent);
+      border:1px solid var(--border);
+      text-decoration:none;
+      display:inline-flex; align-items:center; gap:8px;
+      transition:transform 120ms ease, border-color 120ms ease, background 120ms ease;
+    }
+    .btn:hover{transform:translateY(-1px); border-color:color-mix(in srgb, var(--accent) 45%, var(--border)); background:color-mix(in srgb, var(--card2) 94%, transparent)}
+    .btn:active{transform:translateY(0px)}
+    .btn-primary{background:linear-gradient(135deg, rgba(125,211,252,.18), rgba(167,139,250,.14)); border-color:color-mix(in srgb, var(--accent) 40%, var(--border))}
+    .btn.xs{padding:8px 10px; font-size:12.5px}
+
+    .grid{display:grid; grid-template-columns:320px 1fr; gap:16px}
+    @media (max-width: 920px){ .grid{grid-template-columns:1fr} }
+
+    .panel{
+      border:1px solid var(--border);
+      background:color-mix(in srgb, var(--card) 84%, transparent);
+      border-radius:var(--radius);
+      box-shadow:var(--shadow2);
+      padding:var(--pad);
+    }
+    .panel h2{margin:0 0 10px; font-size:14px; letter-spacing:.3px; text-transform:uppercase; color:var(--muted)}
+
+    .searchrow{display:flex; gap:10px; align-items:center; margin-bottom:12px}
+    .searchrow input{
+      width:100%;
+      padding:10px 12px;
+      border-radius:12px;
+      border:1px solid var(--border);
+      background:rgba(0,0,0,.22);
+      color:var(--text);
+      outline:none;
+      font-size:13.5px;
+    }
+    .searchrow input:focus{border-color:color-mix(in srgb, var(--accent) 50%, var(--border))}
+    .toggle{display:flex; align-items:center; gap:10px; margin-top:10px; color:var(--muted); font-size:13px}
+    .toggle input{transform:scale(1.05)}
+
+    .chipbox{display:flex; flex-wrap:wrap; gap:8px}
+    .chip{
+      border:1px solid var(--border);
+      background:rgba(0,0,0,.20);
+      color:var(--muted);
+      font-size:12.5px;
+      padding:7px 10px;
+      border-radius:999px;
+      cursor:pointer;
+      user-select:none;
+      transition:transform 120ms ease, border-color 120ms ease, background 120ms ease, color 120ms ease;
+    }
+    .chip:hover{transform:translateY(-1px); border-color:color-mix(in srgb, var(--accent) 35%, var(--border)); color:var(--text)}
+    .chip.active{background:linear-gradient(135deg, rgba(125,211,252,.18), rgba(167,139,250,.12)); border-color:color-mix(in srgb, var(--accent) 55%, var(--border)); color:var(--text)}
+
+    .legend{margin:10px 0 0; color:var(--muted2); font-size:12.5px; line-height:1.45}
+
+    .mainhead{display:flex; align-items:flex-end; justify-content:space-between; gap:10px; flex-wrap:wrap; margin-bottom:10px}
+    .mainhead .title{font-size:16px; font-weight:750}
+    .mainhead .count{color:var(--muted); font-size:13px}
+
+    .pub-list{display:flex; flex-direction:column; gap:16px}
+
+    .yearHeader{
+      margin:16px 0 6px;
+      display:flex;
+      align-items:center;
+      gap:10px;
+      color:var(--muted);
+      font-size:13px;
+      letter-spacing:.2px;
+    }
+    .yearHeader::after{
+      content:"";
+      flex:1;
+      height:1px;
+      background:var(--border);
+      opacity:.75;
     }
 
-    .pub .links{display:flex; gap:10px; flex-wrap:wrap; margin-top:12px;}
-    .link{
-      display:inline-flex; align-items:center; justify-content:center;
-      padding:8px 10px; border-radius:999px;
+    .paper{
+      border-radius:var(--radius);
       border:1px solid var(--border);
-      background:transparent; color:var(--muted);
-      font-size:12px; cursor:pointer;
-      transition:all 140ms ease;
+      background:color-mix(in srgb, var(--card) 88%, transparent);
+      box-shadow:var(--shadow2);
+      padding:var(--pad2);
+      position:relative;
+      overflow:hidden;
+      transition:transform 120ms ease, border-color 120ms ease, background 120ms ease;
     }
-    .link:hover{transform:translateY(-1px); background:color-mix(in srgb, var(--card2) 80%, transparent); border-color:color-mix(in srgb, var(--accent) 55%, var(--border)); color:var(--text); text-decoration:none;}
-    .link.primary{background:color-mix(in srgb, var(--accent) 16%, var(--card)); border-color:color-mix(in srgb, var(--accent) 60%, var(--border)); color:var(--text);}
+    .paper::before{
+      content:"";
+      position:absolute;
+      top:0; left:0; right:0;
+      height:2px;
+      background:linear-gradient(90deg, rgba(125,211,252,.55), rgba(167,139,250,.35), transparent);
+      opacity:.35;
+    }
+    .paper:hover{transform:translateY(-1px); border-color:color-mix(in srgb, var(--accent) 45%, var(--border)); background:color-mix(in srgb, var(--card) 94%, transparent)}
+    @media (prefers-reduced-motion: reduce){ .paper{transition:none} .btn{transition:none} .chip{transition:none} }
+
+    .paper-toprow{display:flex; flex-wrap:wrap; gap:8px; align-items:center; margin-bottom:14px}
+    .pill{
+      display:inline-flex; align-items:center; gap:6px;
+      padding:6px 10px;
+      border-radius:999px;
+      font-size:12px;
+      border:1px solid var(--border);
+      background:rgba(0,0,0,.18);
+      color:var(--muted);
+      text-decoration:none;
+    }
+    .pill strong{color:var(--text); font-weight:750}
+    .paper-title{
+      margin:0;
+      font-size:16px;
+      font-weight:750;
+      line-height:1.32;
+      letter-spacing:.1px;
+      cursor:pointer;
+    }
+    .paper-title:focus{outline:2px solid color-mix(in srgb, var(--accent) 55%, transparent); outline-offset:4px; border-radius:8px}
+    .paper-subline{margin-top:8px; color:var(--muted); font-size:13px; line-height:1.45}
+    .paper-subline .venue{color:var(--text)}
+    .paper-note{margin-top:8px; color:var(--muted2); font-size:12.5px}
+
+    .paper-actions{margin-top:14px; display:flex; flex-wrap:wrap; gap:10px}
+
+    .paper-details{margin-top:12px; padding-top:12px; border-top:1px solid rgba(255,255,255,.06); display:none}
+    .paper-details.open{display:block}
+    .paper-abstract{margin:0; color:var(--muted); font-size:13px; line-height:1.55}
+    .paper-meta2{margin-top:10px; color:var(--muted2); font-size:12.5px; display:flex; flex-wrap:wrap; gap:12px}
 
     .toast{
-      position:fixed; right:16px; bottom:16px;
-      max-width:min(520px, calc(100vw - 32px));
-      background:color-mix(in srgb, var(--card) 92%, transparent);
+      position:fixed;
+      left:50%;
+      bottom:18px;
+      transform:translateX(-50%);
+      background:rgba(0,0,0,.75);
       border:1px solid var(--border);
-      box-shadow:var(--shadow);
-      border-radius:16px;
-      padding:12px 14px;
-      color:var(--text); font-size:13px;
-      opacity:0; transform:translateY(10px);
-      transition:all 160ms ease;
-      pointer-events:none; z-index:1000;
+      color:var(--text);
+      padding:10px 12px;
+      border-radius:999px;
+      font-size:13px;
+      opacity:0;
+      pointer-events:none;
+      transition:opacity 180ms ease, transform 180ms ease;
+      z-index:99;
     }
-    .toast.show{opacity:1; transform:translateY(0);}
+    .toast.show{opacity:1; transform:translateX(-50%) translateY(-2px)}
 
-    .pdf-wrap{border:1px solid var(--border); border-radius:var(--radius); overflow:hidden; background:color-mix(in srgb, var(--card2) 86%, transparent); box-shadow:var(--shadow2);}
-    .pdf-toolbar{display:flex; gap:10px; flex-wrap:wrap; align-items:center; justify-content:space-between; padding:10px 12px; border-bottom:1px solid var(--border);}
-    iframe.pdf{width:100%; height:min(78vh, 860px); border:0; display:block; background:#525659;}
-
-    footer{padding:24px 0 40px; color:var(--muted2); font-size:12px; border-top:1px solid var(--border); margin-top:30px;}
-    .footrow{display:flex; gap:10px; flex-wrap:wrap; align-items:center; justify-content:space-between;}
-
-    .year-block{margin-top:14px; padding-top:6px;}
-    .year-title{display:flex; align-items:center; justify-content:space-between; gap:12px; margin:6px 0; padding:8px 0; border-bottom:1px solid var(--border);}
-    .year-title h3{margin:0; font-size:16px;}
+    .modal{position:fixed; inset:0; background:rgba(0,0,0,.55); display:none; align-items:center; justify-content:center; padding:16px; z-index:100}
+    .modal.open{display:flex}
+    .modal-panel{width:min(860px, 96vw); border:1px solid var(--border); background:color-mix(in srgb, var(--card) 92%, black); border-radius:18px; box-shadow:var(--shadow); overflow:hidden}
+    .modal-header{display:flex; align-items:center; justify-content:space-between; gap:10px; padding:14px 16px; border-bottom:1px solid rgba(255,255,255,.06)}
+    .modal-title{font-weight:750}
+    .icon-btn{background:transparent; border:1px solid var(--border); color:var(--text); border-radius:12px; padding:8px 10px; cursor:pointer}
+    .modal-body{padding:14px 16px}
+    textarea{width:100%; min-height:240px; resize:vertical; border-radius:14px; border:1px solid var(--border); background:rgba(0,0,0,.25); color:var(--text); padding:12px; font-family:var(--mono); font-size:12.5px; line-height:1.5}
+    .modal-actions{display:flex; gap:10px; margin-top:10px; flex-wrap:wrap}
+    footer{margin-top:18px; color:var(--muted2); font-size:12.5px; line-height:1.5}
+    footer a{color:var(--muted); text-decoration:none; border-bottom:1px dotted rgba(255,255,255,.18)}
+    footer a:hover{color:var(--text)}
   </style>
 </head>
 <body>
-
-<header>
   <div class="wrap">
-    <div class="nav">
+    <header>
       <div class="brand">
-        <strong>Eugen Dimant</strong>
-        <span>Behavioral & Decision Sciences</span>
+        <div class="name">Eugen Dimant</div>
+        <div class="sub">Behavioral economics · social norms · polarization · trust & deception</div>
       </div>
-      <nav>
-        <ul>
-          <li><a href="#home">Home</a></li>
-          <li><a href="#research">Research</a></li>
-          <li><a href="#vita">Vita</a></li>
-          <li><a href="https://sites.google.com/view/eugendimant/" target="_blank" rel="noopener">Legacy site</a></li>
-        </ul>
+      <nav class="nav">
+        <a href="#research">Research</a>
+        <a href="#cv">CV</a>
       </nav>
+    </header>
+
+    <section class="hero">
+      <h1>Research</h1>
+      <p>
+        Publications and working papers. Use the filters to browse by category, topic, and method.
+        Citation counts are sourced from OpenAlex when a DOI is available.
+      </p>
+      <div class="cta">
+        <a class="btn btn-primary" href="#research">Browse publications</a>
+        <a class="btn" href="#cv">Download CV</a>
+      </div>
+    </section>
+
+    <section id="research" class="grid">
+      <aside class="panel">
+        <h2>Find papers</h2>
+
+        <div class="searchrow">
+          <input id="q" type="search" placeholder="Search title, authors, venue…" autocomplete="off" />
+        </div>
+
+        <div style="margin-top:12px">
+          <div style="color:var(--muted); font-size:13px; margin-bottom:8px">Category</div>
+          <div class="chipbox" id="chipsCategory"></div>
+        </div>
+
+        <div style="margin-top:14px">
+          <div style="color:var(--muted); font-size:13px; margin-bottom:8px">Topic</div>
+          <div class="chipbox" id="chipsTopic"></div>
+        </div>
+
+        <div style="margin-top:14px">
+          <div style="color:var(--muted); font-size:13px; margin-bottom:8px">Method</div>
+          <div class="chipbox" id="chipsMethod"></div>
+        </div>
+
+        <label class="toggle">
+          <input id="groupByYear" type="checkbox" checked />
+          Group published work by year
+        </label>
+
+        <div style="margin-top:12px; display:flex; gap:10px; flex-wrap:wrap">
+          <button class="btn xs" id="clearFilters">Clear filters</button>
+          <button class="btn xs" id="expandAll">Expand abstracts</button>
+          <button class="btn xs" id="collapseAll">Collapse</button>
+        </div>
+
+        <p class="legend" id="legend">
+          Journal links and ungated PDFs are pulled from your Google Sites page when available, with Crossref used as a fallback for DOI and landing pages.
+        </p>
+      </aside>
+
+      <main class="panel">
+        <div class="mainhead">
+          <div class="title">Publications</div>
+          <div class="count" id="count"></div>
+        </div>
+
+        <div id="list" class="pub-list"></div>
+
+        <footer>
+          If you spot a missing or wrong link, send me the preferred URL and I can hard-code it for that item.
+        </footer>
+      </main>
+    </section>
+
+    <section id="cv" class="panel" style="margin-top:16px">
+      <h2>CV</h2>
+      <div style="display:flex; gap:10px; flex-wrap:wrap; align-items:center; justify-content:space-between">
+        <div style="color:var(--muted); font-size:13.5px">Download the most recent CV as PDF.</div>
+        <a class="btn btn-primary" href="CV_Eugen_Dimant.pdf" download>Download CV (PDF)</a>
+      </div>
+    </section>
+  </div>
+
+  <div class="toast" id="toast"></div>
+
+  <div class="modal" id="bibtexModal" aria-hidden="true">
+    <div class="modal-panel" role="dialog" aria-modal="true" aria-labelledby="bibtexTitle">
+      <div class="modal-header">
+        <div class="modal-title" id="bibtexTitle">BibTeX</div>
+        <button class="icon-btn" id="bibtexClose" aria-label="Close">✕</button>
+      </div>
+      <div class="modal-body">
+        <textarea id="bibtexText" readonly spellcheck="false"></textarea>
+        <div class="modal-actions">
+          <button class="btn xs" id="bibtexCopy">Copy</button>
+        </div>
+      </div>
     </div>
   </div>
-</header>
 
-<main>
-  <section id="home">
-    <div class="wrap">
-      <div class="hero">
-        <div class="card">
-          <div class="hero-left-top">
-            <img class="avatar" src="https://kingcenter.stanford.edu/sites/g/files/sbiybj16611/files/styles/large_square/public/media/image/eugen_dimant_0.jpg" alt="Eugen Dimant"/>
-            <div>
-              <h1>Eugen Dimant</h1>
-              <p class="role">Associate Professor of Practice, Behavioral and Decision Sciences (UPenn) • Visiting Professor (Stanford)</p>
-            </div>
-          </div>
-
-          <p class="bio">
-            I study how social norms emerge, how they are enforced or eroded, and how norm disagreement and polarization influence both what people view as acceptable and how it influences their actions.
-          </p>
-
-          <div class="actions">
-            <a class="btn btn-primary" href="#research">Explore publications</a>
-            <a class="btn" href="#vita">CV preview</a>
-            <a class="btn" href="mailto:edimant@sas.upenn.edu">Email</a>
-          </div>
-
-          <div class="actions">
-            <a class="btn" href="https://scholar.google.com/citations?user=3Ylbe0YAAAAJ" target="_blank" rel="noopener">Google Scholar</a>
-            <a class="btn" href="https://www.linkedin.com/in/eugendimant/" target="_blank" rel="noopener">LinkedIn</a>
-            <a class="btn" href="https://x.com/eugen_dimant" target="_blank" rel="noopener">X (Twitter)</a>
-          </div>
-
-          <div class="pillrow">
-            <span class="pill"><b>Focus</b> norms, honesty, polarization, corruption, migration</span>
-            <span class="pill"><b>Methods</b> lab and field experiments, causal inference, observational data</span>
-          </div>
-        </div>
-
-        <div class="card">
-          <h2 style="margin-top:0;">Research news</h2>
-          <ul style="font-size:15px;">
-            <li><b>Sep 2025:</b> Honored to be included in <a href="https://www.capital.de/karriere/capital-ranking--das-sind-deutschlands-top-40-unter-40-fuer-2025-36192498.html" target="_blank" rel="noopener">Capital Magazine's German 40-under-40 list</a></li>
-            <li><b>Sep 2025:</b> New working paper on <a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=5414817" target="_blank" rel="noopener">U.S. military aid and refugee flows</a> published</li>
-            <li><b>Aug 2025:</b> New paper on <a href="https://doi.org/10.1016/j.jebo.2025.107187" target="_blank" rel="noopener">experimental methods for eliciting social norms</a> published in <span style="color:var(--venue-red); font-weight:500;">JEBO</span></li>
-            <li><b>Mar 2025:</b> <a href="https://doi.org/10.1073/pnas.2418616122" target="_blank" rel="noopener">Megastudy on math achievement</a> with 3M students published in <span style="color:var(--venue-red); font-weight:500;">PNAS</span></li>
-          </ul>
-        </div>
-
-        <div class="card">
-          <h2 style="margin-top:0;">Selected publications</h2>
-          <ul style="font-size:15px;">
-            <li><a href="https://doi.org/10.1073/pnas.2418616122" target="_blank" rel="noopener">Nudging Teachers: A Megastudy</a> (<span style="color:var(--venue-red); font-weight:500;">PNAS</span>, 2025)</li>
-            <li><a href="https://doi.org/10.1287/mnsc.2023.01022" target="_blank" rel="noopener">Strategic Behavior with Tight, Loose, and Polarized Norms</a> (<span style="color:var(--venue-red); font-weight:500;">Management Science</span>, 2024)</li>
-            <li><a href="https://doi.org/10.1287/mnsc.2023.4701" target="_blank" rel="noopener">Hate Trumps Love: Political Polarization and Social Preferences</a> (<span style="color:var(--venue-red); font-weight:500;">Management Science</span>, 2024)</li>
-            <li><a href="https://www.nature.com/articles/s41586-023-06840-9" target="_blank" rel="noopener">Synthesis of Evidence for Policy from Behavioural Science During COVID-19</a> (<span style="color:var(--venue-red); font-weight:500;">Nature</span>, 2023)</li>
-            <li><a href="https://doi.org/10.1016/j.geb.2021.11.012" target="_blank" rel="noopener">Social Proximity and the Erosion of Norm Compliance</a> (<span style="color:var(--venue-red); font-weight:500;">Games and Economic Behavior</span>, 2022)</li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="about-section">
-        <div class="about-panel">
-          <h2>About Me</h2>
-          <p>
-            I am an Associate Professor of Practice in Behavioral & Decision Sciences at the University of Pennsylvania and a Visiting Professor at Stanford University. I'm also a fellow at both the <a href="https://www.sas.upenn.edu/lps/graduate/mbds" target="_blank" rel="noopener">Behavioral and Decision Sciences Program</a> and the <a href="https://normsandbehavior.sas.upenn.edu/" target="_blank" rel="noopener">Center for Social Norms and Behavioral Dynamics</a> at the University of Pennsylvania, a collaborator at the Behavior Change for Good Initiative (<a href="https://bcfg.wharton.upenn.edu/" target="_blank" rel="noopener">BCFG</a>) at Wharton & a Network Fellow at <a href="https://www.cesifo.org/en/node/51520" target="_blank" rel="noopener">CESifo</a>. From 2022 - 2023, I was also part of the former White House Behavioral Science Team (now: <a href="https://oes.gsa.gov/" target="_blank" rel="noopener">OES</a>) and worked on high-impact RCTs related to the opioid epidemic.
-          </p>
-          <p>
-            My research lies at the intersection of behavioral economics, sociology, and political psychology. I study how social norms emerge, how they are enforced or eroded, and how norm disagreement and polarization influence both what people view as acceptable and how it influences their actions. My recent work develops and applies measures of norm pluralism and perceived polarization, examining how polarization shapes social preferences and cooperation.
-          </p>
-          <p>
-            A second strand of my work examines institutions and large-scale social outcomes, including corruption, crime, terrorism, and migration, often combining experimental tools with applied empirical methods. My interest in migration is deeply personal. I emigrated from Moldova as a refugee following the collapse of the Soviet Union, and that experience continues to shape the questions I ask about identity, institutions, and social cohesion.
-          </p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section id="research">
-    <div class="wrap">
-      <div class="section-title">Research</div>
-
-      <div class="card" style="padding:16px;">
-        <div class="tabs" id="pubTabs"></div>
-        <div class="count" id="resultCount"></div>
-
-        <div class="explorer" style="margin-top:14px;">
-          <aside class="filters panel">
-            <label for="q">Search title, venue, authors</label>
-            <input id="q" type="text" placeholder="Try: norms, polarization, honesty..."/>
-
-            <label>Year</label>
-            <div class="chip-row" id="yearChips"></div>
-
-            <label>Topics</label>
-            <div class="chip-row" id="topicChips"></div>
-
-            <div style="margin-top:16px;">
-              <label style="display:flex; align-items:center; gap:10px; margin:0;">
-                <input id="requireUngated" type="checkbox"/>
-                <span>Show only items with ungated PDF</span>
-              </label>
-            </div>
-
-            <div style="margin-top:8px;">
-              <label style="display:flex; align-items:center; gap:10px; margin:0;">
-                <input id="groupByYear" type="checkbox" checked/>
-                <span>Group results by year</span>
-              </label>
-            </div>
-
-            <div class="actions" style="margin-top:12px;">
-              <button id="resetBtn" class="btn xs" type="button">Reset</button>
-            </div>
-          </aside>
-
-          <div class="results">
-            <div class="pub-list" id="pubList"></div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section id="vita">
-    <div class="wrap">
-      <div class="section-title">Vita</div>
-
-      <div class="card" style="padding:16px;">
-        <h2 style="margin:0 0 16px;">Curriculum Vitae</h2>
-
-        <div class="pdf-wrap">
-          <div class="pdf-toolbar">
-            <a class="btn btn-primary" href="CV_Eugen_Dimant.pdf" download>Download CV</a>
-            <a class="btn" href="CV_Eugen_Dimant.pdf" target="_blank">Open in new tab</a>
-          </div>
-          <iframe class="pdf" src="CV_Eugen_Dimant.pdf" title="CV Preview"></iframe>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <footer>
-    <div class="wrap footrow">
-      <div>© <span id="yearNow"></span> Eugen Dimant</div>
-      <div><a href="mailto:edimant@sas.upenn.edu" style="color:var(--muted2);">edimant@sas.upenn.edu</a></div>
-    </div>
-  </footer>
-</main>
-
-<div id="toast"></div>
-
-<script src="publications-data.js"></script>
-<script>
-document.getElementById("yearNow").textContent=String(new Date().getFullYear());
-
-const state={tab:"all",q:"",year:"all",topic:"all",requireUngated:false,groupByYear:true};
-
-function toast(msg){
-const t=document.getElementById("toast");
-t.textContent=msg;
-t.classList.add("show");
-setTimeout(()=>t.classList.remove("show"),1800);
-}
-
-function getFiltered(){
-if(state.tab==="all")return window.PUBLICATIONS;
-return window.PUBLICATIONS.filter(p=>p.type===state.tab);
-}
-
-function matches(p){
-if(state.year!=="all"&&String(p.year)!==String(state.year))return false;
-if(state.topic!=="all"&&!p.topics.includes(state.topic))return false;
-if(state.requireUngated&&!(p.links&&p.links.pdf))return false;
-if(state.q){
-const hay=[p.title,p.authors,p.venue].join(" ").toLowerCase();
-if(!hay.includes(state.q.toLowerCase()))return false;
-}
-return true;
-}
-
-function renderTabs(){
-const all=window.PUBLICATIONS.length;
-const peer=window.PUBLICATIONS.filter(p=>p.type==="peer").length;
-const pre=window.PUBLICATIONS.filter(p=>p.type==="preprint").length;
-const tabs=[
-{k:"all",label:`All publications · ${all}`},
-{k:"peer",label:`Peer-reviewed · ${peer}`},
-{k:"preprint",label:`Working papers · ${pre}`}
-];
-const el=document.getElementById("pubTabs");
-el.innerHTML="";
-tabs.forEach(t=>{
-const b=document.createElement("button");
-b.className="tab"+(state.tab===t.k?" active":"");
-b.textContent=t.label;
-b.onclick=()=>{state.tab=t.k;state.year="all";state.topic="all";render();};
-el.appendChild(b);
-});
-}
-
-function renderYearChips(list){
-const el=document.getElementById("yearChips");
-el.innerHTML="";
-const years=Array.from(new Set(list.map(p=>p.year))).sort((a,b)=>b-a);
-const mkChip=(y,cnt,act)=>{
-const b=document.createElement("button");
-b.className="chip"+(act?" active":"");
-b.innerHTML=`${y} <small>${cnt}</small>`;
-b.onclick=()=>{state.year=y==="all"?"all":y;render();};
-return b;
-};
-el.appendChild(mkChip("all",list.length,state.year==="all"));
-years.forEach(y=>el.appendChild(mkChip(y,list.filter(p=>p.year===y).length,state.year===String(y))));
-}
-
-function renderTopicChips(list){
-const el=document.getElementById("topicChips");
-el.innerHTML="";
-const topicMap=new Map();
-list.forEach(p=>p.topics.forEach(t=>{topicMap.set(t,(topicMap.get(t)||0)+1);}));
-const topics=Array.from(topicMap.entries()).sort((a,b)=>b[1]-a[1]);
-const mkChip=(t,cnt,act)=>{
-const b=document.createElement("button");
-b.className="chip"+(act?" active":"");
-b.innerHTML=`${t} <small>${cnt}</small>`;
-b.onclick=()=>{state.topic=t==="all"?"all":t;render();};
-return b;
-};
-el.appendChild(mkChip("all",list.length,state.topic==="all"));
-topics.forEach(([t,c])=>el.appendChild(mkChip(t,c,state.topic===t)));
-}
-
-function renderList(list){
-const el=document.getElementById("pubList");
-el.innerHTML="";
-if(!list.length){
-el.innerHTML='<div class="pub">No matches</div>';
-return;
-}
-if(state.groupByYear){
-const byYear=new Map();
-list.forEach(p=>{
-const y=p.year||"Other";
-if(!byYear.has(y))byYear.set(y,[]);
-byYear.get(y).push(p);
-});
-const years=Array.from(byYear.keys()).sort((a,b)=>Number(b)-Number(a));
-years.forEach(y=>{
-const block=document.createElement("div");
-block.className="year-block";
-const head=document.createElement("div");
-head.className="year-title";
-head.innerHTML=`<h3>${y}</h3>`;
-block.appendChild(head);
-byYear.get(y).forEach(p=>block.appendChild(renderPub(p)));
-el.appendChild(block);
-});
-}else{
-list.forEach(p=>el.appendChild(renderPub(p)));
-}
-}
-
-function renderPub(p){
-const div=document.createElement("div");
-div.className="pub";
-const authorLine=p.authors?`<span>with ${p.authors}</span><span class="dot">·</span>`:"";
-const links=[];
-if(p.links.journal)links.push(`<a class="link primary" href="${p.links.journal}" target="_blank">Journal</a>`);
-if(p.links.pdf)links.push(`<a class="link" href="${p.links.pdf}" target="_blank">PDF</a>`);
-div.innerHTML=`
-<h4>${p.title}</h4>
-<div class="meta">
-${authorLine}
-<span class="venue">${p.venue}</span>
-</div>
-<div class="badges">
-<span class="badge"><strong>${p.year}</strong></span>
-${p.topics.slice(0,4).map(t=>`<span class="badge">${t}</span>`).join("")}
-</div>
-<div class="links">${links.join("")}</div>
-`;
-return div;
-}
-
-function render(){
-const base=getFiltered();
-renderTabs();
-renderYearChips(base);
-renderTopicChips(base);
-const filtered=base.filter(matches).sort((a,b)=>b.year-a.year);
-document.getElementById("resultCount").textContent=`${filtered.length} results`;
-renderList(filtered);
-}
-
-document.getElementById("q").oninput=(e)=>{state.q=e.target.value;render();};
-document.getElementById("requireUngated").onchange=(e)=>{state.requireUngated=e.target.checked;render();};
-document.getElementById("groupByYear").onchange=(e)=>{state.groupByYear=e.target.checked;render();};
-document.getElementById("resetBtn").onclick=()=>{
-state.q="";state.year="all";state.topic="all";state.requireUngated=false;state.groupByYear=true;
-document.getElementById("q").value="";
-document.getElementById("requireUngated").checked=false;
-document.getElementById("groupByYear").checked=true;
-render();
-toast("Filters reset");
-};
-
-if(window.PUBLICATIONS) render();
-</script>
-
+  <script>
+  // ===== Data =====
+  const PUBLICATIONS = [
+    {
+      "id": "dimant_2025_wrinkle"
+    }
+  ];
+  </script>
 </body>
 </html>
