@@ -1,1204 +1,1584 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <meta name="theme-color" content="#0b1220" />
-  <title>Eugen Dimant</title>
-  <meta name="description" content="Research in social norms, honesty, polarization, corruption, and migration." />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Eugen Dimant - Associate Professor of Practice in Behavioral & Decision Sciences at the University of Pennsylvania">
+    <meta name="keywords" content="Eugen Dimant, behavioral economics, social norms, polarization, University of Pennsylvania">
+    <title>Eugen Dimant | Research Website</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+        :root {
+            --penn-blue: #011f4b;
+            --penn-red: #990000;
+            --text-primary: #1a1a1a;
+            --text-secondary: #4a4a4a;
+            --bg-light: #f8f9fa;
+            --border-light: #e0e0e0;
+            --white: #ffffff;
+            --shadow-sm: 0 2px 4px rgba(0,0,0,0.08);
+            --shadow-md: 0 4px 12px rgba(0,0,0,0.1);
+            --shadow-lg: 0 8px 24px rgba(0,0,0,0.12);
+            --accent-blue: #0066cc;
+        }
 
-  <style>
-    :root{
-      --bg:#0b1220;
-      --panel:#0f1a2f;
-      --panel2:#101e38;
-      --text:#e7eefc;
-      --muted:#a9b7d6;
-      --muted2:#7f92bd;
-      --line:rgba(231,238,252,.12);
-      --chip:rgba(231,238,252,.08);
-      --chip2:rgba(231,238,252,.12);
-      --accent:#67b3ff;
-      --accent2:#9bd1ff;
-      --good:#58d39b;
-      --shadow: 0 10px 30px rgba(0,0,0,.35);
-      --radius:18px;
-      --radius2:22px;
-      --max: 1480px; /* wider so the two right columns can be wider without squeezing the hero */
-      --gap: 18px;
-    }
-    *{box-sizing:border-box}
-    html,body{height:100%}
-    body{
-      margin:0;
-      font-family:Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-      background:
-        radial-gradient(1200px 600px at 18% 0%, rgba(103,179,255,.18), rgba(0,0,0,0)),
-        radial-gradient(900px 500px at 88% 18%, rgba(155,209,255,.10), rgba(0,0,0,0)),
-        linear-gradient(180deg, #0b1220, #070b14 70%);
-      color:var(--text);
-    }
-    a{color:inherit}
-    .wrap{max-width:var(--max); margin:0 auto; padding:22px 18px 60px;}
-    .topbar{
-      display:flex; align-items:center; justify-content:space-between;
-      gap:12px; padding:10px 6px 18px;
-    }
-    .brand{
-      display:flex; align-items:center; gap:10px;
-      text-decoration:none;
-      font-weight:700;
-      letter-spacing:.2px;
-    }
-    .brand .dot{
-      width:10px; height:10px; border-radius:999px; background:var(--accent);
-      box-shadow:0 0 0 4px rgba(103,179,255,.18);
-    }
-    nav{
-      display:flex; gap:10px; flex-wrap:wrap; justify-content:flex-end;
-    }
-    .navlink{
-      text-decoration:none;
-      font-weight:600;
-      font-size:13px;
-      color:var(--muted);
-      padding:8px 10px;
-      border-radius:999px;
-      border:1px solid transparent;
-    }
-    .navlink:hover{color:var(--text); border-color:var(--line); background:rgba(231,238,252,.04);}
-    .grid{
-      display:grid;
-      grid-template-columns: minmax(520px, 1.35fr) 420px 420px; /* wider right columns */
-      gap:var(--gap);
-      align-items:start;
-    }
-    @media (max-width: 1240px){
-      .grid{grid-template-columns: 1fr; }
-    }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.7;
+            color: var(--text-primary);
+            background: var(--white);
+        }
 
-    .card{
-      background: linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,.02));
-      border:1px solid var(--line);
-      border-radius:var(--radius2);
-      box-shadow:var(--shadow);
-      overflow:hidden;
-    }
-    .card .inner{padding:18px;}
-    .card h2{margin:0 0 10px; font-size:18px; letter-spacing:.1px;}
-    .sub{color:var(--muted); font-size:13px; line-height:1.45;}
-    .pillrow{display:flex; flex-wrap:wrap; gap:8px; margin-top:12px;}
-    .pill{
-      display:inline-flex; align-items:center; gap:7px;
-      padding:8px 10px;
-      border-radius:999px;
-      border:1px solid var(--line);
-      background:rgba(231,238,252,.03);
-      color:var(--muted);
-      font-size:12px;
-      white-space:nowrap;
-    }
-    .pill b{color:var(--text); font-weight:700}
-    .cta-row{display:flex; flex-wrap:wrap; gap:10px; margin-top:14px;}
-    .btn{
-      display:inline-flex; align-items:center; justify-content:center; gap:8px;
-      padding:10px 12px;
-      border-radius:999px;
-      border:1px solid var(--line);
-      background:rgba(231,238,252,.03);
-      color:var(--text);
-      text-decoration:none;
-      font-weight:700;
-      font-size:13px;
-      cursor:pointer;
-      user-select:none;
-    }
-    .btn:hover{background:rgba(231,238,252,.06); border-color:rgba(231,238,252,.22);}
-    .btn.primary{
-      background: linear-gradient(180deg, rgba(103,179,255,.22), rgba(103,179,255,.10));
-      border-color:rgba(103,179,255,.35);
-    }
-    .btn.primary:hover{border-color:rgba(103,179,255,.55);}
-    .btn.ghost{background:transparent}
-    .btn:disabled{opacity:.45; cursor:not-allowed}
-    .hero{
-      display:grid;
-      grid-template-columns: 130px 1fr;
-      gap:16px;
-      align-items:center;
-    }
-    @media (max-width: 520px){
-      .hero{grid-template-columns: 1fr;}
-    }
-    .avatar{
-      width:130px; height:130px;
-      border-radius:28px;
-      overflow:hidden;
-      border:1px solid var(--line);
-      background:rgba(231,238,252,.05);
-      box-shadow: 0 10px 25px rgba(0,0,0,.35);
-      position:relative;
-      flex:0 0 auto;
-    }
-    
-    .avatar-fallback{
-      position:absolute;
-      inset:0;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      font-weight:800;
-      letter-spacing:.6px;
-      color:rgba(231,238,252,.55);
-      font-size:22px;
-      background: radial-gradient(240px 140px at 30% 20%, rgba(103,179,255,.25), rgba(0,0,0,0));
-    }
+        /* Header & Navigation */
+        header {
+            background: var(--penn-blue);
+            color: var(--white);
+            padding: 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: var(--shadow-md);
+        }
 
-    .avatar img{
-      width:100%; height:100%;
-      object-fit:cover;
-      display:block;
-    }
-    .h-title{
-      margin:0;
-      font-size:34px;
-      line-height:1.06;
-      letter-spacing:-.4px;
-    }
-    .h-roles{
-      margin-top:8px;
-      color:var(--muted);
-      font-size:13px;
-      line-height:1.45;
-    }
-    .quicklinks{display:flex; gap:10px; flex-wrap:wrap; margin-top:12px;}
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1.2rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
 
-    /* Right column lists */
-    .list{margin:0; padding-left:18px;}
-    .list li{margin:10px 0; color:var(--muted); line-height:1.35;}
-    .list li b{color:var(--text)}
-    .mini-link{color:var(--accent2); text-decoration:none; font-weight:700;}
-    .mini-link:hover{text-decoration:underline;}
+        .logo {
+            font-size: 1.4rem;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+        }
 
-    /* Sections */
-    .section{margin-top:18px;}
-    .section-title{
-      display:flex; align-items:baseline; justify-content:space-between;
-      gap:12px; margin:22px 0 10px; padding:0 4px;
-    }
-    .section-title h2{
-      margin:0;
-      font-size:18px;
-      color:var(--text);
-    }
-    .section-title .hint{color:var(--muted2); font-size:12px;}
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2.5rem;
+        }
 
-    /* Research */
-    .research-shell{
-      display:grid;
-      grid-template-columns: 340px 1fr;
-      gap:var(--gap);
-      align-items:start;
-    }
-    @media (max-width: 1100px){
-      .research-shell{grid-template-columns: 1fr;}
-    }
+        .nav-links a {
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1rem;
+            padding: 0.5rem 0;
+            border-bottom: 2px solid transparent;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
 
-    .filters{
-      position:sticky;
-      top:16px;
-    }
-    @media (max-width: 1100px){
-      .filters{position:relative; top:auto;}
-    }
+        .nav-links a:hover {
+            border-bottom-color: var(--white);
+            opacity: 0.9;
+        }
 
-    .tabs{
-      display:flex; gap:8px; flex-wrap:wrap;
-      margin:10px 0 12px;
-    }
-    .tab{
-      padding:8px 10px;
-      border-radius:999px;
-      border:1px solid var(--line);
-      background:rgba(231,238,252,.03);
-      color:var(--muted);
-      font-weight:700;
-      font-size:12px;
-      cursor:pointer;
-      user-select:none;
-    }
-    .tab.active{
-      background:rgba(103,179,255,.16);
-      border-color:rgba(103,179,255,.35);
-      color:var(--text);
-    }
-    .field{margin-top:12px;}
-    .label{font-size:12px; color:var(--muted2); font-weight:700; margin-bottom:7px;}
-    .input{
-      width:100%;
-      padding:10px 12px;
-      border-radius:12px;
-      border:1px solid var(--line);
-      background:rgba(0,0,0,.10);
-      color:var(--text);
-      outline:none;
-      font-size:13px;
-    }
-    .row{
-      display:flex; gap:10px; flex-wrap:wrap; align-items:center;
-    }
-    .select{
-      width:100%;
-      padding:10px 12px;
-      border-radius:12px;
-      border:1px solid var(--line);
-      background:rgba(0,0,0,.10);
-      color:var(--text);
-      font-size:13px;
-      outline:none;
-    }
-    .chipgrid{
-      display:flex; flex-wrap:wrap; gap:8px;
-      margin-top:6px;
-    }
-    .chip{
-      padding:7px 10px;
-      border-radius:999px;
-      border:1px solid var(--line);
-      background:var(--chip);
-      color:var(--muted);
-      font-weight:700;
-      font-size:12px;
-      cursor:pointer;
-      user-select:none;
-    }
-    .chip.active{background:var(--chip2); color:var(--text);}
-    .toggle{
-      display:flex; align-items:center; gap:10px;
-      padding:10px 12px;
-      border-radius:12px;
-      border:1px solid var(--line);
-      background:rgba(231,238,252,.03);
-      color:var(--muted);
-      font-weight:700;
-      font-size:12px;
-      margin-top:12px;
-    }
-    .toggle input{transform:scale(1.05)}
-    .results-head{
-      display:flex; align-items:center; justify-content:space-between;
-      gap:12px; flex-wrap:wrap;
-      padding:6px 6px 10px;
-    }
-    .results-head .count{color:var(--muted); font-weight:700; font-size:13px;}
-    .results{padding:0 6px 12px;}
-    .year-group{
-      margin-top:12px;
-    }
-    .year-label{
-      display:flex; align-items:center; justify-content:space-between;
-      gap:10px;
-      margin:14px 4px 10px;
-    }
-    .year-label h3{
-      margin:0;
-      font-size:14px;
-      color:var(--muted2);
-      letter-spacing:.4px;
-      text-transform:uppercase;
-    }
-    .backlink{
-      font-size:12px;
-      color:var(--accent2);
-      font-weight:700;
-      text-decoration:none;
-    }
-    .backlink:hover{text-decoration:underline;}
+        .nav-links a.active {
+            border-bottom-color: var(--penn-red);
+        }
 
-    .pub{
-      border:1px solid var(--line);
-      border-radius:16px;
-      background:rgba(231,238,252,.02);
-      padding:14px 14px 12px;
-      margin:10px 0;
-    }
-    .pub-title{
-      margin:0;
-      font-size:15px;
-      line-height:1.25;
-      color:var(--text);
-    }
-    .pub-meta{
-      margin-top:6px;
-      color:var(--muted);
-      font-size:12.5px;
-      line-height:1.35;
-    }
-    .pub-badges{
-      display:flex; flex-wrap:wrap; gap:8px;
-      margin-top:10px;
-    }
-    .badge{
-      font-size:12px;
-      font-weight:800;
-      color:var(--muted);
-      border:1px solid var(--line);
-      background:rgba(231,238,252,.03);
-      padding:6px 9px;
-      border-radius:999px;
-    }
-    .badge.year{color:var(--text); border-color:rgba(103,179,255,.35); background:rgba(103,179,255,.10);}
-    .badge.type{color:var(--good); border-color:rgba(88,211,155,.35); background:rgba(88,211,155,.10);}
-    .pub-actions{
-      display:flex; flex-wrap:wrap; gap:8px;
-      margin-top:12px;
-    }
-    .pub-actions a, .pub-actions button{
-      padding:8px 10px;
-      border-radius:999px;
-      border:1px solid var(--line);
-      background:rgba(231,238,252,.03);
-      color:var(--text);
-      font-weight:800;
-      font-size:12px;
-      cursor:pointer;
-      text-decoration:none;
-    }
-    .pub-actions a:hover, .pub-actions button:hover{background:rgba(231,238,252,.06); border-color:rgba(231,238,252,.22);}
-    .pub-actions button{font-family:inherit}
-    .notice{
-      padding:12px 12px;
-      border-radius:14px;
-      border:1px dashed rgba(231,238,252,.20);
-      color:var(--muted);
-      font-size:12.5px;
-      line-height:1.35;
-      background:rgba(231,238,252,.02);
-      margin:10px 6px 0;
-    }
-    .inline{
-      display:inline-flex; gap:8px; flex-wrap:wrap; align-items:center;
-    }
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--white);
+            font-size: 1.8rem;
+            cursor: pointer;
+            padding: 0.5rem;
+        }
 
-    /* Vita */
-    .pdf-frame{
-      width:100%;
-      height:880px;
-      border:1px solid var(--line);
-      border-radius:16px;
-      overflow:hidden;
-      background:rgba(0,0,0,.16);
-    }
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
 
-    /* Twitter */
-    .tweetbox{
-      border-top:1px solid var(--line);
-      margin-top:14px;
-      padding-top:14px;
-    }
+        /* Sections */
+        .section {
+            display: none;
+            animation: fadeIn 0.4s ease-in;
+        }
 
-    /* footer */
-    footer{
-      margin-top:26px;
-      color:var(--muted2);
-      font-size:12px;
-      padding:0 6px;
-    }
-  </style>
+        .section.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Hero Section */
+        .hero {
+            display: grid;
+            grid-template-columns: 350px 1fr;
+            gap: 4rem;
+            align-items: start;
+            margin-bottom: 4rem;
+        }
+
+        .profile-image-container {
+            position: relative;
+        }
+
+        .profile-image {
+            width: 100%;
+            border-radius: 12px;
+            box-shadow: var(--shadow-lg);
+            transition: transform 0.3s ease;
+        }
+
+        .profile-image:hover {
+            transform: scale(1.02);
+        }
+
+        .hero-content h1 {
+            font-size: 3rem;
+            color: var(--penn-blue);
+            margin-bottom: 0.5rem;
+            font-weight: 800;
+            line-height: 1.2;
+        }
+
+        .hero-subtitle {
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+            line-height: 1.5;
+        }
+
+        /* Typography */
+        h1 {
+            font-size: 2.5rem;
+            color: var(--penn-blue);
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        h2 {
+            font-size: 2rem;
+            color: var(--penn-blue);
+            margin: 3rem 0 1.5rem;
+            padding-bottom: 0.75rem;
+            border-bottom: 3px solid var(--penn-red);
+            font-weight: 700;
+        }
+
+        h2:first-of-type {
+            margin-top: 0;
+        }
+
+        h3 {
+            font-size: 1.4rem;
+            color: var(--penn-red);
+            margin: 2rem 0 0.75rem;
+            font-weight: 600;
+        }
+
+        p {
+            margin-bottom: 1rem;
+            color: var(--text-secondary);
+        }
+
+        a {
+            color: var(--penn-red);
+            text-decoration: none;
+            transition: opacity 0.2s ease;
+        }
+
+        a:hover {
+            opacity: 0.8;
+            text-decoration: underline;
+        }
+
+        /* About Text */
+        .about-text p {
+            font-size: 1.05rem;
+            line-height: 1.8;
+            margin-bottom: 1.25rem;
+        }
+
+        /* News Items */
+        .news-item {
+            background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+            padding: 2rem;
+            margin-bottom: 2rem;
+            border-left: 5px solid var(--penn-red);
+            border-radius: 8px;
+            box-shadow: var(--shadow-sm);
+            transition: all 0.3s ease;
+        }
+
+        .news-item:hover {
+            box-shadow: var(--shadow-md);
+            transform: translateX(5px);
+        }
+
+        .news-item h3 {
+            margin-top: 0;
+            font-size: 1.2rem;
+        }
+
+        .news-item p {
+            margin-bottom: 0;
+            font-size: 1rem;
+        }
+
+        /* Research Filters */
+        .research-controls {
+            background: var(--bg-light);
+            padding: 2rem;
+            border-radius: 12px;
+            margin-bottom: 3rem;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .search-box {
+            width: 100%;
+            padding: 1rem 1.5rem;
+            font-size: 1rem;
+            border: 2px solid var(--border-light);
+            border-radius: 8px;
+            margin-bottom: 1.5rem;
+            transition: border-color 0.3s ease;
+        }
+
+        .search-box:focus {
+            outline: none;
+            border-color: var(--penn-blue);
+        }
+
+        .filter-section {
+            margin-bottom: 1.5rem;
+        }
+
+        .filter-section:last-child {
+            margin-bottom: 0;
+        }
+
+        .filter-label {
+            font-weight: 600;
+            color: var(--penn-blue);
+            margin-bottom: 0.75rem;
+            display: block;
+            font-size: 0.95rem;
+        }
+
+        .filter-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+        }
+
+        .filter-btn {
+            padding: 0.6rem 1.2rem;
+            border: 2px solid var(--border-light);
+            background: var(--white);
+            color: var(--text-secondary);
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .filter-btn:hover {
+            border-color: var(--penn-blue);
+            color: var(--penn-blue);
+        }
+
+        .filter-btn.active {
+            background: var(--penn-blue);
+            color: var(--white);
+            border-color: var(--penn-blue);
+        }
+
+        .keyword-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .keyword-tag {
+            padding: 0.4rem 0.9rem;
+            background: var(--white);
+            border: 1px solid var(--border-light);
+            border-radius: 20px;
+            font-size: 0.85rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            color: var(--text-secondary);
+        }
+
+        .keyword-tag:hover {
+            background: var(--penn-blue);
+            color: var(--white);
+            border-color: var(--penn-blue);
+        }
+
+        .keyword-tag.active {
+            background: var(--penn-red);
+            color: var(--white);
+            border-color: var(--penn-red);
+        }
+
+        .results-info {
+            text-align: center;
+            padding: 1.5rem;
+            color: var(--text-secondary);
+            font-size: 1rem;
+        }
+
+        .clear-filters {
+            display: inline-block;
+            padding: 0.7rem 1.5rem;
+            background: var(--penn-red);
+            color: var(--white);
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 600;
+            margin-top: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .clear-filters:hover {
+            background: #770000;
+            transform: translateY(-2px);
+        }
+
+        /* Publications */
+        .publication {
+            background: var(--white);
+            padding: 2rem;
+            margin-bottom: 2rem;
+            border: 1px solid var(--border-light);
+            border-radius: 8px;
+            box-shadow: var(--shadow-sm);
+            transition: all 0.3s ease;
+        }
+
+        .publication:hover {
+            box-shadow: var(--shadow-md);
+            border-color: var(--penn-blue);
+        }
+
+        .publication.hidden {
+            display: none;
+        }
+
+        .publication-title {
+            font-weight: 700;
+            color: var(--penn-blue);
+            margin-bottom: 0.75rem;
+            font-size: 1.15rem;
+            line-height: 1.4;
+        }
+
+        .publication-venue {
+            font-style: italic;
+            color: var(--text-secondary);
+            margin-bottom: 0.75rem;
+            font-size: 0.95rem;
+        }
+
+        .publication-description {
+            color: var(--text-secondary);
+            margin: 1rem 0;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        .publication-keywords {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin: 1rem 0;
+        }
+
+        .pub-keyword {
+            padding: 0.3rem 0.7rem;
+            background: var(--bg-light);
+            border-radius: 15px;
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+        }
+
+        .publication-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            margin-top: 1rem;
+            padding-top: 1rem;
+            border-top: 1px solid var(--border-light);
+        }
+
+        .publication-links a {
+            color: var(--penn-red);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.25rem;
+        }
+
+        .publication-links a::before {
+            content: "→";
+            font-weight: bold;
+        }
+
+        .publication-links a:hover {
+            text-decoration: underline;
+        }
+
+        /* Year Sections */
+        .year-section {
+            margin-bottom: 3rem;
+        }
+
+        .year-section h2 {
+            font-size: 1.75rem;
+            margin-top: 2rem;
+            color: var(--penn-blue);
+            padding: 0.5rem 1rem;
+            background: var(--bg-light);
+            border-left: 5px solid var(--penn-red);
+            border-bottom: none;
+        }
+
+        /* CV Section */
+        .cv-container {
+            background: var(--bg-light);
+            padding: 2rem;
+            border-radius: 12px;
+            margin-bottom: 2rem;
+        }
+
+        .cv-link {
+            display: inline-block;
+            background: var(--penn-red);
+            color: var(--white);
+            padding: 1.2rem 2.5rem;
+            text-decoration: none;
+            border-radius: 8px;
+            margin: 1rem 0 2rem 0;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .cv-link:hover {
+            background: #770000;
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+            text-decoration: none;
+        }
+
+        .cv-embed {
+            width: 100%;
+            height: 800px;
+            border: 2px solid var(--border-light);
+            border-radius: 8px;
+            box-shadow: var(--shadow-md);
+            background: var(--white);
+        }
+
+        /* Contact Info */
+        .contact-info {
+            background: linear-gradient(135deg, var(--bg-light) 0%, var(--white) 100%);
+            padding: 3rem;
+            border-radius: 12px;
+            margin-top: 2rem;
+            box-shadow: var(--shadow-md);
+            border: 1px solid var(--border-light);
+        }
+
+        .contact-info h3 {
+            margin-top: 0;
+            color: var(--penn-blue);
+            font-size: 1.5rem;
+        }
+
+        .contact-info p {
+            margin-bottom: 0.75rem;
+            font-size: 1.05rem;
+        }
+
+        .contact-info strong {
+            color: var(--penn-blue);
+            font-weight: 600;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--penn-blue);
+            color: var(--white);
+            text-align: center;
+            padding: 2.5rem 2rem;
+            margin-top: 5rem;
+        }
+
+        footer p {
+            color: var(--white);
+            margin-bottom: 0.5rem;
+        }
+
+        /* Badge */
+        .badge {
+            display: inline-block;
+            background: var(--penn-red);
+            color: var(--white);
+            padding: 0.3rem 0.7rem;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            margin-left: 0.5rem;
+            font-weight: 600;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 968px) {
+            .hero {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .profile-image-container {
+                max-width: 350px;
+                margin: 0 auto;
+            }
+
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+
+            .filter-buttons {
+                justify-content: center;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 2rem 1.5rem;
+            }
+
+            nav {
+                padding: 1rem 1.5rem;
+            }
+
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: var(--penn-blue);
+                flex-direction: column;
+                gap: 0;
+                padding: 1rem 0;
+                box-shadow: var(--shadow-md);
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .nav-links li {
+                width: 100%;
+            }
+
+            .nav-links a {
+                display: block;
+                padding: 1rem 2rem;
+                border-bottom: none;
+            }
+
+            .nav-links a:hover {
+                background: rgba(255,255,255,0.1);
+            }
+
+            .menu-toggle {
+                display: block;
+            }
+
+            .hero-content h1 {
+                font-size: 2rem;
+            }
+
+            h2 {
+                font-size: 1.75rem;
+            }
+
+            .publication-links {
+                flex-direction: column;
+                gap: 0.75rem;
+            }
+
+            .cv-embed {
+                height: 600px;
+            }
+        }
+
+        /* Smooth Scroll */
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
 </head>
-
 <body>
-  <div class="wrap">
-    <div class="topbar">
-      <a class="brand" href="#home" aria-label="Go to top">
-        <span class="dot" aria-hidden="true"></span>
-        Eugen Dimant
-      </a>
-      <nav aria-label="Primary">
-        <a class="navlink" href="#home">Home</a>
-        <a class="navlink" href="#research">Research</a>
-        <a class="navlink" href="#vita">Vita</a>
-        <a class="navlink" href="#contact">Contact</a>
-        <a class="navlink" href="https://sites.google.com/view/eugendimant" target="_blank" rel="noopener">Legacy site</a>
-      </nav>
-    </div>
+    <header>
+        <nav>
+            <div class="logo">Eugen Dimant</div>
+            <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">☰</button>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#home" class="nav-link active" data-section="home">Home</a></li>
+                <li><a href="#research" class="nav-link" data-section="research">Research</a></li>
+                <li><a href="#vita" class="nav-link" data-section="vita">Vita</a></li>
+                <li><a href="#contact" class="nav-link" data-section="contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
 
-    <!-- HERO GRID -->
-    <div id="home" class="grid">
-      <!-- Left hero -->
-      <div class="card">
-        <div class="inner">
-          <div class="hero">
-            <div class="avatar" aria-label="Profile photo">
-              <img src="assets/eugen_dimant.jpg" alt="Eugen Dimant"
-                onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-              <div class="avatar-fallback" aria-hidden="true" style="display:none;">ED</div>
-            </div>
-            <div>
-              <h1 class="h-title">Eugen Dimant</h1>
-              <div class="h-roles">
-                Associate Professor of Practice, Behavioral and Decision Sciences (University of Pennsylvania)
-              </div>
-
-              <div class="cta-row">
-                <a class="btn primary" href="#research">Explore publications</a>
-                <a class="btn" href="#vita">CV</a>
-                <a class="btn ghost" href="mailto:edimant@sas.upenn.edu">Email</a>
-              </div>
-
-              <div class="quicklinks" aria-label="Profiles">
-                <a class="btn" href="https://scholar.google.com/citations?user=3Ylbe0YAAAAJ" target="_blank" rel="noopener">Google Scholar</a>
-                <a class="btn" href="https://www.linkedin.com/in/REPLACE_ME/" target="_blank" rel="noopener">LinkedIn</a>
-                <a class="btn" href="https://x.com/REPLACE_ME/" target="_blank" rel="noopener">X (Twitter)</a>
-              </div>
-            </div>
-          </div>
-
-          <div class="section">
-            <div class="sub" style="margin-top:10px;">
-              I study how social norms and incentives shape honesty, cooperation, and polarization, and how these mechanisms matter for policy and organizations.
-            </div>
-
-            <div class="pillrow" aria-label="Focus areas">
-              <span class="pill"><b>Focus</b> norms, honesty, polarization, corruption, migration</span>
-              <span class="pill"><b>Methods</b> lab and field experiments, causal inference, observational data</span>
-              <span class="pill"><b>Goal</b> research that travels to policy and practice</span>
-              <span class="pill"><b>Affiliation</b> Stanford University</span>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Research news -->
-      <div class="card">
-        <div class="inner">
-          <h2>Research news</h2>
-          <ul class="list">
-            <li><b>Apr 2025:</b> new publications on social norms and norm heterogeneity in 6 top journals.</li>
-            <li><b>Nov 2024:</b> new publications in Management Science, The Economic Journal, PNAS Nexus, and European Economic Review.</li>
-            <li><b>Jun 2023:</b> new publications in PNAS Nexus and Games and Economic Behavior.</li>
-            <li><b>Sep 2022:</b> new publication in Nature and multiple others on COVID-19 and compliance.</li>
-          </ul>
-          <div class="sub" style="margin-top:12px;">
-            <a class="mini-link" href="#research">See the full list and filter by year and topic</a>
-          </div>
-        </div>
-      </div>
-
-      <!-- Selected publications + tweets -->
-      <div class="card">
-        <div class="inner">
-          <h2>Selected publications</h2>
-          <ul class="list">
-            <li><b>Nudging Teachers</b> (PNAS, 2025)</li>
-            <li><b>Strategic Behavior with Tight, Loose, and Polarized Norms</b> (Management Science, 2024)</li>
-            <li><b>Paying Them to Hate US</b> (The Economic Journal, 2024)</li>
-            <li><b>Social Proximity and the Erosion of Norm Compliance</b> (Games and Economic Behavior, 2022)</li>
-            <li><b>Competition and Moral Behavior</b> (PNAS, 2023)</li>
-            <li><b>Nudging Enforcers</b> (PNAS Nexus, 2023)</li>
-          </ul>
-
-          <div class="tweetbox">
-            <h2 style="margin-bottom:10px;">Latest on X</h2>
-            <div class="sub" style="margin-bottom:10px;">
-              If this does not render (some browsers block third-party widgets), open the profile directly:
-              <a class="mini-link" href="https://x.com/REPLACE_ME/" target="_blank" rel="noopener">x.com/REPLACE_ME</a>
-            </div>
-            <a class="twitter-timeline" data-height="520" data-dnt="true" href="https://twitter.com/REPLACE_ME?ref_src=twsrc%5Etfw">Tweets by @eugen_dimant</a>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- RESEARCH -->
-    <div id="research" class="section-title">
-      <h2>Research</h2>
-      <div class="hint">Filters work on a locally rendered list. Source: your legacy Google Sites research page.</div>
-    </div>
-
-    <div class="card">
-      <div class="inner">
-        <div class="research-shell">
-          <!-- Filters -->
-          <div class="filters">
-            <div class="tabs" role="tablist" aria-label="Publication type tabs">
-              <div class="tab active" role="tab" tabindex="0" data-type="all">All publications</div>
-              <div class="tab" role="tab" tabindex="0" data-type="peer-reviewed">Peer-reviewed</div>
-              <div class="tab" role="tab" tabindex="0" data-type="preprint">Pre-Prints</div>
-            </div>
-
-            <div class="field">
-              <div class="label">Search title, venue, authors</div>
-              <input id="q" class="input" placeholder="Try: norms, polarization, honesty, migration" />
-            </div>
-
-            <div class="field">
-              <div class="label">Year</div>
-              <div id="years" class="chipgrid"></div>
-            </div>
-
-            <div class="field">
-              <div class="label">Topics (from titles)</div>
-              <div id="topics" class="chipgrid"></div>
-            </div>
-
-            <div class="toggle">
-              <input id="pdfOnly" type="checkbox" />
-              <label for="pdfOnly">Show only items with a PDF or ungated link</label>
-            </div>
-
-            <div class="field">
-              <div class="row">
-                <div style="flex:1; min-width:170px;">
-                  <div class="label">Sort</div>
-                  <select id="sort" class="select">
-                    <option value="newest" selected>newest</option>
-                    <option value="oldest">oldest</option>
-                    <option value="title">title</option>
-                  </select>
+    <main class="container">
+        <!-- HOME SECTION -->
+        <section id="home" class="section active">
+            <div class="hero">
+                <div class="profile-image-container">
+                    <img src="https://kingcenter.stanford.edu/sites/g/files/sbiybj16611/files/styles/large_square/public/media/image/eugen_dimant_0.jpg" alt="Eugen Dimant" class="profile-image">
                 </div>
-                <div style="flex:1; min-width:170px;">
-                  <div class="label">Jump to year</div>
-                  <select id="jump" class="select"></select>
+                <div class="hero-content">
+                    <h1>Eugen Dimant</h1>
+                    <p class="hero-subtitle">Associate Professor of Practice in Behavioral & Decision Sciences<br>University of Pennsylvania | Visiting Professor, Stanford University</p>
                 </div>
-              </div>
             </div>
 
-            <div class="notice" id="sourceNote">
-              Loading publications from the legacy research page. If your browser blocks cross-site requests, the page will fall back to an embedded legacy view.
+            <h2>About Me</h2>
+            <div class="about-text">
+                <p>I am an Associate Professor of Practice in Behavioral & Decision Sciences at the University of Pennsylvania and a Visiting Professor at Stanford University. I'm also a fellow at both the <a href="https://www.sas.upenn.edu/lps/graduate/mbds" target="_blank">Behavioral and Decision Sciences Program</a> and the <a href="https://normsandbehavior.sas.upenn.edu/" target="_blank">Center for Social Norms and Behavioral Dynamics</a> at the University of Pennsylvania, a collaborator at the Behavior Change for Good Initiative (<a href="https://bcfg.wharton.upenn.edu/" target="_blank">BCFG</a>) at Wharton & a Network Fellow at <a href="https://www.cesifo.org/en/node/51520" target="_blank">CESifo</a>. From 2022 - 2023, I was also part of the former White House Behavioral Science Team (now: <a href="https://oes.gsa.gov/" target="_blank">OES</a>) and worked on high-impact RCTs related to the opioid epidemic.</p>
+
+                <p>My research lies at the intersection of behavioral economics, sociology, and political psychology. I study how social norms emerge, how they are enforced or eroded, and how norm disagreement and polarization influence both what people view as acceptable and how it influences their actions. My recent work develops and applies measures of norm pluralism and perceived polarization, examining how polarization shapes social preferences and cooperation.</p>
+
+                <p>A second strand of my work examines institutions and large-scale social outcomes, including corruption, crime, terrorism, and migration, often combining experimental tools with applied empirical methods. My interest in migration is deeply personal. I emigrated from Moldova as a refugee following the collapse of the Soviet Union, and that experience continues to shape the questions I ask about identity, institutions, and social cohesion.</p>
+
+                <p>My <a href="https://scholar.google.com/citations?user=3Ylbe0YAAAAJ&hl=en" target="_blank">Google Scholar page</a> provides a good overview.</p>
             </div>
-          </div>
 
-          <!-- Results -->
-          <div>
-            <div class="results-head">
-              <div class="count" id="count">0 results</div>
-              <div class="inline">
-                <a class="btn" href="https://sites.google.com/view/eugendimant/research" target="_blank" rel="noopener">Open legacy research page</a>
-                <a class="btn" href="https://scholar.google.com/citations?user=3Ylbe0YAAAAJ" target="_blank" rel="noopener">Open Scholar profile</a>
-              </div>
+            <h2>Research News</h2>
+
+            <div class="news-item">
+                <h3>September 2025: Award</h3>
+                <p>Excited and deeply honored to be included in this year's <a href="https://www.capital.de/karriere/capital-ranking--das-sind-deutschlands-top-40-unter-40-fuer-2025-36192498.html" target="_blank">Capital Magazine</a> German 40-under-40 list. Grateful to be in such great company with people whose ongoing work is helping make our society a better place. Thank you! 🙏🏻</p>
             </div>
-            <div id="results" class="results"></div>
 
-            <div id="legacyFallback" style="display:none; margin:12px 6px 0;">
-              <div class="notice">
-                Your browser blocked reading the legacy research page. The embedded view below keeps all links working.
-              </div>
-              <div class="pdf-frame" style="height:900px; margin-top:12px;">
-                <iframe title="Legacy research page" src="https://sites.google.com/view/eugendimant/research" style="width:100%; height:100%; border:0;"></iframe>
-              </div>
+            <div class="news-item">
+                <h3>September 2025: New Working Paper</h3>
+                <p>We have published a new working paper titled 'Aid and Exodus: U.S. Military Assistance and Refugee Flows to the United States'. There, we study how a specific U.S. policy choice, the provision of military aid to foreign countries, affects refugee flows to the United States from recipient countries for a sample of 170 countries between 1991 and 2018. We find that higher levels of military aid increase the flow of refugees from aid-receiving countries to the U.S. The paper can be found here: <a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=5414817" target="_blank">link</a>.</p>
             </div>
-          </div>
-        </div>
-      </div>
-    </div>
 
-    <!-- VITA -->
-    <div id="vita" class="section-title">
-      <h2>Vita</h2>
-      <div class="hint">Embedded PDF (put CV_Eugen_Dimant.pdf in the repository root).</div>
-    </div>
+            <div class="news-item">
+                <h3>August 2025: New Publication</h3>
+                <p>We have a new paper called 'Experimental Methods: Eliciting and Measuring Social Norms' (joint with G. Charness, U. Gneezy & E. Krupka) published in JEBO. In it, we provide an overview of different social norms elicitation methods and offer guidance on when each method is most appropriate. Sadly, Gary passed away during the conceptualization stage of the paper, but we'd like to believe that he'd be proud of how it turned out. The paper can be downloaded here: <a href="https://doi.org/10.1016/j.jebo.2025.107187" target="_blank">link</a>.</p>
+            </div>
 
-    <div class="card">
-      <div class="inner">
-        <div class="cta-row" style="margin-top:0;">
-          <a class="btn primary" href="CV_Eugen_Dimant.pdf" target="_blank" rel="noopener">Open CV PDF</a>
-</div>
-        <div class="pdf-frame" style="margin-top:14px;">
-          <iframe title="CV PDF" src="CV_Eugen_Dimant.pdf#view=FitH" style="width:100%; height:100%; border:0;"></iframe>
-        </div>
-        <div class="sub" style="margin-top:10px;">
-          If the embed does not load, use the “Open CV PDF” button above.
-        </div>
-      </div>
-    </div>
+            <div class="news-item">
+                <h3>June 2025: New Announcement</h3>
+                <p>We have now launched the call for applications to our Workshop on Directions of Polarization, Social Norms, and Trust in Societies (jointly organized by Kati Kish Bar-On, Adam Berinsky, Eugen Dimant, Yphtach Lelkes, and David G. Rand), taking place at MIT on December 5–6, 2025. Registrations are open now, find more information here: <a href="https://sites.google.com/view/polarization-workshop" target="_blank">link</a>.</p>
+            </div>
 
-    <!-- CONTACT -->
-    <div id="contact" class="section-title">
-      <h2>Contact</h2>
-      <div class="hint">Quick ways to reach me.</div>
-    </div>
+            <div class="news-item">
+                <h3>March 2025: New Publication</h3>
+                <p>In joint work with Angela Duckworth, Katy Milkman, and the Behavior Change for Good Initiative (BCFG), we published a new Megastudy in the Proceedings of the National Academy of Sciences (PNAS). In it, we evaluate the most effective interventions to boost math performance among nearly 3 million elementary students. The paper can be downloaded here: <a href="https://doi.org/10.1073/pnas.2418616122" target="_blank">link</a>.</p>
+            </div>
 
-    <div class="card">
-      <div class="inner">
-        <div class="sub">
-          <b>University of Pennsylvania</b><br>
-          Behavioral and Decision Sciences Program<br>
-          Email: <a class="mini-link" href="mailto:edimant@sas.upenn.edu">edimant@sas.upenn.edu</a><br>
-          </div>
+            <h2>Selected Publications</h2>
 
-        <div class="pillrow" style="margin-top:14px;">
-          <a class="btn" href="https://scholar.google.com/citations?user=3Ylbe0YAAAAJ" target="_blank" rel="noopener">Google Scholar</a>
-          <a class="btn" href="https://www.linkedin.com/in/REPLACE_ME/" target="_blank" rel="noopener">LinkedIn</a>
-          <a class="btn" href="https://x.com/REPLACE_ME/" target="_blank" rel="noopener">X (Twitter)</a>
-        </div>
-      </div>
-    </div>
+            <div class="publication">
+                <div class="publication-title">Nudging Teachers: A Megastudy To Increase Math Achievement Among 3 Million Elementary School Students</div>
+                <div class="publication-venue">Proceedings of the National Academy of Sciences (PNAS), 2025</div>
+                <p class="publication-description">Aiming to improve math achievement among nearly 3 million elementary students, we conducted a megastudy with more than 140,000 teachers in partnership with Zearn Math, a nonprofit educational platform. The most effective of 15 email interventions prompted teachers to log into the platform's dashboard weekly to check their students' progress.</p>
+                <div class="publication-links">
+                    <a href="https://doi.org/10.1073/pnas.2418616122" target="_blank">Paper</a>
+                    <a href="https://drive.google.com/file/d/1b5fPBMT2eOilEqVr1pFjf6_Ytp6NENCx/view?usp=drive_link" target="_blank">Ungated Version</a>
+                    <a href="https://scholar.google.com/scholar?hl=de&as_sdt=0%2C5&q=duckworth+milkman+dimant+2025&btnG=" target="_blank">Citation</a>
+                </div>
+            </div>
+
+            <div class="publication">
+                <div class="publication-title">Hate Trumps Love: The Impact of Political Polarization on Social Preferences</div>
+                <div class="publication-venue">Management Science, 2024</div>
+                <p class="publication-description">This paper provides a comprehensive assessment of the impact of political polarization on social preferences, suggesting that negative expectations about an opposing group's cooperativeness drive intergroup conflict and that popular behavioral interventions—such as norm-nudges and defaults—do not significantly reduce the polarization gap.</p>
+                <div class="publication-links">
+                    <a href="https://doi.org/10.1287/mnsc.2023.4701" target="_blank">Paper</a>
+                    <a href="https://drive.google.com/file/d/15aVL3kOh-A6L0XJbgJblNEazKpsypdUC/view?usp=drive_link" target="_blank">Ungated Version</a>
+                    <a href="https://scholar.google.com/scholar?hl=en&as_sdt=0%2C39&q=Hate+Trumps+Love%3A+The+Impact+of+Political+Polarization+on+Social+Preferences&btnG=" target="_blank">Citation</a>
+                </div>
+            </div>
+
+            <div class="publication">
+                <div class="publication-title">Strategic Behavior with Tight, Loose & Polarized Norms</div>
+                <div class="publication-venue">Management Science, 2024</div>
+                <p class="publication-description">This study explores how individuals respond to different distributions of descriptive norms—tight, loose, and polarized—in strategic contexts. It empirically demonstrates that the variance and shape of behavioral norms significantly impact decision-making, with polarized environments prompting extreme actions, and personal traits and values becoming more influential in loose and polarized settings.</p>
+                <div class="publication-links">
+                    <a href="https://doi.org/10.1287/mnsc.2023.01022" target="_blank">Paper</a>
+                    <a href="https://drive.google.com/file/d/1N_ugrMwPomlefoFRgILd9vSqW33TzkvZ/view?usp=drive_link" target="_blank">Ungated Version</a>
+                    <a href="https://scholar.google.com/scholar?hl=en&as_sdt=0%2C5&q=Strategic+Behavior+with+Tight%2C+Loose%2C+and+Polarized+Norms&btnG=" target="_blank">Citation</a>
+                </div>
+            </div>
+
+            <div class="publication">
+                <div class="publication-title">A Synthesis of Evidence for Policy from Behavioural Science During COVID-19</div>
+                <div class="publication-venue">Nature, 2023</div>
+                <p class="publication-description">Behavioral science played a pivotal role in shaping public health responses during the COVID-19 pandemic, leading to an influx of studies. This review systematically assessed 19 major policy recommendations, finding that at least 16 were supported by evidence. Emphasis was placed on the importance of evidence-backed interventions, especially in areas like combating misinformation and utilizing effective messaging strategies.</p>
+                <div class="publication-links">
+                    <a href="https://www.nature.com/articles/s41586-023-06840-9" target="_blank">Paper</a>
+                    <a href="https://drive.google.com/file/d/1sHiKmZmDvhquJPM27u_XzcT3_9c3mJ23/view?usp=drive_link" target="_blank">Ungated Version</a>
+                </div>
+            </div>
+
+            <div class="publication">
+                <div class="publication-title">Competition & Moral Behavior: Meta-Analysis of 45 Crowd-Sourced Experimental Designs</div>
+                <div class="publication-venue">Proceedings of the National Academy of Sciences (PNAS), 2023</div>
+                <p class="publication-description">Through collaboration with 45 research teams, the study reveals a minor adverse effect of competition on moral behavior but emphasizes substantial "design heterogeneity," indicating that conclusions drawn from a single experimental design may be limited in their applicability.</p>
+                <div class="publication-links">
+                    <a href="https://www.pnas.org/doi/10.1073/pnas.2215572120" target="_blank">Paper</a>
+                    <a href="https://drive.google.com/file/d/1YSrvHciP3zGp1-nm3KBRbr9ylxeejREy/view?usp=drive_link" target="_blank">Ungated Version</a>
+                    <a href="https://scholar.google.com/scholar?hl=en&as_sdt=0%2C39&q=%22Competition+%26+Moral+Behavior%3A+Meta-Analysis+of+forty-five+Crowd-Sourced+Experimental+Designs%22&btnG=" target="_blank">Citation</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- RESEARCH SECTION -->
+        <section id="research" class="section">
+            <h1>Research Publications</h1>
+            <p style="font-size: 1.1rem; color: var(--text-secondary); margin-bottom: 2rem;">Browse my complete collection of peer-reviewed publications. Use the filters below to find papers by year, topic, or search by keywords.</p>
+
+            <!-- Research Controls -->
+            <div class="research-controls">
+                <input type="text" id="searchBox" class="search-box" placeholder="🔍 Search by title, authors, or keywords...">
+                
+                <div class="filter-section">
+                    <span class="filter-label">Filter by Year:</span>
+                    <div class="filter-buttons" id="yearFilters">
+                        <button class="filter-btn active" data-year="all">All Years</button>
+                        <button class="filter-btn" data-year="2025">2025</button>
+                        <button class="filter-btn" data-year="2024">2024</button>
+                        <button class="filter-btn" data-year="2023">2023</button>
+                        <button class="filter-btn" data-year="2022">2022</button>
+                        <button class="filter-btn" data-year="2021">2021</button>
+                        <button class="filter-btn" data-year="2020">2020</button>
+                        <button class="filter-btn" data-year="2019">2019</button>
+                        <button class="filter-btn" data-year="2018">2018</button>
+                        <button class="filter-btn" data-year="2013-2016">2013-2016</button>
+                    </div>
+                </div>
+                
+                <div class="filter-section">
+                    <span class="filter-label">Filter by Topic:</span>
+                    <div class="keyword-tags" id="topicFilters">
+                        <span class="keyword-tag" data-topic="norms">Social Norms</span>
+                        <span class="keyword-tag" data-topic="polarization">Polarization</span>
+                        <span class="keyword-tag" data-topic="honesty">Honesty & Dishonesty</span>
+                        <span class="keyword-tag" data-topic="corruption">Corruption</span>
+                        <span class="keyword-tag" data-topic="nudging">Nudging</span>
+                        <span class="keyword-tag" data-topic="covid">COVID-19</span>
+                        <span class="keyword-tag" data-topic="migration">Migration</span>
+                        <span class="keyword-tag" data-topic="terrorism">Terrorism</span>
+                        <span class="keyword-tag" data-topic="education">Education</span>
+                        <span class="keyword-tag" data-topic="experimental">Experimental Methods</span>
+                    </div>
+                </div>
+
+                <div style="text-align: center;">
+                    <button class="clear-filters" id="clearFilters">Clear All Filters</button>
+                </div>
+            </div>
+
+            <div id="resultsInfo" class="results-info"></div>
+
+            <!-- Publications Container -->
+            <div id="publicationsContainer">
+                <!-- 2025 Publications -->
+                <div class="publication" data-year="2025" data-topics="education,nudging" data-search="nudging teachers megastudy math achievement duckworth milkman">
+                    <div class="publication-title">Nudging Teachers: A Megastudy To Increase Math Achievement Among 3 Million Elementary School Students</div>
+                    <div class="publication-venue">(with A. Duckworth, K. Milkman & BCFG Collective). Proceedings of the National Academy of Sciences (PNAS), 2025</div>
+                    <div class="publication-keywords">
+                        <span class="pub-keyword">Education</span>
+                        <span class="pub-keyword">Behavioral Interventions</span>
+                        <span class="pub-keyword">Nudging</span>
+                    </div>
+                    <div class="publication-links">
+                        <a href="https://doi.org/10.1073/pnas.2418616122" target="_blank">Paper</a>
+                        <a href="https://drive.google.com/file/d/1b5fPBMT2eOilEqVr1pFjf6_Ytp6NENCx/view?usp=drive_link" target="_blank">Ungated</a>
+                        <a href="https://drive.google.com/file/d/12rKoz4vAaE74YL0GNXsLaiLw4AxqdUEO/view?usp=drive_link" target="_blank">AI Podcast</a>
+                    </div>
+                </div>
+
+                <div class="publication" data-year="2025" data-topics="norms,experimental" data-search="experimental methods eliciting measuring social norms charness gneezy krupka">
+                    <div class="publication-title">Experimental Methods: Eliciting and Measuring Social Norms</div>
+                    <div class="publication-venue">(with G. Charness, U. Gneezy & E. Krupka). Journal of Economic Behavior & Organization, 2025</div>
+                    <div class="publication-keywords">
+                        <span class="pub-keyword">Social Norms</span>
+                        <span class="pub-keyword">Methodology</span>
+                        <span class="pub-keyword">Experimental Design</span>
+                    </div>
+                    <div class="publication-links">
+                        <a href="https://doi.org/10.1016/j.jebo.2025.107187" target="_blank">Paper</a>
+                        <a href="https://drive.google.com/file/d/1CNBQk56U7WSVGSKSwGo9Ws-OPTK6sy3L/view?usp=drive_link" target="_blank">Ungated</a>
+                    </div>
+                </div>
+
+                <div class="publication" data-year="2025" data-topics="norms,experimental" data-search="egalitarianism hadza hunter gatherers inequality smith apicella bicchieri">
+                    <div class="publication-title">The 'I' in Egalitarianism: Hadza Hunter-Gatherers Averse to Inequality Primarily when Personally Unfavourable</div>
+                    <div class="publication-venue">(with K. Smith, D. N. E. Stibbard-Hawkes, I. A. Mabulla, C. Bicchieri & C. Apicella). PNAS Nexus, 2025</div>
+                    <div class="publication-keywords">
+                        <span class="pub-keyword">Social Norms</span>
+                        <span class="pub-keyword">Fairness</span>
+                        <span class="pub-keyword">Cross-Cultural</span>
+                    </div>
+                    <div class="publication-links">
+                        <a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=5193882" target="_blank">Paper</a>
+                    </div>
+                </div>
+
+                <div class="publication" data-year="2025" data-topics="polarization" data-search="racial identity reactions inequality fairness concepts americans reinhardt sambanis">
+                    <div class="publication-title">Racial Identity, Reactions to Inequality & Fairness Concepts Among Americans</div>
+                    <div class="publication-venue">(with L. Reinhardt & N. Sambanis). Journal of Experimental Political Science, 2025</div>
+                    <div class="publication-keywords">
+                        <span class="pub-keyword">Polarization</span>
+                        <span class="pub-keyword">Identity</span>
+                        <span class="pub-keyword">Fairness</span>
+                    </div>
+                    <div class="publication-links">
+                        <a href="https://ssrn.com/abstract=4706524" target="_blank">Working Paper</a>
+                    </div>
+                </div>
+
+                <div class="publication" data-year="2025" data-topics="honesty" data-search="science honesty review research agenda shalvi">
+                    <div class="publication-title">The Science of Honesty: A Review and Research Agenda</div>
+                    <div class="publication-venue">(Collaboration led by S. Shalvi). Advances in Experimental Social Psychology, 2025</div>
+                    <div class="publication-keywords">
+                        <span class="pub-keyword">Honesty</span>
+                        <span class="pub-keyword">Review</span>
+                        <span class="pub-keyword">Dishonesty</span>
+                    </div>
+                    <div class="publication-links">
+                        <a href="https://doi.org/10.1016/bs.aesp.2025.04.004" target="_blank">Paper</a>
+                        <a href="https://drive.google.com/file/d/1aG9KVUHWwHAS9laY0DfN5v3PJ4_QXKle/view?usp=drive_link" target="_blank">Ungated</a>
+                        <a href="https://drive.google.com/file/d/1MnPK0mPc34OAyWXto4KMZhgQB4fApeXA/view?usp=drive_link" target="_blank">AI Podcast</a>
+                    </div>
+                </div>
+
+                <div class="publication" data-year="2025" data-topics="norms,nudging" data-search="norm-nudging harnessing social expectations behavior change bicchieri">
+                    <div class="publication-title">Norm-Nudging: Harnessing Social Expectations for Behavior Change</div>
+                    <div class="publication-venue">(with C. Bicchieri). Elgar Encyclopedia of Behavioural and Experimental Economics, 2025</div>
+                    <div class="publication-keywords">
+                        <span class="pub-keyword">Social Norms</span>
+                        <span class="pub-keyword">Nudging</span>
+                        <span class="pub-keyword">Behavior Change</span>
+                    </div>
+                    <div class="publication-links">
+                        <a href="https://www.elgaronline.com/display/book/9781802207736/9781802207736.xml" target="_blank">Paper</a>
+                        <a href="https://drive.google.com/file/d/1SnQjjADt01u_JYPE2at-Vc7X0Zwf5rJF/view?usp=drive_link" target="_blank">Ungated</a>
+                        <a href="https://drive.google.com/file/d/1TZ4H2u4NKEcafxkWg-pwA49Xo4eSVhH8/view?usp=drive_link" target="_blank">AI Podcast</a>
+                    </div>
+                </div>
+
+                <!-- 2024 Publications -->
+                <div class="publication" data-year="2024" data-topics="norms,polarization" data-search="strategic behavior tight loose polarized norms gelfand hochleitner sonderegger">
+                    <div class="publication-title">Strategic Behavior with Tight, Loose, and Polarized Norms</div>
+                    <div class="publication-venue">(with M. Gelfand, A. Hochleitner & S. Sonderegger). Management Science, 2024</div>
+                    <div class="publication-keywords">
+                        <span class="pub-keyword">Social Norms</span>
+                        <span class="pub-keyword">Polarization</span>
+                        <span class="pub-keyword">Strategic Behavior</span>
+                    </div>
+                    <div class="publication-links">
+                        <a href="https://doi.org/10.1287/mnsc.2023.01022" target="_blank">Paper</a>
+                        <a href="https://drive.google.com/file/d/1N_ugrMwPomlefoFRgILd9vSqW33TzkvZ/view?usp=drive_link" target="_blank">Ungated</a>
+                        <a href="https://drive.google.com/file/d/1G1hhIXN-EMpajPtPyPu0zl5eNKl3PEhL/view?usp=drive_link" target="_blank">AI Podcast</a>
+                    </div>
+                </div>
+
+                <div class="publication" data-year="2024" data-topics="polarization" data-search="hate trumps love impact political polarization social preferences">
+                    <div class="publication-title">Hate Trumps Love: The Impact of Political Polarization on Social Preferences</div>
+                    <div class="publication-venue">Management Science, 2024</div>
+                    <div class="publication-keywords">
+                        <span class="pub-keyword">Polarization</span>
+                        <span class="pub-keyword">Cooperation</span>
+                        <span class="pub-keyword">Social Preferences</span>
+                    </div>
+                    <div class="publication-links">
+                        <a href="https://doi.org/10.1287/mnsc.2023.4701" target="_blank">Paper</a>
+                        <a href="https://drive.google.com/file/d/15aVL3kOh-A6L0XJbgJblNEazKpsypdUC/view?usp=drive_link" target="_blank">Ungated</a>
+                        <a href="https://drive.google.com/file/d/1LhrlfeGNBamsVUm8NJ_9ozhYjuwPpRhq/view?usp=drive_link" target="_blank">AI Podcast</a>
+                    </div>
+                </div>
+
+                <div class="publication" data-year="2024" data-topics="terrorism,migration" data-search="paying them hate us military aid anti-american terrorism krieger meierrieks">
+                    <div class="publication-title">Paying Them to Hate US: Effect of U.S. Military Aid on Anti-American Terrorism, 1968-2018</div>
+                    <div class="publication-venue">(with T. Krieger & D. Meierrieks). The Economic Journal, 2024</div>
+                    <div class="publication-keywords">
+                        <span class="pub-keyword">Terrorism</span>
+                        <span class="pub-keyword">Foreign Aid</span>
+                        <span class="pub-keyword">Political Violence</span>
+                    </div>
+                    <div class="publication-links">
+                        <a href="https://doi.org/10.1093/ej/ueae034" target="_blank">Paper</a>
+                        <a href="https://drive.google.com/file/d/1YHvdv6fOfoQUbydwCObyPQAIQ-qjM_0C/view?usp=drive_link" target="_blank">Ungated</a>
+                        <a href="https://drive.google.com/file/d/1dYTIkyY_TU4vq3z01OFheIMGiuqIUtUj/view?usp=drive_link" target="_blank">AI Podcast</a>
+                    </div>
+                </div>
+
+                <div class="publication" data-year="2024" data-topics="norms,polarization" data-search="measuring norm pluralism perceived polarization us politics panizza kimbrough vostroknutov">
+                    <div class="publication-title">Measuring Norm Pluralism and Perceived Polarization in U.S. Politics</div>
+                    <div class="publication-venue">(with F. Panizza, E. Kimbrough & A. Vostroknutov). PNAS Nexus, 2024</div>
+                    <div class="publication-keywords">
+                        <span class="pub-keyword">Polarization</span>
+                        <span class="pub-keyword">Social Norms</span>
+                        <span class="pub-keyword">Politics</span>
+                    </div>
+                    <div class="publication-links">
+                        <a href="https://doi.org/10.1093/pnasnexus/pgae413" target="_blank">Paper</a>
+                        <a href="https://drive.google.com/file/d/1-t7OuZUAh0CHNVcRpBzYVVIk8KU-Zurp/view?usp=drive_link" target="_blank">Ungated</a>
+                        <a href="https://drive.google.com/file/d/1EhGA6-MeFGuULtrAPvCC70q1vBrW36NU/view?usp=drive_link" target="_blank">AI Podcast</a>
+                    </div>
+                </div>
+
+                <div class="publication" data-year="2024" data-topics="polarization" data-search="unraveling polarization insight individual collective dynamics bar-on lelkes rand">
+                    <div class="publication-title">Unraveling Polarization: Insight into Individual & Collective Dynamics</div>
+                    <div class="publication-venue">(with K. Kish Bar-On, Y. Lelkes & D. Rand). PNAS Nexus, 2024</div>
+                    <div class="publication-keywords">
+                        <span class="pub-keyword">Polarization</span>
+                        <span class="pub-keyword">Group Dynamics</span>
+                        <span class="pub-keyword">Politics</span>
+                    </div>
+                    <div class="publication-links">
+                        <a href="https://doi.org/10.1093/pnasnexus/pgae426" target="_blank">Paper</a>
+                        <a href="https://drive.google.com/file/d/13hRDYbCGYZkBynmfeeWEPKTJshS9HP7O/view?usp=drive_link" target="_blank">Ungated</a>
+                        <a href="https://drive.google.com/file/d/1DSrYyX8vBcJMOEq8HD9t51BUClvQedHw/view?usp=drive_link" target="_blank">AI Podcast</a>
+                    </div>
+                </div>
+
+                <div class="publication" data-year="2024" data-topics="polarization" data-search="polarization multidisciplinary perspective kimbrough">
+                    <div class="publication-title">Polarization in Multidisciplinary Perspective</div>
+                    <div class="publication-venue">(with E. Kimbrough). PNAS Nexus, 2024</div>
+                    <div class="publication-keywords">
+                        <span class="pub-keyword">Polarization</span>
+                        <span class="pub-keyword">Review</span>
+                        <span class="pub-keyword">Interdisciplinary</span>
+                    </div>
+                    <div class="publication-links">
+                        <a href="https://doi.org/10.1093/pnasnexus/pgae425" target="_blank">Paper</a>
+                        <a href="https://drive.google.com/file/d/1jmNLb6ddDDE25_6zG19HjiFGnoDMMokO/view?usp=drive_link" target="_blank">Ungated</a>
+                    </div>
+                </div>
+
+                <div class="publication" data-year="2024" data-topics="norms" data-search="motivated information acquisition social norm formation galeotti villeval">
+                    <div class="publication-title">Motivated Information Acquisition and Social Norm Formation</div>
+                    <div class="publication-venue">(with F. Galeotti & M. C. Villeval). European Economic Review, 2024</div>
+                    <div class="publication-keywords">
+                        <span class="pub-keyword">Social Norms</span>
+                        <span class="pub-keyword">Information</span>
+                        <span class="pub-keyword">Decision Making</span>
+                    </div>
+                    <div class="publication-links">
+                        <a href="https://doi.org/10.1016/j.euroecorev.2024.104778" target="_blank">Paper</a>
+                        <a href="https://drive.google.com/file/d/1ZsKCqS5vjcYX6ylksCtAA2j2UfAW6PE9/view?usp=drive_link" target="_blank">Ungated</a>
+                        <a href="https://drive.google.com/file/d/1p1D0EzEVzuLiKogiTLa_0QZBkz0ZVkwq/view?usp=drive_link" target="_blank">AI Podcast</a>
+                    </div>
+                </div>
+
+                <div class="publication" data-year="2024" data-topics="norms,polarization" data-search="social norms enforcement breakdown polarization balafoutas gächter krupka">
+                    <div class="publication-title">Social norms: Enforcement, Breakdown & Polarization</div>
+                    <div class="publication-venue">(with L. Balafoutas, S. Gächter & E. Krupka). European Economic Review, 2024</div>
+                    <div class="publication-keywords">
+                        <span class="pub-keyword">Social Norms</span>
+                        <span class="pub-keyword">Polarization</span>
+                        <span class="pub-keyword">Enforcement</span>
+                    </div>
+                    <div class="publication-links">
+                        <a href="https://doi.org/10.1016/j.euroecorev.2024.104885" target="_blank">Paper</a>
+                    </div>
+                </div>
+
+                <!-- 2023 Publications -->
+                <div class="publication" data-year="2023" data-topics="norms,polarization" data-search="beyond average method measuring tightness looseness polarization social norms">
+                    <div class="publication-title">Beyond Average: A Method for Measuring the Tightness, Looseness, and Polarization of Social Norms</div>
+                    <div class="publication-venue">Economics Letters, 2023</div>
+                    <div class="publication-keywords">
+                        <span class="pub-keyword">Social Norms</span>
+                        <span class="pub-keyword">Methodology</span>
+                        <span class="pub-keyword">Polarization</span>
+                    </div>
+                    <div class="publication-links">
+                        <a href="https://doi.org/10.1016/j.econlet.2023.111417" target="_blank">Paper</a>
+                        <a href="https://drive.google.com/drive/u/0/folders/1PoqgVvW3Go0SeK9G-UOoBqpjvG6DIByT" target="_blank">Ungated</a>
+                        <a href="https://drive.google.com/file/d/1I_hLKS3UiyAlCVUhQ5XILyL6lQtpDWY3/view?usp=drive_link" target="_blank">AI Podcast</a>
+                    </div>
+                </div>
+
+                <div class="publication" data-year="2023" data-topics="covid,nudging" data-search="synthesis evidence policy behavioural science during covid-19 ruggeri van bavel">
+                    <div class="publication-title">Synthesis of Evidence for Policy from Behavioural Science During COVID-19</div>
+                    <div class="publication-venue">(collaboration led by K. Ruggeri & J. van Bavel). Nature, 2023</div>
+                    <div class="publication-keywords">
+                        <span class="pub-keyword">COVID-19</span>
+                        <span class="pub-keyword">Policy</span>
+                        <span class="pub-keyword">Behavioral Science</span>
+                    </div>
+                    <div class="publication-links">
+                        <a href="https://www.nature.com/articles/s41586-023-06840-9" target="_blank">Paper</a>
+                        <a href="https://drive.google.com/file/d/1bmAZknhkOd6Yj-DtEo2MOReGQniCrq_e/view?usp=drive_link" target="_blank">AI Podcast</a>
+                    </div>
+                </div>
+
+                <div class="publication" data-year="2023" data-topics="experimental" data-search="competition moral behavior meta-analysis crowd-sourced experimental designs huber dreber">
+                    <div class="publication-title">Competition & Moral Behavior: Meta-Analysis of 45 Crowd-Sourced Experimental Designs</div>
+                    <div class="publication-venue">(collaboration led by C. Huber, A. Dreber, et al.). PNAS, 2023</div>
+                    <div class="publication-keywords">
+                        <span class="pub-keyword">Competition</span>
+                        <span class="pub-keyword">Meta-Analysis</span>
+                        <span class="pub-keyword">Moral Behavior</span>
+                    </div>
+                    <div class="publication-links">
+                        <a href="https://www.pnas.org/doi/10.1073/pnas.2215572120" target="_blank">Paper</a>
+                        <a href="https://drive.google.com/file/d/1YSrvHciP3zGp1-nm3KBRbr9ylxeejREy/view?usp=drive_link" target="_blank">Ungated</a>
+                        <a href="https://drive.google.com/file/d/18FJpDClPZSX1TZqAt7wEJnrO7yBO_wh-/view?usp=drive_link" target="_blank">AI Podcast</a>
+                    </div>
+                </div>
+
+                <div class="publication" data-year="2023" data-topics="norms,honesty,nudging" data-search="nudging enforcers norm perceptions motives lying shape sanctions gesche">
+                    <div class="publication-title">Nudging Enforcers: How Norm Perceptions and Motives for Lying Shape Sanctions</div>
+                    <div class="publication-venue">(with T. Gesche). PNAS Nexus, 2023</div>
+                    <div class="publication-keywords">
+                        <span class="pub-keyword">Social Norms</span>
+                        <span class="pub-keyword">Honesty</span>
+                        <span class="pub-keyword">Nudging</span>
+                    </div>
+                    <div class="publication-links">
+                        <a href="https://doi.org/10.1093/pnasnexus/pgad224" target="_blank">Paper</a>
+                        <a href="https://drive.google.com/file/d/1L_4s_P2eNMlsx-5X-j8EsMIDIy3CVBIm/view?usp=drive_link" target="_blank">Ungated</a>
+                        <a href="https://drive.google.com/file/d/12-o9Hi2gaEV_JM2Yte_q4oGNnnNhJSb_/view?usp=drive_link" target="_blank">AI Podcast</a>
+                    </div>
+                </div>
+
+                <div class="publication" data-year="2023" data-topics="norms,honesty" data-search="not lie believe norm does not apply conditional norm-following belief distortion bicchieri sonderegger">
+                    <div class="publication-title">It's Not A Lie if You Believe the Norm Does Not Apply: Conditional Norm-Following and Belief Distortion</div>
+                    <div class="publication-venue">(with C. Bicchieri & S. Sonderegger). Games & Economic Behavior, 2023</div>
+                    <div class="publication-keywords">
+                        <span class="pub-keyword">Social Norms</span>
+                        <span class="pub-keyword">Honesty</span>
+                        <span class="pub-keyword">Beliefs</span>
+                    </div>
+                    <div class="publication-links">
+                        <a href="https://doi.org/10.1016/j.geb.2023.01.005" target="_blank">Paper</a>
+                        <a href="https://drive.google.com/file/d/1YxNfVuI_yArjgmCLJKmsWSuC1Q-_z034/view?usp=drive_link" target="_blank">Ungated</a>
+                        <a href="https://drive.google.com/file/d/1xKBnHi_Of_nwvogJ34SmlddwTMDtznHV/view?usp=drive_link" target="_blank">AI Podcast</a>
+                    </div>
+                </div>
+
+                <!-- 2022 Publications -->
+                <div class="publication" data-year="2022" data-topics="norms" data-search="social norms behavior change interdisciplinary research frontier bicchieri gelfand sonderegger">
+                    <div class="publication-title">Social Norms and Behavior Change: The Interdisciplinary Research Frontier</div>
+                    <div class="publication-venue">(with C. Bicchieri, M. Gelfand & S. Sonderegger). JEBO, 2022</div>
+                    <div class="publication-keywords">
+                        <span class="pub-keyword">Social Norms</span>
+                        <span class="pub-keyword">Behavior Change</span>
+                        <span class="pub-keyword">Review</span>
+                    </div>
+                    <div class="publication-links">
+                        <a href="https://doi.org/10.1016/j.jebo.2022.11.007" target="_blank">Paper</a>
+                        <a href="https://drive.google.com/file/d/1t3WsxAQpCpcAyt0kSHkgHgpRZjbmd4Fu/view?usp=drive_link" target="_blank">Ungated</a>
+                    </div>
+                </div>
+
+                <div class="publication" data-year="2022" data-topics="covid,polarization" data-search="politicizing mask-wearing predicting success behavioral interventions republicans democrats">
+                    <div class="publication-title">Politicizing Mask-Wearing: Predicting the Success of Behavioral Interventions Among Republicans and Democrats in the U.S.</div>
+                    <div class="publication-venue">(with Pieper, Clemente, Dreber, Gelfand & consortium co-authors). Nature Scientific Reports, 2022</div>
+                    <div class="publication-keywords">
+                        <span class="pub-keyword">COVID-19</span>
+                        <span class="pub-keyword">Polarization</span>
+                        <span class="pub-keyword">Behavioral Interventions</span>
+                    </div>
+                    <div class="publication-links">
+                        <a href="https://doi.org/10.1038/s41598-022-10524-1" target="_blank">Paper</a>
+                        <a href="https://drive.google.com/file/d/1L4xDXjuRE3dW7QsqQcKdvDqIjp6DBs77/view?usp=drive_link" target="_blank">Ungated</a>
+                    </div>
+                </div>
+
+                <div class="publication" data-year="2022" data-topics="norms" data-search="social proximity erosion norm compliance bicchieri gächter nosenzo">
+                    <div class="publication-title">Social Proximity and the Erosion of Norm Compliance</div>
+                    <div class="publication-venue">(with C. Bicchieri, S. Gächter & D. Nosenzo). Games and Economic Behavior, 2022</div>
+                    <div class="publication-keywords">
+                        <span class="pub-keyword">Social Norms</span>
+                        <span class="pub-keyword">Compliance</span>
+                        <span class="pub-keyword">Peer Effects</span>
+                    </div>
+                    <div class="publication-links">
+                        <a href="https://doi.org/10.1016/j.geb.2021.11.012" target="_blank">Paper</a>
+                        <a href="https://drive.google.com/file/d/14rF-R8gkZQk9PpYxfztuAZI80ZuFpi-_/view?usp=drive_link" target="_blank">Ungated</a>
+                    </div>
+                </div>
+
+                <div class="publication" data-year="2022" data-topics="experimental" data-search="beyond belief social engagement motives influence spread conspiracy theories ren schweitzer">
+                    <div class="publication-title">Beyond Belief: How Social Engagement Motives Influence the Spread of Conspiracy Theories</div>
+                    <div class="publication-venue">(with Z. Ren & M. Schweitzer). Journal of Experimental Social Psychology, 2022</div>
+                    <div class="publication-keywords">
+                        <span class="pub-keyword">Misinformation</span>
+                        <span class="pub-keyword">Conspiracy Theories</span>
+                        <span class="pub-keyword">Social Engagement</span>
+                    </div>
+                    <div class="publication-links">
+                        <a href="https://doi.org/10.1016/j.jesp.2022.104421" target="_blank">Paper</a>
+                        <a href="https://drive.google.com/file/d/1t8FUvtElykVdrc_ducEe46rH9Ota9pQC/view?usp=drive_link" target="_blank">Ungated</a>
+                    </div>
+                </div>
+
+                <div class="publication" data-year="2022" data-topics="covid,polarization" data-search="persuading republicans democrats comply mask wearing intervention tournament gelfand">
+                    <div class="publication-title">Persuading Republicans & Democrats to Comply with Mask Wearing: An Intervention Tournament</div>
+                    <div class="publication-venue">(with Gelfand, Li, Stamkou, Denison, Fernandez, Choi, Chatman, Jackson & Pieper). JESP, 2022</div>
+                    <div class="publication-keywords">
+                        <span class="pub-keyword">COVID-19</span>
+                        <span class="pub-keyword">Polarization</span>
+                        <span class="pub-keyword">Behavioral Interventions</span>
+                    </div>
+                    <div class="publication-links">
+                        <a href="https://doi.org/10.1016/j.jesp.2022.104299" target="_blank">Paper</a>
+                        <a href="https://drive.google.com/file/d/18Cn35day_7MZLj7aGq6iEEtWtugBK69T/view?usp=drive_link" target="_blank">Ungated</a>
+                    </div>
+                </div>
+
+                <div class="publication" data-year="2022" data-topics="honesty,nudging" data-search="meta-nudging honesty past present future research frontier shalvi">
+                    <div class="publication-title">Meta-Nudging Honesty: Past, Present, and Future of the Research Frontier</div>
+                    <div class="publication-venue">(with S. Shalvi). Current Opinion in Psychology, 2022</div>
+                    <div class="publication-keywords">
+                        <span class="pub-keyword">Honesty</span>
+                        <span class="pub-keyword">Nudging</span>
+                        <span class="pub-keyword">Review</span>
+                    </div>
+                    <div class="publication-links">
+                        <a href="https://doi.org/10.1016/j.copsyc.2022.101426" target="_blank">Paper</a>
+                        <a href="https://drive.google.com/file/d/1C7aeGsZ5kLI0ZsTOKVs0P_GbO5tJFWrs/view?usp=drive_link" target="_blank">Ungated</a>
+                    </div>
+                </div>
+
+                <div class="publication" data-year="2022" data-topics="experimental" data-search="authoritarian leaders share conspiracy theories attack opponents promote in-group unity ren carton schweitzer">
+                    <div class="publication-title">Authoritarian Leaders Share Conspiracy Theories to Attack Opponents, Promote In-Group Unity, Shift Blame, and Undermine Democratic Institutions</div>
+                    <div class="publication-venue">(with Z. Ren, A. Carton & M. Schweitzer). Current Opinion in Psychology, 2022</div>
+                    <div class="publication-keywords">
+                        <span class="pub-keyword">Leadership</span>
+                        <span class="pub-keyword">Conspiracy Theories</span>
+                        <span class="pub-keyword">Politics</span>
+                    </div>
+                    <div class="publication-links">
+                        <a href="https://doi.org/10.1016/j.copsyc.2022.101388" target="_blank">Paper</a>
+                        <a href="https://drive.google.com/file/d/1YEIMRLz2jg0fQw_UDp13d9fWKB6490eC/view?usp=drive_link" target="_blank">Ungated</a>
+                    </div>
+                </div>
+
+                <!-- 2021-2019 Publications -->
+                <div class="publication" data-year="2021" data-topics="norms,experimental" data-search="observability social image robustness fragility reciprocity bolton schmidt">
+                    <div class="publication-title">Observability and Social Image: On the Robustness and Fragility of Reciprocity</div>
+                    <div class="publication-venue">(with G. Bolton & U. Schmidt). JEBO, 2021</div>
+                    <div class="publication-keywords">
+                        <span class="pub-keyword">Social Norms</span>
+                        <span class="pub-keyword">Reciprocity</span>
+                        <span class="pub-keyword">Observability</span>
+                    </div>
+                    <div class="publication-links">
+                        <a href="https://www.sciencedirect.com/science/article/abs/pii/S0167268121003978" target="_blank">Paper</a>
+                        <a href="https://drive.google.com/file/d/1RCUgxQVsQm-C-vaBNbLUfWFneRkDogNB/view?usp=drive_link" target="_blank">Ungated</a>
+                    </div>
+                </div>
+
+                <div class="publication" data-year="2021" data-topics="corruption,experimental" data-search="efficient institutions effective deterrence timing uncertainty punishment buckenmaier posten schmidt">
+                    <div class="publication-title">Efficient Institutions and Effective Deterrence: On Timing and Uncertainty of Punishment</div>
+                    <div class="publication-venue">(with J. Buckenmaier, A.-C. Posten & U. Schmidt). Journal of Risk & Uncertainty, 2021</div>
+                    <div class="publication-keywords">
+                        <span class="pub-keyword">Corruption</span>
+                        <span class="pub-keyword">Institutions</span>
+                        <span class="pub-keyword">Deterrence</span>
+                    </div>
+                    <div class="publication-links">
+                        <a href="https://link.springer.com/article/10.1007/s11166-021-09352-x" target="_blank">Paper</a>
+                        <a href="https://drive.google.com/file/d/1Mp0ugvj-tCQ6Scqxyj8vsrquoaqDtECM/view?usp=drive_link" target="_blank">Ungated</a>
+                    </div>
+                </div>
+
+                <div class="publication" data-year="2020" data-topics="honesty,nudging" data-search="requiem nudge framing effects nudging honesty van kleef shalvi">
+                    <div class="publication-title">Requiem for a Nudge: Framing Effects in Nudging Honesty</div>
+                    <div class="publication-venue">(with G. Van Kleef & S. Shalvi). JEBO, 2020</div>
+                    <div class="publication-keywords">
+                        <span class="pub-keyword">Honesty</span>
+                        <span class="pub-keyword">Nudging</span>
+                        <span class="pub-keyword">Framing</span>
+                    </div>
+                    <div class="publication-links">
+                        <a href="https://www.sciencedirect.com/science/article/pii/S0167268120300597?dgcid=author" target="_blank">Paper</a>
+                        <a href="https://drive.google.com/file/d/1hSaCg6ZVPofoa7phBDBgX9OryAqPItQM/view?usp=drive_link" target="_blank">Ungated</a>
+                    </div>
+                </div>
+
+                <div class="publication" data-year="2019" data-topics="norms,nudging" data-search="nudging with care risks benefits social information bicchieri">
+                    <div class="publication-title">Nudging with Care: The Risks and Benefits of Social Information</div>
+                    <div class="publication-venue">(with C. Bicchieri). Public Choice, 2019</div>
+                    <div class="publication-keywords">
+                        <span class="pub-keyword">Social Norms</span>
+                        <span class="pub-keyword">Nudging</span>
+                        <span class="pub-keyword">Social Information</span>
+                    </div>
+                    <div class="publication-links">
+                        <a href="https://link.springer.com/article/10.1007%2Fs11127-019-00684-6" target="_blank">Paper</a>
+                        <a href="https://drive.google.com/file/d/1L_4s_P2eNMlsx-5X-j8EsMIDIy3CVBIm/view?usp=drive_link" target="_blank">Ungated</a>
+                        <a href="https://drive.google.com/file/d/1J3ABfTj9dwZTY7x8ifBBUt7osh1tiuAW/view?usp=drive_link" target="_blank">AI Podcast</a>
+                    </div>
+                </div>
+
+                <div class="publication" data-year="2019" data-topics="norms" data-search="contagion pro anti-social behavior among peers role social proximity">
+                    <div class="publication-title">Contagion of Pro- and Anti-Social Behavior Among Peers and the Role of Social Proximity</div>
+                    <div class="publication-venue">Journal of Economic Psychology, 2019</div>
+                    <div class="publication-keywords">
+                        <span class="pub-keyword">Social Norms</span>
+                        <span class="pub-keyword">Peer Effects</span>
+                        <span class="pub-keyword">Contagion</span>
+                    </div>
+                    <div class="publication-links">
+                        <a href="https://www.sciencedirect.com/science/article/abs/pii/S0167487018306901" target="_blank">Paper</a>
+                        <a href="https://drive.google.com/file/d/1K3irvHbjNidhGDtUmQJ_ayTyll7Pz3sJ/view?usp=drive_link" target="_blank">Ungated</a>
+                    </div>
+                </div>
+
+                <div class="publication" data-year="2018" data-topics="corruption" data-search="effects institutional history leniency collusive corruption tax evasion buckenmaier mittone">
+                    <div class="publication-title">Effects of Institutional History and Leniency on Collusive Corruption and Tax Evasion</div>
+                    <div class="publication-venue">(with J. Buckenmaier & L. Mittone). JEBO, 2018</div>
+                    <div class="publication-keywords">
+                        <span class="pub-keyword">Corruption</span>
+                        <span class="pub-keyword">Institutions</span>
+                        <span class="pub-keyword">Tax Evasion</span>
+                    </div>
+                    <div class="publication-links">
+                        <a href="https://www.sciencedirect.com/science/article/pii/S0167268118301057" target="_blank">Paper</a>
+                        <a href="https://drive.google.com/file/d/1lJJA1a7B31DhJrQ1EMftBBX62eljXEZS/view?usp=drive_link" target="_blank">Ungated</a>
+                    </div>
+                </div>
+
+                <div class="publication" data-year="2018" data-topics="corruption" data-search="causes effects corruption past decade empirical research taught tosato">
+                    <div class="publication-title">Causes & Effects of Corruption: What has Past Decade's Empirical Research Taught Us?</div>
+                    <div class="publication-venue">(with G. Tosato). Journal of Economic Surveys, 2018</div>
+                    <div class="publication-keywords">
+                        <span class="pub-keyword">Corruption</span>
+                        <span class="pub-keyword">Review</span>
+                        <span class="pub-keyword">Institutions</span>
+                    </div>
+                    <div class="publication-links">
+                        <a href="https://onlinelibrary.wiley.com/doi/full/10.1111/joes.12198" target="_blank">Paper</a>
+                        <a href="https://drive.google.com/file/d/1Xddf2dLrMz-bnI5kPwqU0GfpDMrR15Lg/view?usp=drive_link" target="_blank">Ungated</a>
+                    </div>
+                </div>
+
+                <!-- Older Publications -->
+                <div class="publication" data-year="2013-2016" data-topics="corruption,migration" data-search="nature corruption interdisciplinary perspective schulte">
+                    <div class="publication-title">The Nature of Corruption – An Interdisciplinary Perspective</div>
+                    <div class="publication-venue">(with T. Schulte). German Law Journal, 2016</div>
+                    <div class="publication-keywords">
+                        <span class="pub-keyword">Corruption</span>
+                        <span class="pub-keyword">Interdisciplinary</span>
+                        <span class="pub-keyword">Review</span>
+                    </div>
+                    <div class="publication-links">
+                        <a href="https://www.cambridge.org/core/journals/german-law-journal/article/nature-of-corruption-an-interdisciplinary-perspective/CAD38E64A08CF00009BE7C1B426FC565" target="_blank">Paper</a>
+                        <a href="https://drive.google.com/file/d/1ksN28VgMLDqBau-9F2CagKO3jDY-7y6u/view?usp=drive_link" target="_blank">Ungated</a>
+                    </div>
+                </div>
+
+                <div class="publication" data-year="2013-2016" data-topics="corruption,migration" data-search="crook still crook abroad effect immigration destination-country corruption krieger redlin">
+                    <div class="publication-title">A Crook is a Crook...But is He Still a Crook Abroad? On the Effect of Immigration on Destination-Country Corruption</div>
+                    <div class="publication-venue">(with T. Krieger and M. Redlin). German Economic Review, 2015</div>
+                    <div class="publication-keywords">
+                        <span class="pub-keyword">Corruption</span>
+                        <span class="pub-keyword">Migration</span>
+                        <span class="pub-keyword">Institutions</span>
+                    </div>
+                    <div class="publication-links">
+                        <a href="https://onlinelibrary.wiley.com/doi/abs/10.1111/geer.12064" target="_blank">Paper</a>
+                        <a href="https://drive.google.com/file/d/1lhN6bOhFACFoAxZ81lyKhEkc_UvsbYEX/view?usp=drive_link" target="_blank">Ungated</a>
+                    </div>
+                </div>
+
+                <div class="publication" data-year="2013-2016" data-topics="corruption,migration" data-search="effect corruption migration 1985-2000 krieger meierrieks">
+                    <div class="publication-title">The Effect of Corruption on Migration, 1985-2000</div>
+                    <div class="publication-venue">(with T. Krieger and D. Meierrieks). Applied Economics Letters, 2013</div>
+                    <div class="publication-keywords">
+                        <span class="pub-keyword">Corruption</span>
+                        <span class="pub-keyword">Migration</span>
+                        <span class="pub-keyword">Institutions</span>
+                    </div>
+                    <div class="publication-links">
+                        <a href="https://www.tandfonline.com/doi/abs/10.1080/13504851.2013.806776" target="_blank">Paper</a>
+                        <a href="https://drive.google.com/file/d/1BTxuO1tLsQrXX44GKNK2FJk9n5Uvj40b/view?usp=drive_link" target="_blank">Ungated</a>
+                    </div>
+                </div>
+
+                <!-- Working Papers -->
+                <div class="publication" data-year="2025" data-topics="migration,terrorism" data-search="aid exodus us military assistance refugee flows krieger meierrieks renner">
+                    <div class="publication-title">Aid and Exodus: U.S. Military Assistance and Refugee Flows to the U.S. <span class="badge">Working Paper</span></div>
+                    <div class="publication-venue">(with T. Krieger, D. Meierrieks & L. Renner)</div>
+                    <div class="publication-keywords">
+                        <span class="pub-keyword">Migration</span>
+                        <span class="pub-keyword">Foreign Aid</span>
+                        <span class="pub-keyword">Refugees</span>
+                    </div>
+                    <div class="publication-links">
+                        <a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=5414817" target="_blank">Working Paper</a>
+                    </div>
+                </div>
+
+                <div class="publication" data-year="2025" data-topics="norms,polarization" data-search="pluralism breeds tolerance panizza kimbrough vostroknutov">
+                    <div class="publication-title">Pluralism Breeds Tolerance <span class="badge">Under Review</span></div>
+                    <div class="publication-venue">(with F. Panizza, E. Kimbrough & A. Vostroknutov)</div>
+                    <div class="publication-keywords">
+                        <span class="pub-keyword">Social Norms</span>
+                        <span class="pub-keyword">Polarization</span>
+                        <span class="pub-keyword">Tolerance</span>
+                    </div>
+                    <div class="publication-links">
+                        <a href="https://dx.doi.org/10.2139/ssrn.4649792" target="_blank">Working Paper</a>
+                        <a href="https://osf.io/7hc9v" target="_blank">Norm-Drawing Task</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- VITA SECTION -->
+        <section id="vita" class="section">
+            <h1>Curriculum Vitae</h1>
+            
+            <div class="cv-container">
+                <a href="https://www.dropbox.com/s/ehwvi60r5hna1o6/CV_Eugen_Dimant.pdf?dl=0" target="_blank" class="cv-link">📄 Download Full CV (PDF)</a>
+                
+                <h3 style="margin-bottom: 1rem;">CV Preview</h3>
+                <p style="margin-bottom: 1.5rem; color: var(--text-secondary);">You can scroll through my CV below or download the PDF for offline viewing.</p>
+                
+                <iframe src="https://www.dropbox.com/s/ehwvi60r5hna1o6/CV_Eugen_Dimant.pdf?dl=0&raw=1" class="cv-embed" title="Eugen Dimant CV"></iframe>
+            </div>
+        </section>
+
+        <!-- CONTACT SECTION -->
+        <section id="contact" class="section">
+            <h1>Contact Information</h1>
+            <div class="contact-info">
+                <h3 style="margin-top: 0;">Eugen Dimant, PhD</h3>
+                <p><strong>Title:</strong> Associate Professor of Practice in Behavioral & Decision Sciences</p>
+                <p><strong>Institution:</strong> University of Pennsylvania</p>
+                <p><strong>Visiting Position:</strong> Visiting Professor, Stanford University</p>
+                
+                <p style="margin-top: 2rem;"><strong>Email:</strong> <a href="mailto:edimant@sas.upenn.edu">edimant@sas.upenn.edu</a></p>
+                
+                <p style="margin-top: 1.5rem;"><strong>Academic Profiles:</strong></p>
+                <p>
+                    <a href="https://scholar.google.com/citations?user=3Ylbe0YAAAAJ&hl=en" target="_blank">Google Scholar</a> | 
+                    <a href="https://www.linkedin.com/in/eugen-dimant/" target="_blank">LinkedIn</a> | 
+                    <a href="https://twitter.com/eugendimant" target="_blank">Twitter</a>
+                </p>
+                
+                <p style="margin-top: 2rem;"><strong>Office Address:</strong></p>
+                <p style="margin-bottom: 0;">
+                    University of Pennsylvania<br>
+                    School of Arts & Sciences<br>
+                    College of Liberal and Professional Studies<br>
+                    3440 Market Street, Suite 100<br>
+                    Philadelphia, PA 19104<br>
+                    United States
+                </p>
+            </div>
+        </section>
+    </main>
 
     <footer>
-      © <span id="year"></span> Eugen Dimant. Built as a single static page (GitHub Pages friendly).
+        <p>&copy; 2026 Eugen Dimant. All rights reserved.</p>
+        <p style="margin-top: 0.5rem; font-size: 0.9rem;">Website hosted on GitHub Pages</p>
     </footer>
-  </div>
 
-  <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+    <script>
+        // Navigation functionality
+        const navLinks = document.querySelectorAll('.nav-link');
+        const sections = document.querySelectorAll('.section');
+        const menuToggle = document.getElementById('menuToggle');
+        const navLinksContainer = document.getElementById('navLinks');
 
-  <script>
-    // ---------------------------
-    // Configuration
-    // ---------------------------
-    const LEGACY_RESEARCH_URL = "https://sites.google.com/view/eugendimant/research";
-
-    // Topic tags derived from titles. Adjust freely.
-    const TOPIC_RULES = [
-      { tag: "social norms", re: /(norm|norms|pluralism|tight|loose)/i },
-      { tag: "polarization", re: /(polarization|partisan|politic)/i },
-      { tag: "honesty", re: /(honest|honesty|lie|lying|deceit)/i },
-      { tag: "covid-19", re: /(covid|pandemic|mask|distanc|stay-at-home)/i },
-      { tag: "corruption", re: /(corrupt)/i },
-      { tag: "migration", re: /(migration|refugee|exodus|asylum)/i },
-      { tag: "terrorism", re: /(terror)/i },
-      { tag: "punishment", re: /(punish|sanction|enforc)/i },
-      { tag: "competition", re: /(competition)/i },
-      { tag: "tax evasion", re: /(tax evasion|evasion)/i },
-      { tag: "prosociality", re: /(prosocial|cooperat|donor)/i },
-    ];
-
-    // ---------------------------
-    // State
-    // ---------------------------
-    let ALL = [];
-    let state = {
-      type: "all",         // all | peer-reviewed | preprint
-      q: "",
-      year: null,          // number or null
-      topic: null,         // string or null
-      pdfOnly: false,
-      sort: "newest",
-    };
-
-    // ---------------------------
-    // Helpers
-    // ---------------------------
-    const $ = (sel) => document.querySelector(sel);
-    const esc = (s) => (s || "").replace(/[&<>"']/g, (c) => ({ "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;" }[c]));
-
-    function normSpace(s){ return (s || "").replace(/\s+/g," ").trim(); }
-
-    function extractYear(text){
-      const m = (text || "").match(/\b(19|20)\d{2}\b/);
-      return m ? Number(m[0]) : null;
-    }
-
-    function extractDOIFromUrl(url){
-      if(!url) return null;
-      // common DOI patterns inside URLs
-      const m = url.match(/10\.\d{4,9}\/[-._;()\/:A-Z0-9]+/i);
-      return m ? m[0] : null;
-    }
-
-    function topicTagsFor(pub){
-      const tags = [];
-      for(const rule of TOPIC_RULES){
-        if(rule.re.test(pub.title)) tags.push(rule.tag);
-      }
-      return tags.length ? tags : ["other"];
-    }
-
-    function looksPreprint(venueLine){
-      const t = (venueLine || "").toLowerCase();
-      return t.includes("ssrn") || t.includes("working paper") || t.includes("preprint") || t.includes("osf");
-    }
-
-    function labelType(t){
-      return t === "preprint" ? "Pre-print" : "Peer-reviewed";
-    }
-
-    function stableIdFromTitle(title){
-      return (title || "")
-        .toLowerCase()
-        .replace(/[^a-z0-9]+/g,"-")
-        .replace(/^-+|-+$/g,"")
-        .slice(0, 80) || ("pub-" + Math.random().toString(16).slice(2));
-    }
-
-    function groupByYear(pubs){
-      const map = new Map();
-      for(const p of pubs){
-        const y = p.year || 0;
-        if(!map.has(y)) map.set(y, []);
-        map.get(y).push(p);
-      }
-      const years = Array.from(map.keys()).sort((a,b) => b - a);
-      return years.map(y => ({year:y, pubs: map.get(y)}));
-    }
-
-    function setActive(el, on){
-      if(on) el.classList.add("active");
-      else el.classList.remove("active");
-    }
-
-    function toast(msg){
-      // lightweight, no dependency
-      const t = document.createElement("div");
-      t.textContent = msg;
-      t.style.position="fixed";
-      t.style.left="50%";
-      t.style.bottom="18px";
-      t.style.transform="translateX(-50%)";
-      t.style.padding="10px 12px";
-      t.style.border="1px solid rgba(231,238,252,.22)";
-      t.style.borderRadius="12px";
-      t.style.background="rgba(15,26,47,.96)";
-      t.style.color="var(--text)";
-      t.style.fontWeight="700";
-      t.style.fontSize="13px";
-      t.style.boxShadow="0 10px 25px rgba(0,0,0,.35)";
-      t.style.zIndex="9999";
-      document.body.appendChild(t);
-      setTimeout(()=>{ t.style.opacity="0"; t.style.transition="opacity .2s"; }, 1800);
-      setTimeout(()=>{ t.remove(); }, 2100);
-    }
-
-    async function copyText(s){
-      try{
-        await navigator.clipboard.writeText(s);
-        toast("Copied.");
-      }catch(e){
-        // fallback
-        const ta = document.createElement("textarea");
-        ta.value = s;
-        ta.style.position="fixed";
-        ta.style.left="-9999px";
-        document.body.appendChild(ta);
-        ta.select();
-        document.execCommand("copy");
-        ta.remove();
-        toast("Copied.");
-      }
-    }
-
-    function buildBibtexFromCrossref(item, fallbackKey){
-      const t = item?.title?.[0] || item?.title || fallbackKey || "untitled";
-      const authors = (item?.author || []).map(a => {
-        const last = a.family || "";
-        const first = a.given || "";
-        return (last && first) ? `${last}, ${first}` : (last || first || "");
-      }).filter(Boolean).join(" and ");
-
-      const year = item?.issued?.["date-parts"]?.[0]?.[0] || item?.published?.["date-parts"]?.[0]?.[0] || "";
-      const container = (item?.["container-title"]?.[0] || item?.["container-title"] || "").toString();
-      const volume = item?.volume || "";
-      const issue = item?.issue || "";
-      const page = item?.page || "";
-      const doi = item?.DOI || "";
-      const url = item?.URL || "";
-
-      const keyBase = (authors.split(" and ")[0] || "dimant").split(",")[0].replace(/\s+/g,"");
-      const key = `${keyBase}${year || ""}`.replace(/[^A-Za-z0-9]/g,"") || (fallbackKey || "dimant");
-
-      const lines = [];
-      lines.push(`@article{${key},`);
-      lines.push(`  title = {${t}},`);
-      if(authors) lines.push(`  author = {${authors}},`);
-      if(container) lines.push(`  journal = {${container}},`);
-      if(year) lines.push(`  year = {${year}},`);
-      if(volume) lines.push(`  volume = {${volume}},`);
-      if(issue) lines.push(`  number = {${issue}},`);
-      if(page) lines.push(`  pages = {${page}},`);
-      if(doi) lines.push(`  doi = {${doi}},`);
-      if(url) lines.push(`  url = {${url}},`);
-      lines.push(`}`);
-      return lines.join("\n");
-    }
-
-    async function copyBibtex(pub){
-      // Prefer DOI from a known journal URL if present.
-      const doi = pub.doi || extractDOIFromUrl(pub.links?.paper) || extractDOIFromUrl(pub.links?.journal) || null;
-
-      try{
-        if(doi){
-          const r = await fetch(`https://api.crossref.org/works/${encodeURIComponent(doi)}`);
-          if(!r.ok) throw new Error("crossref lookup failed");
-          const j = await r.json();
-          const bib = buildBibtexFromCrossref(j?.message, stableIdFromTitle(pub.title));
-          await copyText(bib);
-          return;
+        function showSection(sectionId) {
+            // Hide all sections
+            sections.forEach(section => section.classList.remove('active'));
+            
+            // Show selected section
+            const selectedSection = document.getElementById(sectionId);
+            if (selectedSection) {
+                selectedSection.classList.add('active');
+            }
+            
+            // Update nav link active state
+            navLinks.forEach(link => link.classList.remove('active'));
+            const activeLink = document.querySelector(`[data-section="${sectionId}"]`);
+            if (activeLink) {
+                activeLink.classList.add('active');
+            }
+            
+            // Scroll to top smoothly
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+            
+            // Close mobile menu
+            navLinksContainer.classList.remove('active');
         }
 
-        // fallback: bibliographic search by title
-        const q = encodeURIComponent(pub.title);
-        const r = await fetch(`https://api.crossref.org/works?query.bibliographic=${q}&rows=1`);
-        if(!r.ok) throw new Error("crossref search failed");
-        const j = await r.json();
-        const item = j?.message?.items?.[0];
-        if(!item) throw new Error("no match");
-        const bib = buildBibtexFromCrossref(item, stableIdFromTitle(pub.title));
-        await copyText(bib);
-      }catch(e){
-        toast("Could not fetch BibTeX automatically.");
-      }
-    }
+        // Add click handlers to navigation links
+        navLinks.forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const sectionId = this.getAttribute('data-section');
+                showSection(sectionId);
+                window.location.hash = sectionId;
+            });
+        });
 
-    function scholarSearchUrl(title){
-      return `https://scholar.google.com/scholar?q=${encodeURIComponent(title)}`;
-    }
+        // Mobile menu toggle
+        menuToggle.addEventListener('click', function() {
+            navLinksContainer.classList.toggle('active');
+        });
 
-    // ---------------------------
-    // Legacy page parsing
-    // ---------------------------
-    function parseLegacyResearch(html){
-      const doc = new DOMParser().parseFromString(html, "text/html");
-      const root = doc.querySelector("main") || doc.body;
+        // Handle direct navigation via URL hash on page load
+        window.addEventListener('load', function() {
+            const hash = window.location.hash.substring(1);
+            if (hash && document.getElementById(hash)) {
+                showSection(hash);
+            }
+        });
 
-      // Heuristic: publications appear as repeating blocks with a title line and nearby action links.
-      // We collect candidate containers that contain a 'Link to Paper' anchor.
-      const anchors = Array.from(root.querySelectorAll("a")).filter(a => a.textContent && a.href);
-      const paperLinks = anchors.filter(a => /Link to Paper/i.test(a.textContent));
+        // Handle browser back/forward buttons
+        window.addEventListener('hashchange', function() {
+            const hash = window.location.hash.substring(1);
+            if (hash && document.getElementById(hash)) {
+                showSection(hash);
+            } else {
+                showSection('home');
+            }
+        });
 
-      // Expand each 'Link to Paper' anchor to a container.
-      const containers = [];
-      for(const a of paperLinks){
-        const c = a.closest("div, section, article") || a.parentElement;
-        if(c) containers.push(c);
-      }
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', function(event) {
+            const isClickInsideNav = navLinksContainer.contains(event.target) || menuToggle.contains(event.target);
+            if (!isClickInsideNav && navLinksContainer.classList.contains('active')) {
+                navLinksContainer.classList.remove('active');
+            }
+        });
 
-      // De-duplicate containers by reference.
-      const uniq = [];
-      const seen = new Set();
-      for(const c of containers){
-        if(seen.has(c)) continue;
-        seen.add(c);
-        uniq.push(c);
-      }
+        // Research filtering functionality
+        const searchBox = document.getElementById('searchBox');
+        const yearButtons = document.querySelectorAll('#yearFilters .filter-btn');
+        const topicTags = document.querySelectorAll('#topicFilters .keyword-tag');
+        const publications = document.querySelectorAll('#publicationsContainer .publication');
+        const resultsInfo = document.getElementById('resultsInfo');
+        const clearFiltersBtn = document.getElementById('clearFilters');
 
-      const pubs = [];
-      for(const c of uniq){
-        const text = normSpace(c.textContent);
+        let activeYear = 'all';
+        let activeTopic = null;
+        let searchTerm = '';
 
-        // title: first reasonably long line, excluding link labels
-        const lines = c.textContent.split("\n").map(s => normSpace(s)).filter(Boolean);
-        const drop = new Set(["Link to Paper","Ungated Version","AI Podcast Interview","BibTeX Citation","Open-access search","Copy citation","Find on Scholar","Open PDF","Paper","Link to WP","Norm -Drawing Task"]);
-        const title = lines.find(s =>
-          s.length > 8 &&
-          !drop.has(s) &&
-          !/^(research|peer-reviewed|work in progress|results|sort|jump to)/i.test(s)
-        ) || "Untitled";
+        function filterPublications() {
+            let visibleCount = 0;
 
-        // venue line often contains "with ..." and a journal name
-        const venueLine = lines.find(s => /^with\s/i.test(s)) || "";
+            publications.forEach(pub => {
+                const pubYear = pub.getAttribute('data-year');
+                const pubTopics = pub.getAttribute('data-topics') || '';
+                const pubSearch = pub.getAttribute('data-search') || '';
+                
+                let matchesYear = activeYear === 'all' || pubYear === activeYear;
+                let matchesTopic = !activeTopic || pubTopics.includes(activeTopic);
+                let matchesSearch = !searchTerm || 
+                    pubSearch.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                    pub.textContent.toLowerCase().includes(searchTerm.toLowerCase());
 
-        const year = extractYear(venueLine) || extractYear(text);
-        const type = looksPreprint(venueLine) ? "preprint" : "peer-reviewed";
+                if (matchesYear && matchesTopic && matchesSearch) {
+                    pub.classList.remove('hidden');
+                    visibleCount++;
+                } else {
+                    pub.classList.add('hidden');
+                }
+            });
 
-        const linkMap = {};
-        const localAnchors = Array.from(c.querySelectorAll("a")).filter(a => a.textContent && a.href);
-        for(const a of localAnchors){
-          const label = normSpace(a.textContent);
-          if(/Link to Paper/i.test(label)) linkMap.paper = a.href;
-          else if(/Ungated Version/i.test(label)) linkMap.pdf = a.href;
-          else if(/AI Podcast Interview/i.test(label)) linkMap.podcast = a.href;
-          else if(/Link to WP/i.test(label)) linkMap.wp = a.href;
-          else if(/Norm\s*-Drawing Task/i.test(label)) linkMap.wp = a.href;
+            // Update results info
+            if (visibleCount === publications.length) {
+                resultsInfo.textContent = `Showing all ${visibleCount} publications`;
+            } else {
+                resultsInfo.textContent = `Showing ${visibleCount} of ${publications.length} publications`;
+            }
         }
 
-        pubs.push({
-          id: stableIdFromTitle(title),
-          title,
-          venueLine,
-          year,
-          type,
-          topics: topicTagsFor({title}),
-          links: linkMap,
-          doi: extractDOIFromUrl(linkMap.paper || "")
+        // Year filter
+        yearButtons.forEach(btn => {
+            btn.addEventListener('click', function() {
+                yearButtons.forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+                activeYear = this.getAttribute('data-year');
+                filterPublications();
+            });
         });
-      }
 
-      // Some publications may not include a Link to Paper but do include "Link to WP" (work in progress).
-      // Add those containers too.
-      const wpLinks = anchors.filter(a => /Link to WP|Norm\s*-Drawing Task/i.test(a.textContent));
-      for(const a of wpLinks){
-        const c = a.closest("div, section, article") || a.parentElement;
-        if(!c || seen.has(c)) continue;
-        seen.add(c);
-        const lines = c.textContent.split("\n").map(s => normSpace(s)).filter(Boolean);
-        const title = lines.find(s => s.length > 8 && !/^(Link to WP|Norm\s*-Drawing Task)$/i.test(s)) || "Untitled";
-        const venueLine = lines.find(s => /^with\s/i.test(s)) || "Working paper";
-        const year = extractYear(venueLine) || extractYear(c.textContent);
-        const linkMap = {};
-        const localAnchors = Array.from(c.querySelectorAll("a")).filter(a => a.textContent && a.href);
-        for(const la of localAnchors){
-          const label = normSpace(la.textContent);
-          if(/Link to WP|Norm\s*-Drawing Task/i.test(label)) linkMap.wp = la.href;
-          else if(/Ungated Version/i.test(label)) linkMap.pdf = la.href;
-        }
-        pubs.push({
-          id: stableIdFromTitle(title),
-          title,
-          venueLine,
-          year,
-          type:"preprint",
-          topics: topicTagsFor({title}),
-          links: linkMap,
-          doi: null
+        // Topic filter
+        topicTags.forEach(tag => {
+            tag.addEventListener('click', function() {
+                const topic = this.getAttribute('data-topic');
+                
+                if (activeTopic === topic) {
+                    this.classList.remove('active');
+                    activeTopic = null;
+                } else {
+                    topicTags.forEach(t => t.classList.remove('active'));
+                    this.classList.add('active');
+                    activeTopic = topic;
+                }
+                
+                filterPublications();
+            });
         });
-      }
 
-      // de-dup by title
-      const out = [];
-      const titleSet = new Set();
-      for(const p of pubs){
-        const k = p.title.toLowerCase();
-        if(titleSet.has(k)) continue;
-        titleSet.add(k);
-        out.push(p);
-      }
-      return out;
-    }
-
-    async function loadPubs(){
-      const note = $("#sourceNote");
-      try{
-        const r = await fetch(LEGACY_RESEARCH_URL, { mode: "cors" });
-        if(!r.ok) throw new Error("legacy fetch failed");
-        const html = await r.text();
-        const pubs = parseLegacyResearch(html);
-        if(!pubs.length) throw new Error("no publications parsed");
-        note.innerHTML = "Loaded publications from the legacy research page.";
-        return pubs;
-      }catch(e){
-        note.innerHTML = "Could not load the legacy research page directly (likely blocked by the browser). Using embedded legacy view for complete links.";
-        $("#legacyFallback").style.display = "block";
-        return [];
-      }
-    }
-
-    // ---------------------------
-    // Rendering
-    // ---------------------------
-    function applyFilters(){
-      const q = state.q.toLowerCase();
-      let pubs = ALL.slice();
-
-      if(state.type !== "all"){
-        pubs = pubs.filter(p => p.type === state.type);
-      }
-      if(state.year){
-        pubs = pubs.filter(p => (p.year || null) === state.year);
-      }
-      if(state.topic){
-        pubs = pubs.filter(p => (p.topics || []).includes(state.topic));
-      }
-      if(state.pdfOnly){
-        pubs = pubs.filter(p => !!(p.links?.pdf));
-      }
-      if(q){
-        pubs = pubs.filter(p => {
-          const hay = (p.title + " " + (p.venueLine || "")).toLowerCase();
-          return hay.includes(q);
+        // Search box
+        searchBox.addEventListener('input', function() {
+            searchTerm = this.value.trim();
+            filterPublications();
         });
-      }
 
-      // sort
-      if(state.sort === "newest"){
-        pubs.sort((a,b) => (b.year || 0) - (a.year || 0) || a.title.localeCompare(b.title));
-      }else if(state.sort === "oldest"){
-        pubs.sort((a,b) => (a.year || 0) - (b.year || 0) || a.title.localeCompare(b.title));
-      }else{
-        pubs.sort((a,b) => a.title.localeCompare(b.title));
-      }
-
-      return pubs;
-    }
-
-    function renderChips(){
-      const yearsEl = $("#years");
-      const topicsEl = $("#topics");
-      yearsEl.innerHTML = "";
-      topicsEl.innerHTML = "";
-
-      const base = (state.type === "all") ? ALL : ALL.filter(p => p.type === state.type);
-
-      // years
-      const yearCounts = new Map();
-      for(const p of base){
-        const y = p.year || null;
-        if(!y) continue;
-        yearCounts.set(y, (yearCounts.get(y) || 0) + 1);
-      }
-      const years = Array.from(yearCounts.keys()).sort((a,b) => b - a);
-      for(const y of years){
-        const el = document.createElement("div");
-        el.className = "chip" + ((state.year === y) ? " active" : "");
-        el.textContent = `${y} ${yearCounts.get(y)}`;
-        el.onclick = () => { state.year = (state.year === y) ? null : y; render(); };
-        yearsEl.appendChild(el);
-      }
-
-      // topics
-      const topicCounts = new Map();
-      for(const p of base){
-        for(const t of (p.topics || [])){
-          topicCounts.set(t, (topicCounts.get(t) || 0) + 1);
-        }
-      }
-      const topics = Array.from(topicCounts.entries())
-        .sort((a,b) => b[1] - a[1] || a[0].localeCompare(b[0]))
-        .slice(0, 18);
-
-      for(const [t,count] of topics){
-        const el = document.createElement("div");
-        el.className = "chip" + ((state.topic === t) ? " active" : "");
-        el.textContent = `${t} ${count}`;
-        el.onclick = () => { state.topic = (state.topic === t) ? null : t; render(); };
-        topicsEl.appendChild(el);
-      }
-    }
-
-    function renderJump(yearGroups){
-      const sel = $("#jump");
-      const years = yearGroups.map(g => g.year).filter(y => y);
-      sel.innerHTML = `<option value="">--</option>` + years.map(y => `<option value="${y}">${y}</option>`).join("");
-      sel.onchange = () => {
-        const y = Number(sel.value);
-        if(!y) return;
-        const el = document.getElementById(`year-${y}`);
-        if(el) el.scrollIntoView({behavior:"smooth", block:"start"});
-      };
-    }
-
-    function pubActions(pub){
-      const a = [];
-      const links = pub.links || {};
-      // Always show a journal action: open direct paper link if present, else open scholar search.
-      const journalHref = links.paper || scholarSearchUrl(pub.title);
-
-      a.push(`<a href="${esc(journalHref)}" target="_blank" rel="noopener">Journal site</a>`);
-      if(links.pdf) a.push(`<a href="${esc(links.pdf)}" target="_blank" rel="noopener">PDF (Drive)</a>`);
-      else a.push(`<a href="${esc(scholarSearchUrl(pub.title))}" target="_blank" rel="noopener" title="No PDF link found on the legacy page">Scholar search</a>`);
-      if(links.podcast) a.push(`<a href="${esc(links.podcast)}" target="_blank" rel="noopener">AI podcast</a>`);
-      if(links.wp) a.push(`<a href="${esc(links.wp)}" target="_blank" rel="noopener">Working paper</a>`);
-      a.push(`<button type="button" data-bib="${esc(pub.id)}">Copy BibTeX</button>`);
-      return a.join("");
-    }
-
-    function renderResults(pubs){
-      const results = $("#results");
-      const count = $("#count");
-      count.textContent = `${pubs.length} result${pubs.length === 1 ? "" : "s"}`;
-
-      if(!pubs.length){
-        results.innerHTML = `<div class="notice">No matches. Try clearing a filter or changing the search term.</div>`;
-        return;
-      }
-
-      const grouped = groupByYear(pubs);
-      renderJump(grouped);
-
-      let html = "";
-      for(const g of grouped){
-        const y = g.year || 0;
-        html += `<div class="year-group" id="year-${y}">`;
-        html += `<div class="year-label"><h3>${y ? y : "Unknown year"}</h3><a class="backlink" href="#research">Back to filters</a></div>`;
-        for(const p of g.pubs){
-          const yearBadge = p.year ? `<span class="badge year">${p.year}</span>` : "";
-          const typeBadge = `<span class="badge type">${labelType(p.type)}</span>`;
-          const topicBadges = (p.topics || []).slice(0,2).map(t => `<span class="badge">${esc(t)}</span>`).join("");
-
-          html += `
-            <div class="pub">
-              <div>
-                <h4 class="pub-title">${esc(p.title)}</h4>
-                <div class="pub-badges">
-                  ${yearBadge}
-                  ${typeBadge}
-                  ${topicBadges}
-                </div>
-                <div class="pub-meta">${esc(p.venueLine || "")}</div>
-                <div class="pub-actions">${pubActions(p)}</div>
-              </div>
-            </div>
-          `;
-        }
-        html += `</div>`;
-      }
-
-      results.innerHTML = html;
-
-      // wire BibTeX buttons
-      results.querySelectorAll("button[data-bib]").forEach(btn => {
-        btn.addEventListener("click", () => {
-          const id = btn.getAttribute("data-bib");
-          const pub = ALL.find(p => p.id === id);
-          if(pub) copyBibtex(pub);
+        // Clear filters
+        clearFiltersBtn.addEventListener('click', function() {
+            activeYear = 'all';
+            activeTopic = null;
+            searchTerm = '';
+            searchBox.value = '';
+            
+            yearButtons.forEach(b => b.classList.remove('active'));
+            yearButtons[0].classList.add('active');
+            topicTags.forEach(t => t.classList.remove('active'));
+            
+            filterPublications();
         });
-      });
-    }
 
-    function render(){
-      renderChips();
-      const pubs = applyFilters();
-      renderResults(pubs);
-    }
-
-    function wireUI(){
-      // tabs
-      document.querySelectorAll(".tab").forEach(t => {
-        t.addEventListener("click", () => {
-          document.querySelectorAll(".tab").forEach(x => x.classList.remove("active"));
-          t.classList.add("active");
-          state.type = t.dataset.type;
-          state.year = null;
-          state.topic = null;
-          render();
-        });
-        t.addEventListener("keydown", (e) => {
-          if(e.key === "Enter" || e.key === " "){
-            e.preventDefault();
-            t.click();
-          }
-        });
-      });
-
-      // search
-      $("#q").addEventListener("input", (e) => { state.q = e.target.value; render(); });
-
-      // pdf only
-      $("#pdfOnly").addEventListener("change", (e) => { state.pdfOnly = e.target.checked; render(); });
-
-      // sort
-      $("#sort").addEventListener("change", (e) => { state.sort = e.target.value; render(); });
-
-      // smooth scrolling for hash nav
-      window.addEventListener("hashchange", () => {
-        const id = location.hash?.slice(1);
-        if(!id) return;
-        const el = document.getElementById(id);
-        if(el) el.scrollIntoView({behavior:"smooth", block:"start"});
-      });
-    }
-
-    // ---------------------------
-    // Init
-    // ---------------------------
-    (async function init(){
-      $("#year").textContent = new Date().getFullYear();
-
-      wireUI();
-
-      ALL = await loadPubs();
-      // If parsing failed, keep UI alive but show the embedded legacy page.
-      if(!ALL.length){
-        $("#count").textContent = "Legacy view";
-        $("#results").innerHTML = "";
-        return;
-      }
-
-      render();
-    })();
-  </script>
+        // Initialize
+        filterPublications();
+    </script>
 </body>
 </html>
