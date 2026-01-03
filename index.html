@@ -2,1609 +2,1203 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Eugen Dimant | Research</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="theme-color" content="#0b1220" />
+  <title>Eugen Dimant</title>
+  <meta name="description" content="Research in social norms, honesty, polarization, corruption, and migration." />
 
-  <meta name="description" content="Eugen Dimant is an Associate Professor of Practice in Behavioral and Decision Sciences at the University of Pennsylvania and a Visiting Professor at Stanford University. Research on behavioral economics, social norms, trust, polarization, honesty, corruption, and migration." />
-  <meta name="theme-color" content="#0b0d10" />
-  <meta name="color-scheme" content="light dark" />
-
-  <meta property="og:title" content="Eugen Dimant | Research" />
-  <meta property="og:description" content="Behavioral economics, social norms, trust, polarization, honesty, corruption, and migration." />
-  <meta property="og:type" content="website" />
-  <meta property="og:image" content="assets/eugen_dimant.jpg" />
-  <meta name="twitter:card" content="summary_large_image" />
-
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%237dd3fc'/%3E%3Cstop offset='1' stop-color='%23a78bfa'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='64' height='64' rx='14' fill='%230b0d10'/%3E%3Cpath d='M18 44V20h12c7 0 11 4 11 10s-4 10-11 10H28v4h-10zm10-12h2c2 0 3-1 3-2s-1-2-3-2h-2v4z' fill='url(%23g)'/%3E%3C/svg%3E" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
   <style>
     :root{
-      --bg:#0b0d10;
-      --bg2:#0f1216;
-      --card:#121720;
-      --card2:#0f141d;
-      --text:#eaf0f8;
-      --muted:#b4c0d3;
-      --muted2:#8ea0ba;
-      --border:rgba(255,255,255,.12);
-      --shadow:0 16px 40px rgba(0,0,0,.35);
-      --shadow2:0 8px 24px rgba(0,0,0,.25);
-      --accent:#7dd3fc;
-      --accent2:#a78bfa;
-      --ok:#34d399;
-      --warn:#fbbf24;
+      --bg:#0b1220;
+      --panel:#0f1a2f;
+      --panel2:#101e38;
+      --text:#e7eefc;
+      --muted:#a9b7d6;
+      --muted2:#7f92bd;
+      --line:rgba(231,238,252,.12);
+      --chip:rgba(231,238,252,.08);
+      --chip2:rgba(231,238,252,.12);
+      --accent:#67b3ff;
+      --accent2:#9bd1ff;
+      --good:#58d39b;
+      --shadow: 0 10px 30px rgba(0,0,0,.35);
       --radius:18px;
-      --radius2:26px;
-      --max:1120px;
-      --pad:clamp(18px,3.2vw,28px);
-      --pad2:clamp(12px,2.4vw,18px);
-      --font:ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,"Apple Color Emoji","Segoe UI Emoji";
+      --radius2:22px;
+      --max: 1480px; /* wider so the two right columns can be wider without squeezing the hero */
+      --gap: 18px;
     }
-    @media (prefers-color-scheme: light){
-      :root{
-        --bg:#f6f7fb;
-        --bg2:#ffffff;
-        --card:#ffffff;
-        --card2:#fbfcff;
-        --text:#0b1220;
-        --muted:#44556f;
-        --muted2:#5b6c87;
-        --border:rgba(0,0,0,.10);
-        --shadow:0 18px 40px rgba(0,0,0,.08);
-        --shadow2:0 10px 24px rgba(0,0,0,.08);
-        --accent:#0284c7;
-        --accent2:#7c3aed;
-      }
-    }
-
     *{box-sizing:border-box}
-    html{scroll-behavior:smooth}
+    html,body{height:100%}
     body{
       margin:0;
-      font-family:var(--font);
-      color:var(--text);
+      font-family:Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
       background:
-        radial-gradient(1200px 800px at 18% -10%, rgba(125,211,252,.22), transparent 55%),
-        radial-gradient(1000px 700px at 110% 10%, rgba(167,139,250,.18), transparent 55%),
-        linear-gradient(180deg, var(--bg) 0%, var(--bg2) 55%, var(--bg) 100%);
-      line-height:1.55;
+        radial-gradient(1200px 600px at 18% 0%, rgba(103,179,255,.18), rgba(0,0,0,0)),
+        radial-gradient(900px 500px at 88% 18%, rgba(155,209,255,.10), rgba(0,0,0,0)),
+        linear-gradient(180deg, #0b1220, #070b14 70%);
+      color:var(--text);
     }
     a{color:inherit}
-    a:hover{text-decoration:underline}
-    .wrap{max-width:var(--max); margin:0 auto; padding:0 var(--pad)}
-    .skip{
-      position:absolute; left:-9999px; top:auto; width:1px; height:1px; overflow:hidden;
-    }
-    .skip:focus{
-      left:var(--pad); top:var(--pad);
-      width:auto; height:auto; padding:10px 12px;
-      background:var(--card); border:1px solid var(--border); border-radius:12px; z-index:9999;
-    }
-
-    header{
-      position:sticky; top:0; z-index:50;
-      backdrop-filter: blur(12px);
-      background: color-mix(in srgb, var(--bg2) 78%, transparent);
-      border-bottom:1px solid var(--border);
-    }
-    .nav{
+    .wrap{max-width:var(--max); margin:0 auto; padding:22px 18px 60px;}
+    .topbar{
       display:flex; align-items:center; justify-content:space-between;
-      padding:12px 0; gap:14px;
+      gap:12px; padding:10px 6px 18px;
     }
     .brand{
-      display:flex; flex-direction:column; line-height:1.12; min-width:240px;
-    }
-    .brand strong{font-size:16px; letter-spacing:.2px}
-    .brand span{font-size:12px; color:var(--muted2); margin-top:2px}
-    nav ul{
-      list-style:none; margin:0; padding:0;
-      display:flex; gap:10px; align-items:center; flex-wrap:wrap; justify-content:flex-end;
-    }
-    nav a{
-      display:inline-flex; align-items:center;
-      padding:9px 12px;
-      border:1px solid transparent;
-      border-radius:999px;
-      color:var(--muted);
-      font-size:13px;
-      transition:background 140ms ease, border-color 140ms ease, color 140ms ease, transform 140ms ease;
+      display:flex; align-items:center; gap:10px;
       text-decoration:none;
-      white-space:nowrap;
-    }
-    nav a:hover{
-      background: color-mix(in srgb, var(--card) 70%, transparent);
-      border-color: var(--border);
-      color: var(--text);
-      transform: translateY(-1px);
-    }
-    nav a.active{
-      background: color-mix(in srgb, var(--card) 88%, transparent);
-      border-color: color-mix(in srgb, var(--accent) 60%, var(--border));
-      color: var(--text);
-    }
-
-    .btn{
-      display:inline-flex; align-items:center; justify-content:center;
-      padding:10px 14px;
-      border-radius:999px;
-      border:1px solid var(--border);
-      background: color-mix(in srgb, var(--card) 88%, transparent);
-      color: var(--text);
-      font-size:13px;
-      cursor:pointer;
-      transition: transform 120ms ease, background 140ms ease, border-color 140ms ease;
-      text-decoration:none;
-      white-space:nowrap;
-    }
-    .btn:hover{
-      transform: translateY(-1px);
-      border-color: color-mix(in srgb, var(--accent) 55%, var(--border));
-      background: color-mix(in srgb, var(--card) 95%, transparent);
-      text-decoration:none;
-    }
-    .btn-primary{
-      border-color: color-mix(in srgb, var(--accent) 65%, var(--border));
-      background: linear-gradient(135deg,
-        color-mix(in srgb, var(--accent) 34%, var(--card)) 0%,
-        color-mix(in srgb, var(--accent2) 28%, var(--card)) 100%);
-    }
-    .btn-ghost{
-      background: transparent;
-      border-color: var(--border);
-      color: var(--muted);
-    }
-    .btn-ghost:hover{ color: var(--text); }
-
-    main{ padding: 22px 0 70px; }
-    section{ scroll-margin-top: 90px; }
-    .hero{
-      padding: 26px 0 12px;
-      display:grid;
-      grid-template-columns: 1.2fr .8fr;
-      gap: 26px;
-      align-items: stretch;
-    }
-    @media (max-width: 920px){
-      .hero{ grid-template-columns: 1fr; }
-      .brand{ min-width: auto; }
-    }
-
-    .panel{
-      background: color-mix(in srgb, var(--card) 88%, transparent);
-      border: 1px solid var(--border);
-      box-shadow: var(--shadow);
-      border-radius: var(--radius2);
-      padding: var(--pad);
-    }
-    .hero h1{
-      margin:0 0 10px;
-      font-size: clamp(26px, 3.4vw, 44px);
-      line-height: 1.08;
-      letter-spacing: -0.4px;
-    }
-    .hero p{
-      margin: 0 0 16px;
-      color: var(--muted);
-      font-size: 15px;
-      max-width: 70ch;
-    }
-    .kpi-row{
-      display:flex; gap:10px; flex-wrap:wrap; margin-top: 12px;
-    }
-    .pill{
-      display:inline-flex; gap:8px; align-items:center;
-      padding:8px 10px;
-      border-radius:999px;
-      border:1px solid var(--border);
-      background: color-mix(in srgb, var(--card2) 78%, transparent);
-      color: var(--muted);
-      font-size: 12px;
-      text-decoration:none;
-    }
-    .pill b{ color: var(--text); font-weight: 600; }
-    .actions{
-      display:flex; gap:10px; flex-wrap:wrap; margin-top: 16px;
-    }
-
-    .profile{
-      display:grid;
-      grid-template-columns: 110px 1fr;
-      gap: 14px;
-      align-items:center;
-    }
-    .avatar{
-      width:110px; height:110px; border-radius: 22px;
-      border:1px solid var(--border);
-      background: linear-gradient(135deg,
-        color-mix(in srgb, var(--accent) 28%, var(--card)) 0%,
-        color-mix(in srgb, var(--accent2) 24%, var(--card)) 100%);
-      box-shadow: var(--shadow2);
-      overflow:hidden;
-      position: relative;
-    }
-    .avatar img{
-      width:100%; height:100%;
-      object-fit: cover;
-      display:block;
-    }
-    .avatar .fallback{
-      position:absolute; inset:0;
-      display:flex; align-items:center; justify-content:center;
-      color: var(--text);
-      font-weight: 700;
-      letter-spacing: .4px;
-      opacity: .85;
-      font-size: 22px;
-    }
-    .mini{
-      color: var(--muted2);
-      font-size: 12px;
-      margin-top: 2px;
-    }
-
-    .grid{
-      display:grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 16px;
-      margin-top: 16px;
-    }
-    @media (max-width: 920px){ .grid{ grid-template-columns: 1fr; } }
-
-    .card{
-      background: color-mix(in srgb, var(--card) 90%, transparent);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      box-shadow: var(--shadow2);
-      padding: var(--pad2);
-    }
-    .card h2{
-      margin: 2px 0 10px;
-      font-size: 16px;
-      letter-spacing: .2px;
-    }
-    .card h3{
-      margin: 2px 0 6px;
-      font-size: 14px;
-      letter-spacing: .2px;
-    }
-    .card p, .card li{
-      margin: 0;
-      color: var(--muted);
-      font-size: 13px;
-    }
-    .card ul{
-      margin: 10px 0 0;
-      padding-left: 18px;
-    }
-    .card li{ margin: 6px 0; }
-    .muted{ color: var(--muted); }
-
-    .section-title{
-      margin: 34px 0 10px;
-      font-size: 14px;
-      letter-spacing: .16em;
-      text-transform: uppercase;
-      color: var(--muted2);
-    }
-
-    /* Publications explorer */
-    .explorer{
-      display:grid;
-      grid-template-columns: 340px 1fr;
-      gap: 16px;
-      align-items:start;
-    }
-    @media (max-width: 980px){
-      .explorer{ grid-template-columns: 1fr; }
-    }
-    .filters{
-      position: sticky;
-      top: 84px;
-    }
-    @media (max-width: 980px){
-      .filters{ position: static; top: auto; }
-    }
-    label{
-      display:block;
-      font-size: 12px;
-      color: var(--muted2);
-      margin: 12px 0 6px;
-    }
-    input[type="text"], select{
-      width:100%;
-      padding: 11px 12px;
-      border-radius: 14px;
-      border:1px solid var(--border);
-      background: color-mix(in srgb, var(--card2) 84%, transparent);
-      color: var(--text);
-      outline: none;
-    }
-    input[type="text"]::placeholder{ color: color-mix(in srgb, var(--muted2) 78%, transparent); }
-    .row{
-      display:flex; gap:10px; flex-wrap:wrap; align-items:center;
-      margin-top: 12px;
-    }
-    .chip{
-      display:inline-flex; align-items:center; gap:8px;
-      padding: 8px 10px;
-      border-radius: 999px;
-      border:1px solid var(--border);
-      background: color-mix(in srgb, var(--card2) 78%, transparent);
-      color: var(--muted);
-      font-size: 12px;
-      cursor:pointer;
-      user-select:none;
-      transition: background 140ms ease, border-color 140ms ease, transform 120ms ease, color 140ms ease;
-    }
-    .chip:hover{
-      transform: translateY(-1px);
-      border-color: color-mix(in srgb, var(--accent) 55%, var(--border));
-      color: var(--text);
-    }
-    .chip.active{
-      background: color-mix(in srgb, var(--accent) 18%, var(--card));
-      border-color: color-mix(in srgb, var(--accent) 60%, var(--border));
-      color: var(--text);
-    }
-    .chip small{
-      color: var(--muted2);
-      font-size: 11px;
-    }
-
-    .toggle{
-      display:flex; gap:10px; align-items:center;
-      padding: 10px 12px;
-      border-radius: 14px;
-      border:1px solid var(--border);
-      background: color-mix(in srgb, var(--card2) 78%, transparent);
-      margin-top: 10px;
-    }
-    .toggle input{ transform: translateY(1px); }
-    .toggle span{ color: var(--muted); font-size: 12px; }
-
-    .tabs{
-      display:flex; gap:10px; flex-wrap:wrap;
-      margin-bottom: 10px;
-    }
-    .tab{
-      padding: 9px 12px;
-      border-radius: 999px;
-      border:1px solid var(--border);
-      background: transparent;
-      color: var(--muted);
-      cursor:pointer;
-      font-size: 13px;
-    }
-    .tab.active{
-      background: color-mix(in srgb, var(--card) 88%, transparent);
-      border-color: color-mix(in srgb, var(--accent) 60%, var(--border));
-      color: var(--text);
-    }
-
-    .results-head{
-      display:flex; gap:12px; flex-wrap:wrap; align-items:center; justify-content:space-between;
-      margin-bottom: 10px;
-    }
-    .count{
-      color: var(--muted);
-      font-size: 13px;
-    }
-    .right-tools{ display:flex; gap:10px; align-items:center; flex-wrap:wrap; }
-    .select-sm{ width:auto; min-width: 180px; }
-
-    .pub-list{ display:flex; flex-direction:column; gap:12px; }
-    .year-block{
-      margin-top: 14px;
-      padding-top: 6px;
-    }
-    .year-title{
-      display:flex; align-items:center; justify-content:space-between;
-      gap: 12px;
-      margin: 6px 0 6px;
-      padding: 8px 0;
-      border-bottom: 1px solid var(--border);
-    }
-    .year-title h3{
-      margin:0;
-      font-size: 16px;
+      font-weight:700;
       letter-spacing:.2px;
     }
-    .year-title .jump{
-      color: var(--muted2);
-      font-size: 12px;
+    .brand .dot{
+      width:10px; height:10px; border-radius:999px; background:var(--accent);
+      box-shadow:0 0 0 4px rgba(103,179,255,.18);
+    }
+    nav{
+      display:flex; gap:10px; flex-wrap:wrap; justify-content:flex-end;
+    }
+    .navlink{
+      text-decoration:none;
+      font-weight:600;
+      font-size:13px;
+      color:var(--muted);
+      padding:8px 10px;
+      border-radius:999px;
+      border:1px solid transparent;
+    }
+    .navlink:hover{color:var(--text); border-color:var(--line); background:rgba(231,238,252,.04);}
+    .grid{
+      display:grid;
+      grid-template-columns: minmax(520px, 1.35fr) 420px 420px; /* wider right columns */
+      gap:var(--gap);
+      align-items:start;
+    }
+    @media (max-width: 1240px){
+      .grid{grid-template-columns: 1fr; }
+    }
+
+    .card{
+      background: linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,.02));
+      border:1px solid var(--line);
+      border-radius:var(--radius2);
+      box-shadow:var(--shadow);
+      overflow:hidden;
+    }
+    .card .inner{padding:18px;}
+    .card h2{margin:0 0 10px; font-size:18px; letter-spacing:.1px;}
+    .sub{color:var(--muted); font-size:13px; line-height:1.45;}
+    .pillrow{display:flex; flex-wrap:wrap; gap:8px; margin-top:12px;}
+    .pill{
+      display:inline-flex; align-items:center; gap:7px;
+      padding:8px 10px;
+      border-radius:999px;
+      border:1px solid var(--line);
+      background:rgba(231,238,252,.03);
+      color:var(--muted);
+      font-size:12px;
+      white-space:nowrap;
+    }
+    .pill b{color:var(--text); font-weight:700}
+    .cta-row{display:flex; flex-wrap:wrap; gap:10px; margin-top:14px;}
+    .btn{
+      display:inline-flex; align-items:center; justify-content:center; gap:8px;
+      padding:10px 12px;
+      border-radius:999px;
+      border:1px solid var(--line);
+      background:rgba(231,238,252,.03);
+      color:var(--text);
+      text-decoration:none;
+      font-weight:700;
+      font-size:13px;
+      cursor:pointer;
+      user-select:none;
+    }
+    .btn:hover{background:rgba(231,238,252,.06); border-color:rgba(231,238,252,.22);}
+    .btn.primary{
+      background: linear-gradient(180deg, rgba(103,179,255,.22), rgba(103,179,255,.10));
+      border-color:rgba(103,179,255,.35);
+    }
+    .btn.primary:hover{border-color:rgba(103,179,255,.55);}
+    .btn.ghost{background:transparent}
+    .btn:disabled{opacity:.45; cursor:not-allowed}
+    .hero{
+      display:grid;
+      grid-template-columns: 130px 1fr;
+      gap:16px;
+      align-items:center;
+    }
+    @media (max-width: 520px){
+      .hero{grid-template-columns: 1fr;}
+    }
+    .avatar{
+      width:130px; height:130px;
+      border-radius:28px;
+      overflow:hidden;
+      border:1px solid var(--line);
+      background:rgba(231,238,252,.05);
+      box-shadow: 0 10px 25px rgba(0,0,0,.35);
+      position:relative;
+      flex:0 0 auto;
+    }
+    
+    .avatar-fallback{
+      position:absolute;
+      inset:0;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-weight:800;
+      letter-spacing:.6px;
+      color:rgba(231,238,252,.55);
+      font-size:22px;
+      background: radial-gradient(240px 140px at 30% 20%, rgba(103,179,255,.25), rgba(0,0,0,0));
+    }
+
+    .avatar img{
+      width:100%; height:100%;
+      object-fit:cover;
+      display:block;
+    }
+    .h-title{
+      margin:0;
+      font-size:34px;
+      line-height:1.06;
+      letter-spacing:-.4px;
+    }
+    .h-roles{
+      margin-top:8px;
+      color:var(--muted);
+      font-size:13px;
+      line-height:1.45;
+    }
+    .quicklinks{display:flex; gap:10px; flex-wrap:wrap; margin-top:12px;}
+
+    /* Right column lists */
+    .list{margin:0; padding-left:18px;}
+    .list li{margin:10px 0; color:var(--muted); line-height:1.35;}
+    .list li b{color:var(--text)}
+    .mini-link{color:var(--accent2); text-decoration:none; font-weight:700;}
+    .mini-link:hover{text-decoration:underline;}
+
+    /* Sections */
+    .section{margin-top:18px;}
+    .section-title{
+      display:flex; align-items:baseline; justify-content:space-between;
+      gap:12px; margin:22px 0 10px; padding:0 4px;
+    }
+    .section-title h2{
+      margin:0;
+      font-size:18px;
+      color:var(--text);
+    }
+    .section-title .hint{color:var(--muted2); font-size:12px;}
+
+    /* Research */
+    .research-shell{
+      display:grid;
+      grid-template-columns: 340px 1fr;
+      gap:var(--gap);
+      align-items:start;
+    }
+    @media (max-width: 1100px){
+      .research-shell{grid-template-columns: 1fr;}
+    }
+
+    .filters{
+      position:sticky;
+      top:16px;
+    }
+    @media (max-width: 1100px){
+      .filters{position:relative; top:auto;}
+    }
+
+    .tabs{
+      display:flex; gap:8px; flex-wrap:wrap;
+      margin:10px 0 12px;
+    }
+    .tab{
+      padding:8px 10px;
+      border-radius:999px;
+      border:1px solid var(--line);
+      background:rgba(231,238,252,.03);
+      color:var(--muted);
+      font-weight:700;
+      font-size:12px;
+      cursor:pointer;
+      user-select:none;
+    }
+    .tab.active{
+      background:rgba(103,179,255,.16);
+      border-color:rgba(103,179,255,.35);
+      color:var(--text);
+    }
+    .field{margin-top:12px;}
+    .label{font-size:12px; color:var(--muted2); font-weight:700; margin-bottom:7px;}
+    .input{
+      width:100%;
+      padding:10px 12px;
+      border-radius:12px;
+      border:1px solid var(--line);
+      background:rgba(0,0,0,.10);
+      color:var(--text);
+      outline:none;
+      font-size:13px;
+    }
+    .row{
+      display:flex; gap:10px; flex-wrap:wrap; align-items:center;
+    }
+    .select{
+      width:100%;
+      padding:10px 12px;
+      border-radius:12px;
+      border:1px solid var(--line);
+      background:rgba(0,0,0,.10);
+      color:var(--text);
+      font-size:13px;
+      outline:none;
+    }
+    .chipgrid{
+      display:flex; flex-wrap:wrap; gap:8px;
+      margin-top:6px;
+    }
+    .chip{
+      padding:7px 10px;
+      border-radius:999px;
+      border:1px solid var(--line);
+      background:var(--chip);
+      color:var(--muted);
+      font-weight:700;
+      font-size:12px;
+      cursor:pointer;
+      user-select:none;
+    }
+    .chip.active{background:var(--chip2); color:var(--text);}
+    .toggle{
+      display:flex; align-items:center; gap:10px;
+      padding:10px 12px;
+      border-radius:12px;
+      border:1px solid var(--line);
+      background:rgba(231,238,252,.03);
+      color:var(--muted);
+      font-weight:700;
+      font-size:12px;
+      margin-top:12px;
+    }
+    .toggle input{transform:scale(1.05)}
+    .results-head{
+      display:flex; align-items:center; justify-content:space-between;
+      gap:12px; flex-wrap:wrap;
+      padding:6px 6px 10px;
+    }
+    .results-head .count{color:var(--muted); font-weight:700; font-size:13px;}
+    .results{padding:0 6px 12px;}
+    .year-group{
+      margin-top:12px;
+    }
+    .year-label{
+      display:flex; align-items:center; justify-content:space-between;
+      gap:10px;
+      margin:14px 4px 10px;
+    }
+    .year-label h3{
+      margin:0;
+      font-size:14px;
+      color:var(--muted2);
+      letter-spacing:.4px;
+      text-transform:uppercase;
+    }
+    .backlink{
+      font-size:12px;
+      color:var(--accent2);
+      font-weight:700;
       text-decoration:none;
     }
+    .backlink:hover{text-decoration:underline;}
 
     .pub{
-      border-radius: var(--radius);
-      border:1px solid var(--border);
-      background: color-mix(in srgb, var(--card) 90%, transparent);
-      box-shadow: var(--shadow2);
-      padding: var(--pad2);
+      border:1px solid var(--line);
+      border-radius:16px;
+      background:rgba(231,238,252,.02);
+      padding:14px 14px 12px;
+      margin:10px 0;
     }
-    .pub .top{
-      display:flex; gap:10px; justify-content:space-between; flex-wrap:wrap; align-items:flex-start;
+    .pub-title{
+      margin:0;
+      font-size:15px;
+      line-height:1.25;
+      color:var(--text);
     }
-    .pub h4{
-      margin: 0;
-      font-size: 14px;
-      letter-spacing:.1px;
-      line-height: 1.35;
-      max-width: 78ch;
+    .pub-meta{
+      margin-top:6px;
+      color:var(--muted);
+      font-size:12.5px;
+      line-height:1.35;
     }
-    .pub .meta{
-      margin-top: 6px;
-      color: var(--muted);
-      font-size: 12.5px;
+    .pub-badges{
+      display:flex; flex-wrap:wrap; gap:8px;
+      margin-top:10px;
     }
-    .pub .meta em{ color: var(--muted2); font-style: normal; }
-    .pub .badges{ display:flex; gap:8px; flex-wrap:wrap; align-items:center; }
     .badge{
-      display:inline-flex; align-items:center; gap:6px;
-      padding: 6px 8px;
-      border-radius: 999px;
-      border:1px solid var(--border);
-      background: color-mix(in srgb, var(--card2) 78%, transparent);
-      color: var(--muted);
-      font-size: 11px;
+      font-size:12px;
+      font-weight:800;
+      color:var(--muted);
+      border:1px solid var(--line);
+      background:rgba(231,238,252,.03);
+      padding:6px 9px;
+      border-radius:999px;
     }
-    .badge strong{ color: var(--text); font-weight: 650; }
-    .badge.ok{ border-color: color-mix(in srgb, var(--ok) 55%, var(--border)); }
-    .badge.warn{ border-color: color-mix(in srgb, var(--warn) 55%, var(--border)); }
-
-    .pub .links{
-      display:flex; gap:10px; flex-wrap:wrap;
-      margin-top: 10px;
+    .badge.year{color:var(--text); border-color:rgba(103,179,255,.35); background:rgba(103,179,255,.10);}
+    .badge.type{color:var(--good); border-color:rgba(88,211,155,.35); background:rgba(88,211,155,.10);}
+    .pub-actions{
+      display:flex; flex-wrap:wrap; gap:8px;
+      margin-top:12px;
     }
-    .link{
-      display:inline-flex; align-items:center; justify-content:center;
-      padding: 8px 10px;
-      border-radius: 999px;
-      border:1px solid var(--border);
-      background: transparent;
-      color: var(--muted);
-      font-size: 12px;
-      text-decoration:none;
-      transition: background 140ms ease, border-color 140ms ease, color 140ms ease, transform 120ms ease;
-    }
-    .link:hover{
-      transform: translateY(-1px);
-      background: color-mix(in srgb, var(--card2) 80%, transparent);
-      border-color: color-mix(in srgb, var(--accent) 55%, var(--border));
-      color: var(--text);
+    .pub-actions a, .pub-actions button{
+      padding:8px 10px;
+      border-radius:999px;
+      border:1px solid var(--line);
+      background:rgba(231,238,252,.03);
+      color:var(--text);
+      font-weight:800;
+      font-size:12px;
+      cursor:pointer;
       text-decoration:none;
     }
-    .link.primary{
-      background: color-mix(in srgb, var(--accent) 16%, var(--card));
-      border-color: color-mix(in srgb, var(--accent) 60%, var(--border));
-      color: var(--text);
+    .pub-actions a:hover, .pub-actions button:hover{background:rgba(231,238,252,.06); border-color:rgba(231,238,252,.22);}
+    .pub-actions button{font-family:inherit}
+    .notice{
+      padding:12px 12px;
+      border-radius:14px;
+      border:1px dashed rgba(231,238,252,.20);
+      color:var(--muted);
+      font-size:12.5px;
+      line-height:1.35;
+      background:rgba(231,238,252,.02);
+      margin:10px 6px 0;
+    }
+    .inline{
+      display:inline-flex; gap:8px; flex-wrap:wrap; align-items:center;
     }
 
-    .toast{
-      position: fixed;
-      right: 16px;
-      bottom: 16px;
-      max-width: min(520px, calc(100vw - 32px));
-      background: color-mix(in srgb, var(--card) 92%, transparent);
-      border: 1px solid var(--border);
-      box-shadow: var(--shadow);
-      border-radius: 16px;
-      padding: 12px 14px;
-      color: var(--text);
-      font-size: 13px;
-      opacity: 0;
-      transform: translateY(10px);
-      transition: opacity 160ms ease, transform 160ms ease;
-      pointer-events: none;
-      z-index: 1000;
-    }
-    .toast.show{ opacity: 1; transform: translateY(0); }
-
-    /* Vita PDF */
-    .pdf-wrap{
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      overflow: hidden;
-      background: color-mix(in srgb, var(--card2) 86%, transparent);
-      box-shadow: var(--shadow2);
-    }
-    .pdf-toolbar{
-      display:flex; gap:10px; flex-wrap:wrap; align-items:center; justify-content:space-between;
-      padding: 10px 12px;
-      border-bottom: 1px solid var(--border);
-    }
-    .pdf-toolbar .left{ display:flex; gap:10px; flex-wrap:wrap; align-items:center; }
-    iframe.pdf{
-      width: 100%;
-      height: min(78vh, 860px);
-      border: 0;
-      display:block;
-      background: var(--bg2);
+    /* Vita */
+    .pdf-frame{
+      width:100%;
+      height:880px;
+      border:1px solid var(--line);
+      border-radius:16px;
+      overflow:hidden;
+      background:rgba(0,0,0,.16);
     }
 
+    /* Twitter */
+    .tweetbox{
+      border-top:1px solid var(--line);
+      margin-top:14px;
+      padding-top:14px;
+    }
+
+    /* footer */
     footer{
-      padding: 24px 0 40px;
-      color: var(--muted2);
-      font-size: 12px;
-    }
-    .footrow{ display:flex; gap:10px; flex-wrap:wrap; align-items:center; justify-content:space-between; }
-    .footrow a{ color: var(--muted2); text-decoration:none; }
-    .footrow a:hover{ text-decoration:underline; }
-    code.kbd{
-      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-      font-size: 11px;
-      padding: 2px 6px;
-      border-radius: 8px;
-      border: 1px solid var(--border);
-      background: color-mix(in srgb, var(--card2) 78%, transparent);
-      color: var(--muted);
+      margin-top:26px;
+      color:var(--muted2);
+      font-size:12px;
+      padding:0 6px;
     }
   </style>
 </head>
 
 <body>
-  <a class="skip" href="#main">Skip to content</a>
-
-  <header>
-    <div class="wrap">
-      <div class="nav">
-        <div class="brand" aria-label="Site title">
-          <strong>Eugen Dimant</strong>
-          <span>Behavioral Economics · Social Norms · Trust · Polarization</span>
-        </div>
-
-        <nav aria-label="Primary">
-          <ul>
-            <li><a href="#home" data-nav>Home</a></li>
-            <li><a href="#research" data-nav>Research</a></li>
-            <li><a href="#vita" data-nav>Vita</a></li>
-            <li><a href="#misc" data-nav>Misc</a></li>
-            <li><a href="#contact" data-nav>Contact</a></li>
-          </ul>
-        </nav>
-      </div>
+  <div class="wrap">
+    <div class="topbar">
+      <a class="brand" href="#home" aria-label="Go to top">
+        <span class="dot" aria-hidden="true"></span>
+        Eugen Dimant
+      </a>
+      <nav aria-label="Primary">
+        <a class="navlink" href="#home">Home</a>
+        <a class="navlink" href="#research">Research</a>
+        <a class="navlink" href="#vita">Vita</a>
+        <a class="navlink" href="#contact">Contact</a>
+        <a class="navlink" href="https://sites.google.com/view/eugendimant" target="_blank" rel="noopener">Legacy site</a>
+      </nav>
     </div>
-  </header>
 
-  <main id="main" class="wrap">
-    <section id="home" aria-label="Home">
-      <div class="hero">
-        <div class="panel">
-          <h1>Associate Professor of Practice at UPenn · Visiting Professor at Stanford</h1>
-          <p>
-            I am an Associate Professor of Practice in Behavioral and Decision Sciences at the University of Pennsylvania
-            and a Visiting Professor at Stanford University. I am also a fellow at both the Behavioral and Decision Sciences Program
-            and the Center for Social Norms and Behavioral Dynamics at the University of Pennsylvania, a collaborator at the Behavior Change for Good Initiative (BCFG) at Wharton,
-            and a Network Fellow at CESifo.
-          </p>
-
-          <div class="actions" aria-label="Quick actions">
-            <a class="btn btn-primary" href="#research">Explore publications</a>
-            <a class="btn" href="#vita">CV preview</a>
-            <a class="btn btn-ghost" href="mailto:edimant@sas.upenn.edu">Email</a>
-          </div>
-
-          <div class="kpi-row" aria-label="Highlights">
-            <span class="pill"><b>Focus</b> norms, honesty, polarization, corruption, migration</span>
-            <span class="pill"><b>Methods</b> lab + field experiments, causal inference, observational data</span>
-            <span class="pill"><b>Goal</b> research that travels to policy and practice</span>
-          </div>
-        </div>
-
-        <div class="panel">
-          <div class="profile">
-            <div class="avatar" aria-label="Portrait">
-              <img
-                src="https://kingcenter.stanford.edu/sites/g/files/sbiybj16611/files/styles/large_square/public/media/image/eugen_dimant_0.jpg?h=c12f1a1d&itok=Od2bdbDX"
-                alt="Portrait of Eugen Dimant"
-                referrerpolicy="no-referrer"
-                onerror="this.onerror=null; this.src='assets/eugen_dimant.jpg';"
-              />
-              <div class="fallback" aria-hidden="true">ED</div>
+    <!-- HERO GRID -->
+    <div id="home" class="grid">
+      <!-- Left hero -->
+      <div class="card">
+        <div class="inner">
+          <div class="hero">
+            <div class="avatar" aria-label="Profile photo">
+              <img src="assets/eugen_dimant.jpg" alt="Eugen Dimant"
+                onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+              <div class="avatar-fallback" aria-hidden="true" style="display:none;">ED</div>
             </div>
             <div>
-              <div style="font-weight:700; font-size:14px; letter-spacing:.2px;">Eugen Dimant</div>
-              <div class="mini">University of Pennsylvania · Stanford University</div>
-
-              <div class="row" style="margin-top:10px;">
-                <a class="btn" href="https://sites.google.com/view/eugendimant/" target="_blank" rel="noreferrer noopener">Legacy site</a>
-                <button class="btn btn-ghost" id="copyLinkBtn" type="button">Copy site link</button>
+              <h1 class="h-title">Eugen Dimant</h1>
+              <div class="h-roles">
+                Associate Professor of Practice, Behavioral and Decision Sciences (University of Pennsylvania)
               </div>
 
-              <div class="row" style="margin-top:10px;">
-                <a class="pill" href="https://www.linkedin.com/in/eugendimant/" target="_blank" rel="noreferrer noopener">LinkedIn</a>
-                <a class="pill" href="https://www.cesifo.org/en/network-member/dimant-eugen" target="_blank" rel="noreferrer noopener">CESifo</a>
-                <a class="pill" href="https://papers.ssrn.com/sol3/cf_dev/AbsByAuth.cfm?per_id=2061825" target="_blank" rel="noreferrer noopener">SSRN</a>
+              <div class="cta-row">
+                <a class="btn primary" href="#research">Explore publications</a>
+                <a class="btn" href="#vita">CV</a>
+                <a class="btn ghost" href="mailto:edimant@sas.upenn.edu">Email</a>
+              </div>
+
+              <div class="quicklinks" aria-label="Profiles">
+                <a class="btn" href="https://scholar.google.com/citations?user=3Ylbe0YAAAAJ" target="_blank" rel="noopener">Google Scholar</a>
+                <a class="btn" href="https://www.linkedin.com/in/REPLACE_ME/" target="_blank" rel="noopener">LinkedIn</a>
+                <a class="btn" href="https://x.com/REPLACE_ME/" target="_blank" rel="noopener">X (Twitter)</a>
               </div>
             </div>
           </div>
 
-          <div class="grid" style="margin-top:16px;">
-            <div class="card">
-              <h2>Research news</h2>
-              <ul>
-                <li><b>Apr 2025:</b> new publications on social norms and norm heterogeneity in 6 top journals.</li>
-                <li><b>Nov 2024:</b> new publications in Management Science, The Economic Journal, PNAS Nexus, and European Economic Review.</li>
-                <li><b>Jun 2023:</b> new publications in PNAS Nexus and Games and Economic Behavior.</li>
-                <li><b>Sep 2022:</b> new publication in Nature and multiple others on COVID-19 and compliance.</li>
-              </ul>
-              <p style="margin-top:10px" class="muted">See the full list and filter by year and topics in the Research section.</p>
+          <div class="section">
+            <div class="sub" style="margin-top:10px;">
+              I study how social norms and incentives shape honesty, cooperation, and polarization, and how these mechanisms matter for policy and organizations.
             </div>
 
-            <div class="card">
-              <h2>Selected publications</h2>
-              <ul>
-                <li>Nudging Teachers: A Megastudy To Increase Math Achievement Among 3 Million Elementary School Students (PNAS, 2025).</li>
-                <li>Strategic Behavior with Tight, Loose, and Polarized Norms (Management Science, 2024).</li>
-                <li>Paying Them to Hate US: Effect of U.S. Military Aid on Anti-American Terrorism, 1968-2018 (The Economic Journal, 2024).</li>
-                <li>Social Norms and Behavior Change: The Interdisciplinary Research Frontier (JEBO, 2022).</li>
-                <li>It’s Not A Lie if You Believe the Norm Does Not Apply (Games and Economic Behavior, 2023).</li>
-              </ul>
+            <div class="pillrow" aria-label="Focus areas">
+              <span class="pill"><b>Focus</b> norms, honesty, polarization, corruption, migration</span>
+              <span class="pill"><b>Methods</b> lab and field experiments, causal inference, observational data</span>
+              <span class="pill"><b>Goal</b> research that travels to policy and practice</span>
+              <span class="pill"><b>Affiliation</b> Stanford University</span>
             </div>
           </div>
         </div>
       </div>
-    </section>
 
-    <div class="section-title">Research</div>
-    <section id="research" aria-label="Research">
-      <div class="explorer">
-        <div class="panel filters" aria-label="Filters">
-          <div class="tabs" role="tablist" aria-label="Publication type">
-            <button class="tab active" type="button" data-tab="peer" role="tab" aria-selected="true">Peer-reviewed</button>
-            <button class="tab" type="button" data-tab="wip" role="tab" aria-selected="false">Work in progress</button>
+      <!-- Research news -->
+      <div class="card">
+        <div class="inner">
+          <h2>Research news</h2>
+          <ul class="list">
+            <li><b>Apr 2025:</b> new publications on social norms and norm heterogeneity in 6 top journals.</li>
+            <li><b>Nov 2024:</b> new publications in Management Science, The Economic Journal, PNAS Nexus, and European Economic Review.</li>
+            <li><b>Jun 2023:</b> new publications in PNAS Nexus and Games and Economic Behavior.</li>
+            <li><b>Sep 2022:</b> new publication in Nature and multiple others on COVID-19 and compliance.</li>
+          </ul>
+          <div class="sub" style="margin-top:12px;">
+            <a class="mini-link" href="#research">See the full list and filter by year and topic</a>
           </div>
-
-          <label for="q">Search title, venue, authors</label>
-          <input id="q" type="text" placeholder="Try: norms, polarization, honesty, migration, corruption" autocomplete="off" />
-
-          <label>Year</label>
-          <div id="yearChips" class="row" aria-label="Year filter"></div>
-
-          <label>Topics (from titles)</label>
-          <div id="topicChips" class="row" aria-label="Topic filter"></div>
-
-          <div class="toggle">
-            <input id="onlyOpen" type="checkbox" />
-            <span>Show only items with an open PDF or ungated link</span>
-          </div>
-
-          <div class="toggle">
-            <input id="groupByYear" type="checkbox" checked />
-            <span>Group results by year</span>
-          </div>
-
-          <div class="row" style="margin-top:12px;">
-            <button class="btn" id="resetBtn" type="button">Reset</button>
-            <button class="btn btn-ghost" id="shareBtn" type="button">Copy filtered link</button>
-          </div>
-
-          <p class="muted" style="margin:12px 0 0; font-size:12px;">
-            Tip: you can also jump quickly by selecting a year chip and then using <code class="kbd">Ctrl</code> + <code class="kbd">F</code>.
-          </p>
         </div>
+      </div>
 
-        <div class="panel" aria-label="Results">
-          <div class="results-head">
-            <div class="count" id="count"></div>
-            <div class="right-tools">
-              <select id="sort" class="select-sm" aria-label="Sort">
-                <option value="year_desc">Sort: newest</option>
-                <option value="year_asc">Sort: oldest</option>
-                <option value="title_asc">Sort: title A–Z</option>
-              </select>
-              <select id="jumpYear" class="select-sm" aria-label="Jump to year">
-                <option value="">Jump to year…</option>
-              </select>
+      <!-- Selected publications + tweets -->
+      <div class="card">
+        <div class="inner">
+          <h2>Selected publications</h2>
+          <ul class="list">
+            <li><b>Nudging Teachers</b> (PNAS, 2025)</li>
+            <li><b>Strategic Behavior with Tight, Loose, and Polarized Norms</b> (Management Science, 2024)</li>
+            <li><b>Paying Them to Hate US</b> (The Economic Journal, 2024)</li>
+            <li><b>Social Proximity and the Erosion of Norm Compliance</b> (Games and Economic Behavior, 2022)</li>
+            <li><b>Competition and Moral Behavior</b> (PNAS, 2023)</li>
+            <li><b>Nudging Enforcers</b> (PNAS Nexus, 2023)</li>
+          </ul>
+
+          <div class="tweetbox">
+            <h2 style="margin-bottom:10px;">Latest on X</h2>
+            <div class="sub" style="margin-bottom:10px;">
+              If this does not render (some browsers block third-party widgets), open the profile directly:
+              <a class="mini-link" href="https://x.com/REPLACE_ME/" target="_blank" rel="noopener">x.com/REPLACE_ME</a>
             </div>
-          </div>
-
-          <div id="list" class="pub-list" aria-live="polite"></div>
-        </div>
-      </div>
-    </section>
-
-    <div class="section-title">Vita</div>
-    <section id="vita" aria-label="Vita">
-      <div class="panel">
-        <h2 style="margin:0 0 8px;">Curriculum Vitae</h2>
-        <p class="muted" style="margin:0 0 14px;">
-          Scroll the embedded PDF below, or download it. To update: replace <code class="kbd">cv.pdf</code> in this GitHub repository and commit.
-        </p>
-
-        <div class="pdf-wrap">
-          <div class="pdf-toolbar">
-            <div class="left">
-              <a class="btn btn-primary" href="cv.pdf" download>Download CV</a>
-              <a class="btn" href="cv.pdf" target="_blank" rel="noreferrer noopener">Open in new tab</a>
-            </div>
-            <div class="muted" style="font-size:12px;">File: <code class="kbd">cv.pdf</code></div>
-          </div>
-
-          <iframe class="pdf" src="cv.pdf#view=FitH" title="CV preview (PDF)"></iframe>
-        </div>
-
-        <p class="muted" style="margin:12px 0 0; font-size:12px;">
-          If the preview is blank on some devices, use “Open in new tab”.
-        </p>
-      </div>
-    </section>
-
-    <div class="section-title">Misc</div>
-    <section id="misc" aria-label="Miscellaneous">
-      <div class="panel">
-        <h2 style="margin:0 0 8px;">Profiles and links</h2>
-        <p class="muted" style="margin:0 0 14px;">Quick access to places where people often search for papers, citations, and working drafts.</p>
-
-        <div class="grid">
-          <div class="card">
-            <h3>Academic profiles</h3>
-            <ul>
-              <li><a href="https://www.cesifo.org/en/network-member/dimant-eugen" target="_blank" rel="noreferrer noopener">CESifo</a></li>
-              <li><a href="https://ideas.repec.org/f/pdi226.html" target="_blank" rel="noreferrer noopener">IDEAS / RePEc</a></li>
-              <li><a href="https://www.nber.org/people/eugen_dimant" target="_blank" rel="noreferrer noopener">NBER profile (if applicable)</a></li>
-              <li><a href="https://www.academia.edu/61107824/Eugen_Dimant" target="_blank" rel="noreferrer noopener">Academia.edu</a></li>
-              <li><a href="https://papers.ssrn.com/sol3/cf_dev/AbsByAuth.cfm?per_id=2061825" target="_blank" rel="noreferrer noopener">SSRN</a></li>
-            </ul>
-          </div>
-
-          <div class="card">
-            <h3>Social and discovery</h3>
-            <ul>
-              <li><a href="https://www.linkedin.com/in/eugendimant/" target="_blank" rel="noreferrer noopener">LinkedIn</a></li>
-              <li><a href="https://www.researchgate.net/profile/Eugen-Dimant" target="_blank" rel="noreferrer noopener">ResearchGate</a></li>
-              <li><a href="https://scholar.google.com/scholar?q=Eugen+Dimant" target="_blank" rel="noreferrer noopener">Google Scholar (search)</a></li>
-              <li><a href="#research">Publications explorer</a></li>
-              <li><a href="#vita">CV preview</a></li>
-            </ul>
-            <p class="muted" style="margin-top:10px; font-size:12px;">Note: Google Scholar pages sometimes block embedding; linking to search is reliable.</p>
+            <a class="twitter-timeline" data-height="520" data-dnt="true" href="https://twitter.com/REPLACE_ME?ref_src=twsrc%5Etfw">Tweets by @eugen_dimant</a>
           </div>
         </div>
-      </div>
-    </section>
-
-    <div class="section-title">Contact</div>
-    <section id="contact" aria-label="Contact">
-      <div class="panel">
-        <h2 style="margin:0 0 8px;">Contact details</h2>
-
-        <div class="grid">
-          <div class="card">
-            <h3>Email</h3>
-            <p><a href="mailto:edimant@sas.upenn.edu">edimant@sas.upenn.edu</a></p>
-            <p class="muted" style="margin-top:8px;">Fastest for speaking requests, student matters, and collaboration.</p>
-          </div>
-
-          <div class="card">
-            <h3>Affiliations</h3>
-            <ul>
-              <li>Behavioral and Decision Sciences Program (UPenn)</li>
-              <li>Center for Social Norms and Behavioral Dynamics (UPenn)</li>
-              <li>Behavior Change for Good Initiative (BCFG), Wharton</li>
-              <li>CESifo Network Fellow</li>
-            </ul>
-            <p class="muted" style="margin-top:10px;">
-              Program page: <a href="https://mbds.sas.upenn.edu/" target="_blank" rel="noreferrer noopener">mbds.sas.upenn.edu</a>
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <footer class="wrap">
-      <div class="footrow">
-        <div>© <span id="yearNow"></span> Eugen Dimant</div>
-        <div style="display:flex; gap:12px; flex-wrap:wrap;">
-          <a href="#home">Top</a>
-          <a href="#research">Research</a>
-          <a href="#vita">Vita</a>
-          <a href="https://sites.google.com/view/eugendimant/" target="_blank" rel="noreferrer noopener">Legacy site</a>
-        </div>
-      </div>
-    </footer>
-  </main>
-
-  <div id="toast" class="toast" role="status" aria-live="polite"></div>
-
-  <noscript>
-    <div class="wrap" style="padding:18px 0 60px;">
-      <div class="panel">
-        JavaScript is disabled. The publications explorer needs JavaScript. You can still use the legacy site link above.
       </div>
     </div>
-  </noscript>
+
+    <!-- RESEARCH -->
+    <div id="research" class="section-title">
+      <h2>Research</h2>
+      <div class="hint">Filters work on a locally rendered list. Source: your legacy Google Sites research page.</div>
+    </div>
+
+    <div class="card">
+      <div class="inner">
+        <div class="research-shell">
+          <!-- Filters -->
+          <div class="filters">
+            <div class="tabs" role="tablist" aria-label="Publication type tabs">
+              <div class="tab active" role="tab" tabindex="0" data-type="all">All publications</div>
+              <div class="tab" role="tab" tabindex="0" data-type="peer-reviewed">Peer-reviewed</div>
+              <div class="tab" role="tab" tabindex="0" data-type="preprint">Pre-Prints</div>
+            </div>
+
+            <div class="field">
+              <div class="label">Search title, venue, authors</div>
+              <input id="q" class="input" placeholder="Try: norms, polarization, honesty, migration" />
+            </div>
+
+            <div class="field">
+              <div class="label">Year</div>
+              <div id="years" class="chipgrid"></div>
+            </div>
+
+            <div class="field">
+              <div class="label">Topics (from titles)</div>
+              <div id="topics" class="chipgrid"></div>
+            </div>
+
+            <div class="toggle">
+              <input id="pdfOnly" type="checkbox" />
+              <label for="pdfOnly">Show only items with a PDF or ungated link</label>
+            </div>
+
+            <div class="field">
+              <div class="row">
+                <div style="flex:1; min-width:170px;">
+                  <div class="label">Sort</div>
+                  <select id="sort" class="select">
+                    <option value="newest" selected>newest</option>
+                    <option value="oldest">oldest</option>
+                    <option value="title">title</option>
+                  </select>
+                </div>
+                <div style="flex:1; min-width:170px;">
+                  <div class="label">Jump to year</div>
+                  <select id="jump" class="select"></select>
+                </div>
+              </div>
+            </div>
+
+            <div class="notice" id="sourceNote">
+              Loading publications from the legacy research page. If your browser blocks cross-site requests, the page will fall back to an embedded legacy view.
+            </div>
+          </div>
+
+          <!-- Results -->
+          <div>
+            <div class="results-head">
+              <div class="count" id="count">0 results</div>
+              <div class="inline">
+                <a class="btn" href="https://sites.google.com/view/eugendimant/research" target="_blank" rel="noopener">Open legacy research page</a>
+                <a class="btn" href="https://scholar.google.com/citations?user=3Ylbe0YAAAAJ" target="_blank" rel="noopener">Open Scholar profile</a>
+              </div>
+            </div>
+            <div id="results" class="results"></div>
+
+            <div id="legacyFallback" style="display:none; margin:12px 6px 0;">
+              <div class="notice">
+                Your browser blocked reading the legacy research page. The embedded view below keeps all links working.
+              </div>
+              <div class="pdf-frame" style="height:900px; margin-top:12px;">
+                <iframe title="Legacy research page" src="https://sites.google.com/view/eugendimant/research" style="width:100%; height:100%; border:0;"></iframe>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- VITA -->
+    <div id="vita" class="section-title">
+      <h2>Vita</h2>
+      <div class="hint">Embedded PDF (put CV_Eugen_Dimant.pdf in the repository root).</div>
+    </div>
+
+    <div class="card">
+      <div class="inner">
+        <div class="cta-row" style="margin-top:0;">
+          <a class="btn primary" href="CV_Eugen_Dimant.pdf" target="_blank" rel="noopener">Open CV PDF</a>
+</div>
+        <div class="pdf-frame" style="margin-top:14px;">
+          <iframe title="CV PDF" src="CV_Eugen_Dimant.pdf#view=FitH" style="width:100%; height:100%; border:0;"></iframe>
+        </div>
+        <div class="sub" style="margin-top:10px;">
+          If the embed does not load, use the “Open CV PDF” button above.
+        </div>
+      </div>
+    </div>
+
+    <!-- CONTACT -->
+    <div id="contact" class="section-title">
+      <h2>Contact</h2>
+      <div class="hint">Quick ways to reach me.</div>
+    </div>
+
+    <div class="card">
+      <div class="inner">
+        <div class="sub">
+          <b>University of Pennsylvania</b><br>
+          Behavioral and Decision Sciences Program<br>
+          Email: <a class="mini-link" href="mailto:edimant@sas.upenn.edu">edimant@sas.upenn.edu</a><br>
+          </div>
+
+        <div class="pillrow" style="margin-top:14px;">
+          <a class="btn" href="https://scholar.google.com/citations?user=3Ylbe0YAAAAJ" target="_blank" rel="noopener">Google Scholar</a>
+          <a class="btn" href="https://www.linkedin.com/in/REPLACE_ME/" target="_blank" rel="noopener">LinkedIn</a>
+          <a class="btn" href="https://x.com/REPLACE_ME/" target="_blank" rel="noopener">X (Twitter)</a>
+        </div>
+      </div>
+    </div>
+
+    <footer>
+      © <span id="year"></span> Eugen Dimant. Built as a single static page (GitHub Pages friendly).
+    </footer>
+  </div>
+
+  <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 
   <script>
-    // -------------------------
-    // Data (from your legacy Google Sites pages)
-    // -------------------------
-    const pubs = [
-      // 2025
-      {
-        year: 2025, type: "peer",
-        title: "Nudging Teachers: A Megastudy To Increase Math Achievement Among 3 Million Elementary School Students",
-        authors: "with A. Duckworth, K. Milkman & BCFG Collective",
-        venue: "Proceedings of the National Academy of Sciences (PNAS)",
-        links: {
-          paper: "https://doi.org/10.1073/pnas.2418616122",
-          open: "https://drive.google.com/file/d/1b5fPBMT2eOilEqVr1pFjf6_Ytp6NENCx/view"
-        }
-      },
-      {
-        year: 2025, type: "peer",
-        title: "Experimental Methods: Eliciting and Measuring Social Norms",
-        authors: "with G. Charness, U. Gneezy & E. Krupka",
-        venue: "Journal of Economic Behavior & Organization",
-        links: {}
-      },
-      {
-        year: 2025, type: "peer",
-        title: "The 'I' in Egalitarianism: Hadza Hunter-Gatherers Averse to Inequality Primarily when Personally Unfavourable",
-        authors: "with K. Smith, D. N. E. Stibbard-Hawkes, I. A. Mabulla, C. Bicchieri & C. Apicella",
-        venue: "Proceedings of the National Academy of Sciences (PNAS) Nexus",
-        links: {}
-      },
-      {
-        year: 2025, type: "peer",
-        title: "Racial Identity, Reactions to Inequality & Fairness Concepts Among Americans",
-        authors: "with L. Reinhardt & N. Sambanis",
-        venue: "Accepted at: Journal of Experimental Political Science",
-        links: {}
-      },
-      {
-        year: 2025, type: "peer",
-        title: "The Science of Honesty: A Review and Research Agenda",
-        authors: "Collaboration led by S. Shalvi",
-        venue: "Advances in Experimental Social Psychology",
-        links: {}
-      },
-      {
-        year: 2025, type: "peer",
-        title: "Norm-Nudging: Harnessing Social Expectations for Behavior Change",
-        authors: "with C. Bicchieri",
-        venue: "Elgar Encyclopedia of Behavioural and Experimental Economics",
-        links: {}
-      },
+    // ---------------------------
+    // Configuration
+    // ---------------------------
+    const LEGACY_RESEARCH_URL = "https://sites.google.com/view/eugendimant/research";
 
-      // 2024
-      {
-        year: 2024, type: "peer",
-        title: "Strategic Behavior with Tight, Loose, and Polarized Norms",
-        authors: "with M. Gelfand, A. Hochleitner & S. Sonderegger",
-        venue: "Management Science",
-        links: { paper: "https://doi.org/10.1287/mnsc.2023.01022", open: "https://drive.google.com/file/d/1N_ugrMwPomlefoFRgILd9vSqW33TzkvZ/view" }
-      },
-      {
-        year: 2024, type: "peer",
-        title: "Hate Trumps Love: The Impact of Political Polarization on Social Preferences",
-        authors: "",
-        venue: "Management Science",
-        links: {}
-      },
-      {
-        year: 2024, type: "peer",
-        title: "Paying Them to Hate US: Effect of U.S. Military Aid on Anti-American Terrorism, 1968-2018",
-        authors: "with T. Krieger & D. Meierrieks",
-        venue: "The Economic Journal",
-        links: { paper: "https://doi.org/10.1093/ej/ueae034", open: "https://drive.google.com/file/d/1YHvdv6fOfoQUbydwCObyPQAIQ-qjM_0C/view" }
-      },
-      {
-        year: 2024, type: "peer",
-        title: "Measuring Norm Pluralism and Perceived Polarization in U.S. Politics",
-        authors: "with F. Panizza, E. Kimbrough & A. Vostroknutov",
-        venue: "Proceedings of the National Academy of Sciences (PNAS) Nexus",
-        links: {}
-      },
-      {
-        year: 2024, type: "peer",
-        title: "Unraveling Polarization: Insight into Individual & Collective Dynamics",
-        authors: "with K. Kish Bar-On, Y. Lelkes & D. Rand",
-        venue: "Proceedings of the National Academy of Sciences (PNAS) Nexus",
-        links: {}
-      },
-      {
-        year: 2024, type: "peer",
-        title: "Polarization in Multidisciplinary Perspective",
-        authors: "with E. Kimbrough",
-        venue: "Proceedings of the National Academy of Sciences (PNAS) Nexus",
-        links: {}
-      },
-      {
-        year: 2024, type: "peer",
-        title: "Motivated Information Acquisition and Social Norm Formation",
-        authors: "with F. Galeotti & M. C. Villeval",
-        venue: "European Economic Review",
-        links: {}
-      },
-      {
-        year: 2024, type: "peer",
-        title: "Social norms: Enforcement, Breakdown & Polarization",
-        authors: "with L. Balafoutas, S. Gächter & E. Krupka",
-        venue: "European Economic Review",
-        links: {}
-      },
-
-      // 2023
-      {
-        year: 2023, type: "peer",
-        title: "Beyond Average: A Method for Measuring the Tightness, Looseness, and Polarization of Social Norms.",
-        authors: "",
-        venue: "Economics Letters",
-        links: {}
-      },
-      {
-        year: 2023, type: "peer",
-        title: "Synthesis of Evidence for Policy from Behavioural Science During COVID-19",
-        authors: "collaboration led by K. Ruggeri & J. van Bavel",
-        venue: "Nature",
-        links: {}
-      },
-      {
-        year: 2023, type: "peer",
-        title: "Competition & Moral Behavior: Meta-Analysis of 45 Crowd-Sourced Experimental Designs",
-        authors: "collaboration led by C. Huber, A. Dreber, et al.",
-        venue: "Proceedings of the National Academy of Sciences (PNAS)",
-        links: {}
-      },
-      {
-        year: 2023, type: "peer",
-        title: "Nudging Enforcers: How Norm Perceptions and Motives for Lying Shape Sanctions",
-        authors: "with T. Gesche",
-        venue: "Proceedings of the National Academy of Sciences (PNAS) Nexus",
-        links: {}
-      },
-      {
-        year: 2023, type: "peer",
-        title: "It's Not A Lie if You Believe the Norm Does Not Apply: Conditional Norm-Following and Belief Distortion",
-        authors: "with C. Bicchieri & S. Sonderegger",
-        venue: "Games & Economic Behavior",
-        links: {}
-      },
-
-      // 2022
-      {
-        year: 2022, type: "peer",
-        title: "Social Norms and Behavior Change: The Interdisciplinary Research Frontier",
-        authors: "with C. Bicchieri, M. Gelfand & S. Sonderegger",
-        venue: "Journal of Economic Behavior & Organization",
-        links: {}
-      },
-      {
-        year: 2022, type: "peer",
-        title: "Politicizing Mask-Wearing: Predicting the Success of Behavioral Interventions Among Republicans and Democrats in the U.S.",
-        authors: "with K. Findley, C. Bicchieri & A. Hilbig",
-        venue: "Scientific Reports",
-        links: {}
-      },
-      {
-        year: 2022, type: "peer",
-        title: "Social Proximity and the Erosion of Norm Compliance",
-        authors: "with A. Jacobsen, M. Kurschilgen & J. Ziegelmeyer",
-        venue: "Journal of Economic Behavior & Organization",
-        links: {}
-      },
-      {
-        year: 2022, type: "peer",
-        title: "Beyond Belief: How Social Norms Shape the Acceptance of Evidence",
-        authors: "with A. Schmitz",
-        venue: "The International Journal of Communication",
-        links: {}
-      },
-      {
-        year: 2022, type: "peer",
-        title: "Persuading Republicans and Democrats to Comply with Mask-Wearing: An Intervention Tournaments Experiment",
-        authors: "with A. Hilbig, K. Findley & C. Bicchieri",
-        venue: "Scientific Reports",
-        links: {}
-      },
-      {
-        year: 2022, type: "peer",
-        title: "Meta-Nudging Honesty: Past, Present and Future of the Research Frontier on Honesty in Behavioral Science",
-        authors: "collaboration led by N. Mazar, J. H. Abeler, et al.",
-        venue: "Journal of Economic Behavior & Organization",
-        links: {}
-      },
-      {
-        year: 2022, type: "peer",
-        title: "Authoritarian Leaders Share Conspiracy Theories to Increase Regime Support and Promote Distrust in Science",
-        authors: "",
-        venue: "The International Journal of Communication",
-        links: {}
-      },
-
-      // 2021
-      {
-        year: 2021, type: "peer",
-        title: "Observability and Social Image: Incentivizing Public Service Provision Through a Field Experiment in Tanzania",
-        authors: "with J. A. Bonilla & P. Justesen",
-        venue: "Journal of Public Economics",
-        links: {}
-      },
-      {
-        year: 2021, type: "peer",
-        title: "Efficient Institutions and Effective Deterrence: On Timing and Uncertainty of Punishment",
-        authors: "with J. Buckenmaier, D. Posten & U. Schmidt",
-        venue: "International Economic Review",
-        links: {}
-      },
-      {
-        year: 2021, type: "peer",
-        title: "The Experience is (Not) Everything: Sequential Outcomes and Social Decision-Making",
-        authors: "with J. Buckenmaier",
-        venue: "Economics Letters",
-        links: {}
-      },
-      {
-        year: 2021, type: "peer",
-        title: "Deviant or Wrong? The Effects of Norm Information on the Efficacy of Punishment",
-        authors: "with C. Bicchieri & E. Xiao",
-        venue: "Journal of Economic Behavior & Organization",
-        links: {}
-      },
-      {
-        year: 2021, type: "peer",
-        title: "Understanding Cross-Cultural Differences in Peer Reporting Practices: Evidence from Tax Evasion Games in Moldova & France",
-        authors: "with R. Romaniuc, D. Dubois, A. Lupusor & V. Prohnitchi",
-        venue: "Public Choice",
-        links: {}
-      },
-
-      // 2020
-      {
-        year: 2020, type: "peer",
-        title: "Requiem for a Nudge: Framing Effects in Nudging Honesty",
-        authors: "with G. Van Kleef & S. Shalvi",
-        venue: "Journal of Economic Behavior & Organization",
-        links: {}
-      },
-      {
-        year: 2020, type: "peer",
-        title: "The Economics of Corruption in Sports: The Special Case of Doping",
-        authors: "with C. Deutscher",
-        venue: "Handbook of Sports (chapter)",
-        links: {}
-      },
-
-      // 2019
-      {
-        year: 2019, type: "peer",
-        title: "Nudging with Care: The Risks and Benefits of Social Information",
-        authors: "with C. Bicchieri",
-        venue: "Public Choice",
-        links: {}
-      },
-      {
-        year: 2019, type: "peer",
-        title: "Contagion of Pro- and Anti-Social Behavior Among Peers and the Role of Social Proximity",
-        authors: "",
-        venue: "Journal of Economic Psychology",
-        links: {}
-      },
-
-      // 2018
-      {
-        year: 2018, type: "peer",
-        title: "Effects of Institutional History and Leniency on Collusive Corruption and Tax Evasion",
-        authors: "with J. Buckenmaier & L. Mittone",
-        venue: "Journal of Economic Behavior & Organization",
-        links: {}
-      },
-      {
-        year: 2018, type: "peer",
-        title: "Causes & Effects of Corruption: What has Past Decade's Empirical Research Taught Us?",
-        authors: "with G. Tosato",
-        venue: "Journal of Economic Surveys",
-        links: {}
-      },
-
-      // 2016
-      {
-        year: 2016, type: "peer",
-        title: "The Nature of Corruption – An Interdisciplinary Perspective",
-        authors: "with T. Schulte",
-        venue: "German Law Journal (special issue)",
-        links: {}
-      },
-
-      // 2015
-      {
-        year: 2015, type: "peer",
-        title: "A Crook is a Crook...But is He Still a Crook Abroad? On the Effect of Immigration on Destination-Country Corruption",
-        authors: "with T. Krieger and M. Redlin",
-        venue: "German Economic Review",
-        links: {}
-      },
-
-      // 2013
-      {
-        year: 2013, type: "peer",
-        title: "The Effect of Corruption on Migration, 1985-2000",
-        authors: "with T. Krieger and D. Meierrieks",
-        venue: "Applied Economics Letters",
-        links: {}
-      },
-
-      // Work in Progress
-      {
-        year: 2025, type: "wip",
-        title: "Promoting Responsible Disposal of Opioids: A Randomized Evaluation of Behaviorally Informed Messaging Combined with a Financial Incentive",
-        authors: "with M. Toma and colleagues from DOJ, State, VA, and OES",
-        venue: "Revise & Resubmit: Health Economics",
-        status: "Revise & Resubmit",
-        links: { paper: "https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4502634" }
-      },
-      {
-        year: 2025, type: "wip",
-        title: "Aid and Exodus: U.S. Military Assistance and Refugee Flows to the U.S.",
-        authors: "with T. Krieger, D. Meierrieks & L. Renner",
-        venue: "Under Review",
-        status: "Under Review",
-        links: { paper: "https://papers.ssrn.com/sol3/papers.cfm?abstract_id=5414817" }
-      },
-      {
-        year: 2025, type: "wip",
-        title: "Pluralism Breeds Tolerance",
-        authors: "with F. Panizza, E. Kimbrough & A. Vostroknutov",
-        venue: "Under Review",
-        status: "Under Review",
-        links: {
-          paper: "https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4649792",
-          materials: "https://osf.io/7hc9v"
-        }
-      },
-      {
-        year: 2025, type: "wip",
-        title: "The Price of Identity: Overoptimism and Congruence Concerns",
-        authors: "with K. Donkor, L. Goette, M. Kurschilgen & M. Müller",
-        venue: "Under Review",
-        status: "Under Review",
-        links: { paper: "https://papers.ssrn.com/abstract=4670092" }
-      },
-      {
-        year: 2025, type: "wip",
-        title: "Making Information Stick: Goal Setting and Attention",
-        authors: "with A. Guido et al.",
-        venue: "Under Review",
-        status: "Under Review",
-        links: { paper: "https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4989494" }
-      },
-      {
-        year: 2025, type: "wip",
-        title: "Divided we Act: The Role of Social Sanctions in a Polarized World",
-        authors: "with M. Gelfand, A. Hochleitner & S. Sonderegger",
-        venue: "Under Review",
-        status: "Under Review",
-        links: { paper: "https://papers.ssrn.com/sol3/papers.cfm?abstract_id=5636792" }
-      },
-      {
-        year: 2021, type: "wip",
-        title: "Becoming Friends or Foes? How Exposure to Competitive Environments and Social Proximity Shape Social Preferences",
-        authors: "with A. Cao, K. Hyndman & N. Yang",
-        venue: "Working Paper",
-        status: "Working Paper",
-        links: { paper: "https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3326107" }
-      }
+    // Topic tags derived from titles. Adjust freely.
+    const TOPIC_RULES = [
+      { tag: "social norms", re: /(norm|norms|pluralism|tight|loose)/i },
+      { tag: "polarization", re: /(polarization|partisan|politic)/i },
+      { tag: "honesty", re: /(honest|honesty|lie|lying|deceit)/i },
+      { tag: "covid-19", re: /(covid|pandemic|mask|distanc|stay-at-home)/i },
+      { tag: "corruption", re: /(corrupt)/i },
+      { tag: "migration", re: /(migration|refugee|exodus|asylum)/i },
+      { tag: "terrorism", re: /(terror)/i },
+      { tag: "punishment", re: /(punish|sanction|enforc)/i },
+      { tag: "competition", re: /(competition)/i },
+      { tag: "tax evasion", re: /(tax evasion|evasion)/i },
+      { tag: "prosociality", re: /(prosocial|cooperat|donor)/i },
     ];
 
-    // -------------------------
-    // Helpers
-    // -------------------------
-    const $ = (sel, el=document) => el.querySelector(sel);
-    const $$ = (sel, el=document) => Array.from(el.querySelectorAll(sel));
-    const toastEl = $("#toast");
-
-    function showToast(msg){
-      toastEl.textContent = msg;
-      toastEl.classList.add("show");
-      setTimeout(() => toastEl.classList.remove("show"), 2200);
-    }
-
-    function norm(s){ return (s || "").toLowerCase(); }
-    function escapeHtml(s){
-      return (s || "").replace(/[&<>"']/g, c => ({
-        "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"
-      }[c]));
-    }
-
-    function makeScholarSearchUrl(title){
-      const q = encodeURIComponent(title);
-      return "https://scholar.google.com/scholar?q=" + q;
-    }
-
-    // Tags are derived only from text that appears in the title (or venue/status).
-    const TAGS = [
-      { key: "social norms", needle: "norm" },
-      { key: "polarization", needle: "polariz" },
-      { key: "honesty", needle: "honest" },
-      { key: "corruption", needle: "corrupt" },
-      { key: "migration", needle: "migrat" },
-      { key: "terrorism", needle: "terror" },
-      { key: "inequality", needle: "inequal" },
-      { key: "mask-wearing", needle: "mask" },
-      { key: "covid-19", needle: "covid" },
-      { key: "punishment", needle: "punish" },
-      { key: "tax evasion", needle: "tax evasion" },
-      { key: "competition", needle: "competit" },
-      { key: "identity", needle: "identity" },
-      { key: "opioids", needle: "opioid" },
-      { key: "refugee", needle: "refugee" }
-    ];
-
-    function deriveTags(pub){
-      const t = norm(pub.title + " " + (pub.venue || "") + " " + (pub.status || ""));
-      return TAGS.filter(x => t.includes(x.needle)).map(x => x.key);
-    }
-
-    // -------------------------
+    // ---------------------------
     // State
-    // -------------------------
-    let activeTab = "peer";
-    let selectedYears = new Set();
-    let selectedTopics = new Set();
+    // ---------------------------
+    let ALL = [];
+    let state = {
+      type: "all",         // all | peer-reviewed | preprint
+      q: "",
+      year: null,          // number or null
+      topic: null,         // string or null
+      pdfOnly: false,
+      sort: "newest",
+    };
 
-    // -------------------------
-    // UI init
-    // -------------------------
-    $("#yearNow").textContent = new Date().getFullYear();
+    // ---------------------------
+    // Helpers
+    // ---------------------------
+    const $ = (sel) => document.querySelector(sel);
+    const esc = (s) => (s || "").replace(/[&<>"']/g, (c) => ({ "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;" }[c]));
 
-    // Nav active state
-    const navLinks = $$("[data-nav]");
-    const sections = ["home","research","vita","misc","contact"].map(id => $("#" + id));
+    function normSpace(s){ return (s || "").replace(/\s+/g," ").trim(); }
 
-    const io = new IntersectionObserver(entries => {
-      const visible = entries.filter(e => e.isIntersecting).sort((a,b)=>b.intersectionRatio-a.intersectionRatio)[0];
-      if(!visible) return;
-      const id = visible.target.id;
-      navLinks.forEach(a => a.classList.toggle("active", a.getAttribute("href") === "#" + id));
-    }, { root: null, threshold: [0.2, 0.35, 0.5] });
-    sections.forEach(s => s && io.observe(s));
+    function extractYear(text){
+      const m = (text || "").match(/\b(19|20)\d{2}\b/);
+      return m ? Number(m[0]) : null;
+    }
 
-    // Copy site link
-    $("#copyLinkBtn").addEventListener("click", async () => {
+    function extractDOIFromUrl(url){
+      if(!url) return null;
+      // common DOI patterns inside URLs
+      const m = url.match(/10\.\d{4,9}\/[-._;()\/:A-Z0-9]+/i);
+      return m ? m[0] : null;
+    }
+
+    function topicTagsFor(pub){
+      const tags = [];
+      for(const rule of TOPIC_RULES){
+        if(rule.re.test(pub.title)) tags.push(rule.tag);
+      }
+      return tags.length ? tags : ["other"];
+    }
+
+    function looksPreprint(venueLine){
+      const t = (venueLine || "").toLowerCase();
+      return t.includes("ssrn") || t.includes("working paper") || t.includes("preprint") || t.includes("osf");
+    }
+
+    function labelType(t){
+      return t === "preprint" ? "Pre-print" : "Peer-reviewed";
+    }
+
+    function stableIdFromTitle(title){
+      return (title || "")
+        .toLowerCase()
+        .replace(/[^a-z0-9]+/g,"-")
+        .replace(/^-+|-+$/g,"")
+        .slice(0, 80) || ("pub-" + Math.random().toString(16).slice(2));
+    }
+
+    function groupByYear(pubs){
+      const map = new Map();
+      for(const p of pubs){
+        const y = p.year || 0;
+        if(!map.has(y)) map.set(y, []);
+        map.get(y).push(p);
+      }
+      const years = Array.from(map.keys()).sort((a,b) => b - a);
+      return years.map(y => ({year:y, pubs: map.get(y)}));
+    }
+
+    function setActive(el, on){
+      if(on) el.classList.add("active");
+      else el.classList.remove("active");
+    }
+
+    function toast(msg){
+      // lightweight, no dependency
+      const t = document.createElement("div");
+      t.textContent = msg;
+      t.style.position="fixed";
+      t.style.left="50%";
+      t.style.bottom="18px";
+      t.style.transform="translateX(-50%)";
+      t.style.padding="10px 12px";
+      t.style.border="1px solid rgba(231,238,252,.22)";
+      t.style.borderRadius="12px";
+      t.style.background="rgba(15,26,47,.96)";
+      t.style.color="var(--text)";
+      t.style.fontWeight="700";
+      t.style.fontSize="13px";
+      t.style.boxShadow="0 10px 25px rgba(0,0,0,.35)";
+      t.style.zIndex="9999";
+      document.body.appendChild(t);
+      setTimeout(()=>{ t.style.opacity="0"; t.style.transition="opacity .2s"; }, 1800);
+      setTimeout(()=>{ t.remove(); }, 2100);
+    }
+
+    async function copyText(s){
       try{
-        await navigator.clipboard.writeText(location.href.split("#")[0] + "#home");
-        showToast("Copied link.");
+        await navigator.clipboard.writeText(s);
+        toast("Copied.");
       }catch(e){
-        showToast("Could not copy. You can copy from the address bar.");
+        // fallback
+        const ta = document.createElement("textarea");
+        ta.value = s;
+        ta.style.position="fixed";
+        ta.style.left="-9999px";
+        document.body.appendChild(ta);
+        ta.select();
+        document.execCommand("copy");
+        ta.remove();
+        toast("Copied.");
       }
-    });
-
-    // Tabs
-    $$(".tab").forEach(btn => {
-      btn.addEventListener("click", () => {
-        $$(".tab").forEach(b => b.classList.remove("active"));
-        btn.classList.add("active");
-        activeTab = btn.dataset.tab;
-        render();
-      });
-    });
-
-    // Year chips
-    const years = Array.from(new Set(pubs.filter(p => p.type === "peer").map(p => p.year))).sort((a,b)=>b-a);
-    const yearsAll = Array.from(new Set(pubs.map(p => p.year))).sort((a,b)=>b-a);
-
-    function renderYearChips(){
-      const host = $("#yearChips");
-      host.innerHTML = "";
-      const useYears = (activeTab === "peer") ? years : yearsAll;
-      useYears.forEach(y => {
-        const count = pubs.filter(p => p.type === activeTab && p.year === y).length;
-        const chip = document.createElement("button");
-        chip.type = "button";
-        chip.className = "chip" + (selectedYears.has(y) ? " active" : "");
-        chip.innerHTML = `${y} <small>${count}</small>`;
-        chip.addEventListener("click", () => {
-          if(selectedYears.has(y)) selectedYears.delete(y); else selectedYears.add(y);
-          chip.classList.toggle("active");
-          render();
-        });
-        host.appendChild(chip);
-      });
     }
 
-    // Topic chips (derived)
-    function getTopics(){
-      const set = new Set();
-      pubs.filter(p => p.type === activeTab).forEach(p => deriveTags(p).forEach(t => set.add(t)));
-      return Array.from(set).sort((a,b)=>a.localeCompare(b));
+    function buildBibtexFromCrossref(item, fallbackKey){
+      const t = item?.title?.[0] || item?.title || fallbackKey || "untitled";
+      const authors = (item?.author || []).map(a => {
+        const last = a.family || "";
+        const first = a.given || "";
+        return (last && first) ? `${last}, ${first}` : (last || first || "");
+      }).filter(Boolean).join(" and ");
+
+      const year = item?.issued?.["date-parts"]?.[0]?.[0] || item?.published?.["date-parts"]?.[0]?.[0] || "";
+      const container = (item?.["container-title"]?.[0] || item?.["container-title"] || "").toString();
+      const volume = item?.volume || "";
+      const issue = item?.issue || "";
+      const page = item?.page || "";
+      const doi = item?.DOI || "";
+      const url = item?.URL || "";
+
+      const keyBase = (authors.split(" and ")[0] || "dimant").split(",")[0].replace(/\s+/g,"");
+      const key = `${keyBase}${year || ""}`.replace(/[^A-Za-z0-9]/g,"") || (fallbackKey || "dimant");
+
+      const lines = [];
+      lines.push(`@article{${key},`);
+      lines.push(`  title = {${t}},`);
+      if(authors) lines.push(`  author = {${authors}},`);
+      if(container) lines.push(`  journal = {${container}},`);
+      if(year) lines.push(`  year = {${year}},`);
+      if(volume) lines.push(`  volume = {${volume}},`);
+      if(issue) lines.push(`  number = {${issue}},`);
+      if(page) lines.push(`  pages = {${page}},`);
+      if(doi) lines.push(`  doi = {${doi}},`);
+      if(url) lines.push(`  url = {${url}},`);
+      lines.push(`}`);
+      return lines.join("\n");
     }
 
-    function renderTopicChips(){
-      const host = $("#topicChips");
-      host.innerHTML = "";
-      const topics = getTopics();
-      topics.forEach(t => {
-        const count = pubs.filter(p => p.type === activeTab).filter(p => deriveTags(p).includes(t)).length;
-        const chip = document.createElement("button");
-        chip.type = "button";
-        chip.className = "chip" + (selectedTopics.has(t) ? " active" : "");
-        chip.innerHTML = `${escapeHtml(t)} <small>${count}</small>`;
-        chip.addEventListener("click", () => {
-          if(selectedTopics.has(t)) selectedTopics.delete(t); else selectedTopics.add(t);
-          chip.classList.toggle("active");
-          render();
-        });
-        host.appendChild(chip);
-      });
-    }
+    async function copyBibtex(pub){
+      // Prefer DOI from a known journal URL if present.
+      const doi = pub.doi || extractDOIFromUrl(pub.links?.paper) || extractDOIFromUrl(pub.links?.journal) || null;
 
-    // Reset
-    $("#resetBtn").addEventListener("click", () => {
-      $("#q").value = "";
-      selectedYears.clear();
-      selectedTopics.clear();
-      $("#onlyOpen").checked = false;
-      $("#groupByYear").checked = true;
-      $("#sort").value = "year_desc";
-      render();
-      showToast("Reset.");
-    });
-
-    // Share filtered link
-    $("#shareBtn").addEventListener("click", async () => {
-      const params = new URLSearchParams();
-      if(activeTab !== "peer") params.set("tab", activeTab);
-      const q = $("#q").value.trim();
-      if(q) params.set("q", q);
-      if(selectedYears.size) params.set("y", Array.from(selectedYears).sort((a,b)=>b-a).join(","));
-      if(selectedTopics.size) params.set("t", Array.from(selectedTopics).join(","));
-      if($("#onlyOpen").checked) params.set("open", "1");
-      if(!$("#groupByYear").checked) params.set("group", "0");
-      params.set("sort", $("#sort").value);
-
-      const link = location.origin + location.pathname + "#research" + (params.toString() ? "?" + params.toString() : "");
       try{
-        await navigator.clipboard.writeText(link);
-        showToast("Copied filtered link.");
-      }catch(e){
-        showToast("Could not copy. You can copy from the address bar.");
-      }
-    });
-
-    // Controls rerender
-    $("#q").addEventListener("input", () => render());
-    $("#onlyOpen").addEventListener("change", () => render());
-    $("#groupByYear").addEventListener("change", () => render());
-    $("#sort").addEventListener("change", () => render());
-    $("#jumpYear").addEventListener("change", () => {
-      const y = $("#jumpYear").value;
-      if(!y) return;
-      const el = document.getElementById("year-" + y);
-      if(el) el.scrollIntoView({behavior:"smooth", block:"start"});
-      $("#jumpYear").value = "";
-    });
-
-    // Parse query params after hash (format: #research?x=y)
-    function parseHashParams(){
-      const hash = location.hash || "";
-      const idx = hash.indexOf("?");
-      if(idx === -1) return new URLSearchParams();
-      return new URLSearchParams(hash.slice(idx + 1));
-    }
-    function applyParams(){
-      const p = parseHashParams();
-      const tab = p.get("tab");
-      if(tab === "wip"){
-        activeTab = "wip";
-        $$(".tab").forEach(b => b.classList.toggle("active", b.dataset.tab === "wip"));
-      }
-      const q = p.get("q");
-      if(q) $("#q").value = q;
-
-      const ys = (p.get("y") || "").split(",").map(x => parseInt(x,10)).filter(x => !Number.isNaN(x));
-      ys.forEach(y => selectedYears.add(y));
-
-      const ts = (p.get("t") || "").split(",").map(x => x.trim()).filter(Boolean);
-      ts.forEach(t => selectedTopics.add(t));
-
-      $("#onlyOpen").checked = p.get("open") === "1";
-      $("#groupByYear").checked = p.get("group") !== "0";
-      const sort = p.get("sort");
-      if(sort) $("#sort").value = sort;
-    }
-
-    window.addEventListener("hashchange", () => {
-      // do not auto-apply on every hash change to avoid surprises
-    });
-
-    // -------------------------
-    // Render
-    // -------------------------
-    function matches(pub){
-      if(pub.type !== activeTab) return false;
-
-      const q = norm($("#q").value.trim());
-      if(q){
-        const hay = norm(pub.title + " " + (pub.authors||"") + " " + (pub.venue||"") + " " + (pub.status||""));
-        if(!hay.includes(q)) return false;
-      }
-
-      if(selectedYears.size && !selectedYears.has(pub.year)) return false;
-
-      if(selectedTopics.size){
-        const tags = deriveTags(pub);
-        for(const t of selectedTopics){
-          if(!tags.includes(t)) return false;
+        if(doi){
+          const r = await fetch(`https://api.crossref.org/works/${encodeURIComponent(doi)}`);
+          if(!r.ok) throw new Error("crossref lookup failed");
+          const j = await r.json();
+          const bib = buildBibtexFromCrossref(j?.message, stableIdFromTitle(pub.title));
+          await copyText(bib);
+          return;
         }
-      }
 
-      if($("#onlyOpen").checked){
-        const hasOpen = !!(pub.links && (pub.links.open || pub.links.pdf || pub.links.ungated || pub.links.materials));
-        if(!hasOpen) return false;
+        // fallback: bibliographic search by title
+        const q = encodeURIComponent(pub.title);
+        const r = await fetch(`https://api.crossref.org/works?query.bibliographic=${q}&rows=1`);
+        if(!r.ok) throw new Error("crossref search failed");
+        const j = await r.json();
+        const item = j?.message?.items?.[0];
+        if(!item) throw new Error("no match");
+        const bib = buildBibtexFromCrossref(item, stableIdFromTitle(pub.title));
+        await copyText(bib);
+      }catch(e){
+        toast("Could not fetch BibTeX automatically.");
       }
-
-      return true;
     }
 
-    function sortItems(items){
-      const mode = $("#sort").value;
-      const copy = items.slice();
-      if(mode === "year_asc") copy.sort((a,b)=>a.year-b.year || a.title.localeCompare(b.title));
-      if(mode === "year_desc") copy.sort((a,b)=>b.year-a.year || a.title.localeCompare(b.title));
-      if(mode === "title_asc") copy.sort((a,b)=>a.title.localeCompare(b.title));
-      return copy;
+    function scholarSearchUrl(title){
+      return `https://scholar.google.com/scholar?q=${encodeURIComponent(title)}`;
     }
 
-    function pubLinks(pub){
-      const links = pub.links || {};
+    // ---------------------------
+    // Legacy page parsing
+    // ---------------------------
+    function parseLegacyResearch(html){
+      const doc = new DOMParser().parseFromString(html, "text/html");
+      const root = doc.querySelector("main") || doc.body;
+
+      // Heuristic: publications appear as repeating blocks with a title line and nearby action links.
+      // We collect candidate containers that contain a 'Link to Paper' anchor.
+      const anchors = Array.from(root.querySelectorAll("a")).filter(a => a.textContent && a.href);
+      const paperLinks = anchors.filter(a => /Link to Paper/i.test(a.textContent));
+
+      // Expand each 'Link to Paper' anchor to a container.
+      const containers = [];
+      for(const a of paperLinks){
+        const c = a.closest("div, section, article") || a.parentElement;
+        if(c) containers.push(c);
+      }
+
+      // De-duplicate containers by reference.
+      const uniq = [];
+      const seen = new Set();
+      for(const c of containers){
+        if(seen.has(c)) continue;
+        seen.add(c);
+        uniq.push(c);
+      }
+
+      const pubs = [];
+      for(const c of uniq){
+        const text = normSpace(c.textContent);
+
+        // title: first reasonably long line, excluding link labels
+        const lines = c.textContent.split("\n").map(s => normSpace(s)).filter(Boolean);
+        const drop = new Set(["Link to Paper","Ungated Version","AI Podcast Interview","BibTeX Citation","Open-access search","Copy citation","Find on Scholar","Open PDF","Paper","Link to WP","Norm -Drawing Task"]);
+        const title = lines.find(s =>
+          s.length > 8 &&
+          !drop.has(s) &&
+          !/^(research|peer-reviewed|work in progress|results|sort|jump to)/i.test(s)
+        ) || "Untitled";
+
+        // venue line often contains "with ..." and a journal name
+        const venueLine = lines.find(s => /^with\s/i.test(s)) || "";
+
+        const year = extractYear(venueLine) || extractYear(text);
+        const type = looksPreprint(venueLine) ? "preprint" : "peer-reviewed";
+
+        const linkMap = {};
+        const localAnchors = Array.from(c.querySelectorAll("a")).filter(a => a.textContent && a.href);
+        for(const a of localAnchors){
+          const label = normSpace(a.textContent);
+          if(/Link to Paper/i.test(label)) linkMap.paper = a.href;
+          else if(/Ungated Version/i.test(label)) linkMap.pdf = a.href;
+          else if(/AI Podcast Interview/i.test(label)) linkMap.podcast = a.href;
+          else if(/Link to WP/i.test(label)) linkMap.wp = a.href;
+          else if(/Norm\s*-Drawing Task/i.test(label)) linkMap.wp = a.href;
+        }
+
+        pubs.push({
+          id: stableIdFromTitle(title),
+          title,
+          venueLine,
+          year,
+          type,
+          topics: topicTagsFor({title}),
+          links: linkMap,
+          doi: extractDOIFromUrl(linkMap.paper || "")
+        });
+      }
+
+      // Some publications may not include a Link to Paper but do include "Link to WP" (work in progress).
+      // Add those containers too.
+      const wpLinks = anchors.filter(a => /Link to WP|Norm\s*-Drawing Task/i.test(a.textContent));
+      for(const a of wpLinks){
+        const c = a.closest("div, section, article") || a.parentElement;
+        if(!c || seen.has(c)) continue;
+        seen.add(c);
+        const lines = c.textContent.split("\n").map(s => normSpace(s)).filter(Boolean);
+        const title = lines.find(s => s.length > 8 && !/^(Link to WP|Norm\s*-Drawing Task)$/i.test(s)) || "Untitled";
+        const venueLine = lines.find(s => /^with\s/i.test(s)) || "Working paper";
+        const year = extractYear(venueLine) || extractYear(c.textContent);
+        const linkMap = {};
+        const localAnchors = Array.from(c.querySelectorAll("a")).filter(a => a.textContent && a.href);
+        for(const la of localAnchors){
+          const label = normSpace(la.textContent);
+          if(/Link to WP|Norm\s*-Drawing Task/i.test(label)) linkMap.wp = la.href;
+          else if(/Ungated Version/i.test(label)) linkMap.pdf = la.href;
+        }
+        pubs.push({
+          id: stableIdFromTitle(title),
+          title,
+          venueLine,
+          year,
+          type:"preprint",
+          topics: topicTagsFor({title}),
+          links: linkMap,
+          doi: null
+        });
+      }
+
+      // de-dup by title
       const out = [];
-
-      const paper = links.paper || "";
-      const open = links.open || links.pdf || links.ungated || "";
-      const materials = links.materials || "";
-
-      // Primary: use direct paper link if present, else Scholar search
-      out.push({
-        label: paper ? "Paper" : "Find on Scholar",
-        href: paper ? paper : makeScholarSearchUrl(pub.title),
-        primary: true
-      });
-
-      if(open){
-        out.push({ label: "Open PDF", href: open });
-      } else {
-        out.push({ label: "Open-access search", href: "https://www.google.com/search?q=" + encodeURIComponent(pub.title + " pdf") });
+      const titleSet = new Set();
+      for(const p of pubs){
+        const k = p.title.toLowerCase();
+        if(titleSet.has(k)) continue;
+        titleSet.add(k);
+        out.push(p);
       }
-
-      if(materials){
-        out.push({ label: "Materials", href: materials });
-      }
-
-      out.push({ label: "Copy citation", action: "cite" });
-
       return out;
     }
 
-    async function copyCitation(pub){
-      const a = pub.authors ? pub.authors.replace(/^with\s+/i,"") : "";
-      const cite = `${a ? a + ". " : ""}${pub.year}. ${pub.title}. ${pub.venue || ""}`.trim();
+    async function loadPubs(){
+      const note = $("#sourceNote");
       try{
-        await navigator.clipboard.writeText(cite);
-        showToast("Citation copied.");
+        const r = await fetch(LEGACY_RESEARCH_URL, { mode: "cors" });
+        if(!r.ok) throw new Error("legacy fetch failed");
+        const html = await r.text();
+        const pubs = parseLegacyResearch(html);
+        if(!pubs.length) throw new Error("no publications parsed");
+        note.innerHTML = "Loaded publications from the legacy research page.";
+        return pubs;
       }catch(e){
-        showToast("Could not copy citation.");
+        note.innerHTML = "Could not load the legacy research page directly (likely blocked by the browser). Using embedded legacy view for complete links.";
+        $("#legacyFallback").style.display = "block";
+        return [];
       }
     }
 
-    function renderJump(items){
-      const sel = $("#jumpYear");
-      const years = Array.from(new Set(items.map(p=>p.year))).sort((a,b)=>b-a);
-      sel.innerHTML = `<option value="">Jump to year…</option>` + years.map(y => `<option value="${y}">${y}</option>`).join("");
-    }
+    // ---------------------------
+    // Rendering
+    // ---------------------------
+    function applyFilters(){
+      const q = state.q.toLowerCase();
+      let pubs = ALL.slice();
 
-    function renderList(items){
-      const host = $("#list");
-      host.innerHTML = "";
-
-      const group = $("#groupByYear").checked;
-      if(!items.length){
-        host.innerHTML = `<div class="pub"><div class="meta">No results. Try a different keyword, clear year chips, or switch tabs.</div></div>`;
-        return;
+      if(state.type !== "all"){
+        pubs = pubs.filter(p => p.type === state.type);
+      }
+      if(state.year){
+        pubs = pubs.filter(p => (p.year || null) === state.year);
+      }
+      if(state.topic){
+        pubs = pubs.filter(p => (p.topics || []).includes(state.topic));
+      }
+      if(state.pdfOnly){
+        pubs = pubs.filter(p => !!(p.links?.pdf));
+      }
+      if(q){
+        pubs = pubs.filter(p => {
+          const hay = (p.title + " " + (p.venueLine || "")).toLowerCase();
+          return hay.includes(q);
+        });
       }
 
-      if(!group){
-        items.forEach(pub => host.appendChild(renderPub(pub)));
-        return;
+      // sort
+      if(state.sort === "newest"){
+        pubs.sort((a,b) => (b.year || 0) - (a.year || 0) || a.title.localeCompare(b.title));
+      }else if(state.sort === "oldest"){
+        pubs.sort((a,b) => (a.year || 0) - (b.year || 0) || a.title.localeCompare(b.title));
+      }else{
+        pubs.sort((a,b) => a.title.localeCompare(b.title));
       }
 
-      const byYear = new Map();
-      items.forEach(p => {
-        if(!byYear.has(p.year)) byYear.set(p.year, []);
-        byYear.get(p.year).push(p);
-      });
-
-      Array.from(byYear.keys()).sort((a,b)=>b-a).forEach(y => {
-        const block = document.createElement("div");
-        block.className = "year-block";
-        block.id = "year-" + y;
-
-        const title = document.createElement("div");
-        title.className = "year-title";
-        title.innerHTML = `<h3>${y}</h3><a class="jump" href="#research">Back to filters</a>`;
-        block.appendChild(title);
-
-        byYear.get(y).forEach(pub => block.appendChild(renderPub(pub)));
-        host.appendChild(block);
-      });
+      return pubs;
     }
 
-    function renderPub(pub){
-      const el = document.createElement("article");
-      el.className = "pub";
+    function renderChips(){
+      const yearsEl = $("#years");
+      const topicsEl = $("#topics");
+      yearsEl.innerHTML = "";
+      topicsEl.innerHTML = "";
 
-      const tags = deriveTags(pub);
-      const badges = [];
-      badges.push(`<span class="badge"><strong>${pub.year}</strong></span>`);
-      if(pub.type === "wip" && pub.status) badges.push(`<span class="badge warn"><strong>${escapeHtml(pub.status)}</strong></span>`);
-      if(pub.links && (pub.links.open || pub.links.pdf || pub.links.ungated)) badges.push(`<span class="badge ok"><strong>open</strong></span>`);
-      tags.slice(0,4).forEach(t => badges.push(`<span class="badge">${escapeHtml(t)}</span>`));
+      const base = (state.type === "all") ? ALL : ALL.filter(p => p.type === state.type);
 
-      const meta = [
-        pub.authors ? `<em>${escapeHtml(pub.authors)}</em>` : "",
-        pub.venue ? escapeHtml(pub.venue) : ""
-      ].filter(Boolean).join(" · ");
+      // years
+      const yearCounts = new Map();
+      for(const p of base){
+        const y = p.year || null;
+        if(!y) continue;
+        yearCounts.set(y, (yearCounts.get(y) || 0) + 1);
+      }
+      const years = Array.from(yearCounts.keys()).sort((a,b) => b - a);
+      for(const y of years){
+        const el = document.createElement("div");
+        el.className = "chip" + ((state.year === y) ? " active" : "");
+        el.textContent = `${y} ${yearCounts.get(y)}`;
+        el.onclick = () => { state.year = (state.year === y) ? null : y; render(); };
+        yearsEl.appendChild(el);
+      }
 
-      const links = pubLinks(pub).map(l => {
-        if(l.action === "cite"){
-          return `<button class="link" type="button" data-cite="1">Copy citation</button>`;
+      // topics
+      const topicCounts = new Map();
+      for(const p of base){
+        for(const t of (p.topics || [])){
+          topicCounts.set(t, (topicCounts.get(t) || 0) + 1);
         }
-        const cls = "link" + (l.primary ? " primary" : "");
-        const rel = "noreferrer noopener";
-        const target = "_blank";
-        return `<a class="${cls}" href="${escapeHtml(l.href)}" target="${target}" rel="${rel}">${escapeHtml(l.label)}</a>`;
-      }).join("");
+      }
+      const topics = Array.from(topicCounts.entries())
+        .sort((a,b) => b[1] - a[1] || a[0].localeCompare(b[0]))
+        .slice(0, 18);
 
-      el.innerHTML = `
-        <div class="top">
-          <div>
-            <h4>${escapeHtml(pub.title)}</h4>
-            <div class="meta">${meta}</div>
-          </div>
-          <div class="badges">${badges.join("")}</div>
-        </div>
-        <div class="links">${links}</div>
-      `;
+      for(const [t,count] of topics){
+        const el = document.createElement("div");
+        el.className = "chip" + ((state.topic === t) ? " active" : "");
+        el.textContent = `${t} ${count}`;
+        el.onclick = () => { state.topic = (state.topic === t) ? null : t; render(); };
+        topicsEl.appendChild(el);
+      }
+    }
 
-      const citeBtn = el.querySelector("[data-cite='1']");
-      if(citeBtn){
-        citeBtn.addEventListener("click", () => copyCitation(pub));
+    function renderJump(yearGroups){
+      const sel = $("#jump");
+      const years = yearGroups.map(g => g.year).filter(y => y);
+      sel.innerHTML = `<option value="">--</option>` + years.map(y => `<option value="${y}">${y}</option>`).join("");
+      sel.onchange = () => {
+        const y = Number(sel.value);
+        if(!y) return;
+        const el = document.getElementById(`year-${y}`);
+        if(el) el.scrollIntoView({behavior:"smooth", block:"start"});
+      };
+    }
+
+    function pubActions(pub){
+      const a = [];
+      const links = pub.links || {};
+      // Always show a journal action: open direct paper link if present, else open scholar search.
+      const journalHref = links.paper || scholarSearchUrl(pub.title);
+
+      a.push(`<a href="${esc(journalHref)}" target="_blank" rel="noopener">Journal site</a>`);
+      if(links.pdf) a.push(`<a href="${esc(links.pdf)}" target="_blank" rel="noopener">PDF (Drive)</a>`);
+      else a.push(`<a href="${esc(scholarSearchUrl(pub.title))}" target="_blank" rel="noopener" title="No PDF link found on the legacy page">Scholar search</a>`);
+      if(links.podcast) a.push(`<a href="${esc(links.podcast)}" target="_blank" rel="noopener">AI podcast</a>`);
+      if(links.wp) a.push(`<a href="${esc(links.wp)}" target="_blank" rel="noopener">Working paper</a>`);
+      a.push(`<button type="button" data-bib="${esc(pub.id)}">Copy BibTeX</button>`);
+      return a.join("");
+    }
+
+    function renderResults(pubs){
+      const results = $("#results");
+      const count = $("#count");
+      count.textContent = `${pubs.length} result${pubs.length === 1 ? "" : "s"}`;
+
+      if(!pubs.length){
+        results.innerHTML = `<div class="notice">No matches. Try clearing a filter or changing the search term.</div>`;
+        return;
       }
 
-      return el;
+      const grouped = groupByYear(pubs);
+      renderJump(grouped);
+
+      let html = "";
+      for(const g of grouped){
+        const y = g.year || 0;
+        html += `<div class="year-group" id="year-${y}">`;
+        html += `<div class="year-label"><h3>${y ? y : "Unknown year"}</h3><a class="backlink" href="#research">Back to filters</a></div>`;
+        for(const p of g.pubs){
+          const yearBadge = p.year ? `<span class="badge year">${p.year}</span>` : "";
+          const typeBadge = `<span class="badge type">${labelType(p.type)}</span>`;
+          const topicBadges = (p.topics || []).slice(0,2).map(t => `<span class="badge">${esc(t)}</span>`).join("");
+
+          html += `
+            <div class="pub">
+              <div>
+                <h4 class="pub-title">${esc(p.title)}</h4>
+                <div class="pub-badges">
+                  ${yearBadge}
+                  ${typeBadge}
+                  ${topicBadges}
+                </div>
+                <div class="pub-meta">${esc(p.venueLine || "")}</div>
+                <div class="pub-actions">${pubActions(p)}</div>
+              </div>
+            </div>
+          `;
+        }
+        html += `</div>`;
+      }
+
+      results.innerHTML = html;
+
+      // wire BibTeX buttons
+      results.querySelectorAll("button[data-bib]").forEach(btn => {
+        btn.addEventListener("click", () => {
+          const id = btn.getAttribute("data-bib");
+          const pub = ALL.find(p => p.id === id);
+          if(pub) copyBibtex(pub);
+        });
+      });
     }
 
     function render(){
-      renderYearChips();
-      renderTopicChips();
-
-      const items = sortItems(pubs.filter(matches));
-      $("#count").textContent = `${items.length} result${items.length === 1 ? "" : "s"} · ${activeTab === "peer" ? "peer-reviewed" : "work in progress"}`;
-      renderJump(items);
-      renderList(items);
+      renderChips();
+      const pubs = applyFilters();
+      renderResults(pubs);
     }
 
-    // Init from link params
-    applyParams();
-    render();
-
-    // Smooth scroll offset fix for sticky header
-    function scrollWithOffset(id){
-      const el = document.getElementById(id);
-      if(!el) return;
-      const y = el.getBoundingClientRect().top + window.pageYOffset - 78;
-      window.scrollTo({ top: y, behavior: "smooth" });
-    }
-    navLinks.forEach(a => {
-      a.addEventListener("click", (e) => {
-        const href = a.getAttribute("href") || "";
-        if(!href.startsWith("#")) return;
-        const id = href.slice(1);
-        if(!id) return;
-        e.preventDefault();
-        history.replaceState(null, "", "#" + id);
-        scrollWithOffset(id);
+    function wireUI(){
+      // tabs
+      document.querySelectorAll(".tab").forEach(t => {
+        t.addEventListener("click", () => {
+          document.querySelectorAll(".tab").forEach(x => x.classList.remove("active"));
+          t.classList.add("active");
+          state.type = t.dataset.type;
+          state.year = null;
+          state.topic = null;
+          render();
+        });
+        t.addEventListener("keydown", (e) => {
+          if(e.key === "Enter" || e.key === " "){
+            e.preventDefault();
+            t.click();
+          }
+        });
       });
-    });
+
+      // search
+      $("#q").addEventListener("input", (e) => { state.q = e.target.value; render(); });
+
+      // pdf only
+      $("#pdfOnly").addEventListener("change", (e) => { state.pdfOnly = e.target.checked; render(); });
+
+      // sort
+      $("#sort").addEventListener("change", (e) => { state.sort = e.target.value; render(); });
+
+      // smooth scrolling for hash nav
+      window.addEventListener("hashchange", () => {
+        const id = location.hash?.slice(1);
+        if(!id) return;
+        const el = document.getElementById(id);
+        if(el) el.scrollIntoView({behavior:"smooth", block:"start"});
+      });
+    }
+
+    // ---------------------------
+    // Init
+    // ---------------------------
+    (async function init(){
+      $("#year").textContent = new Date().getFullYear();
+
+      wireUI();
+
+      ALL = await loadPubs();
+      // If parsing failed, keep UI alive but show the embedded legacy page.
+      if(!ALL.length){
+        $("#count").textContent = "Legacy view";
+        $("#results").innerHTML = "";
+        return;
+      }
+
+      render();
+    })();
   </script>
 </body>
 </html>
