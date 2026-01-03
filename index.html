@@ -19,7 +19,7 @@
       --shadow2:0 10px 28px rgba(0,0,0,.26);
       --accent:#7dd3fc;
       --accent2:#a78bfa;
-      --venue-red:#dc2626;
+      --venue-red:#ef4444;
       --ok:#34d399;
       --warn:#fbbf24;
       --radius:18px;
@@ -135,6 +135,18 @@
     .card p, .card li{margin:0; color:var(--muted); font-size:15px;}
     .card ul{margin:10px 0 0; padding-left:18px;}
     .card li{margin:6px 0;}
+
+    .about-section{margin-top:28px;}
+    .about-panel{
+      background:color-mix(in srgb, var(--card) 88%, transparent);
+      border:1px solid var(--border);
+      box-shadow:var(--shadow2);
+      border-radius:var(--radius);
+      padding:var(--pad2);
+    }
+    .about-panel h2{margin:0 0 14px; font-size:18px; letter-spacing:.2px;}
+    .about-panel p{margin:0 0 12px; color:var(--muted); font-size:15px; line-height:1.6;}
+    .about-panel p:last-child{margin-bottom:0;}
 
     .section-title{margin:34px 0 10px; font-size:14px; letter-spacing:.16em; text-transform:uppercase; color:var(--muted2);}
 
@@ -303,24 +315,39 @@
 
         <div class="card">
           <h2 style="margin-top:0;">Research news</h2>
-          <ul>
-            <li><b>Sep 2025:</b> Honored to be included in Capital Magazine's German 40-under-40 list</li>
-            <li><b>Sep 2025:</b> New working paper on U.S. military aid and refugee flows published</li>
-            <li><b>Aug 2025:</b> New paper on experimental methods for eliciting social norms published in JEBO</li>
-            <li><b>Jun 2025:</b> Workshop on Polarization, Social Norms, and Trust at MIT (Dec 5-6, 2025)</li>
-            <li><b>Mar 2025:</b> Megastudy on math achievement with 3M students published in PNAS</li>
+          <ul style="font-size:15px;">
+            <li><b>Sep 2025:</b> Honored to be included in <a href="https://www.capital.de/karriere/capital-ranking--das-sind-deutschlands-top-40-unter-40-fuer-2025-36192498.html" target="_blank" rel="noopener">Capital Magazine's German 40-under-40 list</a></li>
+            <li><b>Sep 2025:</b> New working paper on <a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=5414817" target="_blank" rel="noopener">U.S. military aid and refugee flows</a> published</li>
+            <li><b>Aug 2025:</b> New paper on <a href="https://doi.org/10.1016/j.jebo.2025.107187" target="_blank" rel="noopener">experimental methods for eliciting social norms</a> published in <span style="color:var(--venue-red); font-weight:500;">JEBO</span></li>
+            <li><b>Jun 2025:</b> <a href="https://sites.google.com/view/polarization-workshop" target="_blank" rel="noopener">Workshop on Polarization, Social Norms, and Trust</a> (Dec 5-6, 2025)</li>
+            <li><b>Mar 2025:</b> <a href="https://doi.org/10.1073/pnas.2418616122" target="_blank" rel="noopener">Megastudy on math achievement</a> with 3M students published in <span style="color:var(--venue-red); font-weight:500;">PNAS</span></li>
           </ul>
         </div>
 
         <div class="card">
           <h2 style="margin-top:0;">Selected publications</h2>
-          <ul>
-            <li>Nudging Teachers: A Megastudy (PNAS, 2025)</li>
-            <li>Strategic Behavior with Tight, Loose, and Polarized Norms (Management Science, 2024)</li>
-            <li>Hate Trumps Love: Political Polarization and Social Preferences (Management Science, 2024)</li>
-            <li>Synthesis of Evidence for Policy from Behavioural Science During COVID-19 (Nature, 2023)</li>
-            <li>Social Proximity and the Erosion of Norm Compliance (Games and Economic Behavior, 2022)</li>
+          <ul style="font-size:15px;">
+            <li><a href="https://doi.org/10.1073/pnas.2418616122" target="_blank" rel="noopener">Nudging Teachers: A Megastudy</a> (<span style="color:var(--venue-red); font-weight:500;">PNAS</span>, 2025)</li>
+            <li><a href="https://doi.org/10.1287/mnsc.2023.01022" target="_blank" rel="noopener">Strategic Behavior with Tight, Loose, and Polarized Norms</a> (<span style="color:var(--venue-red); font-weight:500;">Management Science</span>, 2024)</li>
+            <li><a href="https://doi.org/10.1287/mnsc.2023.4701" target="_blank" rel="noopener">Hate Trumps Love: Political Polarization and Social Preferences</a> (<span style="color:var(--venue-red); font-weight:500;">Management Science</span>, 2024)</li>
+            <li><a href="https://www.nature.com/articles/s41586-023-06840-9" target="_blank" rel="noopener">Synthesis of Evidence for Policy from Behavioural Science During COVID-19</a> (<span style="color:var(--venue-red); font-weight:500;">Nature</span>, 2023)</li>
+            <li><a href="https://doi.org/10.1016/j.geb.2021.11.012" target="_blank" rel="noopener">Social Proximity and the Erosion of Norm Compliance</a> (<span style="color:var(--venue-red); font-weight:500;">Games and Economic Behavior</span>, 2022)</li>
           </ul>
+        </div>
+      </div>
+
+      <div class="about-section">
+        <div class="about-panel">
+          <h2>About Me</h2>
+          <p>
+            I am an Associate Professor of Practice in Behavioral & Decision Sciences at the University of Pennsylvania and a Visiting Professor at Stanford University. I'm also a fellow at both the <a href="https://www.sas.upenn.edu/lps/graduate/mbds" target="_blank" rel="noopener">Behavioral and Decision Sciences Program</a> and the <a href="https://normsandbehavior.sas.upenn.edu/" target="_blank" rel="noopener">Center for Social Norms and Behavioral Dynamics</a> at the University of Pennsylvania, a collaborator at the Behavior Change for Good Initiative (<a href="https://bcfg.wharton.upenn.edu/" target="_blank" rel="noopener">BCFG</a>) at Wharton & a Network Fellow at <a href="https://www.cesifo.org/en/node/51520" target="_blank" rel="noopener">CESifo</a>. From 2022 - 2023, I was also part of the former White House Behavioral Science Team (now: <a href="https://oes.gsa.gov/" target="_blank" rel="noopener">OES</a>) and worked on high-impact RCTs related to the opioid epidemic.
+          </p>
+          <p>
+            My research lies at the intersection of behavioral economics, sociology, and political psychology. I study how social norms emerge, how they are enforced or eroded, and how norm disagreement and polarization influence both what people view as acceptable and how it influences their actions. My recent work develops and applies measures of norm pluralism and perceived polarization, examining how polarization shapes social preferences and cooperation.
+          </p>
+          <p>
+            A second strand of my work examines institutions and large-scale social outcomes, including corruption, crime, terrorism, and migration, often combining experimental tools with applied empirical methods. My interest in migration is deeply personal. I emigrated from Moldova as a refugee following the collapse of the Soviet Union, and that experience continues to shape the questions I ask about identity, institutions, and social cohesion.
+          </p>
         </div>
       </div>
     </div>
@@ -381,10 +408,10 @@
 
         <div class="pdf-wrap">
           <div class="pdf-toolbar">
-            <a class="btn btn-primary" href="https://www.dropbox.com/s/ehwvi60r5hna1o6/CV_Eugen_Dimant.pdf?dl=1" download>Download CV</a>
-            <a class="btn" href="https://www.dropbox.com/s/ehwvi60r5hna1o6/CV_Eugen_Dimant.pdf?dl=0" target="_blank">Open in new tab</a>
+            <a class="btn btn-primary" href="CV_Eugen_Dimant.pdf" download>Download CV</a>
+            <a class="btn" href="CV_Eugen_Dimant.pdf" target="_blank">Open in new tab</a>
           </div>
-          <iframe class="pdf" src="https://www.dropbox.com/s/ehwvi60r5hna1o6/CV_Eugen_Dimant.pdf?raw=1" title="CV Preview"></iframe>
+          <iframe class="pdf" src="CV_Eugen_Dimant.pdf" title="CV Preview"></iframe>
         </div>
       </div>
     </div>
