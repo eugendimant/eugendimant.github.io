@@ -1,23 +1,13 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Eugen Dimant</title>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Eugen Dimant</title>
+<meta name="description" content="Eugen Dimant — Behavioral & Decision Sciences" />
+<link rel="icon" href="assets/eugen_dimant.jpg" />
+<style>
 
-  <meta name="description" content="Eugen Dimant is an Associate Professor of Practice in Behavioral and Decision Sciences at the University of Pennsylvania. Research on social norms, honesty, polarization, corruption, and migration." />
-  <meta name="theme-color" content="#0b0d10" />
-  <meta name="color-scheme" content="light dark" />
-
-  <meta property="og:title" content="Eugen Dimant" />
-  <meta property="og:description" content="Research, publications, and CV." />
-  <meta property="og:type" content="website" />
-  <meta property="og:image" content="assets/eugen_dimant.jpg" />
-  <meta name="twitter:card" content="summary_large_image" />
-
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%237dd3fc'/%3E%3Cstop offset='1' stop-color='%23a78bfa'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='64' height='64' rx='14' fill='%230b0d10'/%3E%3Cpath d='M18 44V20h12c7 0 11 4 11 10s-4 10-11 10H28v4h-10zm10-12h2c2 0 3-1 3-2s-1-2-3-2h-2v4z' fill='url(%23g)'/%3E%3C/svg%3E" />
-
-  <style>
     :root{
       --bg:#0b0d10;
       --bg2:#0f1216;
@@ -352,1241 +342,1429 @@
     .footrow a{ color: var(--muted2); text-decoration:none; }
     .footrow a:hover{ text-decoration:underline; }
     code.kbd{ font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace; font-size: 11px; padding: 2px 6px; border-radius: 8px; border: 1px solid var(--border); background: color-mix(in srgb, var(--card2) 78%, transparent); color: var(--muted); }
-  </style>
+  
+/* Overrides / fixes */
+#research, #vita { scroll-margin-top: 70px; }
+.news p, .news li, .selected p, .selected li { font-size: 15px !important; line-height: 1.55 !important; }
+</style>
 </head>
-
 <body>
-  <a class="skip" href="#main">Skip to content</a>
+<div id="app"></div>
 
-  <header>
-    <div class="wrap">
-      <div class="nav">
-        <div class="brand" aria-label="Site title">
-          <strong>Eugen Dimant</strong>
-          <span>Social norms · Honesty · Polarization · Corruption · Migration</span>
-        </div>
+<script>
+// Render a clean, working single-page app into #app. This avoids any broken legacy click layers.
+const PUBLICATIONS = [
+  {
+    "id": "2025-experimental-methods-eliciting-and-measuring-social-nor",
+    "title": "Experimental Methods: Eliciting and Measuring Social Norms",
+    "authors": "G. Charness, U. Gneezy & E. Krupka",
+    "venue": "Journal of Economic Behavior & Organization",
+    "year": 2025,
+    "type": "peer_reviewed",
+    "status": "published",
+    "topics": [
+      "social norms"
+    ],
+    "links": {
+      "journal": "https://doi.org/10.1016/j.jebo.2025.107187",
+      "drive_pdf": "https://drive.google.com/file/d/1CNBQk56U7WSVGSKSwGo9Ws-OPTK6sy3L/view?usp=drive_link",
+      "podcast": ""
+    },
+    "doi": "10.1016/j.jebo.2025.107187"
+  },
+  {
+    "id": "2025-norm-nudging-harnessing-social-expectations-for-behavio",
+    "title": "Norm-Nudging: Harnessing Social Expectations for Behavior Change",
+    "authors": "C. Bicchieri",
+    "venue": "Elgar Encyclopedia of Behavioural and Experimental Economics",
+    "year": 2025,
+    "type": "peer_reviewed",
+    "status": "published",
+    "topics": [
+      "social norms"
+    ],
+    "links": {
+      "journal": "https://www.elgaronline.com/display/book/9781802207736/9781802207736.xml",
+      "drive_pdf": "https://drive.google.com/file/d/1SnQjjADt01u_JYPE2at-Vc7X0Zwf5rJF/view?usp=drive_link",
+      "podcast": "https://drive.google.com/file/d/1TZ4H2u4NKEcafxkWg-pwA49Xo4eSVhH8/view?usp=drive_link"
+    },
+    "doi": null
+  },
+  {
+    "id": "2025-nudging-teachers-a-megastudy-to-increase-math-achieveme",
+    "title": "Nudging Teachers: A Megastudy To Increase Math Achievement Among 3 Million Elementary School Students",
+    "authors": "A. Duckworth, K. Milkman & BCFG Collective",
+    "venue": "Proceedings of the National Academy of Sciences (PNAS)",
+    "year": 2025,
+    "type": "peer_reviewed",
+    "status": "published",
+    "topics": [
+      "social norms",
+      "education"
+    ],
+    "links": {
+      "journal": "https://doi.org/10.1073/pnas.2418616122",
+      "drive_pdf": "https://drive.google.com/file/d/1b5fPBMT2eOilEqVr1pFjf6_Ytp6NENCx/view?usp=drive_link",
+      "podcast": "https://drive.google.com/file/d/12rKoz4vAaE74YL0GNXsLaiLw4AxqdUEO/view?usp=drive_link"
+    },
+    "doi": "10.1073/pnas.2418616122"
+  },
+  {
+    "id": "2025-racial-identity-reactions-to-inequality-fairness-concep",
+    "title": "Racial Identity, Reactions to Inequality & Fairness Concepts Among Americans",
+    "authors": "L. Reinhardt & N. Sambanis",
+    "venue": "Accepted at : Journal of Experimental Political Science",
+    "year": 2025,
+    "type": "peer_reviewed",
+    "status": "published",
+    "topics": [
+      "identity",
+      "inequality"
+    ],
+    "links": {
+      "journal": "https://ssrn.com/abstract=4706524",
+      "drive_pdf": "",
+      "podcast": ""
+    },
+    "doi": null
+  },
+  {
+    "id": "2025-the-i-in-egalitarianism-hadza-hunter-gatherers-averse-t",
+    "title": "The 'I' in Egalitarianism: Hadza Hunter-Gatherers Averse to Inequality Primarily when Personally Unfavourable",
+    "authors": "K. Smith, D. N. E. Stibbard-Hawkes, I. A. Mabulla, C. Bicchieri & C. Apicella",
+    "venue": "Proceedings of the National Academy of Sciences (PNAS) Nexus",
+    "year": 2025,
+    "type": "peer_reviewed",
+    "status": "published",
+    "topics": [
+      "inequality"
+    ],
+    "links": {
+      "journal": "https://papers.ssrn.com/sol3/papers.cfm?abstract_id=5193882",
+      "drive_pdf": "",
+      "podcast": ""
+    },
+    "doi": null
+  },
+  {
+    "id": "2025-the-science-of-honesty-a-review-and-research-agenda",
+    "title": "The Science of Honesty: A Review and Research Agenda",
+    "authors": "",
+    "venue": "Advances in Experimental Social Psychology",
+    "year": 2025,
+    "type": "peer_reviewed",
+    "status": "published",
+    "topics": [
+      "honesty / deception"
+    ],
+    "links": {
+      "journal": "https://doi.org/10.1016/bs.aesp.2025.04.004",
+      "drive_pdf": "https://drive.google.com/file/d/1aG9KVUHWwHAS9laY0DfN5v3PJ4_QXKle/view?usp=drive_link",
+      "podcast": "https://drive.google.com/file/d/1MnPK0mPc34OAyWXto4KMZhgQB4fApeXA/view?usp=drive_link"
+    },
+    "doi": "10.1016/bs.aesp.2025.04.004"
+  },
+  {
+    "id": "2024-hate-trumps-love-the-impact-of-political-polarization-o",
+    "title": "Hate Trumps Love: The Impact of Political Polarization on Social Preferences",
+    "authors": "",
+    "venue": "Management Science",
+    "year": 2024,
+    "type": "peer_reviewed",
+    "status": "published",
+    "topics": [
+      "polarization"
+    ],
+    "links": {
+      "journal": "https://doi.org/10.1287/mnsc.2023.4701",
+      "drive_pdf": "https://drive.google.com/file/d/15aVL3kOh-A6L0XJbgJblNEazKpsypdUC/view?usp=drive_link",
+      "podcast": "https://drive.google.com/file/d/1LhrlfeGNBamsVUm8NJ_9ozhYjuwPpRhq/view?usp=drive_link"
+    },
+    "doi": "10.1287/mnsc.2023.4701"
+  },
+  {
+    "id": "2024-measuring-norm-pluralism-and-perceived-polarization-in-",
+    "title": "Measuring Norm Pluralism and Perceived Polarization in U.S. Politics",
+    "authors": "F. Panizza, E. Kimbrough & A. Vostroknutov",
+    "venue": "Proceedings of the National Academy of Sciences (PNAS) Nexus",
+    "year": 2024,
+    "type": "peer_reviewed",
+    "status": "published",
+    "topics": [
+      "social norms",
+      "polarization"
+    ],
+    "links": {
+      "journal": "https://doi.org/10.1093/pnasnexus/pgae413",
+      "drive_pdf": "https://drive.google.com/file/d/1-t7OuZUAh0CHNVcRpBzYVVIk8KU-Zurp/view?usp=drive_link",
+      "podcast": "https://drive.google.com/file/d/1EhGA6-MeFGuULtrAPvCC70q1vBrW36NU/view?usp=drive_link"
+    },
+    "doi": "10.1093/pnasnexus/pgae413"
+  },
+  {
+    "id": "2024-motivated-information-acquisition-and-social-norm-forma",
+    "title": "Motivated Information Acquisition and Social Norm Formation",
+    "authors": "F. Galeotti & M. C. Villeval",
+    "venue": "European Economic Review",
+    "year": 2024,
+    "type": "peer_reviewed",
+    "status": "published",
+    "topics": [
+      "social norms"
+    ],
+    "links": {
+      "journal": "https://doi.org/10.1016/j.euroecorev.2024.104778",
+      "drive_pdf": "https://drive.google.com/file/d/1ZsKCqS5vjcYX6ylksCtAA2j2UfAW6PE9/view?usp=drive_link",
+      "podcast": "https://drive.google.com/file/d/1p1D0EzEVzuLiKogiTLa_0QZBkz0ZVkwq/view?usp=drive_link"
+    },
+    "doi": "10.1016/j.euroecorev.2024.104778"
+  },
+  {
+    "id": "2024-paying-them-to-hate-us-effect-of-u-s-military-aid-on-an",
+    "title": "Paying Them to Hate US: Effect of U.S. Military Aid on Anti-American Terrorism, 1968-2018",
+    "authors": "T. Krieger & D. Meierrieks",
+    "venue": "The Economic Journal",
+    "year": 2024,
+    "type": "peer_reviewed",
+    "status": "published",
+    "topics": [
+      "terrorism"
+    ],
+    "links": {
+      "journal": "https://doi.org/10.1093/ej/ueae034",
+      "drive_pdf": "https://drive.google.com/file/d/1YHvdv6fOfoQUbydwCObyPQAIQ-qjM_0C/view?usp=drive_link",
+      "podcast": "https://drive.google.com/file/d/1dYTIkyY_TU4vq3z01OFheIMGiuqIUtUj/view?usp=drive_link"
+    },
+    "doi": "10.1093/ej/ueae034"
+  },
+  {
+    "id": "2024-polarization-in-multidisciplinary-perspective",
+    "title": "Polarization in Multidisciplinary Perspective",
+    "authors": "E. Kimbrough",
+    "venue": "Proceedings of the National Academy of Sciences (PNAS) Nexus",
+    "year": 2024,
+    "type": "peer_reviewed",
+    "status": "published",
+    "topics": [
+      "polarization"
+    ],
+    "links": {
+      "journal": "https://doi.org/10.1093/pnasnexus/pgae425",
+      "drive_pdf": "https://drive.google.com/file/d/1jmNLb6ddDDE25_6zG19HjiFGnoDMMokO/view?usp=drive_link",
+      "podcast": ""
+    },
+    "doi": "10.1093/pnasnexus/pgae425"
+  },
+  {
+    "id": "2024-social-norms-enforcement-breakdown-polarization",
+    "title": "Social norms: Enforcement, Breakdown & Polarization",
+    "authors": "L. Balafoutas, S. Gächter & E. Krupka",
+    "venue": "European Economic Review",
+    "year": 2024,
+    "type": "peer_reviewed",
+    "status": "published",
+    "topics": [
+      "social norms",
+      "polarization"
+    ],
+    "links": {
+      "journal": "https://doi.org/10.1016/j.euroecorev.2024.104885",
+      "drive_pdf": "",
+      "podcast": ""
+    },
+    "doi": "10.1016/j.euroecorev.2024.104885"
+  },
+  {
+    "id": "2024-strategic-behavior-with-tight-loose-and-polarized-norms",
+    "title": "Strategic Behavior with Tight, Loose, and Polarized Norms",
+    "authors": "M. Gelfand, A. Hochleitner & S. Sonderegger",
+    "venue": "Management Science",
+    "year": 2024,
+    "type": "peer_reviewed",
+    "status": "published",
+    "topics": [
+      "social norms",
+      "polarization"
+    ],
+    "links": {
+      "journal": "https://doi.org/10.1287/mnsc.2023.01022",
+      "drive_pdf": "https://drive.google.com/file/d/1N_ugrMwPomlefoFRgILd9vSqW33TzkvZ/view?usp=drive_link",
+      "podcast": "https://drive.google.com/file/d/1G1hhIXN-EMpajPtPyPu0zl5eNKl3PEhL/view?usp=drive_link"
+    },
+    "doi": "10.1287/mnsc.2023.01022"
+  },
+  {
+    "id": "2024-unraveling-polarization-insight-into-individual-collect",
+    "title": "Unraveling Polarization: Insight into Individual & Collective Dynamics",
+    "authors": "K. Kish Bar-On, Y. Lelkes & D. Rand",
+    "venue": "Proceedings of the National Academy of Sciences (PNAS) Nexus",
+    "year": 2024,
+    "type": "peer_reviewed",
+    "status": "published",
+    "topics": [
+      "polarization"
+    ],
+    "links": {
+      "journal": "https://doi.org/10.1093/pnasnexus/pgae426",
+      "drive_pdf": "https://drive.google.com/file/d/13hRDYbCGYZkBynmfeeWEPKTJshS9HP7O/view?usp=drive_link",
+      "podcast": "https://drive.google.com/file/d/1DSrYyX8vBcJMOEq8HD9t51BUClvQedHw/view?usp=drive_link"
+    },
+    "doi": "10.1093/pnasnexus/pgae426"
+  },
+  {
+    "id": "2023-beyond-average-a-method-for-measuring-the-tightness-loo",
+    "title": "Beyond Average: A Method for Measuring the Tightness, Looseness, and Polarization of Social Norms",
+    "authors": "",
+    "venue": "Economics Letters",
+    "year": 2023,
+    "type": "peer_reviewed",
+    "status": "published",
+    "topics": [
+      "social norms",
+      "polarization"
+    ],
+    "links": {
+      "journal": "https://doi.org/10.1016/j.econlet.2023.111417",
+      "drive_pdf": "https://drive.google.com/drive/u/0/folders/1PoqgVvW3Go0SeK9G-UOoBqpjvG6DIByT",
+      "podcast": "https://drive.google.com/file/d/1I_hLKS3UiyAlCVUhQ5XILyL6lQtpDWY3/view?usp=drive_link"
+    },
+    "doi": "10.1016/j.econlet.2023.111417"
+  },
+  {
+    "id": "2023-competition-moral-behavior-meta-analysis-of-45-crowd-so",
+    "title": "Competition & Moral Behavior: Meta-Analysis of 45 Crowd-Sourced Experimental Designs",
+    "authors": "",
+    "venue": "Proceedings of the National Academy of Sciences (PNAS)",
+    "year": 2023,
+    "type": "peer_reviewed",
+    "status": "published",
+    "topics": [
+      "competition"
+    ],
+    "links": {
+      "journal": "https://www.pnas.org/doi/10.1073/pnas.2215572120",
+      "drive_pdf": "https://drive.google.com/file/d/1YSrvHciP3zGp1-nm3KBRbr9ylxeejREy/view?usp=drive_link",
+      "podcast": "https://drive.google.com/file/d/18FJpDClPZSX1TZqAt7wEJnrO7yBO_wh-/view?usp=drive_link"
+    },
+    "doi": null
+  },
+  {
+    "id": "2023-it-s-not-a-lie-if-you-believe-the-norm-does-not-apply-c",
+    "title": "It's Not A Lie if You Believe the Norm Does Not Apply: Conditional Norm-Following and Belief Distortion",
+    "authors": "C. Bicchieri & S. Sonderegger",
+    "venue": "Games & Economic Behavior",
+    "year": 2023,
+    "type": "peer_reviewed",
+    "status": "published",
+    "topics": [
+      "social norms"
+    ],
+    "links": {
+      "journal": "https://doi.org/10.1016/j.geb.2023.01.005",
+      "drive_pdf": "https://drive.google.com/file/d/1YxNfVuI_yArjgmCLJKmsWSuC1Q-_z034/view?usp=drive_link",
+      "podcast": "https://drive.google.com/file/d/1xKBnHi_Of_nwvogJ34SmlddwTMDtznHV/view?usp=drive_link"
+    },
+    "doi": "10.1016/j.geb.2023.01.005"
+  },
+  {
+    "id": "2023-nudging-enforcers-how-norm-perceptions-and-motives-for-",
+    "title": "Nudging Enforcers: How Norm Perceptions and Motives for Lying Shape Sanctions",
+    "authors": "T. Gesche",
+    "venue": "Proceedings of the National Academy of Sciences (PNAS) Nexus",
+    "year": 2023,
+    "type": "peer_reviewed",
+    "status": "published",
+    "topics": [
+      "social norms",
+      "honesty / deception",
+      "punishment"
+    ],
+    "links": {
+      "journal": "https://doi.org/10.1093/pnasnexus/pgad224",
+      "drive_pdf": "https://drive.google.com/file/d/1L_4s_P2eNMlsx-5X-j8EsMIDIy3CVBIm/view?usp=drive_link",
+      "podcast": "https://drive.google.com/file/d/12-o9Hi2gaEV_JM2Yte_q4oGNnnNhJSb_/view?usp=drive_link"
+    },
+    "doi": "10.1093/pnasnexus/pgad224"
+  },
+  {
+    "id": "2023-synthesis-of-evidence-for-policy-from-behavioural-scien",
+    "title": "Synthesis of Evidence for Policy from Behavioural Science During COVID-19",
+    "authors": "",
+    "venue": "Nature",
+    "year": 2023,
+    "type": "peer_reviewed",
+    "status": "published",
+    "topics": [
+      "covid-19"
+    ],
+    "links": {
+      "journal": "https://www.nature.com/articles/s41586-023-06840-9",
+      "drive_pdf": "http://tbd",
+      "podcast": "https://drive.google.com/file/d/1bmAZknhkOd6Yj-DtEo2MOReGQniCrq_e/view?usp=drive_link"
+    },
+    "doi": null
+  },
+  {
+    "id": "2022-authoritarian-leaders-share-conspiracy-theories-to-atta",
+    "title": "Authoritarian Leaders Share Conspiracy Theories to Attack Opponents, Promote In-Group Unity, Shift Blame, and Undermine Democratic Institutions",
+    "authors": "Z. Ren, A. Carton & M. Schweitzer",
+    "venue": "Current Opinion in Psychology",
+    "year": 2022,
+    "type": "peer_reviewed",
+    "status": "published",
+    "topics": [],
+    "links": {
+      "journal": "https://doi.org/10.1016/j.copsyc.2022.101388",
+      "drive_pdf": "https://drive.google.com/file/d/1YEIMRLz2jg0fQw_UDp13d9fWKB6490eC/view?usp=drive_link",
+      "podcast": ""
+    },
+    "doi": "10.1016/j.copsyc.2022.101388"
+  },
+  {
+    "id": "2022-beyond-belief-how-social-engagement-motives-influence-t",
+    "title": "Beyond Belief: How Social Engagement Motives Influence the Spread of Conspiracy Theories",
+    "authors": "Z. Ren & M. Schweitzer",
+    "venue": "Journal of Experimental Social Psychology",
+    "year": 2022,
+    "type": "peer_reviewed",
+    "status": "published",
+    "topics": [],
+    "links": {
+      "journal": "https://doi.org/10.1016/j.jesp.2022.104421",
+      "drive_pdf": "https://drive.google.com/file/d/1t8FUvtElykVdrc_ducEe46rH9Ota9pQC/view?usp=drive_link",
+      "podcast": ""
+    },
+    "doi": "10.1016/j.jesp.2022.104421"
+  },
+  {
+    "id": "2022-meta-nudging-honesty-past-present-and-future-of-the-res",
+    "title": "Meta-Nudging Honesty: Past, Present, and Future of the Research Frontier",
+    "authors": "S. Shalvi",
+    "venue": "Current Opinion in Psychology",
+    "year": 2022,
+    "type": "peer_reviewed",
+    "status": "published",
+    "topics": [
+      "social norms",
+      "honesty / deception"
+    ],
+    "links": {
+      "journal": "https://doi.org/10.1016/j.copsyc.2022.101426",
+      "drive_pdf": "https://drive.google.com/file/d/1C7aeGsZ5kLI0ZsTOKVs0P_GbO5tJFWrs/view?usp=drive_link",
+      "podcast": ""
+    },
+    "doi": "10.1016/j.copsyc.2022.101426"
+  },
+  {
+    "id": "2022-persuading-republicans-democrats-to-comply-with-mask-we",
+    "title": "Persuading Republicans & Democrats to Comply with Mask Wearing: An Intervention Tournament",
+    "authors": "Gelfand, Li, Stamkou, Denison, Fernandez, Choi, Chatman, Jackson & Pieper",
+    "venue": "Journal of Experimental Social Psychology",
+    "year": 2022,
+    "type": "peer_reviewed",
+    "status": "published",
+    "topics": [
+      "covid-19"
+    ],
+    "links": {
+      "journal": "https://doi.org/10.1016/j.jesp.2022.104299",
+      "drive_pdf": "https://drive.google.com/file/d/18Cn35day_7MZLj7aGq6iEEtWtugBK69T/view?usp=drive_link",
+      "podcast": ""
+    },
+    "doi": "10.1016/j.jesp.2022.104299"
+  },
+  {
+    "id": "2022-politicizing-mask-wearing-predicting-the-success-of-beh",
+    "title": "Politicizing Mask-Wearing: Predicting the Success of Behavioral Interventions Among Republicans and Democrats in the U.S.",
+    "authors": "Pieper, Clemente, Dreber, Gelfand & consortium co-authors from the Behavior Change for Good Initiative (BCFG",
+    "venue": ", the Behavioral Insights Team (BIT), Center for Advanced Hindsight (CAH), and ideas42). Nature Scientific Reports",
+    "year": 2022,
+    "type": "peer_reviewed",
+    "status": "published",
+    "topics": [
+      "covid-19"
+    ],
+    "links": {
+      "journal": "https://doi.org/10.1038/s41598-022-10524-1",
+      "drive_pdf": "https://drive.google.com/file/d/1L4xDXjuRE3dW7QsqQcKdvDqIjp6DBs77/view?usp=drive_link",
+      "podcast": ""
+    },
+    "doi": "10.1038/s41598-022-10524-1"
+  },
+  {
+    "id": "2022-social-norms-and-behavior-change-the-interdisciplinary-",
+    "title": "Social Norms and Behavior Change: The Interdisciplinary Research Frontier",
+    "authors": "C. Bicchieri, M. Gelfand & S. Sonderegger",
+    "venue": "Journal of Economic Behavior & Organization",
+    "year": 2022,
+    "type": "peer_reviewed",
+    "status": "published",
+    "topics": [
+      "social norms"
+    ],
+    "links": {
+      "journal": "https://doi.org/10.1016/j.jebo.2022.11.007",
+      "drive_pdf": "https://drive.google.com/file/d/1t3WsxAQpCpcAyt0kSHkgHgpRZjbmd4Fu/view?usp=drive_link",
+      "podcast": ""
+    },
+    "doi": "10.1016/j.jebo.2022.11.007"
+  },
+  {
+    "id": "2022-social-proximity-and-the-erosion-of-norm-compliance",
+    "title": "Social Proximity and the Erosion of Norm Compliance",
+    "authors": "C. Bicchieri, S. Gächter & D. Nosenzo",
+    "venue": "Games and Economic Behavior",
+    "year": 2022,
+    "type": "peer_reviewed",
+    "status": "published",
+    "topics": [
+      "social norms"
+    ],
+    "links": {
+      "journal": "https://doi.org/10.1016/j.geb.2021.11.012",
+      "drive_pdf": "https://drive.google.com/file/d/14rF-R8gkZQk9PpYxfztuAZI80ZuFpi-_/view?usp=drive_link",
+      "podcast": ""
+    },
+    "doi": "10.1016/j.geb.2021.11.012"
+  },
+  {
+    "id": "2021-deviant-or-wrong-the-effects-of-norm-information-on-the",
+    "title": "Deviant or Wrong? The Effects of Norm Information on the Efficacy of Punishment",
+    "authors": "C. Bicchieri & E. Xiao",
+    "venue": "Journal of Economic Behavior & Organization",
+    "year": 2021,
+    "type": "peer_reviewed",
+    "status": "published",
+    "topics": [
+      "social norms",
+      "punishment"
+    ],
+    "links": {
+      "journal": "https://doi.org/10.1016/j.jebo.2021.04.002",
+      "drive_pdf": "https://drive.google.com/file/d/12fmAUHenvKiqVKuoYwr4UO_L70YlG_mv/view?usp=drive_link",
+      "podcast": ""
+    },
+    "doi": "10.1016/j.jebo.2021.04.002"
+  },
+  {
+    "id": "2021-efficient-institutions-and-effective-deterrence-on-timi",
+    "title": "Efficient Institutions and Effective Deterrence: On Timing and Uncertainty of Punishment",
+    "authors": "J. Buckenmaier, A.-C. Posten & U. Schmidt",
+    "venue": "Journal of Risk & Uncertainty",
+    "year": 2021,
+    "type": "peer_reviewed",
+    "status": "published",
+    "topics": [
+      "punishment"
+    ],
+    "links": {
+      "journal": "https://link.springer.com/article/10.1007/s11166-021-09352-x",
+      "drive_pdf": "https://drive.google.com/file/d/1Mp0ugvj-tCQ6Scqxyj8vsrquoaqDtECM/view?usp=drive_link",
+      "podcast": ""
+    },
+    "doi": null
+  },
+  {
+    "id": "2021-observability-and-social-image-on-the-robustness-and-fr",
+    "title": "Observability and Social Image: On the Robustness and Fragility of Reciprocity",
+    "authors": "G. Bolton & U. Schmidt",
+    "venue": "Journal of Economic Behavior & Organization",
+    "year": 2021,
+    "type": "peer_reviewed",
+    "status": "published",
+    "topics": [],
+    "links": {
+      "journal": "https://www.sciencedirect.com/science/article/abs/pii/S0167268121003978",
+      "drive_pdf": "https://drive.google.com/file/d/1RCUgxQVsQm-C-vaBNbLUfWFneRkDogNB/view?usp=drive_link",
+      "podcast": ""
+    },
+    "doi": null
+  },
+  {
+    "id": "2021-the-experience-is-not-everything-sequential-outcomes-an",
+    "title": "The Experience is (Not) Everything: Sequential Outcomes and Social Decision-Making",
+    "authors": "J. Buckenmaier",
+    "venue": "Economics Letters",
+    "year": 2021,
+    "type": "peer_reviewed",
+    "status": "published",
+    "topics": [],
+    "links": {
+      "journal": "https://doi.org/10.1016/j.econlet.2021.109916",
+      "drive_pdf": "https://drive.google.com/file/d/1lm0mgy4Cr6biIDASDbvkwRgcaBxluaxu/view?usp=drive_link",
+      "podcast": ""
+    },
+    "doi": "10.1016/j.econlet.2021.109916"
+  },
+  {
+    "id": "2021-understanding-cross-cultural-differences-in-peer-report",
+    "title": "Understanding Cross-Cultural Differences in Peer Reporting Practices: Evidence from Tax Evasion Games in Moldova & France",
+    "authors": "R. Romaniuc, D. Dubois, A. Lupusor & V. Prohnitchi",
+    "venue": "Public Choice",
+    "year": 2021,
+    "type": "peer_reviewed",
+    "status": "published",
+    "topics": [
+      "tax evasion"
+    ],
+    "links": {
+      "journal": "https://doi.org/10.1007/s11127-021-00925-7",
+      "drive_pdf": "https://drive.google.com/file/d/1t0PzQKhzkTUe5kVcDdOQnf5yNgv1fvJ9/view?usp=drive_link",
+      "podcast": ""
+    },
+    "doi": "10.1007/s11127-021-00925-7"
+  },
+  {
+    "id": "2020-requiem-for-a-nudge-framing-effects-in-nudging-honesty",
+    "title": "Requiem for a Nudge: Framing Effects in Nudging Honesty",
+    "authors": "G. Van Kleef & S. Shalvi",
+    "venue": "Journal of Economic Behavior & Organization",
+    "year": 2020,
+    "type": "peer_reviewed",
+    "status": "published",
+    "topics": [
+      "social norms",
+      "honesty / deception"
+    ],
+    "links": {
+      "journal": "https://www.sciencedirect.com/science/article/pii/S0167268120300597?dgcid=author",
+      "drive_pdf": "https://drive.google.com/file/d/1hSaCg6ZVPofoa7phBDBgX9OryAqPItQM/view?usp=drive_link",
+      "podcast": ""
+    },
+    "doi": null
+  },
+  {
+    "id": "2020-the-economics-of-corruption-in-sports-the-special-case-",
+    "title": "The Economics of Corruption in Sports: The Special Case of Doping",
+    "authors": "C. Deutscher",
+    "venue": ", in: Frick, Humphreys, Soebbing, Pawlowski, Downward & Rusedski (eds.): Handbook of Sports",
+    "year": 2020,
+    "type": "peer_reviewed",
+    "status": "published",
+    "topics": [
+      "corruption"
+    ],
+    "links": {
+      "journal": "http://papers.ssrn.com/sol3/papers.cfm?abstract_id=2546029",
+      "drive_pdf": "",
+      "podcast": ""
+    },
+    "doi": null
+  },
+  {
+    "id": "2019-contagion-of-pro-and-anti-social-behavior-among-peers-a",
+    "title": "Contagion of Pro- and Anti-Social Behavior Among Peers and the Role of Social Proximity",
+    "authors": "",
+    "venue": "Journal of Economic Psychology",
+    "year": 2019,
+    "type": "peer_reviewed",
+    "status": "published",
+    "topics": [],
+    "links": {
+      "journal": "https://www.sciencedirect.com/science/article/abs/pii/S0167487018306901",
+      "drive_pdf": "https://drive.google.com/file/d/1K3irvHbjNidhGDtUmQJ_ayTyll7Pz3sJ/view?usp=drive_link",
+      "podcast": ""
+    },
+    "doi": null
+  },
+  {
+    "id": "2019-nudging-with-care-the-risks-and-benefits-of-social-info",
+    "title": "Nudging with Care: The Risks and Benefits of Social Information",
+    "authors": "C. Bicchieri",
+    "venue": "Public Choice",
+    "year": 2019,
+    "type": "peer_reviewed",
+    "status": "published",
+    "topics": [
+      "social norms"
+    ],
+    "links": {
+      "journal": "https://link.springer.com/article/10.1007%2Fs11127-019-00684-6",
+      "drive_pdf": "https://drive.google.com/file/d/1L_4s_P2eNMlsx-5X-j8EsMIDIy3CVBIm/view?usp=drive_link",
+      "podcast": "https://drive.google.com/file/d/1J3ABfTj9dwZTY7x8ifBBUt7osh1tiuAW/view?usp=drive_link"
+    },
+    "doi": null
+  },
+  {
+    "id": "2018-causes-effects-of-corruption-what-has-past-decade-s-emp",
+    "title": "Causes & Effects of Corruption: What has Past Decade's Empirical Research Taught Us?",
+    "authors": "G. Tosato",
+    "venue": "Journal of Economic Surveys",
+    "year": 2018,
+    "type": "peer_reviewed",
+    "status": "published",
+    "topics": [
+      "corruption"
+    ],
+    "links": {
+      "journal": "https://onlinelibrary.wiley.com/doi/full/10.1111/joes.12198",
+      "drive_pdf": "https://drive.google.com/file/d/1Xddf2dLrMz-bnI5kPwqU0GfpDMrR15Lg/view?usp=drive_link",
+      "podcast": ""
+    },
+    "doi": null
+  },
+  {
+    "id": "2018-effects-of-institutional-history-and-leniency-on-collus",
+    "title": "Effects of Institutional History and Leniency on Collusive Corruption and Tax Evasion",
+    "authors": "J. Buckenmaier & L. Mittone",
+    "venue": "Journal of Economic Behavior & Organization",
+    "year": 2018,
+    "type": "peer_reviewed",
+    "status": "published",
+    "topics": [
+      "corruption",
+      "tax evasion"
+    ],
+    "links": {
+      "journal": "https://www.sciencedirect.com/science/article/pii/S0167268118301057",
+      "drive_pdf": "https://drive.google.com/file/d/1lJJA1a7B31DhJrQ1EMftBBX62eljXEZS/view?usp=drive_link",
+      "podcast": ""
+    },
+    "doi": null
+  },
+  {
+    "id": "2016-the-nature-of-corruption-an-interdisciplinary-perspecti",
+    "title": "The Nature of Corruption – An Interdisciplinary Perspective",
+    "authors": "T. Schulte",
+    "venue": ", Special Issue of the German Law Journal",
+    "year": 2016,
+    "type": "peer_reviewed",
+    "status": "published",
+    "topics": [
+      "corruption"
+    ],
+    "links": {
+      "journal": "https://www.cambridge.org/core/journals/german-law-journal/article/nature-of-corruption-an-interdisciplinary-perspective/CAD38E64A08CF00009BE7C1B426FC565",
+      "drive_pdf": "https://drive.google.com/file/d/1ksN28VgMLDqBau-9F2CagKO3jDY-7y6u/view?usp=drive_link",
+      "podcast": ""
+    },
+    "doi": null
+  },
+  {
+    "id": "2015-a-crook-is-a-crook-but-is-he-still-a-crook-abroad-on-th",
+    "title": "A Crook is a Crook...But is He Still a Crook Abroad? On the Effect of Immigration on Destination-Country Corruption",
+    "authors": "T. Krieger and M. Redlin",
+    "venue": "German Economic Review",
+    "year": 2015,
+    "type": "peer_reviewed",
+    "status": "published",
+    "topics": [
+      "corruption",
+      "migration"
+    ],
+    "links": {
+      "journal": "https://onlinelibrary.wiley.com/doi/abs/10.1111/geer.12064",
+      "drive_pdf": "https://drive.google.com/file/d/1lhN6bOhFACFoAxZ81lyKhEkc_UvsbYEX/view?usp=drive_link",
+      "podcast": ""
+    },
+    "doi": null
+  },
+  {
+    "id": "2013-the-effect-of-corruption-on-migration-1985-2000",
+    "title": "The Effect of Corruption on Migration, 1985-2000",
+    "authors": "T. Krieger and D. Meierrieks",
+    "venue": "Applied Economics Letters",
+    "year": 2013,
+    "type": "peer_reviewed",
+    "status": "published",
+    "topics": [
+      "corruption",
+      "migration"
+    ],
+    "links": {
+      "journal": "https://www.tandfonline.com/doi/abs/10.1080/13504851.2013.806776",
+      "drive_pdf": "https://drive.google.com/file/d/1BTxuO1tLsQrXX44GKNK2FJk9n5Uvj40b/view?usp=drive_link",
+      "podcast": ""
+    },
+    "doi": null
+  },
+  {
+    "id": "na-aid-and-exodus-u-s-military-assistance-and-refugee-flows-",
+    "title": "Aid and Exodus: U.S. Military Assistance and Refugee Flows to the U.S",
+    "authors": "T. Krieger, D. Meierrieks & L. Renner",
+    "venue": "",
+    "year": null,
+    "type": "preprint",
+    "status": "under_review",
+    "topics": [
+      "migration"
+    ],
+    "links": {
+      "journal": "https://papers.ssrn.com/sol3/papers.cfm?abstract_id=5414817",
+      "drive_pdf": "",
+      "podcast": ""
+    },
+    "doi": null
+  },
+  {
+    "id": "na-becoming-friends-or-foes-how-competitive-environments-sha",
+    "title": "Becoming Friends or Foes? How Competitive Environments Shape Altruistic Preferences",
+    "authors": "A. Cao, K. Hyndman & N. Yang",
+    "venue": "",
+    "year": null,
+    "type": "preprint",
+    "status": "under_review",
+    "topics": [],
+    "links": {
+      "journal": "https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3326107",
+      "drive_pdf": "",
+      "podcast": ""
+    },
+    "doi": null
+  },
+  {
+    "id": "na-divided-we-act-the-role-of-social-sanctions-in-a-polarize",
+    "title": "Divided we Act: The Role of Social Sanctions in a Polarized World",
+    "authors": "M. Gelfand, A. Hochleitner & S. Sonderegger",
+    "venue": "",
+    "year": null,
+    "type": "preprint",
+    "status": "under_review",
+    "topics": [
+      "polarization",
+      "punishment"
+    ],
+    "links": {
+      "journal": "https://dx.doi.org/10.2139/ssrn.5636792",
+      "drive_pdf": "",
+      "podcast": ""
+    },
+    "doi": "10.2139/ssrn.5636792"
+  },
+  {
+    "id": "na-do-planning-prompts-suggesting-a-default-plan-increase-fo",
+    "title": "Do Planning Prompts Suggesting a Default Plan Increase Follow-through? Two, 1-million-person Field Experiments",
+    "authors": "A. Duckworth, K. Milkman & BCFG Collective",
+    "venue": "",
+    "year": null,
+    "type": "preprint",
+    "status": "under_review",
+    "topics": [],
+    "links": {
+      "journal": "",
+      "drive_pdf": "",
+      "podcast": ""
+    },
+    "doi": null
+  },
+  {
+    "id": "na-making-information-stick-goal-setting-and-attention",
+    "title": "Making Information Stick: Goal Setting and Attention",
+    "authors": "A. Guido et al.",
+    "venue": "",
+    "year": null,
+    "type": "preprint",
+    "status": "under_review",
+    "topics": [],
+    "links": {
+      "journal": "https://dx.doi.org/10.2139/ssrn.4989494",
+      "drive_pdf": "",
+      "podcast": ""
+    },
+    "doi": "10.2139/ssrn.4989494"
+  },
+  {
+    "id": "na-pluralism-breeds-tolerance",
+    "title": "Pluralism Breeds Tolerance",
+    "authors": "F. Panizza, E. Kimbrough & A. Vostroknutov",
+    "venue": "",
+    "year": null,
+    "type": "preprint",
+    "status": "under_review",
+    "topics": [],
+    "links": {
+      "journal": "https://osf.io/7hc9v",
+      "drive_pdf": "",
+      "podcast": ""
+    },
+    "doi": null
+  },
+  {
+    "id": "na-promoting-responsible-disposal-of-opioids-a-randomized-ev",
+    "title": "Promoting Responsible Disposal of Opioids: A Randomized Evaluation of Behaviorally Informed Messaging Combined with a Financial Incentive",
+    "authors": "M. Tomma and colleagues from the Department of Justice, Department of State, Department of Veterans Affairs, and Office of Evaluation Sciences",
+    "venue": "",
+    "year": null,
+    "type": "preprint",
+    "status": "revise_resubmit",
+    "topics": [],
+    "links": {
+      "journal": "https://dx.doi.org/10.2139/ssrn.4502634",
+      "drive_pdf": "",
+      "podcast": ""
+    },
+    "doi": "10.2139/ssrn.4502634"
+  },
+  {
+    "id": "na-the-price-of-identity-overoptimism-and-congruence-concern",
+    "title": "The Price of Identity: Overoptimism and Congruence Concerns",
+    "authors": "K. Donkor, L. Götte, M. Kurschilgen & M. Müller",
+    "venue": "",
+    "year": null,
+    "type": "preprint",
+    "status": "under_review",
+    "topics": [
+      "identity"
+    ],
+    "links": {
+      "journal": "https://papers.ssrn.com/abstract=4670092",
+      "drive_pdf": "",
+      "podcast": ""
+    },
+    "doi": null
+  }
+];
 
-        <nav aria-label="Primary">
-          <ul>
-            <li><a href="#home" data-nav>Home</a></li>
-            <li><a href="#research" data-nav>Research</a></li>
-            <li><a href="#vita" data-nav>Vita</a></li>
-            <li><a href="#contact" data-nav>Contact</a></li>
-            <li><a href="https://sites.google.com/view/eugendimant/" target="_blank" rel="noreferrer noopener">Legacy site</a></li>
-          </ul>
-        </nav>
-      </div>
-    </div>
-  </header>
+const YEAR_NOW = 2026;
 
-  <main id="main" class="wrap">
-    <section id="home" aria-label="Home">
-      <div class="hero">
-        <!-- LEFT -->
-        <div class="panel">
-          <div class="hero-left-top">
-            <div class="avatar" aria-label="Portrait">
-              <img
-                id="heroImg"
-                src="assets/eugen_dimant.jpg"
-                alt="Portrait of Eugen Dimant"
-              />
-              <div class="fallback" id="heroFallback" aria-hidden="true">ED</div>
-            </div>
+// Basic helpers
+const h = (tag, attrs={}, children=[]) => {
+  const el = document.createElement(tag);
+  for (const [k,v] of Object.entries(attrs)) {
+    if (k === "class") el.className = v;
+    else if (k.startsWith("on") && typeof v === "function") el.addEventListener(k.slice(2).toLowerCase(), v);
+    else if (k === "html") el.innerHTML = v;
+    else el.setAttribute(k, v);
+  }
+  (Array.isArray(children) ? children : [children]).forEach(c => {
+    if (c == null) return;
+    el.appendChild(typeof c === "string" ? document.createTextNode(c) : c);
+  });
+  return el;
+};
 
-            <div>
-              <h1 style="margin-bottom:6px;">Eugen Dimant</h1>
-              <p class="role">Associate Professor of Practice, Behavioral & Decision Sciences (University of Pennsylvania)</p>
-              <p class="role" style="margin-top:4px; color: var(--muted2); font-size: 13px;">
-                Google Scholar, LinkedIn, and X links below.
-              </p>
+function escapeHtml(s) {
+  return String(s || "")
+    .replaceAll("&","&amp;").replaceAll("<","&lt;").replaceAll(">","&gt;")
+    .replaceAll('"',"&quot;").replaceAll("'","&#039;");
+}
+function normalize(s){ return (s||"").toLowerCase().replace(/\s+/g," ").trim(); }
 
-              <div class="actions" aria-label="Quick actions">
-                <a class="btn btn-primary" href="#research">Explore publications</a>
-                <a class="btn" href="#vita">CV preview</a>
-                <a class="btn btn-ghost" href="mailto:edimant@sas.upenn.edu">Email</a>
-              </div>
+const TAB_COUNTS = {
+  all: PUBLICATIONS.length,
+  peer: PUBLICATIONS.filter(p=>p.type==="peer_reviewed").length,
+  preprint: PUBLICATIONS.filter(p=>p.type==="preprint").length
+};
 
-              <div class="row" style="margin-top:10px;">
-                <a class="pill" href="https://scholar.google.com/citations?user=3Ylbe0YAAAAJ" target="_blank" rel="noreferrer noopener">Google Scholar</a>
-                <a class="pill" href="https://www.linkedin.com/in/eugendimant/" target="_blank" rel="noreferrer noopener">LinkedIn</a>
-                <a class="pill" href="https://x.com/eugen_dimant" target="_blank" rel="noreferrer noopener">X (Twitter)</a>
-              </div>
-            </div>
-          </div>
+const state = { tab:"all", q:"", year:null, topic:null, status:null, driveOnly:false, groupByYear:true, sort:"newest" };
 
-          <p class="bio">
-            I study how social norms and incentives shape honesty, cooperation, and polarization, and how these mechanisms matter for policy and organizations.
-          </p>
+function getTabPubs(){
+  if (state.tab==="peer") return PUBLICATIONS.filter(p=>p.type==="peer_reviewed");
+  if (state.tab==="preprint") return PUBLICATIONS.filter(p=>p.type==="preprint");
+  return PUBLICATIONS.slice();
+}
+function pubMatches(p){
+  if (state.year && p.year!==state.year) return false;
+  if (state.topic && !(p.topics||[]).includes(state.topic)) return false;
+  if (state.status && (p.status||"") !== state.status) return false;
+  if (state.driveOnly && !(p.links && p.links.drive_pdf)) return false;
+  const q=normalize(state.q);
+  if (!q) return true;
+  const hay=normalize([p.title,p.authors,p.venue,(p.topics||[]).join(" ")].join(" "));
+  return hay.includes(q);
+}
+function sortPubs(list){
+  const arr=list.slice();
+  if (state.sort==="title"){ arr.sort((a,b)=>(a.title||"").localeCompare(b.title||"")); return arr; }
+  if (state.sort==="oldest"){ arr.sort((a,b)=>(a.year||0)-(b.year||0) || (a.title||"").localeCompare(b.title||"")); return arr; }
+  arr.sort((a,b)=>(b.year||0)-(a.year||0) || (a.title||"").localeCompare(b.title||""));
+  return arr;
+}
+function buildBibtex(pub){
+  const year = pub.year || "";
+  const firstWord = (pub.title || "paper").split(/\s+/)[0].replace(/[^A-Za-z0-9]/g,"");
+  const key = `Dimant${year}${firstWord}`;
+  const authors = ["Dimant, Eugen"].concat((pub.authors||"").replaceAll("&",",").split(",").map(s=>s.trim()).filter(Boolean));
+  const authorField = authors.join(" and ");
+  const entryType = pub.type==="peer_reviewed" ? "article" : "misc";
+  const fields = [
+    `title={{${pub.title||""}}}`,
+    `author={{${authorField}}}`,
+    pub.venue ? `journal={{${pub.venue}}}` : "",
+    year ? `year={{${year}}}` : "",
+    pub.links && pub.links.journal ? `url={{${pub.links.journal}}}` : "",
+    pub.links && pub.links.drive_pdf ? `note={{Ungated PDF: ${pub.links.drive_pdf}}}` : ""
+  ].filter(Boolean).join(",\n  ");
+  return `@${entryType}{${key},\n  ${fields}\n}`;
+}
+async function copyText(text){
+  try { await navigator.clipboard.writeText(text); return true; }
+  catch(e){
+    const ta=h("textarea",{});
+    ta.value=text;
+    ta.style.position="fixed"; ta.style.left="-9999px";
+    document.body.appendChild(ta); ta.focus(); ta.select();
+    try { document.execCommand("copy"); document.body.removeChild(ta); return true; }
+    catch(err){ document.body.removeChild(ta); return false; }
+  }
+}
 
-          <div class="pillrow" aria-label="Highlights">
-            <span class="pill"><b>Focus</b> norms, honesty, polarization, corruption, migration</span>
-            <span class="pill"><b>Methods</b> lab and field experiments, causal inference, observational data</span>
-          </div>
-        </div>
+// OpenAlex citations (auto, cached)
+function oaCacheKey(pub){
+  const doi = pub.doi ? String(pub.doi).toLowerCase() : "";
+  return "oa_cite_" + (doi || pub.id);
+}
+async function oaFetchWork(pub){
+  if (pub.doi){
+    const url = "https://api.openalex.org/works/https://doi.org/" + encodeURIComponent(pub.doi);
+    const r = await fetch(url);
+    if (!r.ok) throw new Error("OpenAlex DOI lookup failed");
+    return await r.json();
+  }
+  const url = "https://api.openalex.org/works?search=" + encodeURIComponent(pub.title||"") + "&per_page=1";
+  const r = await fetch(url);
+  if (!r.ok) throw new Error("OpenAlex search failed");
+  const j = await r.json();
+  return (j && j.results && j.results[0]) ? j.results[0] : null;
+}
+function setCitationTag(pubId, count){
+  const el = document.getElementById("cite_"+pubId);
+  if (!el) return;
+  el.textContent = "Citations: " + String(count);
+}
+async function refreshCites(pubs){
+  const now=Date.now();
+  const stale=12*60*60*1000;
+  const queue=pubs.slice();
+  const concurrency=5;
 
-        <!-- MIDDLE -->
-        <div class="panel">
-          <div class="card">
-            <h2>Research news</h2>
-            <ul>
-              <li><b>Apr 2025:</b> new publications on social norms and norm heterogeneity in 6 top journals.</li>
-              <li><b>Nov 2024:</b> new publications in Management Science, The Economic Journal, PNAS Nexus, and European Economic Review.</li>
-              <li><b>Jun 2023:</b> new publications in PNAS Nexus and Games and Economic Behavior.</li>
-              <li><b>Sep 2022:</b> new publication in Nature and multiple others on COVID-19 and compliance.</li>
-            </ul>
-            <p style="margin-top:10px" class="muted">Full list and filters are below.</p>
-          </div>
-        </div>
-
-        <!-- RIGHT -->
-        <div class="panel">
-          <div class="card">
-            <h2>Selected publications</h2>
-            <ul>
-              <li><b>Nudging Teachers</b> (PNAS, 2025)</li>
-              <li><b>Strategic Behavior with Tight, Loose, and Polarized Norms</b> (Management Science, 2024)</li>
-              <li><b>Paying Them to Hate US</b> (The Economic Journal, 2024)</li>
-              <li><b>Social Proximity and the Erosion of Norm Compliance</b> (JEBO, 2022)</li>
-              <li><b>Competition and Moral Behavior</b> (PNAS, 2023)</li>
-            </ul>
-
-            <div class="tweet-wrap">
-              <h2 style="margin-top:16px;">Latest on X</h2>
-              <div id="tweetFallback" class="tweet-note">
-                If the timeline does not render (some browsers block third-party widgets), open: <a href="https://x.com/eugen_dimant" target="_blank" rel="noreferrer noopener">x.com/eugen_dimant</a>
-              </div>
-
-              <!-- X/Twitter embed -->
-              <a class="twitter-timeline"
-                 data-dnt="true"
-                 data-theme="dark"
-                 data-chrome="noheader nofooter noborders transparent"
-                 data-height="420"
-                 href="https://twitter.com/eugen_dimant">
-                 Tweets by @eugen_dimant
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <div class="section-title">Research</div>
-    <section id="research" aria-label="Research">
-      <div class="explorer">
-        <div class="panel filters" aria-label="Filters">
-          <div class="tabs" role="tablist" aria-label="Publication type">
-            <button class="tab active" type="button" data-tab="all" role="tab" aria-selected="true">All publications</button>
-            <button class="tab" type="button" data-tab="peer" role="tab" aria-selected="false">Peer-reviewed</button>
-            <button class="tab" type="button" data-tab="pre" role="tab" aria-selected="false">Pre-Prints</button>
-          </div>
-
-          <label for="q">Search title, venue, authors</label>
-          <input id="q" type="text" placeholder="Try: norms, polarization, honesty, migration, corruption" autocomplete="off" />
-
-          <label>Year</label>
-          <div id="yearChips" class="row" aria-label="Year filter"></div>
-
-          <label>Topics (from titles)</label>
-          <div id="topicChips" class="row" aria-label="Topic filter"></div>
-
-          <div class="toggle">
-            <input id="onlyDrive" type="checkbox" />
-            <span>Show only items with a Drive PDF link</span>
-          </div>
-
-          <div class="toggle">
-            <input id="groupByYear" type="checkbox" checked />
-            <span>Group results by year</span>
-          </div>
-
-          <div class="row" style="margin-top:12px;">
-            <button class="btn" id="resetBtn" type="button">Reset</button>
-            <button class="btn btn-ghost" id="shareBtn" type="button">Copy filtered link</button>
-          </div>
-
-          <p class="muted" style="margin:12px 0 0; font-size:12px;">
-            Citation counts shown are from <b>OpenAlex</b> (Google Scholar does not offer a stable public API for this). Use “View on Scholar” per paper if you want the Scholar page.
-          </p>
-        </div>
-
-        <div class="panel" aria-label="Results">
-          <div class="results-head">
-            <div class="count" id="count"></div>
-            <div class="right-tools">
-              <button class="btn btn-ghost" id="refreshCitesBtn" type="button">Refresh citation counts</button>
-              <select id="sort" class="select-sm" aria-label="Sort">
-                <option value="year_desc">Sort: newest</option>
-                <option value="year_asc">Sort: oldest</option>
-                <option value="title_asc">Sort: title A–Z</option>
-              </select>
-              <select id="jumpYear" class="select-sm" aria-label="Jump to year">
-                <option value="">Jump to year…</option>
-              </select>
-            </div>
-          </div>
-
-          <div id="list" class="pub-list" aria-live="polite"></div>
-        </div>
-      </div>
-    </section>
-
-    <div class="section-title">Vita</div>
-    <section id="vita" aria-label="Vita">
-      <div class="panel">
-        <h2 style="margin:0 0 8px;">Curriculum Vitae</h2>
-        <p class="muted" style="margin:0 0 14px;">
-          Embedded PDF preview (scrollable). To update: replace <code class="kbd">CV_Eugen_Dimant.pdf</code> in the repository root and commit.
-        </p>
-
-        <div class="pdf-wrap">
-          <div class="pdf-toolbar">
-            <div class="left">
-              <a class="btn btn-primary" href="CV_Eugen_Dimant.pdf" download>Download CV</a>
-              <a class="btn" href="CV_Eugen_Dimant.pdf" target="_blank" rel="noreferrer noopener">Open in new tab</a>
-            </div>
-            <div class="muted" style="font-size:12px;">File: <code class="kbd">CV_Eugen_Dimant.pdf</code></div>
-          </div>
-
-          <iframe class="pdf" src="CV_Eugen_Dimant.pdf#view=FitH" title="CV preview (PDF)"></iframe>
-        </div>
-
-        <p class="muted" style="margin:12px 0 0; font-size:12px;">
-          If you see a 404, the filename in the repo does not match exactly. GitHub Pages is case-sensitive.
-        </p>
-      </div>
-    </section>
-
-    <div class="section-title">Contact</div>
-    <section id="contact" aria-label="Contact">
-      <div class="panel">
-        <h2 style="margin:0 0 8px;">Contact</h2>
-
-        <div class="row" style="margin-top:8px;">
-          <a class="btn btn-primary" href="mailto:edimant@sas.upenn.edu">edimant@sas.upenn.edu</a>
-          <a class="btn" href="https://scholar.google.com/citations?user=3Ylbe0YAAAAJ" target="_blank" rel="noreferrer noopener">Scholar profile</a>
-          <a class="btn" href="https://www.linkedin.com/in/eugendimant/" target="_blank" rel="noreferrer noopener">LinkedIn</a>
-          <a class="btn" href="https://x.com/eugen_dimant" target="_blank" rel="noreferrer noopener">X</a>
-        </div>
-
-        <p class="muted" style="margin-top:12px;">
-          If you want the publication cards to include additional links (Drive PDFs, AI podcasts, journal pages) for items currently missing them, add them once in the data block in this file and they appear automatically.
-        </p>
-      </div>
-    </section>
-
-    <footer class="wrap">
-      <div class="footrow">
-        <div>© <span id="yearNow"></span> Eugen Dimant</div>
-        <div style="display:flex; gap:12px; flex-wrap:wrap;">
-          <a href="#home">Top</a>
-          <a href="#research">Research</a>
-          <a href="#vita">Vita</a>
-          <a href="https://sites.google.com/view/eugendimant/" target="_blank" rel="noreferrer noopener">Legacy site</a>
-        </div>
-      </div>
-    </footer>
-  </main>
-
-  <div id="toast" class="toast" role="status" aria-live="polite"></div>
-
-  <noscript>
-    <div class="wrap" style="padding:18px 0 60px;">
-      <div class="panel">
-        JavaScript is disabled. The publications explorer needs JavaScript.
-      </div>
-    </div>
-  </noscript>
-
-  <!-- X/Twitter widget -->
-  <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-
-  <script>
-    // -------------------------
-    // Data (kept from your previous working file)
-    // -------------------------
-    const pubs = [
-      // 2025
-      {
-        year: 2025, type: "peer",
-        title: "Nudging Teachers: A Megastudy To Increase Math Achievement Among 3 Million Elementary School Students",
-        authors: "with A. Duckworth, K. Milkman & BCFG Collective",
-        venue: "Proceedings of the National Academy of Sciences (PNAS)",
-        links: {
-          paper: "https://doi.org/10.1073/pnas.2418616122",
-          open: "https://drive.google.com/file/d/1b5fPBMT2eOilEqVr1pFjf6_Ytp6NENCx/view"
-        }
-      },
-      {
-        year: 2025, type: "peer",
-        title: "Experimental Methods: Eliciting and Measuring Social Norms",
-        authors: "with G. Charness, U. Gneezy & E. Krupka",
-        venue: "Journal of Economic Behavior & Organization",
-        links: {}
-      },
-      {
-        year: 2025, type: "peer",
-        title: "The 'I' in Egalitarianism: Hadza Hunter-Gatherers Averse to Inequality Primarily when Personally Unfavourable",
-        authors: "with K. Smith, D. N. E. Stibbard-Hawkes, I. A. Mabulla, C. Bicchieri & C. Apicella",
-        venue: "Proceedings of the National Academy of Sciences (PNAS) Nexus",
-        links: {}
-      },
-      {
-        year: 2025, type: "peer",
-        title: "Racial Identity, Reactions to Inequality & Fairness Concepts Among Americans",
-        authors: "with L. Reinhardt & N. Sambanis",
-        venue: "Accepted at: Journal of Experimental Political Science",
-        links: {}
-      },
-      {
-        year: 2025, type: "peer",
-        title: "The Science of Honesty: A Review and Research Agenda",
-        authors: "Collaboration led by S. Shalvi",
-        venue: "Advances in Experimental Social Psychology",
-        links: {}
-      },
-      {
-        year: 2025, type: "peer",
-        title: "Norm-Nudging: Harnessing Social Expectations for Behavior Change",
-        authors: "with C. Bicchieri",
-        venue: "Elgar Encyclopedia of Behavioural and Experimental Economics",
-        links: {}
-      },
-
-      // 2024
-      {
-        year: 2024, type: "peer",
-        title: "Strategic Behavior with Tight, Loose, and Polarized Norms",
-        authors: "with M. Gelfand, A. Hochleitner & S. Sonderegger",
-        venue: "Management Science",
-        links: { paper: "https://doi.org/10.1287/mnsc.2023.01022", open: "https://drive.google.com/file/d/1N_ugrMwPomlefoFRgILd9vSqW33TzkvZ/view" }
-      },
-      {
-        year: 2024, type: "peer",
-        title: "Hate Trumps Love: The Impact of Political Polarization on Social Preferences",
-        authors: "",
-        venue: "Management Science",
-        links: {}
-      },
-      {
-        year: 2024, type: "peer",
-        title: "Paying Them to Hate US: Effect of U.S. Military Aid on Anti-American Terrorism, 1968-2018",
-        authors: "with T. Krieger & D. Meierrieks",
-        venue: "The Economic Journal",
-        links: { paper: "https://doi.org/10.1093/ej/ueae034", open: "https://drive.google.com/file/d/1YHvdv6fOfoQUbydwCObyPQAIQ-qjM_0C/view" }
-      },
-      {
-        year: 2024, type: "peer",
-        title: "Measuring Norm Pluralism and Perceived Polarization in U.S. Politics",
-        authors: "with F. Panizza, E. Kimbrough & A. Vostroknutov",
-        venue: "Proceedings of the National Academy of Sciences (PNAS) Nexus",
-        links: {}
-      },
-      {
-        year: 2024, type: "peer",
-        title: "Unraveling Polarization: Insight into Individual & Collective Dynamics",
-        authors: "with K. Kish Bar-On, Y. Lelkes & D. Rand",
-        venue: "Proceedings of the National Academy of Sciences (PNAS) Nexus",
-        links: {}
-      },
-      {
-        year: 2024, type: "peer",
-        title: "Polarization in Multidisciplinary Perspective",
-        authors: "with E. Kimbrough",
-        venue: "Proceedings of the National Academy of Sciences (PNAS) Nexus",
-        links: {}
-      },
-      {
-        year: 2024, type: "peer",
-        title: "Motivated Information Acquisition and Social Norm Formation",
-        authors: "with F. Galeotti & M. C. Villeval",
-        venue: "European Economic Review",
-        links: {}
-      },
-      {
-        year: 2024, type: "peer",
-        title: "Social norms: Enforcement, Breakdown & Polarization",
-        authors: "with L. Balafoutas, S. Gächter & E. Krupka",
-        venue: "European Economic Review",
-        links: {}
-      },
-
-      // 2023
-      {
-        year: 2023, type: "peer",
-        title: "Beyond Average: A Method for Measuring the Tightness, Looseness, and Polarization of Social Norms.",
-        authors: "",
-        venue: "Economics Letters",
-        links: {}
-      },
-      {
-        year: 2023, type: "peer",
-        title: "Synthesis of Evidence for Policy from Behavioural Science During COVID-19",
-        authors: "collaboration led by K. Ruggeri & J. van Bavel",
-        venue: "Nature",
-        links: {}
-      },
-      {
-        year: 2023, type: "peer",
-        title: "Competition & Moral Behavior: Meta-Analysis of 45 Crowd-Sourced Experimental Designs",
-        authors: "collaboration led by C. Huber, A. Dreber, et al.",
-        venue: "Proceedings of the National Academy of Sciences (PNAS)",
-        links: {}
-      },
-      {
-        year: 2023, type: "peer",
-        title: "Nudging Enforcers: How Norm Perceptions and Motives for Lying Shape Sanctions",
-        authors: "with T. Gesche",
-        venue: "Proceedings of the National Academy of Sciences (PNAS) Nexus",
-        links: {}
-      },
-      {
-        year: 2023, type: "peer",
-        title: "It's Not A Lie if You Believe the Norm Does Not Apply: Conditional Norm-Following and Belief Distortion",
-        authors: "with C. Bicchieri & S. Sonderegger",
-        venue: "Games & Economic Behavior",
-        links: {}
-      },
-
-      // 2022
-      {
-        year: 2022, type: "peer",
-        title: "Social Norms and Behavior Change: The Interdisciplinary Research Frontier",
-        authors: "with C. Bicchieri, M. Gelfand & S. Sonderegger",
-        venue: "Journal of Economic Behavior & Organization",
-        links: {}
-      },
-      {
-        year: 2022, type: "peer",
-        title: "Politicizing Mask-Wearing: Predicting the Success of Behavioral Interventions Among Republicans and Democrats in the U.S.",
-        authors: "with K. Findley, C. Bicchieri & A. Hilbig",
-        venue: "Scientific Reports",
-        links: {}
-      },
-      {
-        year: 2022, type: "peer",
-        title: "Social Proximity and the Erosion of Norm Compliance",
-        authors: "with A. Jacobsen, M. Kurschilgen & J. Ziegelmeyer",
-        venue: "Journal of Economic Behavior & Organization",
-        links: {}
-      },
-      {
-        year: 2022, type: "peer",
-        title: "Beyond Belief: How Social Norms Shape the Acceptance of Evidence",
-        authors: "with A. Schmitz",
-        venue: "The International Journal of Communication",
-        links: {}
-      },
-      {
-        year: 2022, type: "peer",
-        title: "Persuading Republicans and Democrats to Comply with Mask-Wearing: An Intervention Tournaments Experiment",
-        authors: "with A. Hilbig, K. Findley & C. Bicchieri",
-        venue: "Scientific Reports",
-        links: {}
-      },
-      {
-        year: 2022, type: "peer",
-        title: "Meta-Nudging Honesty: Past, Present and Future of the Research Frontier on Honesty in Behavioral Science",
-        authors: "collaboration led by N. Mazar, J. H. Abeler, et al.",
-        venue: "Journal of Economic Behavior & Organization",
-        links: {}
-      },
-      {
-        year: 2022, type: "peer",
-        title: "Authoritarian Leaders Share Conspiracy Theories to Increase Regime Support and Promote Distrust in Science",
-        authors: "",
-        venue: "The International Journal of Communication",
-        links: {}
-      },
-
-      // 2021
-      {
-        year: 2021, type: "peer",
-        title: "Observability and Social Image: Incentivizing Public Service Provision Through a Field Experiment in Tanzania",
-        authors: "with J. A. Bonilla & P. Justesen",
-        venue: "Journal of Public Economics",
-        links: {}
-      },
-      {
-        year: 2021, type: "peer",
-        title: "Efficient Institutions and Effective Deterrence: On Timing and Uncertainty of Punishment",
-        authors: "with J. Buckenmaier, D. Posten & U. Schmidt",
-        venue: "International Economic Review",
-        links: {}
-      },
-      {
-        year: 2021, type: "peer",
-        title: "The Experience is (Not) Everything: Sequential Outcomes and Social Decision-Making",
-        authors: "with J. Buckenmaier",
-        venue: "Economics Letters",
-        links: {}
-      },
-      {
-        year: 2021, type: "peer",
-        title: "Deviant or Wrong? The Effects of Norm Information on the Efficacy of Punishment",
-        authors: "with C. Bicchieri & E. Xiao",
-        venue: "Journal of Economic Behavior & Organization",
-        links: {}
-      },
-      {
-        year: 2021, type: "peer",
-        title: "Understanding Cross-Cultural Differences in Peer Reporting Practices: Evidence from Tax Evasion Games in Moldova & France",
-        authors: "with R. Romaniuc, D. Dubois, A. Lupusor & V. Prohnitchi",
-        venue: "Public Choice",
-        links: {}
-      },
-
-      // 2020
-      {
-        year: 2020, type: "peer",
-        title: "Requiem for a Nudge: Framing Effects in Nudging Honesty",
-        authors: "with G. Van Kleef & S. Shalvi",
-        venue: "Journal of Economic Behavior & Organization",
-        links: {}
-      },
-      {
-        year: 2020, type: "peer",
-        title: "The Economics of Corruption in Sports: The Special Case of Doping",
-        authors: "with C. Deutscher",
-        venue: "Handbook of Sports (chapter)",
-        links: {}
-      },
-
-      // 2019
-      {
-        year: 2019, type: "peer",
-        title: "Nudging with Care: The Risks and Benefits of Social Information",
-        authors: "with C. Bicchieri",
-        venue: "Public Choice",
-        links: {}
-      },
-      {
-        year: 2019, type: "peer",
-        title: "Contagion of Pro- and Anti-Social Behavior Among Peers and the Role of Social Proximity",
-        authors: "",
-        venue: "Journal of Economic Psychology",
-        links: {}
-      },
-
-      // 2018
-      {
-        year: 2018, type: "peer",
-        title: "Effects of Institutional History and Leniency on Collusive Corruption and Tax Evasion",
-        authors: "with J. Buckenmaier & L. Mittone",
-        venue: "Journal of Economic Behavior & Organization",
-        links: {}
-      },
-      {
-        year: 2018, type: "peer",
-        title: "Causes & Effects of Corruption: What has Past Decade's Empirical Research Taught Us?",
-        authors: "with G. Tosato",
-        venue: "Journal of Economic Surveys",
-        links: {}
-      },
-
-      // 2016
-      {
-        year: 2016, type: "peer",
-        title: "The Nature of Corruption – An Interdisciplinary Perspective",
-        authors: "with T. Schulte",
-        venue: "German Law Journal (special issue)",
-        links: {}
-      },
-
-      // 2015
-      {
-        year: 2015, type: "peer",
-        title: "A Crook is a Crook...But is He Still a Crook Abroad? On the Effect of Immigration on Destination-Country Corruption",
-        authors: "with T. Krieger and M. Redlin",
-        venue: "German Economic Review",
-        links: {}
-      },
-
-      // 2013
-      {
-        year: 2013, type: "peer",
-        title: "The Effect of Corruption on Migration, 1985-2000",
-        authors: "with T. Krieger and D. Meierrieks",
-        venue: "Applied Economics Letters",
-        links: {}
-      },
-
-      // Work in Progress
-      {
-        year: 2025, type: "wip",
-        title: "Promoting Responsible Disposal of Opioids: A Randomized Evaluation of Behaviorally Informed Messaging Combined with a Financial Incentive",
-        authors: "with M. Toma and colleagues from DOJ, State, VA, and OES",
-        venue: "Revise & Resubmit: Health Economics",
-        status: "Revise & Resubmit",
-        links: { paper: "https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4502634" }
-      },
-      {
-        year: 2025, type: "wip",
-        title: "Aid and Exodus: U.S. Military Assistance and Refugee Flows to the U.S.",
-        authors: "with T. Krieger, D. Meierrieks & L. Renner",
-        venue: "Under Review",
-        status: "Under Review",
-        links: { paper: "https://papers.ssrn.com/sol3/papers.cfm?abstract_id=5414817" }
-      },
-      {
-        year: 2025, type: "wip",
-        title: "Pluralism Breeds Tolerance",
-        authors: "with F. Panizza, E. Kimbrough & A. Vostroknutov",
-        venue: "Under Review",
-        status: "Under Review",
-        links: {
-          paper: "https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4649792",
-          materials: "https://osf.io/7hc9v"
-        }
-      },
-      {
-        year: 2025, type: "wip",
-        title: "The Price of Identity: Overoptimism and Congruence Concerns",
-        authors: "with K. Donkor, L. Goette, M. Kurschilgen & M. Müller",
-        venue: "Under Review",
-        status: "Under Review",
-        links: { paper: "https://papers.ssrn.com/abstract=4670092" }
-      },
-      {
-        year: 2025, type: "wip",
-        title: "Making Information Stick: Goal Setting and Attention",
-        authors: "with A. Guido et al.",
-        venue: "Under Review",
-        status: "Under Review",
-        links: { paper: "https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4989494" }
-      },
-      {
-        year: 2025, type: "wip",
-        title: "Divided we Act: The Role of Social Sanctions in a Polarized World",
-        authors: "with M. Gelfand, A. Hochleitner & S. Sonderegger",
-        venue: "Under Review",
-        status: "Under Review",
-        links: { paper: "https://papers.ssrn.com/sol3/papers.cfm?abstract_id=5636792" }
-      },
-      {
-        year: 2021, type: "wip",
-        title: "Becoming Friends or Foes? How Exposure to Competitive Environments and Social Proximity Shape Social Preferences",
-        authors: "with A. Cao, K. Hyndman & N. Yang",
-        venue: "Working Paper",
-        status: "Working Paper",
-        links: { paper: "https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3326107" }
-      }
-    ];
-
-    // -------------------------
-    // Helpers
-    // -------------------------
-    const $ = (sel, el=document) => el.querySelector(sel);
-    const $$ = (sel, el=document) => Array.from(el.querySelectorAll(sel));
-    const toastEl = $("#toast");
-
-    function showToast(msg){
-      toastEl.textContent = msg;
-      toastEl.classList.add("show");
-      setTimeout(() => toastEl.classList.remove("show"), 2200);
-    }
-
-    function norm(s){ return (s || "").toLowerCase(); }
-    function escapeHtml(s){
-      return (s || "").replace(/[&<>"']/g, c => ({
-        "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"
-      }[c]));
-    }
-
-    function doiFromLink(url){
-      if(!url) return "";
-      try{
-        const u = new URL(url);
-        if(u.hostname.includes("doi.org")) return u.pathname.replace(/^\//, "");
-      }catch(e){}
-      // Also accept raw DOI strings
-      if(url.startsWith("10.")) return url;
-      return "";
-    }
-
-    function makeScholarSearchUrl(title){
-      const q = encodeURIComponent(title);
-      return "https://scholar.google.com/scholar?q=" + q;
-    }
-
-    // Topics are derived from the title/status/venue (no external lookups)
-    const TAGS = [
-      { key: "social norms", needle: "norm" },
-      { key: "polarization", needle: "polariz" },
-      { key: "honesty", needle: "honest" },
-      { key: "corruption", needle: "corrupt" },
-      { key: "migration", needle: "migrat" },
-      { key: "terrorism", needle: "terror" },
-      { key: "inequality", needle: "inequal" },
-      { key: "mask-wearing", needle: "mask" },
-      { key: "covid-19", needle: "covid" },
-      { key: "punishment", needle: "punish" },
-      { key: "tax evasion", needle: "tax evasion" },
-      { key: "competition", needle: "competit" },
-      { key: "identity", needle: "identity" },
-      { key: "opioids", needle: "opioid" },
-      { key: "refugee", needle: "refugee" }
-    ];
-
-    function deriveTags(pub){
-      const t = norm(pub.title + " " + (pub.venue || "") + " " + (pub.status || ""));
-      return TAGS.filter(x => t.includes(x.needle)).map(x => x.key);
-    }
-
-    function classify(pub){
-      // Your old file uses type: "peer" and "wip".
-      // Map wip -> preprint tab.
-      if(pub.type === "peer") return "peer";
-      if(pub.type === "wip") return "pre";
-      return "peer";
-    }
-
-    // -------------------------
-    // Citation counts (OpenAlex)
-    // -------------------------
-    const CITE_CACHE_KEY = "ed_cites_v1";
-    const CITE_CACHE_TTL_MS = 24 * 60 * 60 * 1000;
-
-    function loadCiteCache(){
-      try{
-        const raw = localStorage.getItem(CITE_CACHE_KEY);
-        if(!raw) return {};
-        return JSON.parse(raw);
-      }catch(e){
-        return {};
-      }
-    }
-    function saveCiteCache(obj){
-      try{ localStorage.setItem(CITE_CACHE_KEY, JSON.stringify(obj)); }catch(e){}
-    }
-
-    const citeCache = loadCiteCache();
-
-    function pubKey(pub){
-      const doi = doiFromLink(pub.links?.paper || "");
-      if(doi) return "doi:" + doi.toLowerCase();
-      return "t:" + norm(pub.title).slice(0,140);
-    }
-
-    async function fetchOpenAlexCites(pub){
-      const key = pubKey(pub);
-      const cached = citeCache[key];
-      const now = Date.now();
-      if(cached && (now - cached.t) < CITE_CACHE_TTL_MS) return cached.c;
-
-      const doi = doiFromLink(pub.links?.paper || "");
-      let url = "";
-      if(doi){
-        url = "https://api.openalex.org/works?filter=doi:" + encodeURIComponent("https://doi.org/" + doi);
-      } else {
-        // title search fallback
-        url = "https://api.openalex.org/works?search=" + encodeURIComponent(pub.title) + "&per-page=1";
-      }
-
-      try{
-        const r = await fetch(url, { headers: { "Accept": "application/json" } });
-        if(!r.ok) throw new Error("OpenAlex error");
-        const j = await r.json();
-        const item = (j.results && j.results[0]) ? j.results[0] : null;
-        const c = item ? (item.cited_by_count ?? null) : null;
-        citeCache[key] = { c, t: now };
-        saveCiteCache(citeCache);
-        return c;
-      }catch(e){
-        // Don't overwrite good cache with null
-        if(cached) return cached.c;
-        return null;
-      }
-    }
-
-    // -------------------------
-    // BibTeX (Crossref if possible, otherwise local fallback)
-    // -------------------------
-    async function fetchBibtex(pub){
-      const doi = doiFromLink(pub.links?.paper || "");
-      if(doi){
-        // Crossref transform endpoint
-        const url = "https://api.crossref.org/works/" + encodeURIComponent(doi) + "/transform/application/x-bibtex";
+  async function worker(){
+    while(queue.length){
+      const pub=queue.shift();
+      const key=oaCacheKey(pub);
+      const cachedRaw=localStorage.getItem(key);
+      if (cachedRaw){
         try{
-          const r = await fetch(url, { headers: { "Accept": "application/x-bibtex" } });
-          if(r.ok){
-            const t = await r.text();
-            if(t && t.trim().startsWith("@")) return t.trim();
+          const cached=JSON.parse(cachedRaw);
+          if (cached && typeof cached.c==="number" && (now-cached.t)<stale){
+            setCitationTag(pub.id, cached.c);
+            continue;
           }
-        }catch(e){}
+        } catch(e){}
       }
-
-      // Title search to find DOI
       try{
-        const q = "https://api.crossref.org/works?rows=1&query.bibliographic=" + encodeURIComponent(pub.title);
-        const r = await fetch(q, { headers: { "Accept": "application/json" } });
-        if(r.ok){
-          const j = await r.json();
-          const item = j?.message?.items?.[0];
-          const d = item?.DOI;
-          if(d){
-            const url = "https://api.crossref.org/works/" + encodeURIComponent(d) + "/transform/application/x-bibtex";
-            const r2 = await fetch(url, { headers: { "Accept": "application/x-bibtex" } });
-            if(r2.ok){
-              const t = await r2.text();
-              if(t && t.trim().startsWith("@")) return t.trim();
-            }
-          }
-        }
-      }catch(e){}
+        const w=await oaFetchWork(pub);
+        const c=(w && typeof w.cited_by_count==="number") ? w.cited_by_count : null;
+        if (c!==null){
+          localStorage.setItem(key, JSON.stringify({c, t: now}));
+          setCitationTag(pub.id, c);
+        } else setCitationTag(pub.id, "—");
+      } catch(e){ setCitationTag(pub.id, "—"); }
+    }
+  }
+  await Promise.all(Array.from({length:concurrency}, worker));
+}
 
-      // Minimal fallback (may not match the published record exactly)
-      const year = pub.year || "";
-      const venue = (pub.venue || "").replace(/\.$/, "");
-      const title = pub.title || "";
-      const key = "dimant" + String(year) + "_" + norm(title).replace(/[^a-z0-9]+/g,"_").slice(0,28);
-      const authors = (pub.authors || "").replace(/^with\s+/i,"").trim();
-      const authorField = authors ? ("  author =  + authors + ,\n") : "";
-      return (
-`@misc{${key},
-  title = {{${title}}},
-${authorField}  year = {{${year}}},
-  note = {{${venue}}},
-  howpublished = {\url{${(pub.links?.paper || makeScholarSearchUrl(title))}}},
-}`
-      );
+// UI rendering
+function buildLayout(){
+  const root=h("div",{class:"container", id:"home"});
+
+  // topnav
+  root.appendChild(h("div",{class:"topnav"},[
+    h("div",{class:"brand"},[h("span",{class:"brand-dot"})," Eugen Dimant"]),
+    h("div",{class:"navlinks"},[
+      h("a",{href:"#home"},"Home"),
+      h("a",{href:"#research"},"Research"),
+      h("a",{href:"#vita"},"Vita"),
+      h("a",{href:"https://sites.google.com/view/eugendimant/", target:"_blank", rel:"noopener"},"Legacy site")
+    ])
+  ]));
+
+  // hero grid (reusing existing CSS classes in index_repaired)
+  const hero=h("div",{class:"hero-grid"});
+  // left profile card (use existing card styling)
+  const left=h("div",{class:"card hero-card"},[
+    h("div",{class:"hero-header"},[
+      h("div",{class:"avatar"},[
+        h("img",{src:"assets/eugen_dimant.jpg", alt:"Eugen Dimant", loading:"eager", decoding:"async"})
+      ]),
+      h("div",{},[
+        h("h1",{class:"hero-title"},"Eugen Dimant"),
+        h("div",{class:"role"},"Associate Professor of Practice, Behavioral and Decision Sciences (University of Pennsylvania)"),
+        h("div",{class:"hero-actions"},[
+          h("a",{class:"btn primary", href:"#research"},"Explore publications"),
+          h("a",{class:"btn", href:"#vita"},"CV preview"),
+          h("a",{class:"btn", href:"mailto:edimant@sas.upenn.edu"},"Email")
+        ]),
+        h("div",{class:"links-row"},[
+          h("a",{class:"btn", href:"https://scholar.google.com/citations?user=3Ylbe0YAAAAJ", target:"_blank", rel:"noopener"},"Google Scholar"),
+          h("a",{class:"btn", href:"https://www.linkedin.com/in/eugendimant/", target:"_blank", rel:"noopener"},"LinkedIn"),
+          h("a",{class:"btn", href:"https://x.com/eugen_dimant", target:"_blank", rel:"noopener"},"X (Twitter)")
+        ])
+      ])
+    ]),
+    h("div",{class:"blurb"},[
+      h("p",{html:"I study how social norms and incentives shape honesty, cooperation, and polarization, and how these mechanisms matter for policy and organizations.", style:"margin:0; color: rgba(255,255,255,0.80);"}),
+      h("div",{class:"tagrow"},[
+        h("span",{class:"pill", html:"<b>Focus</b> norms, honesty, polarization, corruption, migration"}),
+        h("span",{class:"pill", html:"<b>Methods</b> lab and field experiments, causal inference, observational data"})
+      ])
+    ])
+  ]);
+
+  // middle card
+  const mid=h("div",{class:"card news"},[
+    h("h3",{},"Research news"),
+    h("ul",{html:[
+      "<li><b>Apr 2025:</b> new publications on social norms and norm heterogeneity in 6 top journals.</li>",
+      "<li><b>Nov 2024:</b> new publications in Management Science, The Economic Journal, PNAS Nexus, and European Economic Review.</li>",
+      "<li><b>Jun 2023:</b> new publications in PNAS Nexus and Games and Economic Behavior.</li>",
+      "<li><b>Sep 2022:</b> new publication in Nature and multiple others on COVID-19 and compliance.</li>",
+    ].join("")})
+  ]);
+
+  // right card with X embed (kept simple)
+  const right=h("div",{class:"card selected"},[
+    h("h3",{},"Selected publications"),
+    h("ul",{html:[
+      "<li><b>Nudging Teachers</b> (PNAS, 2025)</li>",
+      "<li><b>Strategic Behavior with Tight, Loose, and Polarized Norms</b> (Management Science, 2024)</li>",
+      "<li><b>Paying Them to Hate US</b> (The Economic Journal, 2024)</li>",
+      "<li><b>Social Proximity and the Erosion of Norm Compliance</b> (JEBO, 2022)</li>",
+      "<li><b>Competition and Moral Behavior</b> (PNAS, 2023)</li>",
+    ].join("")}),
+    h("div",{style:"margin-top: 14px; padding-top: 12px; border-top: 1px solid rgba(255,255,255,0.08); position: relative;"},[
+      h("div",{style:"font-weight: 800; font-size: 15px; margin-bottom: 8px;"},"Latest on X"),
+      h("div",{id:"xEmbed", style:"min-height: 320px;"},[
+        h("a",{
+          class:"twitter-timeline",
+          "data-theme":"dark",
+          "data-tweet-limit":"2",
+          "data-chrome":"noheader nofooter noborders transparent",
+          href:"https://twitter.com/eugen_dimant"
+        },"Tweets by @eugen_dimant"),
+        h("div",{id:"xFallback", style:"display:none; color: rgba(255,255,255,0.72); font-size: 13px; line-height: 1.5;"},[
+          "X timeline did not render. Open directly: ",
+          h("a",{href:"https://x.com/eugen_dimant", target:"_blank", rel:"noopener"},"x.com/eugen_dimant")
+        ])
+      ])
+    ])
+  ]);
+
+  hero.appendChild(left); hero.appendChild(mid); hero.appendChild(right);
+  root.appendChild(hero);
+
+  // Research section
+  root.appendChild(h("div",{class:"section", id:"research"},[
+    h("div",{class:"section-title"},"Research"),
+    h("div",{class:"research-layout"},[
+      // filters
+      h("div",{class:"card filter-card"},[
+        h("div",{class:"tabrow"},[
+          h("button",{class:"tab active", "data-tab":"all", onclick:()=>setTab("all")},`All publications • ${TAB_COUNTS.all}`),
+          h("button",{class:"tab", "data-tab":"peer", onclick:()=>setTab("peer")},`Peer-reviewed • ${TAB_COUNTS.peer}`),
+          h("button",{class:"tab", "data-tab":"preprint", onclick:()=>setTab("preprint")},`Pre-Prints • ${TAB_COUNTS.preprint}`)
+        ]),
+        h("div",{style:"margin-bottom: 8px; color: rgba(255,255,255,0.70); font-size: 13px;"},[
+          h("span",{id:"resultCount"},"0"), " results"
+        ]),
+        h("input",{id:"searchInput", class:"input", type:"text", placeholder:"Search title, venue, authors", oninput:(e)=>{state.q=e.target.value||""; renderResearch(); updateUrl();}}),
+        h("div",{class:"filter-group"},[
+          h("label",{},"Year"),
+          h("div",{id:"yearChips", class:"chips"})
+        ]),
+        h("div",{class:"filter-group"},[
+          h("label",{},"Topics (from titles)"),
+          h("div",{id:"topicChips", class:"chips"})
+        ]),
+        h("div",{class:"filter-group"},[
+          h("label",{},"Status"),
+          h("div",{id:"statusChips", class:"chips"})
+        ]),
+        h("div",{class:"checkrow"},[
+          h("input",{id:"driveOnly", type:"checkbox", onchange:(e)=>{state.driveOnly=!!e.target.checked; renderResearch(); updateUrl();}}),
+          h("span",{},"Show only items with a Drive PDF link")
+        ]),
+        h("div",{class:"checkrow"},[
+          h("input",{id:"groupByYear", type:"checkbox", checked:"checked", onchange:(e)=>{state.groupByYear=!!e.target.checked; renderResearch(); updateUrl();}}),
+          h("span",{},"Group results by year")
+        ]),
+        h("div",{class:"filter-actions"},[
+          h("button",{class:"btn", type:"button", onclick:resetFilters},"Reset"),
+          h("button",{class:"btn", type:"button", onclick:copyLink},"Copy filtered link")
+        ]),
+        h("div",{class:"smallnote"},"Citation counts refresh automatically using OpenAlex. Google Scholar does not provide a stable public API for per-paper citation counts.")
+      ]),
+      // results
+      h("div",{class:"card results-card"},[
+        h("div",{class:"results-toolbar"},[
+          h("div",{class:"toolbar-left"},[
+            h("span",{class:"results-meta"},"Sort:"),
+            h("select",{id:"sortSelect", class:"select", onchange:(e)=>{state.sort=e.target.value; renderResearch(); updateUrl();}},[
+              h("option",{value:"newest", selected:"selected"},"newest"),
+              h("option",{value:"oldest"},"oldest"),
+              h("option",{value:"title"},"title")
+            ]),
+            h("span",{class:"results-meta"},"Jump to year:"),
+            h("select",{id:"jumpSelect", class:"select", onchange:(e)=>jumpToYear(e.target.value)},[
+              h("option",{value:""},"...")
+            ])
+          ]),
+          h("div",{class:"toolbar-left"},[
+            h("a",{class:"btn", href:"https://scholar.google.com/citations?user=3Ylbe0YAAAAJ", target:"_blank", rel:"noopener"},"Open Scholar profile")
+          ])
+        ]),
+        h("div",{id:"pubList", class:"pub-list"})
+      ])
+    ])
+  ]));
+
+  // Vita (no redundant contact section)
+  root.appendChild(h("div",{class:"section", id:"vita"},[
+    h("div",{class:"section-title"},"Vita"),
+    h("div",{class:"card", style:"padding: 16px;"},[
+      h("div",{style:"display:flex; gap:10px; flex-wrap:wrap; align-items:center; justify-content:space-between;"},[
+        h("div",{style:"color: rgba(255,255,255,0.75); font-size: 13px;"},"Embedded PDF (expects CV_Eugen_Dimant.pdf in the repository root)."),
+        h("a",{class:"btn", href:"CV_Eugen_Dimant.pdf", target:"_blank", rel:"noopener"},"Open CV PDF")
+      ]),
+      h("div",{style:"margin-top: 12px; border-radius: 18px; overflow: hidden; border: 1px solid rgba(255,255,255,0.10); background: rgba(255,255,255,0.02);"},[
+        h("iframe",{id:"cvFrame", src:"CV_Eugen_Dimant.pdf", style:"width: 100%; height: 820px; border: 0;", loading:"lazy"})
+      ]),
+      h("div",{id:"cvMissing", style:"display:none; margin-top: 10px; color: rgba(255,255,255,0.72); font-size: 13px;"},[
+        "The CV PDF was not found at ", h("code",{},"/CV_Eugen_Dimant.pdf"),
+        ". Upload it to the repository root (case-sensitive), wait for GitHub Pages to redeploy, then refresh."
+      ])
+    ])
+  ]));
+
+  root.appendChild(h("div",{class:"footer"},`© ${YEAR_NOW} Eugen Dimant · Built as a single-file GitHub Pages site.`));
+
+  return root;
+}
+
+function buildChip(label, count, active, onClick){
+  return h("button",{type:"button", class:"chip"+(active?" active":""), onclick:onClick, html:`<span>${escapeHtml(label)}</span><span class="count">${count}</span>`});
+}
+
+function renderChips(){
+  const base=getTabPubs().filter(p=>{
+    if (state.driveOnly && !(p.links && p.links.drive_pdf)) return false;
+    const q=normalize(state.q);
+    if (!q) return true;
+    const hay=normalize([p.title,p.authors,p.venue,(p.topics||[]).join(" ")].join(" "));
+    return hay.includes(q);
+  });
+
+  const yearMap=new Map();
+  const topicMap=new Map();
+  for (const p of base){
+    if (p.year) yearMap.set(p.year, (yearMap.get(p.year)||0)+1);
+    for (const t of (p.topics||[])) topicMap.set(t, (topicMap.get(t)||0)+1);
+  }
+
+  const years=[...yearMap.entries()].sort((a,b)=>b[0]-a[0]);
+  const topics=[...topicMap.entries()].sort((a,b)=>b[1]-a[1] || a[0].localeCompare(b[0]));
+
+  const yearWrap=document.getElementById("yearChips");
+  yearWrap.innerHTML="";
+  yearWrap.appendChild(buildChip("All", base.length, state.year===null, ()=>{state.year=null; renderResearch(); updateUrl();}));
+  years.forEach(([y,c])=>yearWrap.appendChild(buildChip(String(y), c, state.year===y, ()=>{state.year=y; renderResearch(); updateUrl();})));
+
+  const topicWrap=document.getElementById("topicChips");
+  topicWrap.innerHTML="";
+  topicWrap.appendChild(buildChip("All", base.length, state.topic===null, ()=>{state.topic=null; renderResearch(); updateUrl();}));
+  topics.forEach(([t,c])=>topicWrap.appendChild(buildChip(t, c, state.topic===t, ()=>{state.topic=t; renderResearch(); updateUrl();})));
+}
+
+  const statusWrap=document.getElementById("statusChips");
+  if (statusWrap){
+    const statusMap=new Map();
+    for (const p of base){
+      const st = p.status || (p.type==="peer_reviewed" ? "published" : "");
+      if (!st) continue;
+      statusMap.set(st, (statusMap.get(st)||0)+1);
+    }
+    const order=["published","revise_resubmit","under_review"];
+    const label={published:"Published", revise_resubmit:"R&R", under_review:"Under review"};
+    statusWrap.innerHTML="";
+    statusWrap.appendChild(buildChip("All", base.length, state.status===null, ()=>{state.status=null; renderResearch(); updateUrl();}));
+    order.filter(k=>statusMap.has(k)).forEach(k=>{
+      statusWrap.appendChild(buildChip(label[k]||k, statusMap.get(k), state.status===k, ()=>{state.status=k; renderResearch(); updateUrl();}));
+    });
+  }
+
+
+function renderJumpSelect(pubs){
+  const sel=document.getElementById("jumpSelect");
+  const years=[...new Set(pubs.map(p=>p.year).filter(Boolean))].sort((a,b)=>b-a);
+  sel.innerHTML = `<option value="">...</option>` + years.map(y=>`<option value="${y}">${y}</option>`).join("");
+}
+function jumpToYear(y){
+  if (!y) return;
+  const el=document.getElementById("y"+y);
+  if (el) el.scrollIntoView({behavior:"smooth", block:"start"});
+}
+
+function renderResearch(){
+  const list=sortPubs(getTabPubs().filter(pubMatches));
+  document.getElementById("resultCount").textContent=String(list.length);
+
+  renderChips();
+  renderJumpSelect(list);
+
+  const container=document.getElementById("pubList");
+  container.innerHTML="";
+  let currentYear=null;
+
+  for (const pub of list){
+    if (state.groupByYear){
+      const y=pub.year || "Unknown year";
+      if (y!==currentYear){
+        currentYear=y;
+        container.appendChild(h("div",{class:"year-divider", id:(pub.year?("y"+pub.year):"yUnknown")},String(y)));
+      }
     }
 
-    // -------------------------
-    // State
-    // -------------------------
-    let activeTab = "all"; // all | peer | pre
-    let selectedYears = new Set();
-    let selectedTopics = new Set();
+    const statusTag = (pub.status && pub.type==="preprint")
+      ? `<span class="tag">${pub.status==="revise_resubmit" ? "R&R" : (pub.status==="under_review" ? "Under review" : pub.status)}</span>`
+      : (pub.type==="peer_reviewed" ? `<span class="tag">Published</span>` : "");
 
-    // -------------------------
-    // UI init
-    // -------------------------
-    $("#yearNow").textContent = new Date().getFullYear();
+  const tags=[pub.year ? `<span class="tag">${pub.year}</span>` : `<span class="tag">n/a</span>`]
+      .concat(statusTag ? [statusTag] : [])
+      .concat((pub.topics||[]).map(t=>`<span class="tag">${escapeHtml(t)}</span>`))
+      .concat([`<span class="tag cite" id="cite_${pub.id}">Citations: …</span>`])
+      .join("");
 
-    // Fix "ED" overlay: show fallback only if image fails
-    (function(){
-      const img = $("#heroImg");
-      const fb = $("#heroFallback");
-      if(!img || !fb) return;
-      img.addEventListener("load", () => {
-        fb.style.display = "none";
-      });
-      img.addEventListener("error", () => {
-        img.style.display = "none";
-        fb.style.display = "flex";
-      });
-    })();
+    const actions=[];
+    if (pub.links && pub.links.journal) actions.push(`<a class="btn" href="${escapeHtml(pub.links.journal)}" target="_blank" rel="noopener">Journal site</a>`);
+    if (pub.links && pub.links.drive_pdf) actions.push(`<a class="btn" href="${escapeHtml(pub.links.drive_pdf)}" target="_blank" rel="noopener">Drive PDF</a>`);
+    if (pub.links && pub.links.podcast) actions.push(`<a class="btn" href="${escapeHtml(pub.links.podcast)}" target="_blank" rel="noopener">AI podcast</a>`);
+    const scholarQ=encodeURIComponent(pub.title||"");
+    actions.push(`<a class="btn" href="https://scholar.google.com/scholar?q=${scholarQ}" target="_blank" rel="noopener">Scholar</a>`);
+    actions.push(`<button class="btn" type="button" data-bibtex="${escapeHtml(pub.id)}">BibTeX</button>`);
 
-    // Nav active state
-    const navLinks = $$("[data-nav]");
-    const sections = ["home","research","vita","contact"].map(id => $("#" + id));
-    const io = new IntersectionObserver(entries => {
-      const visible = entries.filter(e => e.isIntersecting).sort((a,b)=>b.intersectionRatio-a.intersectionRatio)[0];
-      if(!visible) return;
-      const id = visible.target.id;
-      navLinks.forEach(a => a.classList.toggle("active", a.getAttribute("href") === "#" + id));
-    }, { root: null, threshold: [0.2, 0.35, 0.5] });
-    sections.forEach(s => s && io.observe(s));
+    const card=h("div",{class:"pub", html:`
+      <h4>${escapeHtml(pub.title)}</h4>
+      <div class="sub">
+        ${pub.authors ? `<strong>with</strong> ${escapeHtml(pub.authors)}` : ``}
+        ${pub.venue ? ` · <span>${escapeHtml(pub.venue)}</span>` : ``}
+      </div>
+      <div class="tags">${tags}</div>
+      <div class="actions">${actions.join("")}</div>
+    `});
 
-    // Tabs
-    $$(".tab").forEach(btn => {
-      btn.addEventListener("click", () => {
-        $$(".tab").forEach(b => b.classList.remove("active"));
-        btn.classList.add("active");
-        activeTab = btn.dataset.tab;
-        // reset year/topic selections when switching tabs? keep them but rerender counts
-        render();
-      });
+    card.querySelector('button[data-bibtex]')?.addEventListener("click", async ()=>{
+      const b=buildBibtex(pub);
+      const ok=await copyText(b);
+      const btn=card.querySelector('button[data-bibtex]');
+      if (btn){
+        const old=btn.textContent;
+        btn.textContent = ok ? "Copied" : "Copy failed";
+        setTimeout(()=>btn.textContent=old, 1400);
+      }
     });
 
-    // Reset
-    $("#resetBtn").addEventListener("click", () => {
-      $("#q").value = "";
-      selectedYears.clear();
-      selectedTopics.clear();
-      $("#onlyDrive").checked = false;
-      $("#groupByYear").checked = true;
-      $("#sort").value = "year_desc";
-      activeTab = "all";
-      $$(".tab").forEach(b => b.classList.toggle("active", b.dataset.tab === "all"));
-      render();
-      showToast("Reset.");
-    });
+    container.appendChild(card);
+  }
 
-    // Share filtered link
-    $("#shareBtn").addEventListener("click", async () => {
-      const params = new URLSearchParams();
-      if(activeTab !== "all") params.set("tab", activeTab);
-      const q = $("#q").value.trim();
-      if(q) params.set("q", q);
-      if(selectedYears.size) params.set("y", Array.from(selectedYears).sort((a,b)=>b-a).join(","));
-      if(selectedTopics.size) params.set("t", Array.from(selectedTopics).join(","));
-      if($("#onlyDrive").checked) params.set("drive", "1");
-      if(!$("#groupByYear").checked) params.set("group", "0");
-      params.set("sort", $("#sort").value);
+  refreshCites(list);
+}
 
-      const link = location.origin + location.pathname + "#research" + (params.toString() ? "?" + params.toString() : "");
-      try{
-        await navigator.clipboard.writeText(link);
-        showToast("Copied filtered link.");
-      }catch(e){
-        showToast("Could not copy. You can copy from the address bar.");
-      }
-    });
+function setTab(tab){
+  state.tab=tab;
+  state.year=null;
+  state.topic=null;
+  state.status=null;
+  document.querySelectorAll(".tab").forEach(b=>b.classList.remove("active"));
+  document.querySelector(`.tab[data-tab="${tab}"]`)?.classList.add("active");
+  renderResearch();
+  updateUrl();
+}
 
-    // Controls
-    $("#q").addEventListener("input", () => render());
-    $("#onlyDrive").addEventListener("change", () => render());
-    $("#groupByYear").addEventListener("change", () => render());
-    $("#sort").addEventListener("change", () => render());
-    $("#jumpYear").addEventListener("change", () => {
-      const y = $("#jumpYear").value;
-      if(!y) return;
-      const el = document.getElementById("year-" + y);
-      if(el) el.scrollIntoView({behavior:"smooth", block:"start"});
-      $("#jumpYear").value = "";
-    });
+function resetFilters(){
+  state.tab="all"; state.q=""; state.year=null; state.topic=null; state.status=null;
+  state.driveOnly=false; state.groupByYear=true; state.sort="newest";
+  document.getElementById("searchInput").value="";
+  document.getElementById("driveOnly").checked=false;
+  document.getElementById("groupByYear").checked=true;
+  document.getElementById("sortSelect").value="newest";
+  setTab("all");
+  updateUrl();
+}
 
-    // Refresh citation counts
-    $("#refreshCitesBtn").addEventListener("click", async () => {
-      // force refresh by clearing cache timestamps for visible keys
-      const visible = currentVisibleItems();
-      visible.forEach(p => {
-        const k = pubKey(p);
-        if(citeCache[k]) citeCache[k].t = 0;
-      });
-      saveCiteCache(citeCache);
-      await hydrateCitations(visible, true);
-      showToast("Citation counts refreshed.");
-    });
+function applyFromUrl(){
+  const p=new URLSearchParams(location.search);
+  const tab=p.get("tab"); if (tab && ["all","peer","preprint"].includes(tab)) state.tab=tab;
+  const q=p.get("q"); if (q) state.q=q;
+  const y=p.get("y"); if (y && /^\d{4}$/.test(y)) state.year=parseInt(y,10);
+  const t=p.get("topic"); if (t) state.topic=t;
+  const st=p.get("status"); if (st) state.status=st;
+  const d=p.get("drive"); if (d==="1") state.driveOnly=true;
+  const g=p.get("group"); if (g==="0") state.groupByYear=false;
+  const s=p.get("sort"); if (s && ["newest","oldest","title"].includes(s)) state.sort=s;
+}
 
-    // Parse query params after hash (#research?x=y)
-    function parseHashParams(){
-      const hash = location.hash || "";
-      const idx = hash.indexOf("?");
-      if(idx === -1) return new URLSearchParams();
-      return new URLSearchParams(hash.slice(idx + 1));
-    }
-    function applyParams(){
-      const p = parseHashParams();
-      const tab = p.get("tab");
-      if(tab === "peer" || tab === "pre") {
-        activeTab = tab;
-        $$(".tab").forEach(b => b.classList.toggle("active", b.dataset.tab === tab));
-      } else {
-        activeTab = "all";
-        $$(".tab").forEach(b => b.classList.toggle("active", b.dataset.tab === "all"));
-      }
+function updateUrl(){
+  const p=new URLSearchParams();
+  if (state.tab!=="all") p.set("tab", state.tab);
+  if (state.q) p.set("q", state.q);
+  if (state.year) p.set("y", String(state.year));
+  if (state.topic) p.set("topic", state.topic);
+  if (state.status) p.set("status", state.status);
+  if (state.driveOnly) p.set("drive", "1");
+  if (!state.groupByYear) p.set("group", "0");
+  if (state.sort!=="newest") p.set("sort", state.sort);
+  const newUrl = location.pathname + (p.toString()?("?"+p.toString()):"") + location.hash;
+  history.replaceState(null, "", newUrl);
+}
 
-      const q = p.get("q");
-      if(q) $("#q").value = q;
+async function copyLink(){
+  const ok=await copyText(location.href);
+  const btn=document.activeElement;
+  if (btn && btn.classList && btn.classList.contains("btn")){
+    const old=btn.textContent;
+    btn.textContent = ok ? "Copied link" : "Copy failed";
+    setTimeout(()=>btn.textContent=old, 1400);
+  }
+}
 
-      const ys = (p.get("y") || "").split(",").map(x => parseInt(x,10)).filter(x => !Number.isNaN(x));
-      ys.forEach(y => selectedYears.add(y));
+function initXFallback(){
+  setTimeout(()=>{
+    const wrap=document.getElementById("xEmbed");
+    if (!wrap) return;
+    const hasIframe=wrap.querySelector("iframe");
+    if (!hasIframe) document.getElementById("xFallback").style.display="block";
+  }, 4500);
+}
 
-      const ts = (p.get("t") || "").split(",").map(x => x.trim()).filter(Boolean);
-      ts.forEach(t => selectedTopics.add(t));
+async function checkCvExists(){
+  try{
+    const r=await fetch("CV_Eugen_Dimant.pdf", {method:"HEAD"});
+    if (!r.ok) throw new Error("missing");
+  } catch(e){
+    const msg=document.getElementById("cvMissing");
+    if (msg) msg.style.display="block";
+  }
+}
 
-      $("#onlyDrive").checked = p.get("drive") === "1";
-      $("#groupByYear").checked = p.get("group") !== "0";
-      const sort = p.get("sort");
-      if(sort) $("#sort").value = sort;
-    }
+function mount(){
+  const app=document.getElementById("app");
+  app.innerHTML="";
+  app.appendChild(buildLayout());
 
-    // -------------------------
-    // Filters and rendering
-    // -------------------------
-    function tabAllows(pub){
-      const c = classify(pub);
-      if(activeTab === "all") return true;
-      if(activeTab === "peer") return c === "peer";
-      if(activeTab === "pre") return c === "pre";
-      return true;
-    }
+  // apply initial state to UI controls
+  document.getElementById("searchInput").value=state.q || "";
+  document.getElementById("driveOnly").checked=!!state.driveOnly;
+  document.getElementById("groupByYear").checked=!!state.groupByYear;
+  document.getElementById("sortSelect").value=state.sort;
 
-    function getYearsForTab(){
-      const ys = pubs.filter(tabAllows).map(p => p.year);
-      return Array.from(new Set(ys)).sort((a,b)=>b-a);
-    }
+  // activate correct tab button
+  document.querySelectorAll(".tab").forEach(b=>b.classList.remove("active"));
+  document.querySelector(`.tab[data-tab="${state.tab}"]`)?.classList.add("active");
 
-    function getTopicsForTab(){
-      const set = new Set();
-      pubs.filter(tabAllows).forEach(p => deriveTags(p).forEach(t => set.add(t)));
-      return Array.from(set).sort((a,b)=>a.localeCompare(b));
-    }
+  // sort select handler
+  document.getElementById("sortSelect").addEventListener("change",(e)=>{state.sort=e.target.value; renderResearch(); updateUrl();});
 
-    function renderYearChips(){
-      const host = $("#yearChips");
-      host.innerHTML = "";
-      const years = getYearsForTab();
-      years.forEach(y => {
-        const count = pubs.filter(tabAllows).filter(p => p.year === y).length;
-        const chip = document.createElement("button");
-        chip.type = "button";
-        chip.className = "chip" + (selectedYears.has(y) ? " active" : "");
-        chip.innerHTML = `${y} <small>${count}</small>`;
-        chip.addEventListener("click", () => {
-          if(selectedYears.has(y)) selectedYears.delete(y); else selectedYears.add(y);
-          chip.classList.toggle("active");
-          render();
-        });
-        host.appendChild(chip);
-      });
-    }
+  renderResearch();
+  initXFallback();
+  checkCvExists();
+}
 
-    function renderTopicChips(){
-      const host = $("#topicChips");
-      host.innerHTML = "";
-      const topics = getTopicsForTab();
-      topics.forEach(t => {
-        const count = pubs.filter(tabAllows).filter(p => deriveTags(p).includes(t)).length;
-        const chip = document.createElement("button");
-        chip.type = "button";
-        chip.className = "chip" + (selectedTopics.has(t) ? " active" : "");
-        chip.innerHTML = `${escapeHtml(t)} <small>${count}</small>`;
-        chip.addEventListener("click", () => {
-          if(selectedTopics.has(t)) selectedTopics.delete(t); else selectedTopics.add(t);
-          chip.classList.toggle("active");
-          render();
-        });
-        host.appendChild(chip);
-      });
-    }
+// Start
+applyFromUrl();
+mount();
+</script>
 
-    function matches(pub){
-      if(!tabAllows(pub)) return false;
-
-      const qRaw = $("#q").value.trim();
-      if(qRaw){
-        const terms = norm(qRaw).split(/\s+/).filter(Boolean);
-        const hay = norm(pub.title + " " + (pub.authors||"") + " " + (pub.venue||"") + " " + (pub.status||""));
-        for(const term of terms){
-          if(!hay.includes(term)) return false;
-        }
-      }
-
-      if(selectedYears.size && !selectedYears.has(pub.year)) return false;
-
-      if(selectedTopics.size){
-        const tags = deriveTags(pub);
-        for(const t of selectedTopics){
-          if(!tags.includes(t)) return false;
-        }
-      }
-
-      if($("#onlyDrive").checked){
-        const drive = pub.links && (pub.links.open || pub.links.pdf || "");
-        if(!drive || !String(drive).includes("drive.google")) return false;
-      }
-
-      return true;
-    }
-
-    function sortItems(items){
-      const mode = $("#sort").value;
-      const copy = items.slice();
-      if(mode === "year_asc") copy.sort((a,b)=>a.year-b.year || a.title.localeCompare(b.title));
-      if(mode === "year_desc") copy.sort((a,b)=>b.year-a.year || a.title.localeCompare(b.title));
-      if(mode === "title_asc") copy.sort((a,b)=>a.title.localeCompare(b.title));
-      return copy;
-    }
-
-    function renderJump(items){
-      const sel = $("#jumpYear");
-      const years = Array.from(new Set(items.map(p=>p.year))).sort((a,b)=>b-a);
-      sel.innerHTML = `<option value="">Jump to year…</option>` + years.map(y => `<option value="${y}">${y}</option>`).join("");
-    }
-
-    function pubLinks(pub){
-      const links = pub.links || {};
-      const out = [];
-
-      const journal = links.paper || "";
-      const drive = links.open || links.pdf || "";
-      const podcast = links.podcast || links.ai || "";
-      const materials = links.materials || "";
-
-      out.push({
-        label: journal ? "Journal" : "Journal search",
-        href: journal ? journal : ("https://www.google.com/search?q=" + encodeURIComponent(pub.title + " " + (pub.venue||"")))
-      });
-
-      if(drive && String(drive).includes("drive.google")) {
-        out.push({ label: "Drive PDF", href: drive });
-      } else if(drive) {
-        out.push({ label: "Open PDF", href: drive });
-      }
-
-      if(podcast) out.push({ label: "AI podcast", href: podcast });
-      if(materials) out.push({ label: "Materials", href: materials });
-
-      out.push({ label: "View on Scholar", href: makeScholarSearchUrl(pub.title) });
-      out.push({ label: "Copy BibTeX", action: "bibtex" });
-
-      return out;
-    }
-
-    async function copyBibtex(pub){
-      try{
-        const t = await fetchBibtex(pub);
-        await navigator.clipboard.writeText(t);
-        showToast("BibTeX copied.");
-      }catch(e){
-        showToast("Could not copy BibTeX.");
-      }
-    }
-
-    function renderPub(pub){
-      const el = document.createElement("article");
-      el.className = "pub";
-
-      const tags = deriveTags(pub);
-      const badges = [];
-      badges.push(`<span class="badge"><strong>${pub.year}</strong></span>`);
-
-      const c = classify(pub);
-      if(c === "pre") badges.push(`<span class="badge warn"><strong>pre-print</strong></span>`);
-      if(pub.status) badges.push(`<span class="badge warn"><strong>${escapeHtml(pub.status)}</strong></span>`);
-
-      if(pub.links && (pub.links.open || pub.links.pdf)) {
-        const hasDrive = String(pub.links.open || pub.links.pdf || "").includes("drive.google");
-        badges.push(`<span class="badge ok"><strong>${hasDrive ? "drive" : "open"}</strong></span>`);
-      }
-
-      // Citation badge placeholder
-      badges.push(`<span class="badge" data-cite-badge="1"><strong>Citations</strong> <span data-cite="1">…</span></span>`);
-
-      tags.slice(0,6).forEach(t => badges.push(`<span class="badge">${escapeHtml(t)}</span>`));
-
-      const meta = [
-        pub.authors ? `<em>${escapeHtml(pub.authors)}</em>` : "",
-        pub.venue ? escapeHtml(pub.venue) : ""
-      ].filter(Boolean).join(" · ");
-
-      const links = pubLinks(pub).map(l => {
-        if(l.action === "bibtex") {
-          return `<button class="link" type="button" data-bibtex="1">Copy BibTeX</button>`;
-        }
-        const cls = "link" + (l.label === "Drive PDF" ? " primary" : "");
-        return `<a class="${cls}" href="${escapeHtml(l.href)}" target="_blank" rel="noreferrer noopener">${escapeHtml(l.label)}</a>`;
-      }).join("");
-
-      el.innerHTML = `
-        <h4>${escapeHtml(pub.title)}</h4>
-        <div class="meta">${meta}</div>
-        <div class="badges">${badges.join("")}</div>
-        <div class="links">${links}</div>
-      `;
-
-      const bibBtn = el.querySelector("[data-bibtex='1']");
-      if(bibBtn) bibBtn.addEventListener("click", () => copyBibtex(pub));
-
-      return el;
-    }
-
-    function renderList(items){
-      const host = $("#list");
-      host.innerHTML = "";
-
-      const group = $("#groupByYear").checked;
-      if(!items.length){
-        host.innerHTML = `<div class="pub"><div class="meta">No results. Try a different keyword, clear filters, or switch tabs.</div></div>`;
-        return;
-      }
-
-      if(!group){
-        items.forEach(pub => host.appendChild(renderPub(pub)));
-        return;
-      }
-
-      const byYear = new Map();
-      items.forEach(p => {
-        if(!byYear.has(p.year)) byYear.set(p.year, []);
-        byYear.get(p.year).push(p);
-      });
-
-      Array.from(byYear.keys()).sort((a,b)=>b-a).forEach(y => {
-        const block = document.createElement("div");
-        block.className = "year-block";
-        block.id = "year-" + y;
-
-        const title = document.createElement("div");
-        title.className = "year-title";
-        title.innerHTML = `<h3>${y}</h3><a class="jump" href="#research">Back to filters</a>`;
-        block.appendChild(title);
-
-        byYear.get(y).forEach(pub => block.appendChild(renderPub(pub)));
-        host.appendChild(block);
-      });
-    }
-
-    function currentVisibleItems(){
-      return sortItems(pubs.filter(matches));
-    }
-
-    async function hydrateCitations(items, force){
-      // Fetch citations for visible items, then fill DOM in-place.
-      // Throttle to avoid hammering APIs.
-      const MAX = Math.min(items.length, 40);
-      for(let i=0;i<MAX;i++) {
-        const pub = items[i];
-        const c = await fetchOpenAlexCites(pub);
-        // Find the corresponding card (by title match)
-        // Use a stable key stored on the element
-        const key = pubKey(pub);
-        const node = document.querySelector(`[data-pub-key="${CSS.escape(key)}"] [data-cite="1"]`);
-        if(node) node.textContent = (c === null || c === undefined) ? "n/a" : String(c);
-      }
-    }
-
-    function attachKeys(items){
-      // Add data keys to each rendered pub for citation hydration
-      $$("#list .pub").forEach((el, idx) => {
-        const pub = items[idx];
-        if(!pub) return;
-        el.setAttribute("data-pub-key", pubKey(pub));
-      });
-    }
-
-    function render(){
-      renderYearChips();
-      renderTopicChips();
-
-      const items = currentVisibleItems();
-      const label = (activeTab === "all") ? "all publications" : (activeTab === "peer" ? "peer-reviewed" : "pre-prints");
-      $("#count").textContent = `${items.length} result${items.length === 1 ? "" : "s"} · ${label}`;
-      renderJump(items);
-      renderList(items);
-      attachKeys(items);
-
-      // hydrate citations after paint
-      setTimeout(() => hydrateCitations(items, false), 50);
-    }
-
-    // Smooth scroll offset fix for sticky header
-    function scrollWithOffset(id){
-      const el = document.getElementById(id);
-      if(!el) return;
-      const y = el.getBoundingClientRect().top + window.pageYOffset - 78;
-      window.scrollTo({ top: y, behavior: "smooth" });
-    }
-    navLinks.forEach(a => {
-      a.addEventListener("click", (e) => {
-        const href = a.getAttribute("href") || "";
-        if(!href.startsWith("#")) return;
-        const id = href.slice(1);
-        if(!id) return;
-        e.preventDefault();
-        history.replaceState(null, "", "#" + id);
-        scrollWithOffset(id);
-      });
-    });
-
-    // Init from params
-    applyParams();
-    render();
-  </script>
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 </body>
 </html>
