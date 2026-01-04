@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://eugendimant.github.io/sitemap.xml
