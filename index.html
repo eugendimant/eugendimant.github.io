@@ -72,7 +72,7 @@
         nav a:hover, nav a.active { color: var(--text-primary); }
         .page-section { display: none; }
         .page-section.active { display: block; }
-        .home-container, .vita-container { max-width: 1400px; margin: 0 auto; padding: 2rem; }
+        .home-container { max-width: 1400px; margin: 0 auto; padding: 2rem; }
         .home-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1.5rem; margin-bottom: 1.5rem; }
         .profile-card, .news-card, .selected-card, .about-card {
             background: var(--bg-card);
@@ -140,12 +140,6 @@
             margin-right: 0.5rem;
         }
         .profile-tags-list { font-size: 0.8rem; color: var(--text-secondary); }
-        .twitter-section { margin-top: 1rem; padding-top: 1rem; border-top: 1px solid var(--border-light); }
-        .twitter-section-title { font-size: 0.7rem; font-weight: 600; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.75rem; }
-        .twitter-feed { max-height: 200px; overflow-y: auto; border-radius: 8px; }
-        .twitter-fallback { font-size: 0.8rem; color: var(--text-secondary); }
-        .twitter-fallback a { color: var(--accent-primary); text-decoration: none; }
-        .twitter-fallback a:hover { text-decoration: underline; }
         .card-title { font-family: 'Source Serif 4', Georgia, serif; font-size: 1.1rem; font-weight: 600; margin-bottom: 1.25rem; }
         .news-item { margin-bottom: 1.25rem; padding-bottom: 1.25rem; border-bottom: 1px solid var(--border-light); }
         .news-item:last-child { margin-bottom: 0; padding-bottom: 0; border-bottom: none; }
@@ -171,35 +165,6 @@
         .about-col p:last-child { margin-bottom: 0; }
         .about-text a { color: var(--accent-primary); text-decoration: none; }
         .about-text a:hover { text-decoration: underline; }
-        .vita-title { font-family: 'Source Serif 4', Georgia, serif; font-size: 1.5rem; font-weight: 600; margin-bottom: 1.5rem; text-transform: uppercase; letter-spacing: 0.05em; }
-        .vita-actions { display: flex; gap: 1rem; margin-bottom: 1.5rem; }
-        .vita-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            padding: 0.75rem 1.5rem;
-            font-size: 0.9rem;
-            font-weight: 500;
-            border-radius: 8px;
-            text-decoration: none;
-            cursor: pointer;
-            transition: all 0.2s;
-        }
-        .vita-btn.primary { background: var(--accent-primary); color: var(--bg-primary); border: none; }
-        .vita-btn.secondary { background: var(--bg-hover); color: var(--text-primary); border: 1px solid var(--border-color); }
-        .vita-btn:hover { transform: translateY(-1px); box-shadow: 0 4px 12px rgba(0,0,0,0.3); }
-        .vita-frame-container {
-            background: var(--bg-card);
-            border: 1px solid var(--border-color);
-            border-radius: 12px;
-            overflow: hidden;
-        }
-        .vita-frame {
-            width: 100%;
-            height: 80vh;
-            border: none;
-            background: #fff;
-        }
         .research-container { max-width: 1400px; margin: 0 auto; padding: 2rem; }
         .research-title { font-family: 'Source Serif 4', Georgia, serif; font-size: 1.5rem; font-weight: 600; margin-bottom: 1rem; text-transform: uppercase; letter-spacing: 0.05em; }
         .top-tabs { display: flex; gap: 0.5rem; margin-bottom: 1.5rem; flex-wrap: wrap; }
@@ -240,6 +205,7 @@
         .paper-meta { display: flex; flex-wrap: wrap; align-items: center; gap: 0.5rem; margin-bottom: 0.75rem; }
         .paper-badge { font-size: 0.65rem; font-weight: 600; padding: 0.2rem 0.5rem; border-radius: 4px; border: 1px solid var(--border-color); background: var(--bg-secondary); color: var(--text-muted); }
         .paper-badge.status { background: rgba(126, 231, 135, 0.1); color: var(--accent-tertiary); border-color: transparent; }
+        .paper-badge.inprint { background: rgba(126, 231, 135, 0.1); color: var(--accent-tertiary); border-color: transparent; }
         .paper-badge.review { background: rgba(201, 160, 220, 0.1); color: var(--accent-primary); border-color: transparent; }
         .paper-badge.progress { background: rgba(121, 192, 255, 0.1); color: var(--accent-secondary); border-color: transparent; }
         .paper-title { font-family: 'Source Serif 4', Georgia, serif; font-size: 1rem; font-weight: 600; line-height: 1.4; margin-bottom: 0.5rem; }
@@ -255,15 +221,19 @@
         .modal-overlay { display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0, 0, 0, 0.85); z-index: 1000; align-items: center; justify-content: center; padding: 2rem; }
         .modal-overlay.active { display: flex; }
         .modal-content { background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 12px; max-width: 700px; width: 100%; max-height: 80vh; overflow: hidden; display: flex; flex-direction: column; }
+        .modal-content.cv-modal { max-width: 900px; max-height: 90vh; }
         .modal-header { display: flex; align-items: center; justify-content: space-between; padding: 1rem 1.5rem; border-bottom: 1px solid var(--border-color); }
         .modal-title { font-weight: 600; }
         .modal-close { background: none; border: none; color: var(--text-secondary); cursor: pointer; padding: 0.5rem; border-radius: 6px; transition: all 0.2s; font-size: 1.25rem; }
         .modal-close:hover { background: var(--bg-hover); color: var(--text-primary); }
         .modal-body { padding: 1.5rem; overflow-y: auto; flex: 1; }
+        .modal-body.cv-body { padding: 0; background: #525659; }
+        .cv-frame { width: 100%; height: 70vh; border: none; }
         .bibtex-code { background: var(--bg-primary); border: 1px solid var(--border-color); border-radius: 8px; padding: 1rem; font-family: 'Monaco', 'Menlo', monospace; font-size: 0.75rem; color: var(--text-secondary); white-space: pre-wrap; word-break: break-all; line-height: 1.5; }
         .modal-footer { padding: 1rem 1.5rem; border-top: 1px solid var(--border-color); display: flex; justify-content: flex-end; gap: 0.75rem; }
         .modal-btn { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.6rem 1.25rem; font-size: 0.85rem; font-weight: 500; border-radius: 8px; border: none; cursor: pointer; transition: all 0.2s; text-decoration: none; }
         .modal-btn.primary { background: var(--accent-primary); color: var(--bg-primary); }
+        .modal-btn.secondary { background: var(--bg-hover); color: var(--text-primary); border: 1px solid var(--border-color); }
         .modal-btn:hover { filter: brightness(1.1); }
         .toast { position: fixed; bottom: 2rem; right: 2rem; background: var(--accent-tertiary); color: var(--bg-primary); padding: 0.875rem 1.25rem; border-radius: 8px; font-weight: 500; font-size: 0.85rem; transform: translateY(100px); opacity: 0; transition: all 0.3s; z-index: 1001; }
         .toast.show { transform: translateY(0); opacity: 1; }
@@ -286,7 +256,7 @@
             <nav>
                 <a class="active" data-section="home" onclick="showSection('home')">Home</a>
                 <a data-section="research" onclick="showSection('research')">Research</a>
-                <a data-section="vita" onclick="showSection('vita')">Vita</a>
+                <a onclick="openCVModal()" style="cursor:pointer">Vita</a>
                 <a href="https://sites.google.com/view/eugendimant" target="_blank">Legacy site</a>
             </nav>
         </div>
@@ -305,7 +275,7 @@
                     </div>
                     <div class="profile-buttons">
                         <a class="profile-btn primary" onclick="showSection('research')">Explore publications</a>
-                        <a class="profile-btn" onclick="showSection('vita')">CV preview</a>
+                        <a class="profile-btn" onclick="openCVModal()">CV preview</a>
                         <a href="mailto:edimant@sas.upenn.edu" class="profile-btn">Email</a>
                     </div>
                     <div class="profile-links">
@@ -317,16 +287,9 @@
                         <span class="profile-tags-label">Focus</span>
                         <span class="profile-tags-list">norms, honesty, polarization, corruption, migration</span>
                     </div>
-                    <div class="twitter-section">
-                        <div class="twitter-section-title">Latest on X</div>
-                        <div class="twitter-feed" id="twitterFeed">
-                            <a class="twitter-timeline" data-height="180" data-theme="dark" data-chrome="noheader nofooter noborders transparent" href="https://twitter.com/eugen_dimant?ref_src=twsrc%5Etfw">Loading tweets...</a>
-                        </div>
-                        <noscript>
-                            <div class="twitter-fallback">
-                                Follow me on <a href="https://x.com/eugen_dimant" target="_blank">X (@eugen_dimant)</a>
-                            </div>
-                        </noscript>
+                    <div class="profile-tags">
+                        <span class="profile-tags-label">Methods</span>
+                        <span class="profile-tags-list">lab & field experiments, observational data</span>
                     </div>
                 </div>
 
@@ -400,19 +363,6 @@
         </div>
     </section>
 
-    <section id="vita" class="page-section">
-        <div class="vita-container">
-            <h1 class="vita-title">Curriculum Vitae</h1>
-            <div class="vita-actions">
-                <a href="https://raw.githubusercontent.com/eugendimant/eugendimant.github.io/main/CV_Eugen_Dimant.pdf" download="CV_Eugen_Dimant.pdf" class="vita-btn primary">⬇ Download PDF</a>
-                <a href="https://raw.githubusercontent.com/eugendimant/eugendimant.github.io/main/CV_Eugen_Dimant.pdf" target="_blank" class="vita-btn secondary">Open in New Tab</a>
-            </div>
-            <div class="vita-frame-container">
-                <iframe id="vitaFrame" class="vita-frame" src="about:blank"></iframe>
-            </div>
-        </div>
-    </section>
-
     <section id="research" class="page-section">
         <div class="research-container">
             <div class="research-header">
@@ -458,6 +408,7 @@
         </div>
     </section>
 
+    <!-- BibTeX Modal -->
     <div class="modal-overlay" id="bibtexModal">
         <div class="modal-content">
             <div class="modal-header"><span class="modal-title">BibTeX Citation</span><button class="modal-close" onclick="closeBibtexModal()">✕</button></div>
@@ -466,36 +417,45 @@
         </div>
     </div>
 
-    <div class="toast" id="toast">Copied to clipboard!</div>
+    <!-- CV Modal -->
+    <div class="modal-overlay" id="cvModal">
+        <div class="modal-content cv-modal">
+            <div class="modal-header">
+                <span class="modal-title">Curriculum Vitae</span>
+                <button class="modal-close" onclick="closeCVModal()">✕</button>
+            </div>
+            <div class="modal-body cv-body">
+                <iframe id="cvFrame" class="cv-frame" src="about:blank"></iframe>
+            </div>
+            <div class="modal-footer">
+                <a href="https://raw.githubusercontent.com/eugendimant/eugendimant.github.io/main/CV_Eugen_Dimant.pdf" target="_blank" class="modal-btn secondary">Open in New Tab</a>
+                <a href="https://raw.githubusercontent.com/eugendimant/eugendimant.github.io/main/CV_Eugen_Dimant.pdf" download="CV_Eugen_Dimant.pdf" class="modal-btn primary">⬇ Download PDF</a>
+            </div>
+        </div>
+    </div>
 
-    <!-- Twitter Widget JS -->
-    <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-    <script>
-        // Fallback if Twitter widget fails to load
-        setTimeout(function() {
-            var feed = document.getElementById('twitterFeed');
-            if (feed && feed.querySelector('.twitter-timeline') && !feed.querySelector('iframe')) {
-                feed.innerHTML = '<div class="twitter-fallback">Follow me on <a href="https://x.com/eugen_dimant" target="_blank">X (@eugen_dimant)</a> for updates</div>';
-            }
-        }, 5000);
-    </script>
+    <div class="toast" id="toast">Copied to clipboard!</div>
 
     <script>
 const papers=[
-{year:2025,status:"review",title:"Promoting Responsible Disposal of Opioids: A Randomized Evaluation",authors:"Dimant, E.; Toma, M. & colleagues (OES)",journal:"R&R: Health Economics",topics:["norms"],method:"experimental",journalUrl:"https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4502634",pdfUrl:"https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4502634",bibtex:`@unpublished{dimant2023opioid,\n  title={Promoting Responsible Disposal of Opioids},\n  author={Dimant and Toma and others},\n  note={R&R Health Economics},\n  year={2023}\n}`},
-{year:2025,status:"review",title:"Aid and Exodus: U.S. Military Assistance and Refugee Flows to the United States",authors:"Dimant, E.; Krieger, T.; Meierrieks, D. & Renner, L.",journal:"Under Review",topics:["terrorism"],method:"observational",journalUrl:"https://papers.ssrn.com/sol3/papers.cfm?abstract_id=5414817",pdfUrl:"https://papers.ssrn.com/sol3/papers.cfm?abstract_id=5414817",bibtex:`@unpublished{dimant2025aid,\n  title={Aid and Exodus},\n  author={Dimant and Krieger and Meierrieks and Renner},\n  note={Under Review},\n  year={2025}\n}`},
-{year:2025,status:"review",title:"Pluralism Breeds Tolerance",authors:"Panizza, F.; Dimant, E.; Kimbrough, E. & Vostroknutov, A.",journal:"Under Review",topics:["polarization","norms"],method:"experimental",journalUrl:"https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4649792",pdfUrl:"https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4649792",citations:16,bibtex:`@unpublished{panizza2025pluralism,\n  title={Pluralism Breeds Tolerance},\n  author={Panizza and Dimant and Kimbrough and Vostroknutov},\n  note={Under Review},\n  year={2025}\n}`},
-{year:2025,status:"review",title:"Identity and Economic Incentives",authors:"Donkor, K.; Götte, L.; Müller, M.; Dimant, E. & Kurschilgen, M.",journal:"Under Review",topics:["polarization"],method:"experimental",journalUrl:"https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4670092",pdfUrl:"https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4670092",citations:10,bibtex:`@unpublished{donkor2023identity,\n  title={Identity and Economic Incentives},\n  author={Donkor and Götte and Müller and Dimant and Kurschilgen},\n  note={Under Review},\n  year={2023}\n}`},
-{year:2025,status:"review",title:"Tell Me and I Forget, Make Me Commit and I Remember: Soft Commitments and Digital Behavior",authors:"Guido, A.; Romaniuc, R.; Boun My, K.; Dimant, E.; Dubois, D. et al.",journal:"Under Review",topics:["norms"],method:"experimental",journalUrl:"https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4989494",pdfUrl:"https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4989494",citations:1,bibtex:`@unpublished{guido2024tell,\n  title={Tell Me and I Forget},\n  author={Guido and others},\n  note={Under Review},\n  year={2024}\n}`},
-{year:2025,status:"review",title:"Do Planning Prompts Suggesting a Default Plan Increase Follow-through? Two 1-Million-Person Field Experiments",authors:"Duckworth, A.; Milkman, K.; Dimant, E. & BCFG Collective",journal:"Under Review",topics:["norms","methods"],method:"experimental",journalUrl:"",pdfUrl:"",bibtex:`@unpublished{duckworth2025planning,\n  title={Do Planning Prompts Suggesting a Default Plan Increase Follow-through?},\n  author={Duckworth and Milkman and Dimant and BCFG},\n  note={Under Review},\n  year={2025}\n}`},
-{year:2025,status:"progress",title:"Divided We Act: The Role of Social Sanctions in a Polarized World",authors:"Dimant, E.; Gelfand, M.; Hochleitner, A. & Sonderegger, S.",journal:"Work in Progress",topics:["polarization","norms"],method:"experimental",journalUrl:"https://papers.ssrn.com/sol3/papers.cfm?abstract_id=5636792",pdfUrl:"https://papers.ssrn.com/sol3/papers.cfm?abstract_id=5636792",bibtex:`@unpublished{dimant2025divided,\n  title={Divided We Act},\n  author={Dimant and Gelfand and Hochleitner and Sonderegger},\n  note={Work in Progress},\n  year={2025}\n}`},
-{year:2025,status:"progress",title:"Becoming Friends or Foes? How Competitive Environments Shape Altruistic Preferences",authors:"Cao, A.; Dimant, E.; Hyndman, K. & Yang, N.",journal:"Work in Progress",topics:["norms"],method:"experimental",journalUrl:"https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3326107",pdfUrl:"https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3326107",citations:9,bibtex:`@unpublished{cao2021becoming,\n  title={Becoming Friends or Foes?},\n  author={Cao and Dimant and Hyndman and Yang},\n  note={Work in Progress},\n  year={2021}\n}`},
-{year:2025,status:"published",title:"A National Megastudy Shows That Email Nudges to Elementary School Teachers Boost Student Math Achievement",authors:"Duckworth, A.; Ko, A.; Milkman, K.; Kay, J.; Dimant, E. et al.",journal:"Proceedings of the National Academy of Sciences (PNAS)",topics:["norms","methods"],method:"experimental",journalUrl:"https://doi.org/10.1073/pnas.2418616122",pdfUrl:"https://drive.google.com/file/d/1b5fPBMT2eOilEqVr1pFjf6_Ytp6NENCx/view",podcastUrl:"https://drive.google.com/file/d/12rKoz4vAaE74YL0GNXsLaiLw4AxqdUEO/view",citations:4,bibtex:`@article{duckworth2025nudging,\n  title={Nudging teachers},\n  author={Duckworth and Ko and Milkman and others},\n  journal={PNAS},\n  year={2025}\n}`},
-{year:2025,status:"published",title:"Match Fixing and Sports Betting in Football: Empirical Evidence from the German Bundesliga",authors:"Deutscher, C.; Dimant, E.; Humphreys, B. & Nowak, A.",journal:"Public Finance Review",topics:["corruption"],method:"observational",journalUrl:"https://doi.org/10.1177/10911421251334175",pdfUrl:"https://papers.ssrn.com/sol3/papers.cfm?abstract_id=2912890",citations:29,bibtex:`@article{deutscher2025match,\n  title={Match Fixing and Sports Betting},\n  author={Deutscher and Dimant and Humphreys and Nowak},\n  journal={Public Finance Review},\n  year={2025}\n}`},
-{year:2025,status:"published",title:"Experimental Methods: Eliciting and Measuring Social Norms",authors:"Charness, G.; Dimant, E.; Gneezy, U. & Krupka, E.",journal:"Journal of Economic Behavior & Organization",topics:["norms","methods"],method:"experimental",journalUrl:"https://doi.org/10.1016/j.jebo.2025.107187",pdfUrl:"https://drive.google.com/file/d/1CNBQk56U7WSVGSKSwGo9Ws-OPTK6sy3L/view",citations:8,bibtex:`@article{charness2025experimental,\n  title={Experimental Methods},\n  author={Charness and Dimant and Gneezy and Krupka},\n  journal={JEBO},\n  year={2025}\n}`},
-{year:2025,status:"published",title:"The 'I' in Egalitarianism: Hadza Hunter-Gatherers Averse to Inequality Primarily when Personally Unfavourable",authors:"Smith, K.M.; Stibbard-Hawkes, D.; Dimant, E.; Mabulla, I.; Bicchieri, C. & Apicella, C.",journal:"PNAS Nexus",topics:["norms"],method:"experimental",journalUrl:"https://papers.ssrn.com/sol3/papers.cfm?abstract_id=5193882",pdfUrl:"https://papers.ssrn.com/sol3/papers.cfm?abstract_id=5193882",citations:1,bibtex:`@article{smith2025egalitarianism,\n  title={The 'I' in Egalitarianism},\n  author={Smith and others},\n  journal={PNAS Nexus},\n  year={2025}\n}`},
-{year:2025,status:"published",title:"The Science of Honesty: A Review and Research Agenda",authors:"Shalvi, S.; Levine, E.; Thielmann, I.; et al. (incl. Dimant, E.)",journal:"Advances in Experimental Social Psychology",topics:["honesty","methods"],method:"observational",journalUrl:"https://doi.org/10.1016/bs.aesp.2025.04.004",pdfUrl:"https://drive.google.com/file/d/1aG9KVUHWwHAS9laY0DfN5v3PJ4_QXKle/view",podcastUrl:"https://drive.google.com/file/d/1MnPK0mPc34OAyWXto4KMZhgQB4fApeXA/view",citations:5,bibtex:`@incollection{shalvi2025science,\n  title={The Science of Honesty},\n  author={Shalvi and others},\n  booktitle={AESP},\n  year={2025}\n}`},
-{year:2025,status:"published",title:"Norm-Nudging: Harnessing Social Expectations for Behavior Change",authors:"Bicchieri, C. & Dimant, E.",journal:"Elgar Encyclopedia of Behavioural and Experimental Economics",topics:["norms"],method:"observational",journalUrl:"https://www.elgaronline.com/display/book/9781802207736/9781802207736.xml",pdfUrl:"https://drive.google.com/file/d/1SnQjjADt01u_JYPE2at-Vc7X0Zwf5rJF/view",podcastUrl:"https://drive.google.com/file/d/1TZ4H2u4NKEcafxkWg-pwA49Xo4eSVhH8/view",citations:17,bibtex:`@incollection{bicchieri2025norm,\n  title={Norm-Nudging},\n  author={Bicchieri and Dimant},\n  booktitle={Elgar Encyclopedia},\n  year={2025}\n}`},
+// UNDER REVIEW (6 papers)
+{year:2025,status:"review",title:"Promoting Responsible Disposal of Opioids: A Randomized Evaluation",authors:"Bhanot, S.; Dimant, E.; Goel, S.; Hsieh, W.; Manning, C.; Ngo, N.; Perry, M.; Saccardo, S.; Toma, M. & Yokum, D.",journal:"R&R: Health Economics",topics:["norms"],method:"experimental",journalUrl:"https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4502634",pdfUrl:"https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4502634",bibtex:`@unpublished{bhanot2023opioid,\n  title={Promoting Responsible Disposal of Opioids: A Randomized Evaluation},\n  author={Bhanot, Syon and Dimant, Eugen and Goel, Sharad and Hsieh, Wayne and Manning, Connor and Ngo, Nicole and Perry, Maura and Saccardo, Silvia and Toma, Mattie and Yokum, David},\n  note={R&R Health Economics},\n  year={2023}\n}`},
+{year:2025,status:"review",title:"Aid and Exodus: U.S. Military Assistance and Refugee Flows to the United States",authors:"Dimant, E.; Krieger, T.; Meierrieks, D. & Renner, L.",journal:"Under Review",topics:["terrorism"],method:"observational",journalUrl:"https://papers.ssrn.com/sol3/papers.cfm?abstract_id=5414817",pdfUrl:"https://papers.ssrn.com/sol3/papers.cfm?abstract_id=5414817",bibtex:`@unpublished{dimant2025aid,\n  title={Aid and Exodus},\n  author={Dimant, Eugen and Krieger, Tim and Meierrieks, Daniel and Renner, Laura},\n  note={Under Review},\n  year={2025}\n}`},
+{year:2025,status:"review",title:"Pluralism Breeds Tolerance",authors:"Panizza, F.; Dimant, E.; Kimbrough, E. & Vostroknutov, A.",journal:"Under Review",topics:["polarization","norms"],method:"experimental",journalUrl:"https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4649792",pdfUrl:"https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4649792",citations:16,bibtex:`@unpublished{panizza2025pluralism,\n  title={Pluralism Breeds Tolerance},\n  author={Panizza, Folco and Dimant, Eugen and Kimbrough, Erik and Vostroknutov, Alexander},\n  note={Under Review},\n  year={2025}\n}`},
+{year:2025,status:"review",title:"Identity and Economic Incentives",authors:"Donkor, K.; Götte, L.; Müller, M.; Dimant, E. & Kurschilgen, M.",journal:"Under Review",topics:["polarization"],method:"experimental",journalUrl:"https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4670092",pdfUrl:"https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4670092",citations:10,bibtex:`@unpublished{donkor2023identity,\n  title={Identity and Economic Incentives},\n  author={Donkor, Kofi and Götte, Lorenz and Müller, Michael and Dimant, Eugen and Kurschilgen, Michael},\n  note={Under Review},\n  year={2023}\n}`},
+{year:2025,status:"review",title:"Tell Me and I Forget, Make Me Commit and I Remember: Soft Commitments and Digital Behavior",authors:"Guido, A.; Romaniuc, R.; Boun My, K.; Dimant, E.; Dubois, D. et al.",journal:"Under Review",topics:["norms"],method:"experimental",journalUrl:"https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4989494",pdfUrl:"https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4989494",citations:1,bibtex:`@unpublished{guido2024tell,\n  title={Tell Me and I Forget, Make Me Commit and I Remember},\n  author={Guido, Andrea and Romaniuc, Rustam and others},\n  note={Under Review},\n  year={2024}\n}`},
+{year:2025,status:"review",title:"Do Planning Prompts Suggesting a Default Plan Increase Follow-through? Two 1-Million-Person Field Experiments",authors:"Duckworth, A.; Milkman, K.; Dimant, E. & BCFG Collective",journal:"Under Review",topics:["norms","methods"],method:"experimental",journalUrl:"",pdfUrl:"",bibtex:`@unpublished{duckworth2025planning,\n  title={Do Planning Prompts Suggesting a Default Plan Increase Follow-through?},\n  author={Duckworth, Angela and Milkman, Katherine and Dimant, Eugen and BCFG Collective},\n  note={Under Review},\n  year={2025}\n}`},
+// WORK IN PROGRESS (2 papers)
+{year:2025,status:"progress",title:"Divided We Act: The Role of Social Sanctions in a Polarized World",authors:"Dimant, E.; Gelfand, M.; Hochleitner, A. & Sonderegger, S.",journal:"Work in Progress",topics:["polarization","norms"],method:"experimental",journalUrl:"https://papers.ssrn.com/sol3/papers.cfm?abstract_id=5636792",pdfUrl:"https://papers.ssrn.com/sol3/papers.cfm?abstract_id=5636792",bibtex:`@unpublished{dimant2025divided,\n  title={Divided We Act},\n  author={Dimant, Eugen and Gelfand, Michele and Hochleitner, Anna and Sonderegger, Silvia},\n  note={Work in Progress},\n  year={2025}\n}`},
+{year:2025,status:"progress",title:"Becoming Friends or Foes? How Competitive Environments Shape Altruistic Preferences",authors:"Cao, A.; Dimant, E.; Hyndman, K. & Yang, N.",journal:"Work in Progress",topics:["norms"],method:"experimental",journalUrl:"https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3326107",pdfUrl:"https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3326107",citations:9,bibtex:`@unpublished{cao2021becoming,\n  title={Becoming Friends or Foes?},\n  author={Cao, Anna and Dimant, Eugen and Hyndman, Kyle and Yang, Nan},\n  note={Work in Progress},\n  year={2021}\n}`},
+// 2025 PEER-REVIEWED (6 papers) - Match Fixing at end with sortOrder
+{year:2025,status:"published",sortOrder:1,title:"A National Megastudy Shows That Email Nudges to Elementary School Teachers Boost Student Math Achievement",authors:"Duckworth, A.; Ko, A.; Milkman, K.; Kay, J.; Dimant, E. et al.",journal:"Proceedings of the National Academy of Sciences (PNAS)",topics:["norms","methods"],method:"experimental",journalUrl:"https://doi.org/10.1073/pnas.2418616122",pdfUrl:"https://drive.google.com/file/d/1b5fPBMT2eOilEqVr1pFjf6_Ytp6NENCx/view",podcastUrl:"https://drive.google.com/file/d/12rKoz4vAaE74YL0GNXsLaiLw4AxqdUEO/view",citations:4,bibtex:`@article{duckworth2025nudging,\n  title={Nudging teachers},\n  author={Duckworth and Ko and Milkman and others},\n  journal={PNAS},\n  year={2025}\n}`},
+{year:2025,status:"published",sortOrder:2,title:"Experimental Methods: Eliciting and Measuring Social Norms",authors:"Charness, G.; Dimant, E.; Gneezy, U. & Krupka, E.",journal:"Journal of Economic Behavior & Organization",topics:["norms","methods"],method:"experimental",journalUrl:"https://doi.org/10.1016/j.jebo.2025.107187",pdfUrl:"https://drive.google.com/file/d/1CNBQk56U7WSVGSKSwGo9Ws-OPTK6sy3L/view",citations:8,bibtex:`@article{charness2025experimental,\n  title={Experimental Methods},\n  author={Charness and Dimant and Gneezy and Krupka},\n  journal={JEBO},\n  year={2025}\n}`},
+{year:2025,status:"published",sortOrder:3,title:"The 'I' in Egalitarianism: Hadza Hunter-Gatherers Averse to Inequality Primarily when Personally Unfavourable",authors:"Smith, K.M.; Stibbard-Hawkes, D.; Dimant, E.; Mabulla, I.; Bicchieri, C. & Apicella, C.",journal:"PNAS Nexus",topics:["norms"],method:"experimental",journalUrl:"https://papers.ssrn.com/sol3/papers.cfm?abstract_id=5193882",pdfUrl:"https://papers.ssrn.com/sol3/papers.cfm?abstract_id=5193882",citations:1,bibtex:`@article{smith2025egalitarianism,\n  title={The 'I' in Egalitarianism},\n  author={Smith and others},\n  journal={PNAS Nexus},\n  year={2025}\n}`},
+{year:2025,status:"published",sortOrder:4,title:"The Science of Honesty: A Review and Research Agenda",authors:"Shalvi, S.; Levine, E.; Thielmann, I.; et al. (incl. Dimant, E.)",journal:"Advances in Experimental Social Psychology",topics:["honesty","methods"],method:"observational",journalUrl:"https://doi.org/10.1016/bs.aesp.2025.04.004",pdfUrl:"https://drive.google.com/file/d/1aG9KVUHWwHAS9laY0DfN5v3PJ4_QXKle/view",podcastUrl:"https://drive.google.com/file/d/1MnPK0mPc34OAyWXto4KMZhgQB4fApeXA/view",citations:5,bibtex:`@incollection{shalvi2025science,\n  title={The Science of Honesty},\n  author={Shalvi and others},\n  booktitle={AESP},\n  year={2025}\n}`},
+{year:2025,status:"published",sortOrder:5,title:"Norm-Nudging: Harnessing Social Expectations for Behavior Change",authors:"Bicchieri, C. & Dimant, E.",journal:"Elgar Encyclopedia of Behavioural and Experimental Economics",topics:["norms"],method:"observational",journalUrl:"https://www.elgaronline.com/display/book/9781802207736/9781802207736.xml",pdfUrl:"https://drive.google.com/file/d/1SnQjjADt01u_JYPE2at-Vc7X0Zwf5rJF/view",podcastUrl:"https://drive.google.com/file/d/1TZ4H2u4NKEcafxkWg-pwA49Xo4eSVhH8/view",citations:17,bibtex:`@incollection{bicchieri2025norm,\n  title={Norm-Nudging},\n  author={Bicchieri and Dimant},\n  booktitle={Elgar Encyclopedia},\n  year={2025}\n}`},
+{year:2025,status:"published",sortOrder:99,title:"Match Fixing and Sports Betting in Football: Empirical Evidence from the German Bundesliga",authors:"Deutscher, C.; Dimant, E.; Humphreys, B. & Nowak, A.",journal:"Public Finance Review",topics:["corruption"],method:"observational",journalUrl:"https://doi.org/10.1177/10911421251334175",pdfUrl:"https://papers.ssrn.com/sol3/papers.cfm?abstract_id=2912890",citations:29,bibtex:`@article{deutscher2025match,\n  title={Match Fixing and Sports Betting},\n  author={Deutscher and Dimant and Humphreys and Nowak},\n  journal={Public Finance Review},\n  year={2025}\n}`},
+// 2024 PEER-REVIEWED (10 papers)
 {year:2024,status:"published",title:"A Synthesis of Evidence for Policy from Behavioural Science During COVID-19",authors:"Ruggeri, K.; Stock, F.; Haslam, S.A.; et al. (incl. Dimant, E.)",journal:"Nature",topics:["norms","methods"],method:"observational",journalUrl:"https://www.nature.com/articles/s41586-023-06840-9",pdfUrl:"https://drive.google.com/file/d/1sHiKmZmDvhquJPM27u_XzcT3_9c3mJ23/view",podcastUrl:"https://drive.google.com/file/d/1bmAZknhkOd6Yj-DtEo2MOReGQniCrq_e/view",citations:141,bibtex:`@article{ruggeri2024synthesis,\n  title={A synthesis of evidence for policy},\n  author={Ruggeri and others},\n  journal={Nature},\n  year={2024}\n}`},
 {year:2024,status:"published",title:"Strategic Behavior with Tight, Loose, and Polarized Norms",authors:"Dimant, E.; Gelfand, M.; Hochleitner, A. & Sonderegger, S.",journal:"Management Science",topics:["norms","polarization"],method:"experimental",journalUrl:"https://doi.org/10.1287/mnsc.2023.01022",pdfUrl:"https://drive.google.com/file/d/1N_ugrMwPomlefoFRgILd9vSqW33TzkvZ/view",podcastUrl:"https://drive.google.com/file/d/1G1hhIXN-EMpajPtPyPu0zl5eNKl3PEhL/view",citations:65,bibtex:`@article{dimant2024strategic,\n  title={Strategic Behavior},\n  author={Dimant and Gelfand and Hochleitner and Sonderegger},\n  journal={Management Science},\n  year={2024}\n}`},
 {year:2024,status:"published",title:"Hate Trumps Love: The Impact of Political Polarization on Social Preferences",authors:"Dimant, E.",journal:"Management Science",topics:["polarization"],method:"experimental",journalUrl:"https://doi.org/10.1287/mnsc.2023.4701",pdfUrl:"https://drive.google.com/file/d/15aVL3kOh-A6L0XJbgJblNEazKpsypdUC/view",podcastUrl:"https://drive.google.com/file/d/1LhrlfeGNBamsVUm8NJ_9ozhYjuwPpRhq/view",citations:163,bibtex:`@article{dimant2024hate,\n  title={Hate Trumps Love},\n  author={Dimant},\n  journal={Management Science},\n  year={2024}\n}`},
@@ -506,49 +466,247 @@ const papers=[
 {year:2024,status:"published",title:"Polarization in Multidisciplinary Perspective",authors:"Dimant, E. & Kimbrough, E.",journal:"PNAS Nexus",topics:["polarization","methods"],method:"observational",journalUrl:"https://doi.org/10.1093/pnasnexus/pgae425",pdfUrl:"https://drive.google.com/file/d/1jmNLb6ddDDE25_6zG19HjiFGnoDMMokO/view",citations:8,bibtex:`@article{dimant2024polarization,\n  title={Polarization in multidisciplinary perspective},\n  author={Dimant and Kimbrough},\n  journal={PNAS Nexus},\n  year={2024}\n}`},
 {year:2024,status:"published",title:"Motivated Information Acquisition and Social Norm Formation",authors:"Dimant, E.; Galeotti, F. & Villeval, M.C.",journal:"European Economic Review",topics:["norms","honesty"],method:"experimental",journalUrl:"https://doi.org/10.1016/j.euroecorev.2024.104778",pdfUrl:"https://drive.google.com/file/d/1ZsKCqS5vjcYX6ylksCtAA2j2UfAW6PE9/view",podcastUrl:"https://drive.google.com/file/d/1p1D0EzEVzuLiKogiTLa_0QZBkz0ZVkwq/view",citations:28,bibtex:`@article{dimant2024motivated,\n  title={Motivated Information Acquisition},\n  author={Dimant and Galeotti and Villeval},\n  journal={European Economic Review},\n  year={2024}\n}`},
 {year:2024,status:"published",title:"Social Norms: Enforcement, Breakdown & Polarization",authors:"Balafoutas, L.; Dimant, E.; Gächter, S. & Krupka, E.",journal:"European Economic Review",topics:["norms","polarization"],method:"observational",journalUrl:"https://doi.org/10.1016/j.euroecorev.2024.104885",pdfUrl:"",citations:4,bibtex:`@article{balafoutas2024social,\n  title={Social Norms: Enforcement},\n  author={Balafoutas and Dimant and Gächter and Krupka},\n  journal={European Economic Review},\n  year={2024}\n}`},
+// 2023 PEER-REVIEWED (6 papers)
 {year:2023,status:"published",title:"Competition and Moral Behavior: A Meta-Analysis of 45 Crowd-Sourced Experimental Designs",authors:"Huber, C.; Dreber, A.; Huber, J.; et al. (incl. Dimant, E.)",journal:"Proceedings of the National Academy of Sciences (PNAS)",topics:["honesty","methods"],method:"experimental",journalUrl:"https://www.pnas.org/doi/10.1073/pnas.2215572120",pdfUrl:"https://drive.google.com/file/d/1YSrvHciP3zGp1-nm3KBRbr9ylxeejREy/view",podcastUrl:"https://drive.google.com/file/d/18FJpDClPZSX1TZqAt7wEJnrO7yBO_wh-/view",citations:61,bibtex:`@article{huber2023competition,\n  title={Competition and moral behavior},\n  author={Huber and Dreber and others},\n  journal={PNAS},\n  year={2023}\n}`},
 {year:2023,status:"published",title:"It's Not a Lie If You Believe the Norm Does Not Apply: Conditional Norm-Following and Belief Distortion",authors:"Bicchieri, C.; Dimant, E. & Sonderegger, S.",journal:"Games and Economic Behavior",topics:["norms","honesty"],method:"experimental",journalUrl:"https://doi.org/10.1016/j.geb.2023.01.005",pdfUrl:"https://drive.google.com/file/d/1YxNfVuI_yArjgmCLJKmsWSuC1Q-_z034/view",podcastUrl:"https://drive.google.com/file/d/1xKBnHi_Of_nwvogJ34SmlddwTMDtznHV/view",citations:177,bibtex:`@article{bicchieri2023lie,\n  title={It's not a lie if you believe the norm does not apply},\n  author={Bicchieri and Dimant and Sonderegger},\n  journal={Games and Economic Behavior},\n  year={2023}\n}`},
 {year:2023,status:"published",title:"Social Norms and Behavior Change: The Interdisciplinary Research Frontier",authors:"Bicchieri, C.; Dimant, E.; Gelfand, M. & Sonderegger, S.",journal:"Journal of Economic Behavior & Organization",topics:["norms","methods"],method:"observational",journalUrl:"https://doi.org/10.1016/j.jebo.2022.11.007",pdfUrl:"https://drive.google.com/file/d/1t3WsxAQpCpcAyt0kSHkgHgpRZjbmd4Fu/view",citations:63,bibtex:`@article{bicchieri2023norms,\n  title={Social Norms and Behavior Change},\n  author={Bicchieri and Dimant and Gelfand and Sonderegger},\n  journal={JEBO},\n  year={2023}\n}`},
 {year:2023,status:"published",title:"Nudging Enforcers: How Norm Perceptions and Motives for Lying Shape Sanctions",authors:"Dimant, E. & Gesche, T.",journal:"PNAS Nexus",topics:["norms","honesty"],method:"experimental",journalUrl:"https://doi.org/10.1093/pnasnexus/pgad224",pdfUrl:"https://drive.google.com/file/d/1L_4s_P2eNMlsx-5X-j8EsMIDIy3CVBIm/view",podcastUrl:"https://drive.google.com/file/d/12-o9Hi2gaEV_JM2Yte_q4oGNnnNhJSb_/view",citations:56,bibtex:`@article{dimant2023nudging,\n  title={Nudging enforcers},\n  author={Dimant and Gesche},\n  journal={PNAS Nexus},\n  year={2023}\n}`},
 {year:2023,status:"published",title:"Beyond Average: A Method for Measuring the Tightness, Looseness, and Polarization of Social Norms",authors:"Dimant, E.",journal:"Economics Letters",topics:["norms","polarization","methods"],method:"experimental",journalUrl:"https://doi.org/10.1016/j.econlet.2023.111417",pdfUrl:"https://drive.google.com/drive/u/0/folders/1PoqgVvW3Go0SeK9G-UOoBqpjvG6DIByT",podcastUrl:"https://drive.google.com/file/d/1I_hLKS3UiyAlCVUhQ5XILyL6lQtpDWY3/view",citations:35,bibtex:`@article{dimant2023beyond,\n  title={Beyond Average},\n  author={Dimant},\n  journal={Economics Letters},\n  year={2023}\n}`},
 {year:2023,status:"published",title:"Beyond Belief: How Social Engagement Motives Influence the Spread of Conspiracy Theories",authors:"Ren, Z.B.; Dimant, E. & Schweitzer, M.",journal:"Journal of Experimental Social Psychology",topics:["polarization"],method:"experimental",journalUrl:"https://doi.org/10.1016/j.jesp.2022.104421",pdfUrl:"https://drive.google.com/file/d/1t8FUvtElykVdrc_ducEe46rH9Ota9pQC/view",citations:82,bibtex:`@article{ren2023beyond,\n  title={Beyond belief},\n  author={Ren and Dimant and Schweitzer},\n  journal={JESP},\n  year={2023}\n}`},
+// 2022 PEER-REVIEWED (6 papers)
 {year:2022,status:"published",title:"Social Proximity and the Erosion of Norm Compliance",authors:"Bicchieri, C.; Dimant, E.; Gächter, S. & Nosenzo, D.",journal:"Games and Economic Behavior",topics:["norms"],method:"experimental",journalUrl:"https://doi.org/10.1016/j.geb.2021.11.012",pdfUrl:"https://drive.google.com/file/d/14rF-R8gkZQk9PpYxfztuAZI80ZuFpi-_/view",citations:323,bibtex:`@article{bicchieri2022social,\n  title={Social proximity},\n  author={Bicchieri and Dimant and Gächter and Nosenzo},\n  journal={Games and Economic Behavior},\n  year={2022}\n}`},
 {year:2022,status:"published",title:"Persuading Republicans and Democrats to Comply with Mask Wearing: An Intervention Tournament",authors:"Gelfand, M.; Li, R.; Stamkou, E.; et al. (incl. Dimant, E.)",journal:"Journal of Experimental Social Psychology",topics:["norms","polarization"],method:"experimental",journalUrl:"https://doi.org/10.1016/j.jesp.2022.104299",pdfUrl:"https://drive.google.com/file/d/18Cn35day_7MZLj7aGq6iEEtWtugBK69T/view",citations:81,bibtex:`@article{gelfand2022persuading,\n  title={Persuading Republicans and Democrats},\n  author={Gelfand and others},\n  journal={JESP},\n  year={2022}\n}`},
 {year:2022,status:"published",title:"Politicizing Mask-Wearing: Predicting the Success of Behavioral Interventions Among Republicans and Democrats",authors:"Dimant, E.; Clemente, E.; Pieper, D.; Dreber, A. & Gelfand, M.",journal:"Nature: Scientific Reports",topics:["norms","polarization"],method:"experimental",journalUrl:"https://doi.org/10.1038/s41598-022-10524-1",pdfUrl:"https://drive.google.com/file/d/1L4xDXjuRE3dW7QsqQcKdvDqIjp6DBs77/view",citations:30,bibtex:`@article{dimant2022politicizing,\n  title={Politicizing mask-wearing},\n  author={Dimant and others},\n  journal={Scientific Reports},\n  year={2022}\n}`},
 {year:2022,status:"published",title:"Meta-Nudging Honesty: Past, Present, and Future of the Research Frontier",authors:"Dimant, E. & Shalvi, S.",journal:"Current Opinion in Psychology",topics:["honesty","norms"],method:"observational",journalUrl:"https://doi.org/10.1016/j.copsyc.2022.101426",pdfUrl:"https://drive.google.com/file/d/1C7aeGsZ5kLI0ZsTOKVs0P_GbO5tJFWrs/view",citations:39,bibtex:`@article{dimant2022meta,\n  title={Meta-nudging honesty},\n  author={Dimant and Shalvi},\n  journal={Current Opinion in Psychology},\n  year={2022}\n}`},
 {year:2022,status:"published",title:"Authoritarian Leaders Share Conspiracy Theories to Attack Opponents, Galvanize Followers, Shift Blame, and Undermine Democratic Institutions",authors:"Ren, Z.; Carton, A.; Dimant, E. & Schweitzer, M.",journal:"Current Opinion in Psychology",topics:["polarization"],method:"observational",journalUrl:"https://doi.org/10.1016/j.copsyc.2022.101388",pdfUrl:"https://drive.google.com/file/d/1YEIMRLz2jg0fQw_UDp13d9fWKB6490eC/view",citations:34,bibtex:`@article{ren2022authoritarian,\n  title={Authoritarian leaders share conspiracy theories},\n  author={Ren and Carton and Dimant and Schweitzer},\n  journal={Current Opinion in Psychology},\n  year={2022}\n}`},
 {year:2022,status:"published",title:"Understanding Cross-Cultural Differences in Peer Reporting Practices: Evidence from Tax Evasion Games in Moldova and France",authors:"Romaniuc, R.; Dubois, D.; Dimant, E.; Lupusor, A. & Prohnitchi, V.",journal:"Public Choice",topics:["corruption","norms"],method:"experimental",journalUrl:"https://doi.org/10.1007/s11127-021-00925-7",pdfUrl:"https://drive.google.com/file/d/1t0PzQKhzkTUe5kVcDdOQnf5yNgv1fvJ9/view",citations:22,bibtex:`@article{romaniuc2022understanding,\n  title={Understanding cross-cultural differences},\n  author={Romaniuc and Dubois and Dimant and others},\n  journal={Public Choice},\n  year={2022}\n}`},
+// 2021 PEER-REVIEWED (5 papers)
 {year:2021,status:"published",title:"Deviant or Wrong? The Effects of Norm Information on the Efficacy of Punishment",authors:"Bicchieri, C.; Dimant, E. & Xiao, E.",journal:"Journal of Economic Behavior & Organization",topics:["norms"],method:"experimental",journalUrl:"https://doi.org/10.1016/j.jebo.2021.04.002",pdfUrl:"https://drive.google.com/file/d/12fmAUHenvKiqVKuoYwr4UO_L70YlG_mv/view",citations:137,bibtex:`@article{bicchieri2021deviant,\n  title={Deviant or wrong?},\n  author={Bicchieri and Dimant and Xiao},\n  journal={JEBO},\n  year={2021}\n}`},
 {year:2021,status:"published",title:"Observability and Social Image: On the Robustness and Fragility of Reciprocity",authors:"Bolton, G.; Dimant, E. & Schmidt, U.",journal:"Journal of Economic Behavior & Organization",topics:["norms"],method:"experimental",journalUrl:"https://www.sciencedirect.com/science/article/abs/pii/S0167268121003978",pdfUrl:"https://drive.google.com/file/d/1RCUgxQVsQm-C-vaBNbLUfWFneRkDogNB/view",citations:119,bibtex:`@article{bolton2021observability,\n  title={Observability and social image},\n  author={Bolton and Dimant and Schmidt},\n  journal={JEBO},\n  year={2021}\n}`},
 {year:2021,status:"published",title:"A Creative Destruction Approach to Replication: Implicit Work and Sex Morality Across Cultures",authors:"Tierney, W.; Hardy, J.; et al. (incl. Dimant, E.)",journal:"Journal of Experimental Social Psychology",topics:["methods"],method:"experimental",journalUrl:"https://doi.org/10.1016/j.jesp.2020.104060",pdfUrl:"",citations:58,bibtex:`@article{tierney2021creative,\n  title={A creative destruction approach},\n  author={Tierney and Hardy and others},\n  journal={JESP},\n  year={2021}\n}`},
 {year:2021,status:"published",title:"Efficient Institutions and Effective Deterrence: On Timing and Uncertainty of Formal Sanctions",authors:"Buckenmaier, J.; Dimant, E.; Posten, A.-C. & Schmidt, U.",journal:"Journal of Risk & Uncertainty",topics:["norms","corruption"],method:"experimental",journalUrl:"https://link.springer.com/article/10.1007/s11166-021-09352-x",pdfUrl:"https://drive.google.com/file/d/1Mp0ugvj-tCQ6Scqxyj8vsrquoaqDtECM/view",citations:30,bibtex:`@article{buckenmaier2021efficient,\n  title={Efficient Institutions},\n  author={Buckenmaier and Dimant and Posten and Schmidt},\n  journal={J Risk Uncertainty},\n  year={2021}\n}`},
 {year:2021,status:"published",title:"The Experience is (Not) Everything: Sequential Outcomes and Social Decision-Making",authors:"Buckenmaier, J. & Dimant, E.",journal:"Economics Letters",topics:["norms"],method:"experimental",journalUrl:"https://doi.org/10.1016/j.econlet.2021.109916",pdfUrl:"https://drive.google.com/file/d/1lm0mgy4Cr6biIDASDbvkwRgcaBxluaxu/view",citations:11,bibtex:`@article{buckenmaier2021experience,\n  title={The experience is (not) everything},\n  author={Buckenmaier and Dimant},\n  journal={Economics Letters},\n  year={2021}\n}`},
+// 2020 PEER-REVIEWED (3 papers)
 {year:2020,status:"published",title:"Requiem for a Nudge: Framing Effects in Nudging Honesty",authors:"Dimant, E.; van Kleef, G. & Shalvi, S.",journal:"Journal of Economic Behavior & Organization",topics:["honesty","norms"],method:"experimental",journalUrl:"https://www.sciencedirect.com/science/article/pii/S0167268120300597",pdfUrl:"https://drive.google.com/file/d/1hSaCg6ZVPofoa7phBDBgX9OryAqPItQM/view",citations:153,bibtex:`@article{dimant2020requiem,\n  title={Requiem for a Nudge},\n  author={Dimant and van Kleef and Shalvi},\n  journal={JEBO},\n  year={2020}\n}`},
 {year:2020,status:"published",title:"Effects of Institutional History and Leniency on Collusive Corruption and Tax Evasion",authors:"Buckenmaier, J.; Dimant, E. & Mittone, L.",journal:"Journal of Economic Behavior & Organization",topics:["corruption"],method:"experimental",journalUrl:"https://www.sciencedirect.com/science/article/pii/S0167268118301057",pdfUrl:"https://drive.google.com/file/d/1lJJA1a7B31DhJrQ1EMftBBX62eljXEZS/view",citations:44,bibtex:`@article{buckenmaier2020effects,\n  title={Effects of institutional history},\n  author={Buckenmaier and Dimant and Mittone},\n  journal={JEBO},\n  year={2020}\n}`},
 {year:2020,status:"published",title:"Creative Destruction in Science",authors:"Tierney, W.; Hardy, J.; et al. (incl. Dimant, E.)",journal:"Organizational Behavior and Human Decision Processes",topics:["methods"],method:"experimental",journalUrl:"https://doi.org/10.1016/j.obhdp.2020.09.004",pdfUrl:"",citations:74,bibtex:`@article{tierney2020creative,\n  title={Creative destruction in science},\n  author={Tierney and Hardy and others},\n  journal={OBHDP},\n  year={2020}\n}`},
+// 2019 PEER-REVIEWED (3 papers)
 {year:2019,status:"published",title:"Nudging with Care: The Risks and Benefits of Social Information",authors:"Bicchieri, C. & Dimant, E.",journal:"Public Choice",topics:["norms"],method:"experimental",journalUrl:"https://link.springer.com/article/10.1007%2Fs11127-019-00684-6",pdfUrl:"https://drive.google.com/file/d/1L_4s_P2eNMlsx-5X-j8EsMIDIy3CVBIm/view",podcastUrl:"https://drive.google.com/file/d/1J3ABfTj9dwZTY7x8ifBBUt7osh1tiuAW/view",citations:544,bibtex:`@article{bicchieri2019nudging,\n  title={Nudging with care},\n  author={Bicchieri and Dimant},\n  journal={Public Choice},\n  year={2019}\n}`},
 {year:2019,status:"published",title:"Contagion of Pro- and Anti-Social Behavior Among Peers and the Role of Social Proximity",authors:"Dimant, E.",journal:"Journal of Economic Psychology",topics:["norms"],method:"experimental",journalUrl:"https://www.sciencedirect.com/science/article/abs/pii/S0167487018306901",pdfUrl:"https://drive.google.com/file/d/1K3irvHbjNidhGDtUmQJ_ayTyll7Pz3sJ/view",citations:228,bibtex:`@article{dimant2019contagion,\n  title={Contagion of pro- and anti-social behavior},\n  author={Dimant},\n  journal={J Economic Psychology},\n  year={2019}\n}`},
 {year:2019,status:"published",title:"The Economics of Doping in Sports—A Special Case of Corruption",authors:"Dimant, E. & Deutscher, C.",journal:"The SAGE Handbook of Sports Economics",topics:["corruption"],method:"observational",journalUrl:"http://papers.ssrn.com/sol3/papers.cfm?abstract_id=2546029",pdfUrl:"http://papers.ssrn.com/sol3/papers.cfm?abstract_id=2546029",citations:85,bibtex:`@incollection{dimant2019economics,\n  title={The Economics of Doping in Sports},\n  author={Dimant and Deutscher},\n  booktitle={SAGE Handbook},\n  year={2019}\n}`},
+// 2018 PEER-REVIEWED (1 paper)
 {year:2018,status:"published",title:"Causes and Effects of Corruption: What Has Past Decade's Empirical Research Taught Us? A Survey",authors:"Dimant, E. & Tosato, G.",journal:"Journal of Economic Surveys",topics:["corruption","methods"],method:"observational",journalUrl:"https://onlinelibrary.wiley.com/doi/full/10.1111/joes.12198",pdfUrl:"https://drive.google.com/file/d/1Xddf2dLrMz-bnI5kPwqU0GfpDMrR15Lg/view",citations:599,bibtex:`@article{dimant2018causes,\n  title={Causes and effects of corruption},\n  author={Dimant and Tosato},\n  journal={J Economic Surveys},\n  year={2018}\n}`},
+// 2016 PEER-REVIEWED (1 paper)
 {year:2016,status:"published",title:"The Nature of Corruption: An Interdisciplinary Perspective",authors:"Dimant, E. & Schulte, T.",journal:"German Law Journal",topics:["corruption"],method:"observational",journalUrl:"https://www.cambridge.org/core/journals/german-law-journal/article/nature-of-corruption-an-interdisciplinary-perspective/CAD38E64A08CF00009BE7C1B426FC565",pdfUrl:"https://drive.google.com/file/d/1ksN28VgMLDqBau-9F2CagKO3jDY-7y6u/view",citations:318,bibtex:`@article{dimant2016nature,\n  title={The Nature of Corruption},\n  author={Dimant and Schulte},\n  journal={German Law Journal},\n  year={2016}\n}`},
+// 2015 PEER-REVIEWED (1 paper)
 {year:2015,status:"published",title:"A Crook is a Crook... But is He Still a Crook Abroad? On the Effect of Immigration on Destination-Country Corruption",authors:"Dimant, E.; Krieger, T. & Redlin, M.",journal:"German Economic Review",topics:["corruption","terrorism"],method:"observational",journalUrl:"https://onlinelibrary.wiley.com/doi/abs/10.1111/geer.12064",pdfUrl:"https://drive.google.com/file/d/1lhN6bOhFACFoAxZ81lyKhEkc_UvsbYEX/view",citations:77,bibtex:`@article{dimant2015crook,\n  title={A crook is a crook},\n  author={Dimant and Krieger and Redlin},\n  journal={German Economic Review},\n  year={2015}\n}`},
+// 2013 PEER-REVIEWED (1 paper)
 {year:2013,status:"published",title:"The Effect of Corruption on Migration, 1985–2000",authors:"Dimant, E.; Krieger, T. & Meierrieks, D.",journal:"Applied Economics Letters",topics:["corruption","terrorism"],method:"observational",journalUrl:"https://www.tandfonline.com/doi/abs/10.1080/13504851.2013.806776",pdfUrl:"https://drive.google.com/file/d/1BTxuO1tLsQrXX44GKNK2FJk9n5Uvj40b/view",citations:192,bibtex:`@article{dimant2013effect,\n  title={The effect of corruption on migration},\n  author={Dimant and Krieger and Meierrieks},\n  journal={Applied Economics Letters},\n  year={2013}\n}`}
 ];
+
 const topicLabels={'norms':'Social Norms & Behavior Change','honesty':'Honesty & Behavioral Ethics','polarization':'Polarization & Intergroup Conflict','corruption':'Corruption & Institutions','terrorism':'Terrorism & Migration','methods':'Methods & Measurement'};
 let activeTypeFilter='all',activeYearFilter='all',activeTopicFilter='all',activeMethodFilter='all',searchQuery='',groupByYear=true,ungatedOnly=false;
-const papersContainer=document.getElementById('papersContainer'),searchInput=document.getElementById('searchInput'),bibtexModal=document.getElementById('bibtexModal'),bibtexContent=document.getElementById('bibtexContent'),toast=document.getElementById('toast');
+const papersContainer=document.getElementById('papersContainer'),searchInput=document.getElementById('searchInput'),bibtexModal=document.getElementById('bibtexModal'),bibtexContent=document.getElementById('bibtexContent'),toast=document.getElementById('toast'),cvModal=document.getElementById('cvModal'),cvFrame=document.getElementById('cvFrame');
+
 function init(){buildFilters();renderPapers();setupEventListeners();}
-function showSection(sectionId){if(event)event.preventDefault();document.querySelectorAll('.page-section').forEach(s=>s.classList.remove('active'));document.querySelectorAll('nav a').forEach(a=>a.classList.remove('active'));document.getElementById(sectionId).classList.add('active');document.querySelector(`nav a[data-section="${sectionId}"]`)?.classList.add('active');if(sectionId==='research'){buildFilters();renderPapers();}if(sectionId==='vita'){document.getElementById('vitaFrame').src='https://docs.google.com/viewer?url=https://raw.githubusercontent.com/eugendimant/eugendimant.github.io/main/CV_Eugen_Dimant.pdf&embedded=true';}}
-function getCounts(){const counts={years:{},topics:{},methods:{experimental:0,observational:0},review:0,progress:0};papers.forEach(p=>{if(p.status==='review')counts.review++;else if(p.status==='progress')counts.progress++;else counts.years[p.year]=(counts.years[p.year]||0)+1;p.topics.forEach(t=>counts.topics[t]=(counts.topics[t]||0)+1);counts.methods[p.method]++;});return counts;}
-function buildFilters(){const counts=getCounts();const totalPapers=papers.length;const yearContainer=document.getElementById('yearFilters');let yearHTML=`<button class="filter-chip active" data-year="all">All <span class="count">(${totalPapers})</span></button>`;yearHTML+=`<button class="filter-chip" data-year="review">Under review <span class="count">(${counts.review})</span></button>`;yearHTML+=`<button class="filter-chip" data-year="progress">Work in progress <span class="count">(${counts.progress})</span></button>`;Object.keys(counts.years).sort((a,b)=>b-a).forEach(year=>{yearHTML+=`<button class="filter-chip" data-year="${year}">${year} <span class="count">(${counts.years[year]})</span></button>`;});yearContainer.innerHTML=yearHTML;const topicContainer=document.getElementById('topicFilters');let topicHTML=`<button class="filter-list-item active" data-topic="all"><span>All</span><span class="count">(${totalPapers})</span></button>`;Object.keys(topicLabels).forEach(topic=>{const count=counts.topics[topic]||0;topicHTML+=`<button class="filter-list-item" data-topic="${topic}"><span>${topicLabels[topic]}</span><span class="count">(${count})</span></button>`;});topicContainer.innerHTML=topicHTML;const methodContainer=document.getElementById('methodFilters');methodContainer.innerHTML=`<button class="filter-list-item active" data-method="all"><span>All</span><span class="count">(${totalPapers})</span></button><button class="filter-list-item" data-method="experimental"><span>Experimental</span><span class="count">(${counts.methods.experimental})</span></button><button class="filter-list-item" data-method="observational"><span>Observational</span><span class="count">(${counts.methods.observational})</span></button>`;document.querySelectorAll('.filter-chip[data-year]').forEach(c=>c.addEventListener('click',()=>{document.querySelectorAll('.filter-chip[data-year]').forEach(x=>x.classList.remove('active'));c.classList.add('active');activeYearFilter=c.dataset.year;renderPapers();}));document.querySelectorAll('.filter-list-item[data-topic]').forEach(i=>i.addEventListener('click',()=>{document.querySelectorAll('.filter-list-item[data-topic]').forEach(x=>x.classList.remove('active'));i.classList.add('active');activeTopicFilter=i.dataset.topic;renderPapers();}));document.querySelectorAll('.filter-list-item[data-method]').forEach(i=>i.addEventListener('click',()=>{document.querySelectorAll('.filter-list-item[data-method]').forEach(x=>x.classList.remove('active'));i.classList.add('active');activeMethodFilter=i.dataset.method;renderPapers();}));}
-function getFilteredPapers(){return papers.filter(p=>{if(activeTypeFilter!=='all'){if(activeTypeFilter==='published'&&p.status!=='published')return false;if(activeTypeFilter==='ongoing'&&p.status!=='review'&&p.status!=='progress')return false;}if(activeYearFilter!=='all'){if(activeYearFilter==='review'&&p.status!=='review')return false;else if(activeYearFilter==='progress'&&p.status!=='progress')return false;else if(activeYearFilter!=='review'&&activeYearFilter!=='progress'&&(p.year!==parseInt(activeYearFilter)||p.status==='review'||p.status==='progress'))return false;}if(activeTopicFilter!=='all'&&!p.topics.includes(activeTopicFilter))return false;if(activeMethodFilter!=='all'&&p.method!==activeMethodFilter)return false;if(ungatedOnly&&!p.pdfUrl)return false;if(searchQuery){const q=searchQuery.toLowerCase();if(!p.title.toLowerCase().includes(q)&&!p.authors.toLowerCase().includes(q)&&!p.journal.toLowerCase().includes(q))return false;}return true;});}
-function renderPapers(){const filtered=getFilteredPapers();if(filtered.length===0){papersContainer.innerHTML='';document.getElementById('emptyState').style.display='block';return;}document.getElementById('emptyState').style.display='none';let html='';const ongoingReview=filtered.filter(p=>p.status==='review');const ongoingProgress=filtered.filter(p=>p.status==='progress');const published=filtered.filter(p=>p.status==='published');if(groupByYear){if(ongoingReview.length>0){html+=`<div class="section-divider"><span class="section-label">Under Review</span><div class="section-line"></div></div>`;ongoingReview.forEach(p=>html+=renderPaperCard(p));}if(ongoingProgress.length>0){html+=`<div class="section-divider"><span class="section-label">Work in Progress</span><div class="section-line"></div></div>`;ongoingProgress.forEach(p=>html+=renderPaperCard(p));}const byYear={};published.forEach(p=>{if(!byYear[p.year])byYear[p.year]=[];byYear[p.year].push(p);});Object.keys(byYear).sort((a,b)=>b-a).forEach(year=>{html+=`<div class="section-divider"><span class="section-label">${year}</span><div class="section-line"></div></div>`;byYear[year].forEach(p=>html+=renderPaperCard(p));});}else{filtered.forEach(p=>html+=renderPaperCard(p));}papersContainer.innerHTML=html;}
-function renderPaperCard(p){const statusBadge=p.status==='published'?'status':p.status==='review'?'review':'progress';const statusText=p.status==='published'?'Peer-reviewed':p.status==='review'?'Under review':'Work in progress';let actions='';if(p.journalUrl)actions+=`<a href="${p.journalUrl}" target="_blank" class="action-btn">Journal Website</a>`;if(p.pdfUrl&&p.pdfUrl!==p.journalUrl)actions+=`<a href="${p.pdfUrl}" target="_blank" class="action-btn">Ungated PDF</a>`;actions+=`<button class="action-btn" onclick="showBibtex(\`${p.bibtex.replace(/`/g,'\\`')}\`)">BibTeX</button>`;if(p.podcastUrl)actions+=`<a href="${p.podcastUrl}" target="_blank" class="action-btn podcast">🎙️ AI Podcast</a>`;actions+=`<a href="https://scholar.google.com/scholar?q=${encodeURIComponent(p.title)}" target="_blank" class="action-btn">Google Scholar</a>`;if(p.citations)actions+=`<span class="action-btn citations">Citations: ${p.citations}</span>`;return `<article class="paper-card"><div class="paper-meta"><span class="paper-badge ${statusBadge}">${statusText}</span></div><h3 class="paper-title">${p.title}</h3><p class="paper-authors">${p.authors}</p><p class="paper-journal">${p.journal}</p><div class="paper-actions">${actions}</div></article>`;}
+
+function showSection(sectionId){
+    if(event)event.preventDefault();
+    document.querySelectorAll('.page-section').forEach(s=>s.classList.remove('active'));
+    document.querySelectorAll('nav a').forEach(a=>a.classList.remove('active'));
+    document.getElementById(sectionId).classList.add('active');
+    document.querySelector(`nav a[data-section="${sectionId}"]`)?.classList.add('active');
+    if(sectionId==='research'){buildFilters();renderPapers();}
+}
+
+function openCVModal(){
+    cvFrame.src='https://docs.google.com/viewer?url=https://raw.githubusercontent.com/eugendimant/eugendimant.github.io/main/CV_Eugen_Dimant.pdf&embedded=true';
+    cvModal.classList.add('active');
+}
+
+function closeCVModal(){
+    cvModal.classList.remove('active');
+    cvFrame.src='about:blank';
+}
+
+function getCounts(){
+    const counts={years:{},topics:{},methods:{experimental:0,observational:0},review:0,progress:0};
+    papers.forEach(p=>{
+        if(p.status==='review')counts.review++;
+        else if(p.status==='progress')counts.progress++;
+        else counts.years[p.year]=(counts.years[p.year]||0)+1;
+        p.topics.forEach(t=>counts.topics[t]=(counts.topics[t]||0)+1);
+        counts.methods[p.method]++;
+    });
+    return counts;
+}
+
+function buildFilters(){
+    const counts=getCounts();
+    const totalPapers=papers.length;
+    const yearContainer=document.getElementById('yearFilters');
+    let yearHTML=`<button class="filter-chip active" data-year="all">All <span class="count">(${totalPapers})</span></button>`;
+    yearHTML+=`<button class="filter-chip" data-year="review">Under review <span class="count">(${counts.review})</span></button>`;
+    yearHTML+=`<button class="filter-chip" data-year="progress">Work in progress <span class="count">(${counts.progress})</span></button>`;
+    Object.keys(counts.years).sort((a,b)=>b-a).forEach(year=>{
+        yearHTML+=`<button class="filter-chip" data-year="${year}">${year} <span class="count">(${counts.years[year]})</span></button>`;
+    });
+    yearContainer.innerHTML=yearHTML;
+    
+    const topicContainer=document.getElementById('topicFilters');
+    let topicHTML=`<button class="filter-list-item active" data-topic="all"><span>All</span><span class="count">(${totalPapers})</span></button>`;
+    Object.keys(topicLabels).forEach(topic=>{
+        const count=counts.topics[topic]||0;
+        topicHTML+=`<button class="filter-list-item" data-topic="${topic}"><span>${topicLabels[topic]}</span><span class="count">(${count})</span></button>`;
+    });
+    topicContainer.innerHTML=topicHTML;
+    
+    const methodContainer=document.getElementById('methodFilters');
+    methodContainer.innerHTML=`<button class="filter-list-item active" data-method="all"><span>All</span><span class="count">(${totalPapers})</span></button><button class="filter-list-item" data-method="experimental"><span>Experimental</span><span class="count">(${counts.methods.experimental})</span></button><button class="filter-list-item" data-method="observational"><span>Observational</span><span class="count">(${counts.methods.observational})</span></button>`;
+    
+    document.querySelectorAll('.filter-chip[data-year]').forEach(c=>c.addEventListener('click',()=>{
+        document.querySelectorAll('.filter-chip[data-year]').forEach(x=>x.classList.remove('active'));
+        c.classList.add('active');activeYearFilter=c.dataset.year;renderPapers();
+    }));
+    document.querySelectorAll('.filter-list-item[data-topic]').forEach(i=>i.addEventListener('click',()=>{
+        document.querySelectorAll('.filter-list-item[data-topic]').forEach(x=>x.classList.remove('active'));
+        i.classList.add('active');activeTopicFilter=i.dataset.topic;renderPapers();
+    }));
+    document.querySelectorAll('.filter-list-item[data-method]').forEach(i=>i.addEventListener('click',()=>{
+        document.querySelectorAll('.filter-list-item[data-method]').forEach(x=>x.classList.remove('active'));
+        i.classList.add('active');activeMethodFilter=i.dataset.method;renderPapers();
+    }));
+}
+
+function getFilteredPapers(){
+    return papers.filter(p=>{
+        if(activeTypeFilter!=='all'){
+            if(activeTypeFilter==='published'&&p.status!=='published'&&p.status!=='inprint')return false;
+            if(activeTypeFilter==='ongoing'&&p.status!=='review'&&p.status!=='progress')return false;
+        }
+        if(activeYearFilter!=='all'){
+            if(activeYearFilter==='review'&&p.status!=='review')return false;
+            else if(activeYearFilter==='progress'&&p.status!=='progress')return false;
+            else if(activeYearFilter!=='review'&&activeYearFilter!=='progress'&&(p.year!==parseInt(activeYearFilter)||p.status==='review'||p.status==='progress'))return false;
+        }
+        if(activeTopicFilter!=='all'&&!p.topics.includes(activeTopicFilter))return false;
+        if(activeMethodFilter!=='all'&&p.method!==activeMethodFilter)return false;
+        if(ungatedOnly&&!p.pdfUrl)return false;
+        if(searchQuery){
+            const q=searchQuery.toLowerCase();
+            if(!p.title.toLowerCase().includes(q)&&!p.authors.toLowerCase().includes(q)&&!p.journal.toLowerCase().includes(q))return false;
+        }
+        return true;
+    });
+}
+
+function renderPapers(){
+    const filtered=getFilteredPapers();
+    if(filtered.length===0){papersContainer.innerHTML='';document.getElementById('emptyState').style.display='block';return;}
+    document.getElementById('emptyState').style.display='none';
+    let html='';
+    const ongoingReview=filtered.filter(p=>p.status==='review');
+    const ongoingProgress=filtered.filter(p=>p.status==='progress');
+    const published=filtered.filter(p=>p.status==='published'||p.status==='inprint');
+    
+    if(groupByYear){
+        if(ongoingReview.length>0){
+            html+=`<div class="section-divider"><span class="section-label">Under Review</span><div class="section-line"></div></div>`;
+            ongoingReview.forEach(p=>html+=renderPaperCard(p));
+        }
+        if(ongoingProgress.length>0){
+            html+=`<div class="section-divider"><span class="section-label">Work in Progress</span><div class="section-line"></div></div>`;
+            ongoingProgress.forEach(p=>html+=renderPaperCard(p));
+        }
+        const byYear={};
+        published.forEach(p=>{if(!byYear[p.year])byYear[p.year]=[];byYear[p.year].push(p);});
+        Object.keys(byYear).sort((a,b)=>b-a).forEach(year=>{
+            html+=`<div class="section-divider"><span class="section-label">${year}</span><div class="section-line"></div></div>`;
+            // Sort by sortOrder if exists, otherwise keep order
+            byYear[year].sort((a,b)=>(a.sortOrder||0)-(b.sortOrder||0));
+            byYear[year].forEach(p=>html+=renderPaperCard(p));
+        });
+    }else{
+        filtered.forEach(p=>html+=renderPaperCard(p));
+    }
+    papersContainer.innerHTML=html;
+}
+
+function isSSRNOnly(url){
+    return url && url.includes('ssrn.com');
+}
+
+function hasDOI(url){
+    return url && (url.includes('doi.org') || url.includes('nature.com') || url.includes('pnas.org') || url.includes('sciencedirect.com') || url.includes('springer.com') || url.includes('wiley.com') || url.includes('tandfonline.com') || url.includes('cambridge.org') || url.includes('elgaronline.com'));
+}
+
+function renderPaperCard(p){
+    const statusBadge=p.status==='published'?'status':p.status==='inprint'?'inprint':p.status==='review'?'review':'progress';
+    const statusText=p.status==='published'?'Peer-reviewed':p.status==='inprint'?'In Print':p.status==='review'?'Under review':'Work in progress';
+    
+    let actions='';
+    
+    // Determine button label based on URL type
+    if(p.journalUrl){
+        if(hasDOI(p.journalUrl)){
+            actions+=`<a href="${p.journalUrl}" target="_blank" class="action-btn">Journal Website</a>`;
+        }else if(isSSRNOnly(p.journalUrl)){
+            actions+=`<a href="${p.journalUrl}" target="_blank" class="action-btn">Pre-Print</a>`;
+        }else{
+            actions+=`<a href="${p.journalUrl}" target="_blank" class="action-btn">Journal Website</a>`;
+        }
+    }
+    
+    // PDF link (only if different from journal URL)
+    if(p.pdfUrl && p.pdfUrl !== p.journalUrl && !isSSRNOnly(p.pdfUrl)){
+        actions+=`<a href="${p.pdfUrl}" target="_blank" class="action-btn">Ungated PDF</a>`;
+    }else if(p.pdfUrl && p.pdfUrl !== p.journalUrl && isSSRNOnly(p.pdfUrl) && !isSSRNOnly(p.journalUrl)){
+        actions+=`<a href="${p.pdfUrl}" target="_blank" class="action-btn">Pre-Print</a>`;
+    }
+    
+    actions+=`<button class="action-btn" onclick="showBibtex(\`${p.bibtex.replace(/`/g,'\\`')}\`)">BibTeX</button>`;
+    if(p.podcastUrl)actions+=`<a href="${p.podcastUrl}" target="_blank" class="action-btn podcast">🎙️ AI Podcast</a>`;
+    actions+=`<a href="https://scholar.google.com/scholar?q=${encodeURIComponent(p.title)}" target="_blank" class="action-btn">Google Scholar</a>`;
+    // Citations LAST (rightmost)
+    if(p.citations)actions+=`<span class="action-btn citations">Citations: ${p.citations}</span>`;
+    
+    return `<article class="paper-card"><div class="paper-meta"><span class="paper-badge ${statusBadge}">${statusText}</span></div><h3 class="paper-title">${p.title}</h3><p class="paper-authors">${p.authors}</p><p class="paper-journal">${p.journal}</p><div class="paper-actions">${actions}</div></article>`;
+}
+
 function showBibtex(b){bibtexContent.textContent=b;bibtexModal.classList.add('active');}
 function closeBibtexModal(){bibtexModal.classList.remove('active');}
-function copyBibtex(){navigator.clipboard.writeText(bibtexContent.textContent).then(()=>{toast.classList.add('show');setTimeout(()=>toast.classList.remove('show'),2000);});}
-function resetFilters(){activeTypeFilter='all';activeYearFilter='all';activeTopicFilter='all';activeMethodFilter='all';searchQuery='';groupByYear=true;ungatedOnly=false;document.getElementById('searchInput').value='';document.getElementById('groupByYear').checked=true;document.getElementById('ungatedOnly').checked=false;document.querySelectorAll('.top-tab').forEach(t=>t.classList.remove('active'));document.querySelector('.top-tab[data-filter="all"]').classList.add('active');buildFilters();renderPapers();}
-function setupEventListeners(){document.querySelectorAll('.top-tab').forEach(t=>t.addEventListener('click',()=>{document.querySelectorAll('.top-tab').forEach(x=>x.classList.remove('active'));t.classList.add('active');activeTypeFilter=t.dataset.filter;renderPapers();}));searchInput.addEventListener('input',e=>{searchQuery=e.target.value;renderPapers();});document.getElementById('ungatedOnly').addEventListener('change',e=>{ungatedOnly=e.target.checked;renderPapers();});document.getElementById('groupByYear').addEventListener('change',e=>{groupByYear=e.target.checked;renderPapers();});bibtexModal.addEventListener('click',e=>{if(e.target===bibtexModal)closeBibtexModal();});document.addEventListener('keydown',e=>{if(e.key==='Escape')closeBibtexModal();});}
+
+function copyBibtex(){
+    navigator.clipboard.writeText(bibtexContent.textContent).then(()=>{
+        toast.classList.add('show');
+        setTimeout(()=>toast.classList.remove('show'),2000);
+    });
+}
+
+function resetFilters(){
+    activeTypeFilter='all';activeYearFilter='all';activeTopicFilter='all';activeMethodFilter='all';searchQuery='';groupByYear=true;ungatedOnly=false;
+    document.getElementById('searchInput').value='';
+    document.getElementById('groupByYear').checked=true;
+    document.getElementById('ungatedOnly').checked=false;
+    document.querySelectorAll('.top-tab').forEach(t=>t.classList.remove('active'));
+    document.querySelector('.top-tab[data-filter="all"]').classList.add('active');
+    buildFilters();
+    renderPapers();
+}
+
+function setupEventListeners(){
+    document.querySelectorAll('.top-tab').forEach(t=>t.addEventListener('click',()=>{
+        document.querySelectorAll('.top-tab').forEach(x=>x.classList.remove('active'));
+        t.classList.add('active');activeTypeFilter=t.dataset.filter;renderPapers();
+    }));
+    searchInput.addEventListener('input',e=>{searchQuery=e.target.value;renderPapers();});
+    document.getElementById('ungatedOnly').addEventListener('change',e=>{ungatedOnly=e.target.checked;renderPapers();});
+    document.getElementById('groupByYear').addEventListener('change',e=>{groupByYear=e.target.checked;renderPapers();});
+    bibtexModal.addEventListener('click',e=>{if(e.target===bibtexModal)closeBibtexModal();});
+    cvModal.addEventListener('click',e=>{if(e.target===cvModal)closeCVModal();});
+    document.addEventListener('keydown',e=>{if(e.key==='Escape'){closeBibtexModal();closeCVModal();}});
+}
+
 init();
     </script>
 </body>
