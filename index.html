@@ -99,13 +99,14 @@
         .search-input:focus { outline: none; border-color: var(--accent-primary); }
         .search-input::placeholder { color: var(--text-muted); }
         .search-icon { position: absolute; left: 0.75rem; top: 50%; transform: translateY(-50%); color: var(--text-muted); width: 14px; height: 14px; }
-        .year-filter-container { display: flex; flex-direction: column; gap: 0.35rem; }
-        .year-filter-row { display: flex; flex-wrap: wrap; gap: 0.35rem; }
+        .year-filter-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.35rem; }
+        .year-filter-grid .filter-chip { display: flex; align-items: center; justify-content: center; text-align: center; }
+        .year-filter-grid .filter-chip.span-3 { grid-column: span 3; }
+        .year-filter-grid .filter-chip.span-2 { grid-column: span 2; }
         .filter-chip { padding: 0.3rem 0.6rem; font-size: 0.7rem; font-weight: 500; border-radius: 4px; border: 1px solid var(--border-color); background: transparent; color: var(--text-secondary); cursor: pointer; transition: all 0.15s; white-space: nowrap; }
         .filter-chip:hover { background: var(--bg-hover); color: var(--text-primary); }
         .filter-chip.active { background: var(--accent-primary); color: var(--bg-primary); border-color: var(--accent-primary); }
         .filter-chip .count { opacity: 0.7; margin-left: 0.15rem; }
-        .filter-chip.full-width { width: 100%; text-align: center; justify-content: center; }
         .filter-list { display: flex; flex-direction: column; gap: 0.25rem; }
         .filter-list-item { display: flex; align-items: center; justify-content: space-between; padding: 0.4rem 0.6rem; font-size: 0.75rem; border-radius: 5px; border: none; background: transparent; color: var(--text-secondary); cursor: pointer; transition: all 0.15s; text-align: left; }
         .filter-list-item:hover { background: var(--bg-hover); color: var(--text-primary); }
@@ -292,7 +293,7 @@
                     </div>
                     <div class="sidebar-section">
                         <div class="sidebar-title">Year</div>
-                        <div class="year-filter-container" id="yearFilters"></div>
+                        <div class="year-filter-grid" id="yearFilters"></div>
                     </div>
                     <div class="sidebar-section">
                         <div class="sidebar-title">Topics</div>
@@ -309,6 +310,7 @@
                     <div class="sidebar-section">
                         <div class="filter-checkboxes">
                             <label class="filter-checkbox"><input type="checkbox" id="ungatedOnly"> Show only ungated PDF</label>
+                            <label class="filter-checkbox"><input type="checkbox" id="podcastOnly"> Show only with AI Podcast</label>
                             <label class="filter-checkbox"><input type="checkbox" id="groupByYear" checked> Group by year</label>
                         </div>
                         <button class="reset-btn" onclick="resetFilters()">Reset filters</button>
@@ -368,7 +370,7 @@ function renderUpcomingTalks() {
 }
 
 const papers=[
-{year:2025,status:"review",title:"Promoting Responsible Disposal of Opioids: A Randomized Evaluation",authors:"Toma, M.; Burnett, R.; Debroy, P.; Dimant, E.; Liu, J.; Safran, E.; Saya, U. & Schultz, B.",journal:"R&R: Health Economics",journalShort:"Health Economics",topics:["norms"],method:"experimental",journalUrl:"https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4502634",pdfUrl:"https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4502634",bibtex:"@unpublished{toma2024opioid,\n  title={Promoting Responsible Disposal of Opioids: A Randomized Evaluation},\n  author={Toma, Mattie and Burnett, Russell and Debroy, Pompa and Dimant, Eugen and Liu, Jean and Safran, Elana and Saya, Uzaib and Schultz, Bill},\n  note={R\\&R at Health Economics},\n  year={2024}\n}"},
+{year:2025,status:"review",title:"Promoting Responsible Disposal of Opioids: A Randomized Evaluation",authors:"Toma, M.; Burnett, R.; Debroy, P.; Dimant, E.; Liu, J.; Safran, E.; Saya, U. & Schultz, B.",journal:"R&R: Health Economics",journalShort:"Health Economics",topics:["norms"],method:"experimental",journalUrl:"https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4502634",pdfUrl:"https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4502634",bibtex:"@unpublished{toma2024opioid,\n  title={Promoting Responsible Disposal of Opioids: A Randomized Evaluation},\n  author={Toma, Mattie and Burnett, Rebecca and Debroy, Paroma and Dimant, Eugen and Liu, Jessica and Safran, Eli and Saya, Udi and Schultz, Brian},\n  note={R\\&R at Health Economics},\n  year={2024}\n}"},
 {year:2025,status:"review",title:"Aid and Exodus: U.S. Military Assistance and Refugee Flows to the United States",authors:"Dimant, E.; Krieger, T.; Meierrieks, D. & Renner, L.",journal:"Under Review",journalShort:"Under Review",topics:["terrorism"],method:"observational",journalUrl:"https://papers.ssrn.com/sol3/papers.cfm?abstract_id=5414817",pdfUrl:"https://papers.ssrn.com/sol3/papers.cfm?abstract_id=5414817",bibtex:"@unpublished{dimant2025aid,\n  title={Aid and Exodus: U.S. Military Assistance and Refugee Flows to the United States},\n  author={Dimant, Eugen and Krieger, Tim and Meierrieks, Daniel and Renner, Laura},\n  note={Under Review},\n  year={2025}\n}"},
 {year:2025,status:"review",title:"Pluralism Breeds Tolerance",authors:"Panizza, F.; Dimant, E.; Kimbrough, E. & Vostroknutov, A.",journal:"Under Review",journalShort:"Under Review",topics:["polarization","norms"],method:"experimental",journalUrl:"https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4649792",pdfUrl:"https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4649792",citations:16,bibtex:"@unpublished{panizza2024pluralism,\n  title={Pluralism Breeds Tolerance},\n  author={Panizza, Folco and Dimant, Eugen and Kimbrough, Erik O. and Vostroknutov, Alexander},\n  note={Under Review},\n  year={2024}\n}"},
 {year:2025,status:"review",title:"Identity and Economic Incentives",authors:"Donkor, K.; Götte, L.; Müller, M.; Dimant, E. & Kurschilgen, M.",journal:"Under Review",journalShort:"Under Review",topics:["polarization"],method:"experimental",journalUrl:"https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4670092",pdfUrl:"https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4670092",citations:10,bibtex:"@unpublished{donkor2024identity,\n  title={Identity and Economic Incentives},\n  author={Donkor, Kofi and G\\\"{o}tte, Lorenz and M\\\"{u}ller, Michael and Dimant, Eugen and Kurschilgen, Michael},\n  note={Under Review},\n  year={2024}\n}"},
@@ -400,7 +402,7 @@ const papers=[
 {year:2023,status:"published",title:"Beyond Belief: How Social Engagement Motives Influence the Spread of Conspiracy Theories",authors:"Ren, Z.B.; Dimant, E. & Schweitzer, M.",journal:"Journal of Experimental Social Psychology",journalShort:"JESP",topics:["polarization"],method:"experimental",journalUrl:"https://doi.org/10.1016/j.jesp.2022.104421",pdfUrl:"https://drive.google.com/file/d/1t8FUvtElykVdrc_ducEe46rH9Ota9pQC/view",citations:82,bibtex:"@article{ren2023beyond,\n  title={Beyond Belief: How Social Engagement Motives Influence the Spread of Conspiracy Theories},\n  author={Ren, Zoe B. and Dimant, Eugen and Schweitzer, Maurice E.},\n  journal={Journal of Experimental Social Psychology},\n  volume={104},\n  pages={104421},\n  year={2023},\n  publisher={Elsevier}\n}"},
 {year:2022,status:"published",title:"Social Proximity and the Erosion of Norm Compliance",authors:"Bicchieri, C.; Dimant, E.; Gächter, S. & Nosenzo, D.",journal:"Games and Economic Behavior",journalShort:"Games & Economic Behavior",topics:["norms"],method:"experimental",journalUrl:"https://doi.org/10.1016/j.geb.2021.11.012",pdfUrl:"https://drive.google.com/file/d/14rF-R8gkZQk9PpYxfztuAZI80ZuFpi-_/view",citations:323,bibtex:"@article{bicchieri2022social,\n  title={Social Proximity and the Erosion of Norm Compliance},\n  author={Bicchieri, Cristina and Dimant, Eugen and G\\\"{a}chter, Simon and Nosenzo, Daniele},\n  journal={Games and Economic Behavior},\n  volume={132},\n  pages={59--72},\n  year={2022},\n  publisher={Elsevier}\n}"},
 {year:2022,status:"published",title:"Persuading Republicans and Democrats to Comply with Mask Wearing: An Intervention Tournament",authors:"Gelfand, M.; Li, R.; Stamkou, E.; et al. (incl. Dimant, E.)",journal:"Journal of Experimental Social Psychology",journalShort:"JESP",topics:["norms","polarization"],method:"experimental",journalUrl:"https://doi.org/10.1016/j.jesp.2022.104299",pdfUrl:"https://drive.google.com/file/d/18Cn35day_7MZLj7aGq6iEEtWtugBK69T/view",citations:81,bibtex:"@article{gelfand2022persuading,\n  title={Persuading Republicans and Democrats to Comply with Mask Wearing: An Intervention Tournament},\n  author={Gelfand, Michele J. and Li, Ren and Stamkou, Eftychia and Dimant, Eugen and others},\n  journal={Journal of Experimental Social Psychology},\n  volume={101},\n  pages={104299},\n  year={2022},\n  publisher={Elsevier}\n}"},
-{year:2022,status:"published",title:"Politicizing Mask-Wearing: Predicting the Success of Behavioral Interventions Among Republicans and Democrats",authors:"Dimant, E.; Clemente, E.; Pieper, D.; Dreber, A. & Gelfand, M.",journal:"Nature: Scientific Reports",journalShort:"Scientific Reports",topics:["norms","polarization"],method:"experimental",journalUrl:"https://doi.org/10.1038/s41598-022-10524-1",pdfUrl:"https://drive.google.com/file/d/1L4xDXjuRE3dW7QsqQcKdvDqIjp6DBs77/view",citations:30,bibtex:"@article{dimant2022politicizing,\n  title={Politicizing Mask-Wearing: Predicting the Success of Behavioral Interventions Among Republicans and Democrats},\n  author={Dimant, Eugen and Clemente, Egon and Pieper, Daphne and Dreber, Anna and Gelfand, Michele J.},\n  journal={Scientific Reports},\n  volume={12},\n  pages={7575},\n  year={2022},\n  publisher={Nature Publishing Group}\n}"},
+{year:2022,status:"published",title:"Politicizing Mask-Wearing: Predicting the Success of Behavioral Interventions Among Republicans and Democrats",authors:"Dimant, E.; Clemente, E.; Pieper, D.; Dreber, A. & Gelfand, M.",journal:"Nature: Scientific Reports",journalShort:"Nature: Scientific Reports",topics:["norms","polarization"],method:"experimental",journalUrl:"https://doi.org/10.1038/s41598-022-10524-1",pdfUrl:"https://drive.google.com/file/d/1L4xDXjuRE3dW7QsqQcKdvDqIjp6DBs77/view",citations:30,bibtex:"@article{dimant2022politicizing,\n  title={Politicizing Mask-Wearing: Predicting the Success of Behavioral Interventions Among Republicans and Democrats},\n  author={Dimant, Eugen and Clemente, Egon and Pieper, Daphne and Dreber, Anna and Gelfand, Michele J.},\n  journal={Scientific Reports},\n  volume={12},\n  pages={7575},\n  year={2022},\n  publisher={Nature Publishing Group}\n}"},
 {year:2022,status:"published",title:"Meta-Nudging Honesty: Past, Present, and Future of the Research Frontier",authors:"Dimant, E. & Shalvi, S.",journal:"Current Opinion in Psychology",journalShort:"Current Opinion in Psychology",topics:["honesty","norms"],method:"methods",journalUrl:"https://doi.org/10.1016/j.copsyc.2022.101426",pdfUrl:"https://drive.google.com/file/d/1C7aeGsZ5kLI0ZsTOKVs0P_GbO5tJFWrs/view",citations:39,bibtex:"@article{dimant2022meta,\n  title={Meta-Nudging Honesty: Past, Present, and Future of the Research Frontier},\n  author={Dimant, Eugen and Shalvi, Shaul},\n  journal={Current Opinion in Psychology},\n  volume={47},\n  pages={101426},\n  year={2022},\n  publisher={Elsevier}\n}"},
 {year:2022,status:"published",title:"Authoritarian Leaders Share Conspiracy Theories to Attack Opponents, Galvanize Followers, Shift Blame, and Undermine Democratic Institutions",authors:"Ren, Z.; Carton, A.; Dimant, E. & Schweitzer, M.",journal:"Current Opinion in Psychology",journalShort:"Current Opinion in Psychology",topics:["polarization"],method:"methods",journalUrl:"https://doi.org/10.1016/j.copsyc.2022.101388",pdfUrl:"https://drive.google.com/file/d/1YEIMRLz2jg0fQw_UDp13d9fWKB6490eC/view",citations:34,bibtex:"@article{ren2022authoritarian,\n  title={Authoritarian Leaders Share Conspiracy Theories to Attack Opponents, Galvanize Followers, Shift Blame, and Undermine Democratic Institutions},\n  author={Ren, Zoe B. and Carton, Andrew M. and Dimant, Eugen and Schweitzer, Maurice E.},\n  journal={Current Opinion in Psychology},\n  volume={46},\n  pages={101388},\n  year={2022},\n  publisher={Elsevier}\n}"},
 {year:2022,status:"published",title:"Understanding Cross-Cultural Differences in Peer Reporting Practices: Evidence from Tax Evasion Games in Moldova and France",authors:"Romaniuc, R.; Dubois, D.; Dimant, E.; Lupusor, A. & Prohnitchi, V.",journal:"Public Choice",journalShort:"Public Choice",topics:["corruption","norms"],method:"experimental",journalUrl:"https://doi.org/10.1007/s11127-021-00925-7",pdfUrl:"https://drive.google.com/file/d/1t0PzQKhzkTUe5kVcDdOQnf5yNgv1fvJ9/view",citations:22,bibtex:"@article{romaniuc2022understanding,\n  title={Understanding Cross-Cultural Differences in Peer Reporting Practices: Evidence from Tax Evasion Games in Moldova and France},\n  author={Romaniuc, Rustam and Dubois, Dimitri and Dimant, Eugen and Lupusor, Adrian and Prohnitchi, Valeriu},\n  journal={Public Choice},\n  volume={190},\n  pages={127--147},\n  year={2022},\n  publisher={Springer}\n}"},
@@ -422,7 +424,7 @@ const papers=[
 ];
 
 const topicLabels={'norms':'Social Norms & Behavior Change','polarization':'Polarization & Intergroup Conflict','honesty':'Honesty & Behavioral Ethics','corruption':'Corruption & Institutions','terrorism':'Terrorism & Migration'};
-let activeTypeFilter='all',activeYearFilter='all',activeTopicFilter='all',activeMethodFilter='all',activeJournalFilter='all',searchQuery='',groupByYear=true,ungatedOnly=false;
+let activeTypeFilter='all',activeYearFilter='all',activeTopicFilter='all',activeMethodFilter='all',activeJournalFilter='all',searchQuery='',groupByYear=true,ungatedOnly=false,podcastOnly=false;
 const papersContainer=document.getElementById('papersContainer'),searchInput=document.getElementById('searchInput'),bibtexModal=document.getElementById('bibtexModal'),bibtexContent=document.getElementById('bibtexContent'),toast=document.getElementById('toast'),cvModal=document.getElementById('cvModal'),cvFrame=document.getElementById('cvFrame');
 
 function init(){renderUpcomingTalks();buildFilters();renderPapers();setupEventListeners();}
@@ -459,14 +461,15 @@ function buildFilters(){
     const counts=getCounts();
     const totalPapers=papers.length;
     const yearContainer=document.getElementById('yearFilters');
-    let yearHTML = '<div class="year-filter-row"><button class="filter-chip full-width active" data-year="all">All <span class="count">('+totalPapers+')</span></button></div>';
-    yearHTML += '<div class="year-filter-row"><button class="filter-chip" data-year="review">Under review <span class="count">('+counts.review+')</span></button><button class="filter-chip" data-year="progress">Work in progress <span class="count">('+counts.progress+')</span></button></div>';
+    
+    // Build year filter grid with proper alignment
+    let yearHTML = '<button class="filter-chip span-3 active" data-year="all">All <span class="count">('+totalPapers+')</span></button>';
+    yearHTML += '<button class="filter-chip" data-year="review">Under review <span class="count">('+counts.review+')</span></button>';
+    yearHTML += '<button class="filter-chip span-2" data-year="progress">Work in progress <span class="count">('+counts.progress+')</span></button>';
     const years = Object.keys(counts.years).sort((a,b)=>b-a);
-    for(let i=0; i<years.length; i+=3){
-        yearHTML += '<div class="year-filter-row">';
-        for(let j=i; j<Math.min(i+3, years.length); j++){yearHTML += '<button class="filter-chip" data-year="'+years[j]+'">'+years[j]+' <span class="count">('+counts.years[years[j]]+')</span></button>';}
-        yearHTML += '</div>';
-    }
+    years.forEach(year => {
+        yearHTML += '<button class="filter-chip" data-year="'+year+'">'+year+' <span class="count">('+counts.years[year]+')</span></button>';
+    });
     yearContainer.innerHTML = yearHTML;
     
     const topicContainer=document.getElementById('topicFilters');
@@ -501,6 +504,7 @@ function getFilteredPapers(){
         if(activeMethodFilter!=='all'&&p.method!==activeMethodFilter)return false;
         if(activeJournalFilter!=='all'&&p.journalShort!==activeJournalFilter)return false;
         if(ungatedOnly&&!p.pdfUrl)return false;
+        if(podcastOnly&&!p.podcastUrl)return false;
         if(searchQuery){const q=searchQuery.toLowerCase();if(!p.title.toLowerCase().includes(q)&&!p.authors.toLowerCase().includes(q)&&!p.journal.toLowerCase().includes(q))return false;}
         return true;
     });
@@ -545,8 +549,8 @@ function closeBibtexModal(){bibtexModal.classList.remove('active');}
 function copyBibtex(){navigator.clipboard.writeText(bibtexContent.textContent).then(()=>{toast.classList.add('show');setTimeout(()=>toast.classList.remove('show'),2000);});}
 
 function resetFilters(){
-    activeTypeFilter='all';activeYearFilter='all';activeTopicFilter='all';activeMethodFilter='all';activeJournalFilter='all';searchQuery='';groupByYear=true;ungatedOnly=false;
-    document.getElementById('searchInput').value='';document.getElementById('groupByYear').checked=true;document.getElementById('ungatedOnly').checked=false;
+    activeTypeFilter='all';activeYearFilter='all';activeTopicFilter='all';activeMethodFilter='all';activeJournalFilter='all';searchQuery='';groupByYear=true;ungatedOnly=false;podcastOnly=false;
+    document.getElementById('searchInput').value='';document.getElementById('groupByYear').checked=true;document.getElementById('ungatedOnly').checked=false;document.getElementById('podcastOnly').checked=false;
     document.querySelectorAll('.top-tab').forEach(t=>t.classList.remove('active'));document.querySelector('.top-tab[data-filter="all"]').classList.add('active');
     buildFilters();renderPapers();
 }
@@ -555,6 +559,7 @@ function setupEventListeners(){
     document.querySelectorAll('.top-tab').forEach(t=>t.addEventListener('click',()=>{document.querySelectorAll('.top-tab').forEach(x=>x.classList.remove('active'));t.classList.add('active');activeTypeFilter=t.dataset.filter;renderPapers();}));
     searchInput.addEventListener('input',e=>{searchQuery=e.target.value;renderPapers();});
     document.getElementById('ungatedOnly').addEventListener('change',e=>{ungatedOnly=e.target.checked;renderPapers();});
+    document.getElementById('podcastOnly').addEventListener('change',e=>{podcastOnly=e.target.checked;renderPapers();});
     document.getElementById('groupByYear').addEventListener('change',e=>{groupByYear=e.target.checked;renderPapers();});
     bibtexModal.addEventListener('click',e=>{if(e.target===bibtexModal)closeBibtexModal();});
     cvModal.addEventListener('click',e=>{if(e.target===cvModal)closeCVModal();});
