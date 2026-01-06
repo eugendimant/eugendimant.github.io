@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -84,7 +83,7 @@ nav{display:flex;gap:2rem}nav a{color:var(--text-secondary);text-decoration:none
 <div class="home-grid">
 <div class="profile-card">
 <div class="profile-header"><img src="https://raw.githubusercontent.com/eugendimant/eugendimant.github.io/main/assets/eugen_dimant.jpg" alt="Eugen Dimant" class="profile-photo" onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect fill=%22%23252c35%22 width=%22100%22 height=%22100%22/><text x=%2250%22 y=%2255%22 font-size=%2240%22 text-anchor=%22middle%22 fill=%22%238b949e%22>ED</text></svg>'"><div class="profile-info"><h1>Eugen Dimant</h1><p class="title">Associate Professor of Practice, Behavioral & Decision Sciences, University of Pennsylvania</p></div></div>
-<div class="profile-buttons"><a class="profile-btn primary" onclick="showSection('research')">Explore publications</a><a class="profile-btn" onclick="openCVModal()">CV preview</a><a href="mailto:edimant@sas.upenn.edu" class="profile-btn">Email</a></div>
+<div class="profile-buttons"><a class="profile-btn primary" onclick="showSection('research')">Explore publications</a><a class="profile-btn" onclick="openCVModal()">CV preview</a><a href="/cdn-cgi/l/email-protection#187d7c717579766c586b796b366d687d7676367d7c6d" class="profile-btn">Email</a></div>
 <div class="profile-links"><a href="https://scholar.google.com/citations?user=3Ylbe0YAAAAJ" target="_blank" class="profile-link">Google Scholar</a><a href="https://www.linkedin.com/in/eugendimant/" target="_blank" class="profile-link">LinkedIn</a><a href="https://x.com/eugen_dimant" target="_blank" class="profile-link">X (Twitter)</a></div>
 <div class="profile-tags"><span class="profile-tags-label">Focus</span><span class="profile-tags-list">norms, honesty, polarization, corruption, migration</span></div>
 <div class="profile-tags"><span class="profile-tags-label">Methods</span><span class="profile-tags-list">lab & field experiments, observational data</span></div>
@@ -135,7 +134,7 @@ nav{display:flex;gap:2rem}nav a{color:var(--text-secondary);text-decoration:none
 <div class="modal-overlay" id="cvModal"><div class="modal-content cv-modal"><div class="modal-header"><span class="modal-title">Curriculum Vitae</span><button class="modal-close" onclick="closeCVModal()">✕</button></div><div class="modal-body cv-body"><iframe id="cvFrame" class="cv-frame" src="about:blank"></iframe></div><div class="modal-footer"><a href="https://raw.githubusercontent.com/eugendimant/eugendimant.github.io/main/CV_Eugen_Dimant.pdf" target="_blank" class="modal-btn secondary">Open in New Tab</a><a href="https://raw.githubusercontent.com/eugendimant/eugendimant.github.io/main/CV_Eugen_Dimant.pdf" download class="modal-btn primary">⬇ Download PDF</a></div></div></div>
 <div class="modal-overlay" id="networkModal"><div class="modal-content network-modal"><div class="modal-header"><span class="modal-title">Co-Author Network</span><button class="modal-close" onclick="closeNetworkModal()">✕</button></div><div class="modal-body network-body"><canvas id="networkCanvas" class="network-canvas"></canvas><div class="network-sidebar"><div class="network-sidebar-title">Controls</div><div class="network-controls"><div class="network-control-group"><div class="network-control-label">Highlight by Topic</div><select class="network-select" id="networkTopicFilter"><option value="all">All Topics</option><option value="norms">Social Norms</option><option value="polarization">Polarization</option><option value="honesty">Honesty</option><option value="corruption">Corruption</option><option value="terrorism">Terrorism/Migration</option></select></div><div class="network-control-group"><div class="network-control-label">Size Nodes By</div><select class="network-select" id="networkSizeBy"><option value="papers">Number of Papers</option><option value="equal">Equal Size</option></select></div></div><div class="network-sidebar-title">Network Statistics</div><div class="network-stats" id="networkStats"></div><div class="network-legend"><div class="network-sidebar-title">Legend</div><div class="legend-item"><div class="legend-dot center"></div><span>Eugen Dimant</span></div><div class="legend-item"><div class="legend-dot coauthor"></div><span>Co-author (click to filter)</span></div><div class="legend-item"><div class="legend-line"></div><span>Collaboration link</span></div></div></div><div class="network-tooltip" id="networkTooltip"><div class="network-tooltip-name"></div><div class="network-tooltip-papers"></div><div class="network-tooltip-topics"></div></div></div></div></div>
 <div class="toast" id="toast">Copied to clipboard!</div>
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 const papers=[
 {id:1,year:2025,status:"review",title:"Promoting Responsible Disposal of Opioids: A Randomized Evaluation",authors:"Toma, Mattie; Burnett, Rebecca; Debroy, Paroma; Dimant, Eugen; Liu, Jessica; Safran, Eli; Saya, Udi & Schultz, Brian",journal:"R&R: Health Economics",journalShort:"Health Economics",topics:["norms"],method:"experimental",journalUrl:"https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4502634",pdfUrl:"https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4502634",pitch:"We conduct a large-scale RCT to test behavioral interventions promoting safe disposal of unused prescription opioids. Using pharmacy-based interventions including social norm messaging and reminders, we measure disposal rates and retention of unused medications. Our findings inform scalable public health strategies to reduce opioid diversion and accidental overdoses through low-cost behavioral nudges.",bibtex:"@unpublished{toma2024opioid,\n  title={Promoting Responsible Disposal of Opioids},\n  author={Toma, Mattie and Burnett, Rebecca and Debroy, Paroma and Dimant, Eugen and Liu, Jessica and Safran, Eli and Saya, Udi and Schultz, Brian},\n  year={2024}\n}"},
 {id:2,year:2025,status:"review",title:"Aid and Exodus: U.S. Military Assistance and Refugee Flows to the United States",authors:"Dimant, Eugen; Krieger, Tim; Meierrieks, Daniel & Renner, Laura",journal:"Under Review",journalShort:"Under Review",topics:["terrorism"],method:"observational",journalUrl:"https://papers.ssrn.com/sol3/papers.cfm?abstract_id=5414817",pdfUrl:"https://papers.ssrn.com/sol3/papers.cfm?abstract_id=5414817",pitch:"We examine the relationship between U.S. military assistance to foreign countries and subsequent refugee flows to the United States using panel data from 1975-2020. Our identification strategy exploits variation in aid allocation to isolate causal effects from confounding geopolitical factors. The results reveal that military aid can inadvertently increase displacement, suggesting policymakers should consider migration consequences when designing foreign assistance programs.",bibtex:"@unpublished{dimant2025aid,\n  title={Aid and Exodus: U.S. Military Assistance and Refugee Flows},\n  author={Dimant, Eugen and Krieger, Tim and Meierrieks, Daniel and Renner, Laura},\n  year={2025}\n}"},
@@ -190,354 +189,335 @@ const papers=[
 {id:51,year:2013,status:"published",title:"The Effect of Corruption on Migration, 1985–2000",authors:"Dimant, Eugen; Krieger, Tim & Meierrieks, Daniel",journal:"Applied Economics Letters",journalShort:"Applied Economics Letters",topics:["corruption","terrorism"],method:"observational",journalUrl:"https://www.tandfonline.com/doi/abs/10.1080/13504851.2013.806776",pdfUrl:"https://drive.google.com/file/d/1BTxuO1tLsQrXX44GKNK2FJk9n5Uvj40b/view",citations:192,pitch:"We analyze how corruption in origin countries affects emigration patterns using global migration data from 1985-2000. Higher corruption significantly increases emigration, particularly among skilled workers who face greater opportunity costs from corrupt environments. The findings quantify corruption as a push factor for migration and inform policies addressing root causes of international population movements.",bibtex:"@article{dimant2013effect,\n  title={The Effect of Corruption on Migration},\n  author={Dimant, Eugen and Krieger, Tim and Meierrieks, Daniel},\n  journal={Applied Economics Letters},\n  volume={20},\n  number={13},\n  pages={1270--1274},\n  year={2013}\n}"}
 ];
 
-const topicLabels={‘norms’:‘Social Norms & Behavior Change’,‘polarization’:‘Polarization & Intergroup Conflict’,‘honesty’:‘Honesty & Behavioral Ethics’,‘corruption’:‘Corruption & Institutions’,‘terrorism’:‘Terrorism & Migration’};
-const topicColors={‘norms’:’#c9a0dc’,‘polarization’:’#ff6b6b’,‘honesty’:’#7ee787’,‘corruption’:’#ffa657’,‘terrorism’:’#79c0ff’};
-let activeTypeFilter=‘all’,activeYearFilter=‘all’,activeTopicFilter=‘all’,activeMethodFilter=‘all’,activeJournalFilter=‘all’,activeCoauthorFilter=‘all’,searchQuery=’’,coauthorSearchQuery=’’,groupByYear=true,ungatedOnly=false,podcastOnly=false;
+const topicLabels={'norms':'Social Norms & Behavior Change','polarization':'Polarization & Intergroup Conflict','honesty':'Honesty & Behavioral Ethics','corruption':'Corruption & Institutions','terrorism':'Terrorism & Migration'};
+const topicColors={'norms':'#c9a0dc','polarization':'#ff6b6b','honesty':'#7ee787','corruption':'#ffa657','terrorism':'#79c0ff'};
+let activeTypeFilter='all',activeYearFilter='all',activeTopicFilter='all',activeMethodFilter='all',activeJournalFilter='all',activeCoauthorFilter='all',searchQuery='',coauthorSearchQuery='',groupByYear=true,ungatedOnly=false,podcastOnly=false;
 let allCoauthors=[];
 
 function extractCoauthors(){
-const map={};
-papers.forEach(p=>{
-let str=p.authors.replace(/(incl.[^)]+)/g,’’);
-str.split(/;\s*|\s*&\s*/).forEach(a=>{
-a=a.trim();
-if(!a||a.includes(‘Dimant’)||a.includes(‘et al’)||a.includes(‘others’)||a.includes(‘BCFG’)||a.includes(‘Collective’))return;
-const parts=a.split(’,’).map(x=>x.trim());
-if(parts.length>=2){
-const key=parts[0]+’, ’+parts[1];
-if(!map[key])map[key]={name:key,lastName:parts[0],firstName:parts[1],papers:[],paperIds:[],topics:new Set()};
-map[key].papers.push(p.title);
-map[key].paperIds.push(p.id);
-p.topics.forEach(t=>map[key].topics.add(t));
-}
-});
-});
-// Sort by number of papers (descending), then alphabetically
-return Object.values(map).sort((a,b)=>{
-const diff=b.papers.length-a.papers.length;
-if(diff!==0)return diff;
-return a.lastName.localeCompare(b.lastName);
-});
+    const map={};
+    papers.forEach(p=>{
+        let str=p.authors.replace(/\(incl\.[^)]+\)/g,'');
+        str.split(/;\s*|\s*&\s*/).forEach(a=>{
+            a=a.trim();
+            if(!a||a.includes('Dimant')||a.includes('et al')||a.includes('others')||a.includes('BCFG')||a.includes('Collective'))return;
+            const parts=a.split(',').map(x=>x.trim());
+            if(parts.length>=2){
+                const key=parts[0]+', '+parts[1];
+                if(!map[key])map[key]={name:key,lastName:parts[0],firstName:parts[1],papers:[],paperIds:[],topics:new Set()};
+                map[key].papers.push(p.title);
+                map[key].paperIds.push(p.id);
+                p.topics.forEach(t=>map[key].topics.add(t));
+            }
+        });
+    });
+    // Sort by number of papers (descending), then alphabetically
+    return Object.values(map).sort((a,b)=>{
+        const diff=b.papers.length-a.papers.length;
+        if(diff!==0)return diff;
+        return a.lastName.localeCompare(b.lastName);
+    });
 }
 
 function findRelatedPapers(paper,max=5){
-const coauthors=new Set();
-paper.authors.replace(/(incl.[^)]+)/g,’’).split(/;\s*|\s*&\s*/).forEach(a=>{if(!a.includes(‘Dimant’)&&!a.includes(‘et al’)&&!a.includes(‘others’))coauthors.add(a.trim());});
-const related=[];
-papers.forEach(p=>{
-if(p.id===paper.id)return;
-let score=0;const reasons=[];
-const sharedTopics=paper.topics.filter(t=>p.topics.includes(t));
-if(sharedTopics.length>0){score+=sharedTopics.length*2;reasons.push({type:‘topic’,label:topicLabels[sharedTopics[0]]||sharedTopics[0]});}
-p.authors.replace(/(incl.[^)]+)/g,’’).split(/;\s*|\s*&\s*/).forEach(a=>{if(coauthors.has(a.trim())){score+=3;reasons.push({type:‘coauthor’,label:a.split(’,’)[0]});}});
-if(score>0)related.push({paper:p,score,reasons});
-});
-return related.sort((a,b)=>b.score-a.score).slice(0,max);
+    const coauthors=new Set();
+    paper.authors.replace(/\(incl\.[^)]+\)/g,'').split(/;\s*|\s*&\s*/).forEach(a=>{if(!a.includes('Dimant')&&!a.includes('et al')&&!a.includes('others'))coauthors.add(a.trim());});
+    const related=[];
+    papers.forEach(p=>{
+        if(p.id===paper.id)return;
+        let score=0;const reasons=[];
+        const sharedTopics=paper.topics.filter(t=>p.topics.includes(t));
+        if(sharedTopics.length>0){score+=sharedTopics.length*2;reasons.push({type:'topic',label:topicLabels[sharedTopics[0]]||sharedTopics[0]});}
+        p.authors.replace(/\(incl\.[^)]+\)/g,'').split(/;\s*|\s*&\s*/).forEach(a=>{if(coauthors.has(a.trim())){score+=3;reasons.push({type:'coauthor',label:a.split(',')[0]});}});
+        if(score>0)related.push({paper:p,score,reasons});
+    });
+    return related.sort((a,b)=>b.score-a.score).slice(0,max);
 }
 
 function init(){renderUpcomingTalks();allCoauthors=extractCoauthors();buildFilters();renderPapers();setupEventListeners();}
 
 function renderUpcomingTalks(){
-const talks=[{date:“Jan 2026”,venue:“ASSA, Philadelphia”,expireYear:2026,expireMonth:1},{date:“Apr 2026”,venue:“Intl. Behavioral Public Policy Workshop, NYU”,expireYear:2026,expireMonth:4},{date:“Apr 2026”,venue:“University of Michigan”,expireYear:2026,expireMonth:4},{date:“May 2026”,venue:“Keynote, Young Economists’ Meeting (YEM), Brno”,expireYear:2026,expireMonth:5}];
-const now=new Date();const future=talks.filter(t=>t.expireYear>now.getFullYear()||(t.expireYear===now.getFullYear()&&t.expireMonth>now.getMonth()));
-const section=document.getElementById(‘upcomingTalks’);const container=document.getElementById(‘talksContainer’);
-if(future.length===0){section.style.display=‘none’;return;}
-section.style.display=‘block’;
-container.innerHTML=future.map(t=>’<div class="talk-item"><span class="talk-date">’+t.date+’</span><span>’+t.venue+’</span></div>’).join(’’);
+    const talks=[{date:"Jan 2026",venue:"ASSA, Philadelphia",expireYear:2026,expireMonth:1},{date:"Apr 2026",venue:"Intl. Behavioral Public Policy Workshop, NYU",expireYear:2026,expireMonth:4},{date:"Apr 2026",venue:"University of Michigan",expireYear:2026,expireMonth:4},{date:"May 2026",venue:"Keynote, Young Economists' Meeting (YEM), Brno",expireYear:2026,expireMonth:5}];
+    const now=new Date();const future=talks.filter(t=>t.expireYear>now.getFullYear()||(t.expireYear===now.getFullYear()&&t.expireMonth>now.getMonth()));
+    const section=document.getElementById('upcomingTalks');const container=document.getElementById('talksContainer');
+    if(future.length===0){section.style.display='none';return;}
+    section.style.display='block';
+    container.innerHTML=future.map(t=>'<div class="talk-item"><span class="talk-date">'+t.date+'</span><span>'+t.venue+'</span></div>').join('');
 }
 
-function showSection(id){if(event)event.preventDefault();document.querySelectorAll(’.page-section’).forEach(s=>s.classList.remove(‘active’));document.querySelectorAll(‘nav a’).forEach(a=>a.classList.remove(‘active’));document.getElementById(id).classList.add(‘active’);document.querySelector(‘nav a[data-section=”’+id+’”]’)?.classList.add(‘active’);if(id===‘research’){buildFilters();renderPapers();}}
+function showSection(id){if(event)event.preventDefault();document.querySelectorAll('.page-section').forEach(s=>s.classList.remove('active'));document.querySelectorAll('nav a').forEach(a=>a.classList.remove('active'));document.getElementById(id).classList.add('active');document.querySelector('nav a[data-section="'+id+'"]')?.classList.add('active');if(id==='research'){buildFilters();renderPapers();}}
 
-function openCVModal(){document.getElementById(‘cvFrame’).src=‘https://docs.google.com/viewer?url=https://raw.githubusercontent.com/eugendimant/eugendimant.github.io/main/CV_Eugen_Dimant.pdf&embedded=true’;document.getElementById(‘cvModal’).classList.add(‘active’);}
-function closeCVModal(){document.getElementById(‘cvModal’).classList.remove(‘active’);document.getElementById(‘cvFrame’).src=‘about:blank’;}
+function openCVModal(){document.getElementById('cvFrame').src='https://docs.google.com/viewer?url=https://raw.githubusercontent.com/eugendimant/eugendimant.github.io/main/CV_Eugen_Dimant.pdf&embedded=true';document.getElementById('cvModal').classList.add('active');}
+function closeCVModal(){document.getElementById('cvModal').classList.remove('active');document.getElementById('cvFrame').src='about:blank';}
 
 function getCounts(){
-const c={years:{},topics:{},methods:{experimental:0,observational:0,methods:0},journals:{},review:0,progress:0};
-papers.forEach(p=>{if(p.status===‘review’)c.review++;else if(p.status===‘progress’)c.progress++;else c.years[p.year]=(c.years[p.year]||0)+1;p.topics.forEach(t=>c.topics[t]=(c.topics[t]||0)+1);c.methods[p.method]++;if(p.journalShort&&p.status===‘published’)c.journals[p.journalShort]=(c.journals[p.journalShort]||0)+1;});
-return c;
+    const c={years:{},topics:{},methods:{experimental:0,observational:0,methods:0},journals:{},review:0,progress:0};
+    papers.forEach(p=>{if(p.status==='review')c.review++;else if(p.status==='progress')c.progress++;else c.years[p.year]=(c.years[p.year]||0)+1;p.topics.forEach(t=>c.topics[t]=(c.topics[t]||0)+1);c.methods[p.method]++;if(p.journalShort&&p.status==='published')c.journals[p.journalShort]=(c.journals[p.journalShort]||0)+1;});
+    return c;
 }
 
 function buildFilters(){
-const counts=getCounts();const total=papers.length;
-// Year filter - all same size buttons in 3-column grid
-let yearHTML=’<button class="filter-chip active" data-year="all" style="grid-column:span 3">All (’+total+’)</button>’;
-yearHTML+=’<button class="filter-chip" data-year="review">Review (’+counts.review+’)</button>’;
-yearHTML+=’<button class="filter-chip" data-year="progress" style="grid-column:span 2">In Progress (’+counts.progress+’)</button>’;
-Object.keys(counts.years).sort((a,b)=>b-a).forEach(y=>{yearHTML+=’<button class="filter-chip" data-year="'+y+'">’+y+’ (’+counts.years[y]+’)</button>’;});
-document.getElementById(‘yearFilters’).innerHTML=yearHTML;
-
-```
-const sortedTopics=Object.keys(topicLabels).sort((a,b)=>(counts.topics[b]||0)-(counts.topics[a]||0));
-let topicHTML='<button class="filter-list-item active" data-topic="all"><span>All</span><span class="count">('+total+')</span></button>';
-sortedTopics.forEach(t=>{topicHTML+='<button class="filter-list-item" data-topic="'+t+'"><span>'+topicLabels[t]+'</span><span class="count">('+(counts.topics[t]||0)+')</span></button>';});
-document.getElementById('topicFilters').innerHTML=topicHTML;
-
-const methodOrder=[{key:'experimental',label:'Experimental',count:counts.methods.experimental},{key:'methods',label:'Methods/Reviews',count:counts.methods.methods},{key:'observational',label:'Observational',count:counts.methods.observational}].sort((a,b)=>b.count-a.count);
-let methodHTML='<button class="filter-list-item active" data-method="all"><span>All</span><span class="count">('+total+')</span></button>';
-methodOrder.forEach(m=>{methodHTML+='<button class="filter-list-item" data-method="'+m.key+'"><span>'+m.label+'</span><span class="count">('+m.count+')</span></button>';});
-document.getElementById('methodFilters').innerHTML=methodHTML;
-
-let filtered=coauthorSearchQuery?allCoauthors.filter(c=>c.name.toLowerCase().includes(coauthorSearchQuery.toLowerCase())):allCoauthors;
-let coauthorHTML='<button class="filter-list-item'+(activeCoauthorFilter==='all'?' active':'')+'" data-coauthor="all"><span>All</span><span class="count">('+allCoauthors.length+')</span></button>';
-filtered.forEach(c=>{coauthorHTML+='<button class="filter-list-item'+(activeCoauthorFilter===c.name?' active':'')+'" data-coauthor="'+c.name+'"><span>'+c.name+'</span><span class="count">('+c.papers.length+')</span></button>';});
-document.getElementById('coauthorFilters').innerHTML=coauthorHTML;
-
-const sortedJournals=Object.keys(counts.journals).sort((a,b)=>counts.journals[b]-counts.journals[a]);
-let journalHTML='<button class="filter-list-item active" data-journal="all"><span>All</span><span class="count">('+papers.filter(p=>p.status==='published').length+')</span></button>';
-sortedJournals.forEach(j=>{journalHTML+='<button class="filter-list-item" data-journal="'+j+'"><span>'+j+'</span><span class="count">('+counts.journals[j]+')</span></button>';});
-document.getElementById('journalFilters').innerHTML=journalHTML;
-
-document.querySelectorAll('.filter-chip[data-year]').forEach(c=>c.addEventListener('click',()=>{document.querySelectorAll('.filter-chip[data-year]').forEach(x=>x.classList.remove('active'));c.classList.add('active');activeYearFilter=c.dataset.year;renderPapers();}));
-document.querySelectorAll('.filter-list-item[data-topic]').forEach(i=>i.addEventListener('click',()=>{document.querySelectorAll('.filter-list-item[data-topic]').forEach(x=>x.classList.remove('active'));i.classList.add('active');activeTopicFilter=i.dataset.topic;renderPapers();}));
-document.querySelectorAll('.filter-list-item[data-coauthor]').forEach(i=>i.addEventListener('click',()=>{document.querySelectorAll('.filter-list-item[data-coauthor]').forEach(x=>x.classList.remove('active'));i.classList.add('active');activeCoauthorFilter=i.dataset.coauthor;renderPapers();}));
-document.querySelectorAll('.filter-list-item[data-method]').forEach(i=>i.addEventListener('click',()=>{document.querySelectorAll('.filter-list-item[data-method]').forEach(x=>x.classList.remove('active'));i.classList.add('active');activeMethodFilter=i.dataset.method;renderPapers();}));
-document.querySelectorAll('.filter-list-item[data-journal]').forEach(i=>i.addEventListener('click',()=>{document.querySelectorAll('.filter-list-item[data-journal]').forEach(x=>x.classList.remove('active'));i.classList.add('active');activeJournalFilter=i.dataset.journal;renderPapers();}));
-```
-
+    const counts=getCounts();const total=papers.length;
+    // Year filter - all same size buttons in 3-column grid
+    let yearHTML='<button class="filter-chip active" data-year="all" style="grid-column:span 3">All ('+total+')</button>';
+    yearHTML+='<button class="filter-chip" data-year="review">Review ('+counts.review+')</button>';
+    yearHTML+='<button class="filter-chip" data-year="progress" style="grid-column:span 2">In Progress ('+counts.progress+')</button>';
+    Object.keys(counts.years).sort((a,b)=>b-a).forEach(y=>{yearHTML+='<button class="filter-chip" data-year="'+y+'">'+y+' ('+counts.years[y]+')</button>';});
+    document.getElementById('yearFilters').innerHTML=yearHTML;
+    
+    const sortedTopics=Object.keys(topicLabels).sort((a,b)=>(counts.topics[b]||0)-(counts.topics[a]||0));
+    let topicHTML='<button class="filter-list-item active" data-topic="all"><span>All</span><span class="count">('+total+')</span></button>';
+    sortedTopics.forEach(t=>{topicHTML+='<button class="filter-list-item" data-topic="'+t+'"><span>'+topicLabels[t]+'</span><span class="count">('+(counts.topics[t]||0)+')</span></button>';});
+    document.getElementById('topicFilters').innerHTML=topicHTML;
+    
+    const methodOrder=[{key:'experimental',label:'Experimental',count:counts.methods.experimental},{key:'methods',label:'Methods/Reviews',count:counts.methods.methods},{key:'observational',label:'Observational',count:counts.methods.observational}].sort((a,b)=>b.count-a.count);
+    let methodHTML='<button class="filter-list-item active" data-method="all"><span>All</span><span class="count">('+total+')</span></button>';
+    methodOrder.forEach(m=>{methodHTML+='<button class="filter-list-item" data-method="'+m.key+'"><span>'+m.label+'</span><span class="count">('+m.count+')</span></button>';});
+    document.getElementById('methodFilters').innerHTML=methodHTML;
+    
+    let filtered=coauthorSearchQuery?allCoauthors.filter(c=>c.name.toLowerCase().includes(coauthorSearchQuery.toLowerCase())):allCoauthors;
+    let coauthorHTML='<button class="filter-list-item'+(activeCoauthorFilter==='all'?' active':'')+'" data-coauthor="all"><span>All</span><span class="count">('+allCoauthors.length+')</span></button>';
+    filtered.forEach(c=>{coauthorHTML+='<button class="filter-list-item'+(activeCoauthorFilter===c.name?' active':'')+'" data-coauthor="'+c.name+'"><span>'+c.name+'</span><span class="count">('+c.papers.length+')</span></button>';});
+    document.getElementById('coauthorFilters').innerHTML=coauthorHTML;
+    
+    const sortedJournals=Object.keys(counts.journals).sort((a,b)=>counts.journals[b]-counts.journals[a]);
+    let journalHTML='<button class="filter-list-item active" data-journal="all"><span>All</span><span class="count">('+papers.filter(p=>p.status==='published').length+')</span></button>';
+    sortedJournals.forEach(j=>{journalHTML+='<button class="filter-list-item" data-journal="'+j+'"><span>'+j+'</span><span class="count">('+counts.journals[j]+')</span></button>';});
+    document.getElementById('journalFilters').innerHTML=journalHTML;
+    
+    document.querySelectorAll('.filter-chip[data-year]').forEach(c=>c.addEventListener('click',()=>{document.querySelectorAll('.filter-chip[data-year]').forEach(x=>x.classList.remove('active'));c.classList.add('active');activeYearFilter=c.dataset.year;renderPapers();}));
+    document.querySelectorAll('.filter-list-item[data-topic]').forEach(i=>i.addEventListener('click',()=>{document.querySelectorAll('.filter-list-item[data-topic]').forEach(x=>x.classList.remove('active'));i.classList.add('active');activeTopicFilter=i.dataset.topic;renderPapers();}));
+    document.querySelectorAll('.filter-list-item[data-coauthor]').forEach(i=>i.addEventListener('click',()=>{document.querySelectorAll('.filter-list-item[data-coauthor]').forEach(x=>x.classList.remove('active'));i.classList.add('active');activeCoauthorFilter=i.dataset.coauthor;renderPapers();}));
+    document.querySelectorAll('.filter-list-item[data-method]').forEach(i=>i.addEventListener('click',()=>{document.querySelectorAll('.filter-list-item[data-method]').forEach(x=>x.classList.remove('active'));i.classList.add('active');activeMethodFilter=i.dataset.method;renderPapers();}));
+    document.querySelectorAll('.filter-list-item[data-journal]').forEach(i=>i.addEventListener('click',()=>{document.querySelectorAll('.filter-list-item[data-journal]').forEach(x=>x.classList.remove('active'));i.classList.add('active');activeJournalFilter=i.dataset.journal;renderPapers();}));
 }
 
 function getFilteredPapers(){
-return papers.filter(p=>{
-if(activeTypeFilter!==‘all’){if(activeTypeFilter===‘published’&&p.status!==‘published’)return false;if(activeTypeFilter===‘ongoing’&&p.status!==‘review’&&p.status!==‘progress’)return false;}
-if(activeYearFilter!==‘all’){if(activeYearFilter===‘review’&&p.status!==‘review’)return false;else if(activeYearFilter===‘progress’&&p.status!==‘progress’)return false;else if(activeYearFilter!==‘review’&&activeYearFilter!==‘progress’&&(p.year!==parseInt(activeYearFilter)||p.status===‘review’||p.status===‘progress’))return false;}
-if(activeTopicFilter!==‘all’&&!p.topics.includes(activeTopicFilter))return false;
-if(activeMethodFilter!==‘all’&&p.method!==activeMethodFilter)return false;
-if(activeJournalFilter!==‘all’&&p.journalShort!==activeJournalFilter)return false;
-if(activeCoauthorFilter!==‘all’){const ca=allCoauthors.find(c=>c.name===activeCoauthorFilter);if(!ca||!ca.paperIds.includes(p.id))return false;}
-if(ungatedOnly&&!p.pdfUrl)return false;
-if(podcastOnly&&!p.podcastUrl)return false;
-if(searchQuery){const q=searchQuery.toLowerCase();if(!p.title.toLowerCase().includes(q)&&!p.authors.toLowerCase().includes(q)&&!p.journal.toLowerCase().includes(q))return false;}
-return true;
-});
+    return papers.filter(p=>{
+        if(activeTypeFilter!=='all'){if(activeTypeFilter==='published'&&p.status!=='published')return false;if(activeTypeFilter==='ongoing'&&p.status!=='review'&&p.status!=='progress')return false;}
+        if(activeYearFilter!=='all'){if(activeYearFilter==='review'&&p.status!=='review')return false;else if(activeYearFilter==='progress'&&p.status!=='progress')return false;else if(activeYearFilter!=='review'&&activeYearFilter!=='progress'&&(p.year!==parseInt(activeYearFilter)||p.status==='review'||p.status==='progress'))return false;}
+        if(activeTopicFilter!=='all'&&!p.topics.includes(activeTopicFilter))return false;
+        if(activeMethodFilter!=='all'&&p.method!==activeMethodFilter)return false;
+        if(activeJournalFilter!=='all'&&p.journalShort!==activeJournalFilter)return false;
+        if(activeCoauthorFilter!=='all'){const ca=allCoauthors.find(c=>c.name===activeCoauthorFilter);if(!ca||!ca.paperIds.includes(p.id))return false;}
+        if(ungatedOnly&&!p.pdfUrl)return false;
+        if(podcastOnly&&!p.podcastUrl)return false;
+        if(searchQuery){const q=searchQuery.toLowerCase();if(!p.title.toLowerCase().includes(q)&&!p.authors.toLowerCase().includes(q)&&!p.journal.toLowerCase().includes(q))return false;}
+        return true;
+    });
 }
 
 function renderPapers(){
-const filtered=getFilteredPapers();
-if(filtered.length===0){document.getElementById(‘papersContainer’).innerHTML=’’;document.getElementById(‘emptyState’).style.display=‘block’;return;}
-document.getElementById(‘emptyState’).style.display=‘none’;
-let html=’’;
-const review=filtered.filter(p=>p.status===‘review’),progress=filtered.filter(p=>p.status===‘progress’),published=filtered.filter(p=>p.status===‘published’);
-if(groupByYear){
-if(review.length>0){html+=’<div class="section-divider"><span class="section-label">Under Review</span><div class="section-line"></div></div>’;review.forEach(p=>html+=renderPaperCard(p));}
-if(progress.length>0){html+=’<div class="section-divider"><span class="section-label">Work in Progress</span><div class="section-line"></div></div>’;progress.forEach(p=>html+=renderPaperCard(p));}
-const byYear={};published.forEach(p=>{if(!byYear[p.year])byYear[p.year]=[];byYear[p.year].push(p);});
-Object.keys(byYear).sort((a,b)=>b-a).forEach(y=>{html+=’<div class="section-divider"><span class="section-label">’+y+’</span><div class="section-line"></div></div>’;byYear[y].sort((a,b)=>(a.sortOrder||0)-(b.sortOrder||0));byYear[y].forEach(p=>html+=renderPaperCard(p));});
-}else{filtered.forEach(p=>html+=renderPaperCard(p));}
-document.getElementById(‘papersContainer’).innerHTML=html;
+    const filtered=getFilteredPapers();
+    if(filtered.length===0){document.getElementById('papersContainer').innerHTML='';document.getElementById('emptyState').style.display='block';return;}
+    document.getElementById('emptyState').style.display='none';
+    let html='';
+    const review=filtered.filter(p=>p.status==='review'),progress=filtered.filter(p=>p.status==='progress'),published=filtered.filter(p=>p.status==='published');
+    if(groupByYear){
+        if(review.length>0){html+='<div class="section-divider"><span class="section-label">Under Review</span><div class="section-line"></div></div>';review.forEach(p=>html+=renderPaperCard(p));}
+        if(progress.length>0){html+='<div class="section-divider"><span class="section-label">Work in Progress</span><div class="section-line"></div></div>';progress.forEach(p=>html+=renderPaperCard(p));}
+        const byYear={};published.forEach(p=>{if(!byYear[p.year])byYear[p.year]=[];byYear[p.year].push(p);});
+        Object.keys(byYear).sort((a,b)=>b-a).forEach(y=>{html+='<div class="section-divider"><span class="section-label">'+y+'</span><div class="section-line"></div></div>';byYear[y].sort((a,b)=>(a.sortOrder||0)-(b.sortOrder||0));byYear[y].forEach(p=>html+=renderPaperCard(p));});
+    }else{filtered.forEach(p=>html+=renderPaperCard(p));}
+    document.getElementById('papersContainer').innerHTML=html;
 }
 
 function renderPaperCard(p){
-const badge=p.status===‘published’?‘status’:p.status===‘review’?‘review’:‘progress’;
-const badgeText=p.status===‘published’?‘Peer-reviewed’:p.status===‘review’?‘Under review’:‘Work in progress’;
-let actions=’’;
-if(p.journalUrl)actions+=’<a href="'+p.journalUrl+'" target="_blank" class="action-btn">’+(p.journalUrl.includes(‘ssrn.com’)?‘Pre-Print’:‘Journal Website’)+’</a>’;
-if(p.pdfUrl&&p.pdfUrl!==p.journalUrl&&!p.pdfUrl.includes(‘ssrn.com’))actions+=’<a href="'+p.pdfUrl+'" target="_blank" class="action-btn">Ungated PDF</a>’;
-actions+=’<button class="action-btn" onclick="showBibtex(this)" data-bib="'+encodeURIComponent(p.bibtex)+'">BibTeX</button>’;
-if(p.podcastUrl)actions+=’<a href="'+p.podcastUrl+'" target="_blank" class="action-btn podcast">🎙️ AI Podcast</a>’;
-if(p.pitch)actions+=’<button class="action-btn abstract-btn" onclick="toggleAbstract('+p.id+')">📄 Project Pitch</button>’;
-actions+=’<a href="https://scholar.google.com/scholar?q='+encodeURIComponent(p.title)+'" target="_blank" class="action-btn">Google Scholar</a>’;
-if(p.citations)actions+=’<span class="action-btn citations">Citations: ‘+p.citations+’</span>’;
-actions+=’<button class="action-btn related" onclick="toggleRelated('+p.id+')">📎 Related Work</button>’;
-
-```
-let pitchHTML='';
-if(p.pitch){pitchHTML='<div class="paper-abstract" id="abstract-'+p.id+'"><div class="paper-abstract-title">Project Pitch</div><div class="paper-abstract-text">'+p.pitch+'</div></div>';}
-
-const related=findRelatedPapers(p);
-let relatedHTML='<div class="related-papers" id="related-'+p.id+'"><div class="related-papers-title">Related Work</div>';
-if(related.length>0){related.forEach(r=>{const tags=r.reasons.slice(0,2).map(x=>'<span class="related-tag '+x.type+'">'+x.label+'</span>').join('');relatedHTML+='<div class="related-paper-item" onclick="scrollToPaper('+r.paper.id+')">'+r.paper.title.substring(0,60)+(r.paper.title.length>60?'...':'')+tags+'</div>';});}
-else relatedHTML+='<div class="related-paper-item">No closely related papers found</div>';
-relatedHTML+='</div>';
-
-return '<article class="paper-card" id="paper-'+p.id+'"><div class="paper-meta"><span class="paper-badge '+badge+'">'+badgeText+'</span></div><h3 class="paper-title">'+p.title+'</h3><p class="paper-authors">'+p.authors+'</p><p class="paper-journal">'+p.journal+'</p><div class="paper-actions">'+actions+'</div>'+pitchHTML+relatedHTML+'</article>';
-```
-
+    const badge=p.status==='published'?'status':p.status==='review'?'review':'progress';
+    const badgeText=p.status==='published'?'Peer-reviewed':p.status==='review'?'Under review':'Work in progress';
+    let actions='';
+    if(p.journalUrl)actions+='<a href="'+p.journalUrl+'" target="_blank" class="action-btn">'+(p.journalUrl.includes('ssrn.com')?'Pre-Print':'Journal Website')+'</a>';
+    if(p.pdfUrl&&p.pdfUrl!==p.journalUrl&&!p.pdfUrl.includes('ssrn.com'))actions+='<a href="'+p.pdfUrl+'" target="_blank" class="action-btn">Ungated PDF</a>';
+    actions+='<button class="action-btn" onclick="showBibtex(this)" data-bib="'+encodeURIComponent(p.bibtex)+'">BibTeX</button>';
+    if(p.podcastUrl)actions+='<a href="'+p.podcastUrl+'" target="_blank" class="action-btn podcast">🎙️ AI Podcast</a>';
+    if(p.pitch)actions+='<button class="action-btn abstract-btn" onclick="toggleAbstract('+p.id+')">📄 Project Pitch</button>';
+    actions+='<a href="https://scholar.google.com/scholar?q='+encodeURIComponent(p.title)+'" target="_blank" class="action-btn">Google Scholar</a>';
+    if(p.citations)actions+='<span class="action-btn citations">Citations: '+p.citations+'</span>';
+    actions+='<button class="action-btn related" onclick="toggleRelated('+p.id+')">📎 Related Work</button>';
+    
+    let pitchHTML='';
+    if(p.pitch){pitchHTML='<div class="paper-abstract" id="abstract-'+p.id+'"><div class="paper-abstract-title">Project Pitch</div><div class="paper-abstract-text">'+p.pitch+'</div></div>';}
+    
+    const related=findRelatedPapers(p);
+    let relatedHTML='<div class="related-papers" id="related-'+p.id+'"><div class="related-papers-title">Related Work</div>';
+    if(related.length>0){related.forEach(r=>{const tags=r.reasons.slice(0,2).map(x=>'<span class="related-tag '+x.type+'">'+x.label+'</span>').join('');relatedHTML+='<div class="related-paper-item" onclick="scrollToPaper('+r.paper.id+')">'+r.paper.title.substring(0,60)+(r.paper.title.length>60?'...':'')+tags+'</div>';});}
+    else relatedHTML+='<div class="related-paper-item">No closely related papers found</div>';
+    relatedHTML+='</div>';
+    
+    return '<article class="paper-card" id="paper-'+p.id+'"><div class="paper-meta"><span class="paper-badge '+badge+'">'+badgeText+'</span></div><h3 class="paper-title">'+p.title+'</h3><p class="paper-authors">'+p.authors+'</p><p class="paper-journal">'+p.journal+'</p><div class="paper-actions">'+actions+'</div>'+pitchHTML+relatedHTML+'</article>';
 }
 
-function toggleAbstract(id){const el=document.getElementById(‘abstract-’+id);if(el)el.classList.toggle(‘show’);}
-function toggleRelated(id){const el=document.getElementById(‘related-’+id);if(el)el.classList.toggle(‘show’);}
-function scrollToPaper(id){const el=document.getElementById(‘paper-’+id);if(el){el.scrollIntoView({behavior:‘smooth’,block:‘center’});el.style.boxShadow=‘0 0 0 2px var(–accent-primary)’;setTimeout(()=>{el.style.boxShadow=’’;},2000);}}
-function showBibtex(el){document.getElementById(‘bibtexContent’).textContent=decodeURIComponent(el.dataset.bib);document.getElementById(‘bibtexModal’).classList.add(‘active’);}
-function closeBibtexModal(){document.getElementById(‘bibtexModal’).classList.remove(‘active’);}
-function copyBibtex(){navigator.clipboard.writeText(document.getElementById(‘bibtexContent’).textContent).then(()=>{document.getElementById(‘toast’).classList.add(‘show’);setTimeout(()=>{document.getElementById(‘toast’).classList.remove(‘show’);},2000);});}
+function toggleAbstract(id){const el=document.getElementById('abstract-'+id);if(el)el.classList.toggle('show');}
+function toggleRelated(id){const el=document.getElementById('related-'+id);if(el)el.classList.toggle('show');}
+function scrollToPaper(id){const el=document.getElementById('paper-'+id);if(el){el.scrollIntoView({behavior:'smooth',block:'center'});el.style.boxShadow='0 0 0 2px var(--accent-primary)';setTimeout(()=>{el.style.boxShadow='';},2000);}}
+function showBibtex(el){document.getElementById('bibtexContent').textContent=decodeURIComponent(el.dataset.bib);document.getElementById('bibtexModal').classList.add('active');}
+function closeBibtexModal(){document.getElementById('bibtexModal').classList.remove('active');}
+function copyBibtex(){navigator.clipboard.writeText(document.getElementById('bibtexContent').textContent).then(()=>{document.getElementById('toast').classList.add('show');setTimeout(()=>{document.getElementById('toast').classList.remove('show');},2000);});}
 
-let networkNodes=[],networkEdges=[],networkAnimation=null,networkTopicFilter=‘all’,networkSizeBy=‘papers’;
-function openNetworkModal(){document.getElementById(‘networkModal’).classList.add(‘active’);setTimeout(initNetwork,100);}
-function closeNetworkModal(){document.getElementById(‘networkModal’).classList.remove(‘active’);if(networkAnimation){cancelAnimationFrame(networkAnimation);networkAnimation=null;}}
+let networkNodes=[],networkEdges=[],networkAnimation=null,networkTopicFilter='all',networkSizeBy='papers';
+function openNetworkModal(){document.getElementById('networkModal').classList.add('active');setTimeout(initNetwork,100);}
+function closeNetworkModal(){document.getElementById('networkModal').classList.remove('active');if(networkAnimation){cancelAnimationFrame(networkAnimation);networkAnimation=null;}}
 
 function initNetwork(){
-const canvas=document.getElementById(‘networkCanvas’),ctx=canvas.getContext(‘2d’),tooltip=document.getElementById(‘networkTooltip’);
-const rect=canvas.parentElement.getBoundingClientRect();
-canvas.width=rect.width-220;canvas.height=550;
-const cx=canvas.width/2,cy=canvas.height/2;
-
-```
-// Build nodes with full names
-networkNodes=[{id:'center',name:'Eugen Dimant',x:cx,y:cy,vx:0,vy:0,radius:30,color:'#c9a0dc',fixed:true,papers:papers.length,topics:new Set(Object.keys(topicLabels))}];
-const angleStep=(2*Math.PI)/allCoauthors.length,baseRadius=Math.min(canvas.width,canvas.height)*0.35;
-allCoauthors.forEach((c,i)=>{
-    const angle=i*angleStep-Math.PI/2;
-    const r=baseRadius+(Math.random()-0.5)*40;
-    const baseSize=networkSizeBy==='papers'?8+Math.min(c.papers.length*3,18):12;
-    networkNodes.push({
-        id:c.name,name:c.name,
-        x:cx+Math.cos(angle)*r,y:cy+Math.sin(angle)*r,
-        targetX:cx+Math.cos(angle)*r,targetY:cy+Math.sin(angle)*r,
-        vx:0,vy:0,radius:baseSize,color:'#79c0ff',fixed:false,
-        papers:c.papers.length,topics:c.topics
-    });
-});
-
-// Build edges
-networkEdges=[];
-networkNodes.slice(1).forEach(n=>networkEdges.push({from:'center',to:n.id,weight:n.papers}));
-for(let i=0;i<allCoauthors.length;i++){
-    for(let j=i+1;j<allCoauthors.length;j++){
-        const shared=allCoauthors[i].paperIds.filter(id=>allCoauthors[j].paperIds.includes(id));
-        if(shared.length>0)networkEdges.push({from:allCoauthors[i].name,to:allCoauthors[j].name,weight:shared.length});
-    }
-}
-
-// Update stats
-updateNetworkStats();
-
-// Setup controls
-document.getElementById('networkTopicFilter').onchange=e=>{networkTopicFilter=e.target.value;};
-document.getElementById('networkSizeBy').onchange=e=>{
-    networkSizeBy=e.target.value;
-    networkNodes.forEach((n,i)=>{
-        if(i>0)n.radius=networkSizeBy==='papers'?8+Math.min(allCoauthors[i-1].papers.length*3,18):12;
-    });
-};
-
-let hoveredNode=null,frameCount=0;
-canvas.onmousemove=e=>{
-    const rect=canvas.getBoundingClientRect(),mx=e.clientX-rect.left,my=e.clientY-rect.top;
-    hoveredNode=null;
-    for(const n of networkNodes){if(Math.sqrt((mx-n.x)**2+(my-n.y)**2)<n.radius+3){hoveredNode=n;break;}}
-    if(hoveredNode){
-        canvas.style.cursor='pointer';
-        tooltip.querySelector('.network-tooltip-name').textContent=hoveredNode.name;
-        tooltip.querySelector('.network-tooltip-papers').textContent=hoveredNode.papers+' paper'+(hoveredNode.papers!==1?'s':'');
-        const topicList=Array.from(hoveredNode.topics).map(t=>topicLabels[t]||t).join(', ');
-        tooltip.querySelector('.network-tooltip-topics').textContent=topicList?'Topics: '+topicList:'';
-        tooltip.style.left=Math.min(mx+15,canvas.width-200)+'px';
-        tooltip.style.top=(my-10)+'px';
-        tooltip.classList.add('show');
-    }else{canvas.style.cursor='default';tooltip.classList.remove('show');}
-};
-canvas.onclick=()=>{if(hoveredNode&&hoveredNode.id!=='center'){closeNetworkModal();activeCoauthorFilter=hoveredNode.id;buildFilters();renderPapers();}};
-canvas.onmouseleave=()=>tooltip.classList.remove('show');
-
-function animate(){
-    frameCount++;
-    ctx.fillStyle='#0d1117';ctx.fillRect(0,0,canvas.width,canvas.height);
+    const canvas=document.getElementById('networkCanvas'),ctx=canvas.getContext('2d'),tooltip=document.getElementById('networkTooltip');
+    const rect=canvas.parentElement.getBoundingClientRect();
+    canvas.width=rect.width-220;canvas.height=550;
+    const cx=canvas.width/2,cy=canvas.height/2;
     
-    // Physics - settle after 200 frames
-    if(frameCount<200){
-        networkNodes.forEach(n=>{
-            if(n.fixed)return;
-            const dtx=n.targetX-n.x,dty=n.targetY-n.y;
-            n.vx+=dtx*0.02;n.vy+=dty*0.02;
-            networkNodes.forEach(o=>{
-                if(o.id===n.id)return;
-                const dx=n.x-o.x,dy=n.y-o.y,d=Math.sqrt(dx*dx+dy*dy);
-                const minDist=n.radius+o.radius+10;
-                if(d<minDist&&d>0){const force=(minDist-d)*0.05;n.vx+=dx/d*force;n.vy+=dy/d*force;}
-            });
-            n.x+=n.vx;n.y+=n.vy;
-            n.vx*=0.8;n.vy*=0.8;
-            n.x=Math.max(n.radius+5,Math.min(canvas.width-n.radius-5,n.x));
-            n.y=Math.max(n.radius+5,Math.min(canvas.height-n.radius-5,n.y));
+    // Build nodes with full names
+    networkNodes=[{id:'center',name:'Eugen Dimant',x:cx,y:cy,vx:0,vy:0,radius:30,color:'#c9a0dc',fixed:true,papers:papers.length,topics:new Set(Object.keys(topicLabels))}];
+    const angleStep=(2*Math.PI)/allCoauthors.length,baseRadius=Math.min(canvas.width,canvas.height)*0.35;
+    allCoauthors.forEach((c,i)=>{
+        const angle=i*angleStep-Math.PI/2;
+        const r=baseRadius+(Math.random()-0.5)*40;
+        const baseSize=networkSizeBy==='papers'?8+Math.min(c.papers.length*3,18):12;
+        networkNodes.push({
+            id:c.name,name:c.name,
+            x:cx+Math.cos(angle)*r,y:cy+Math.sin(angle)*r,
+            targetX:cx+Math.cos(angle)*r,targetY:cy+Math.sin(angle)*r,
+            vx:0,vy:0,radius:baseSize,color:'#79c0ff',fixed:false,
+            papers:c.papers.length,topics:c.topics
         });
+    });
+    
+    // Build edges
+    networkEdges=[];
+    networkNodes.slice(1).forEach(n=>networkEdges.push({from:'center',to:n.id,weight:n.papers}));
+    for(let i=0;i<allCoauthors.length;i++){
+        for(let j=i+1;j<allCoauthors.length;j++){
+            const shared=allCoauthors[i].paperIds.filter(id=>allCoauthors[j].paperIds.includes(id));
+            if(shared.length>0)networkEdges.push({from:allCoauthors[i].name,to:allCoauthors[j].name,weight:shared.length});
+        }
     }
     
-    // Draw edges
-    networkEdges.forEach(e=>{
-        const from=networkNodes.find(n=>n.id===e.from),to=networkNodes.find(n=>n.id===e.to);
-        if(!from||!to)return;
-        let alpha=0.15+Math.min(e.weight*0.1,0.4);
-        // Dim edges not matching topic filter
-        if(networkTopicFilter!=='all'){
-            const fromMatch=from.topics.has(networkTopicFilter);
-            const toMatch=to.topics.has(networkTopicFilter);
-            if(!fromMatch&&!toMatch)alpha=0.05;
-        }
-        ctx.strokeStyle='#30363d';ctx.lineWidth=Math.min(e.weight,4);
-        ctx.globalAlpha=alpha;ctx.beginPath();ctx.moveTo(from.x,from.y);ctx.lineTo(to.x,to.y);ctx.stroke();
-    });
-    ctx.globalAlpha=1;
+    // Update stats
+    updateNetworkStats();
     
-    // Draw nodes
-    networkNodes.forEach(n=>{
-        const isHovered=hoveredNode&&hoveredNode.id===n.id;
-        let nodeAlpha=1,nodeColor=n.color;
+    // Setup controls
+    document.getElementById('networkTopicFilter').onchange=e=>{networkTopicFilter=e.target.value;};
+    document.getElementById('networkSizeBy').onchange=e=>{
+        networkSizeBy=e.target.value;
+        networkNodes.forEach((n,i)=>{
+            if(i>0)n.radius=networkSizeBy==='papers'?8+Math.min(allCoauthors[i-1].papers.length*3,18):12;
+        });
+    };
+    
+    let hoveredNode=null,frameCount=0;
+    canvas.onmousemove=e=>{
+        const rect=canvas.getBoundingClientRect(),mx=e.clientX-rect.left,my=e.clientY-rect.top;
+        hoveredNode=null;
+        for(const n of networkNodes){if(Math.sqrt((mx-n.x)**2+(my-n.y)**2)<n.radius+3){hoveredNode=n;break;}}
+        if(hoveredNode){
+            canvas.style.cursor='pointer';
+            tooltip.querySelector('.network-tooltip-name').textContent=hoveredNode.name;
+            tooltip.querySelector('.network-tooltip-papers').textContent=hoveredNode.papers+' paper'+(hoveredNode.papers!==1?'s':'');
+            const topicList=Array.from(hoveredNode.topics).map(t=>topicLabels[t]||t).join(', ');
+            tooltip.querySelector('.network-tooltip-topics').textContent=topicList?'Topics: '+topicList:'';
+            tooltip.style.left=Math.min(mx+15,canvas.width-200)+'px';
+            tooltip.style.top=(my-10)+'px';
+            tooltip.classList.add('show');
+        }else{canvas.style.cursor='default';tooltip.classList.remove('show');}
+    };
+    canvas.onclick=()=>{if(hoveredNode&&hoveredNode.id!=='center'){closeNetworkModal();activeCoauthorFilter=hoveredNode.id;buildFilters();renderPapers();}};
+    canvas.onmouseleave=()=>tooltip.classList.remove('show');
+    
+    function animate(){
+        frameCount++;
+        ctx.fillStyle='#0d1117';ctx.fillRect(0,0,canvas.width,canvas.height);
         
-        // Topic filtering
-        if(networkTopicFilter!=='all'&&n.id!=='center'){
-            if(!n.topics.has(networkTopicFilter)){nodeAlpha=0.2;}
-            else{nodeColor=topicColors[networkTopicFilter]||n.color;}
+        // Physics - settle after 200 frames
+        if(frameCount<200){
+            networkNodes.forEach(n=>{
+                if(n.fixed)return;
+                const dtx=n.targetX-n.x,dty=n.targetY-n.y;
+                n.vx+=dtx*0.02;n.vy+=dty*0.02;
+                networkNodes.forEach(o=>{
+                    if(o.id===n.id)return;
+                    const dx=n.x-o.x,dy=n.y-o.y,d=Math.sqrt(dx*dx+dy*dy);
+                    const minDist=n.radius+o.radius+10;
+                    if(d<minDist&&d>0){const force=(minDist-d)*0.05;n.vx+=dx/d*force;n.vy+=dy/d*force;}
+                });
+                n.x+=n.vx;n.y+=n.vy;
+                n.vx*=0.8;n.vy*=0.8;
+                n.x=Math.max(n.radius+5,Math.min(canvas.width-n.radius-5,n.x));
+                n.y=Math.max(n.radius+5,Math.min(canvas.height-n.radius-5,n.y));
+            });
         }
         
-        ctx.globalAlpha=nodeAlpha;
-        if(isHovered){ctx.shadowColor=nodeColor;ctx.shadowBlur=20;}
-        ctx.fillStyle=nodeColor;
-        ctx.beginPath();ctx.arc(n.x,n.y,n.radius,0,Math.PI*2);ctx.fill();
-        ctx.shadowBlur=0;
-        
-        // Label for center and large nodes
-        if(n.id==='center'){
-            ctx.fillStyle='#0d1117';ctx.font='bold 11px Inter';ctx.textAlign='center';ctx.textBaseline='middle';
-            ctx.fillText('ED',n.x,n.y);
-        }else if(n.radius>=14||isHovered){
-            ctx.fillStyle='#e6edf3';ctx.font='9px Inter';ctx.textAlign='center';
-            ctx.fillText(n.name.split(',')[0],n.x,n.y+n.radius+12);
-        }
+        // Draw edges
+        networkEdges.forEach(e=>{
+            const from=networkNodes.find(n=>n.id===e.from),to=networkNodes.find(n=>n.id===e.to);
+            if(!from||!to)return;
+            let alpha=0.15+Math.min(e.weight*0.1,0.4);
+            // Dim edges not matching topic filter
+            if(networkTopicFilter!=='all'){
+                const fromMatch=from.topics.has(networkTopicFilter);
+                const toMatch=to.topics.has(networkTopicFilter);
+                if(!fromMatch&&!toMatch)alpha=0.05;
+            }
+            ctx.strokeStyle='#30363d';ctx.lineWidth=Math.min(e.weight,4);
+            ctx.globalAlpha=alpha;ctx.beginPath();ctx.moveTo(from.x,from.y);ctx.lineTo(to.x,to.y);ctx.stroke();
+        });
         ctx.globalAlpha=1;
-    });
-    
-    networkAnimation=requestAnimationFrame(animate);
-}
-animate();
-```
-
+        
+        // Draw nodes
+        networkNodes.forEach(n=>{
+            const isHovered=hoveredNode&&hoveredNode.id===n.id;
+            let nodeAlpha=1,nodeColor=n.color;
+            
+            // Topic filtering
+            if(networkTopicFilter!=='all'&&n.id!=='center'){
+                if(!n.topics.has(networkTopicFilter)){nodeAlpha=0.2;}
+                else{nodeColor=topicColors[networkTopicFilter]||n.color;}
+            }
+            
+            ctx.globalAlpha=nodeAlpha;
+            if(isHovered){ctx.shadowColor=nodeColor;ctx.shadowBlur=20;}
+            ctx.fillStyle=nodeColor;
+            ctx.beginPath();ctx.arc(n.x,n.y,n.radius,0,Math.PI*2);ctx.fill();
+            ctx.shadowBlur=0;
+            
+            // Label for center and large nodes
+            if(n.id==='center'){
+                ctx.fillStyle='#0d1117';ctx.font='bold 11px Inter';ctx.textAlign='center';ctx.textBaseline='middle';
+                ctx.fillText('ED',n.x,n.y);
+            }else if(n.radius>=14||isHovered){
+                ctx.fillStyle='#e6edf3';ctx.font='9px Inter';ctx.textAlign='center';
+                ctx.fillText(n.name.split(',')[0],n.x,n.y+n.radius+12);
+            }
+            ctx.globalAlpha=1;
+        });
+        
+        networkAnimation=requestAnimationFrame(animate);
+    }
+    animate();
 }
 
 function updateNetworkStats(){
-const totalCoauthors=allCoauthors.length;
-const totalEdges=networkEdges.filter(e=>e.from!==‘center’&&e.to!==‘center’).length;
-const avgPapers=(allCoauthors.reduce((s,c)=>s+c.papers.length,0)/totalCoauthors).toFixed(1);
-const maxPapers=Math.max(…allCoauthors.map(c=>c.papers.length));
-const topCoauthor=allCoauthors[0]?.name||‘N/A’;
-
-```
-document.getElementById('networkStats').innerHTML=
-    '<div class="network-stat"><span>Total Co-authors</span><span class="network-stat-value">'+totalCoauthors+'</span></div>'+
-    '<div class="network-stat"><span>Co-author Links</span><span class="network-stat-value">'+totalEdges+'</span></div>'+
-    '<div class="network-stat"><span>Avg Papers/Author</span><span class="network-stat-value">'+avgPapers+'</span></div>'+
-    '<div class="network-stat"><span>Max Collaborations</span><span class="network-stat-value">'+maxPapers+'</span></div>'+
-    '<div class="network-stat"><span>Top Collaborator</span><span class="network-stat-value" style="font-size:.6rem">'+topCoauthor.split(',')[0]+'</span></div>';
-```
-
+    const totalCoauthors=allCoauthors.length;
+    const totalEdges=networkEdges.filter(e=>e.from!=='center'&&e.to!=='center').length;
+    const avgPapers=(allCoauthors.reduce((s,c)=>s+c.papers.length,0)/totalCoauthors).toFixed(1);
+    const maxPapers=Math.max(...allCoauthors.map(c=>c.papers.length));
+    const topCoauthor=allCoauthors[0]?.name||'N/A';
+    
+    document.getElementById('networkStats').innerHTML=
+        '<div class="network-stat"><span>Total Co-authors</span><span class="network-stat-value">'+totalCoauthors+'</span></div>'+
+        '<div class="network-stat"><span>Co-author Links</span><span class="network-stat-value">'+totalEdges+'</span></div>'+
+        '<div class="network-stat"><span>Avg Papers/Author</span><span class="network-stat-value">'+avgPapers+'</span></div>'+
+        '<div class="network-stat"><span>Max Collaborations</span><span class="network-stat-value">'+maxPapers+'</span></div>'+
+        '<div class="network-stat"><span>Top Collaborator</span><span class="network-stat-value" style="font-size:.6rem">'+topCoauthor.split(',')[0]+'</span></div>';
 }
 
-function resetFilters(){activeTypeFilter=‘all’;activeYearFilter=‘all’;activeTopicFilter=‘all’;activeMethodFilter=‘all’;activeJournalFilter=‘all’;activeCoauthorFilter=‘all’;searchQuery=’’;coauthorSearchQuery=’’;groupByYear=true;ungatedOnly=false;podcastOnly=false;document.getElementById(‘searchInput’).value=’’;document.getElementById(‘coauthorSearchInput’).value=’’;document.getElementById(‘groupByYear’).checked=true;document.getElementById(‘ungatedOnly’).checked=false;document.getElementById(‘podcastOnly’).checked=false;document.querySelectorAll(’.top-tab’).forEach(t=>t.classList.remove(‘active’));document.querySelector(’.top-tab[data-filter=“all”]’).classList.add(‘active’);buildFilters();renderPapers();}
+function resetFilters(){activeTypeFilter='all';activeYearFilter='all';activeTopicFilter='all';activeMethodFilter='all';activeJournalFilter='all';activeCoauthorFilter='all';searchQuery='';coauthorSearchQuery='';groupByYear=true;ungatedOnly=false;podcastOnly=false;document.getElementById('searchInput').value='';document.getElementById('coauthorSearchInput').value='';document.getElementById('groupByYear').checked=true;document.getElementById('ungatedOnly').checked=false;document.getElementById('podcastOnly').checked=false;document.querySelectorAll('.top-tab').forEach(t=>t.classList.remove('active'));document.querySelector('.top-tab[data-filter="all"]').classList.add('active');buildFilters();renderPapers();}
 
 function setupEventListeners(){
-document.querySelectorAll(’.top-tab’).forEach(t=>t.addEventListener(‘click’,()=>{document.querySelectorAll(’.top-tab’).forEach(x=>x.classList.remove(‘active’));t.classList.add(‘active’);activeTypeFilter=t.dataset.filter;renderPapers();}));
-document.getElementById(‘searchInput’).addEventListener(‘input’,e=>{searchQuery=e.target.value;renderPapers();});
-document.getElementById(‘coauthorSearchInput’).addEventListener(‘input’,e=>{coauthorSearchQuery=e.target.value;buildFilters();});
-document.getElementById(‘ungatedOnly’).addEventListener(‘change’,e=>{ungatedOnly=e.target.checked;renderPapers();});
-document.getElementById(‘podcastOnly’).addEventListener(‘change’,e=>{podcastOnly=e.target.checked;renderPapers();});
-document.getElementById(‘groupByYear’).addEventListener(‘change’,e=>{groupByYear=e.target.checked;renderPapers();});
-document.getElementById(‘bibtexModal’).addEventListener(‘click’,e=>{if(e.target.id===‘bibtexModal’)closeBibtexModal();});
-document.getElementById(‘cvModal’).addEventListener(‘click’,e=>{if(e.target.id===‘cvModal’)closeCVModal();});
-document.getElementById(‘networkModal’).addEventListener(‘click’,e=>{if(e.target.id===‘networkModal’)closeNetworkModal();});
-document.addEventListener(‘keydown’,e=>{if(e.key===‘Escape’){closeBibtexModal();closeCVModal();closeNetworkModal();}});
-}
-
-init();
-</script>
-
-</body>
-</html>
+    document.querySelectorAll('.top-tab').forEach(t=>t.addEventListener('click',()=>{document.querySelectorAll('.top-tab').forEach(x=>x.classList.remove('active'));t.classList.add('active');activeTypeFilter=t.dataset.filter;renderPapers();}));
+    document.getElementById('searchInput').addEventListener('input',e=>{searchQuery=e.target.value;renderPapers();});
+    document.getElementById('coauthorSearchInput').addEventListener('input',e=>{coauthorSearchQuery=e.target.value;buildFilters();});
+    document.getElementById('ungatedOnly').addEventListener('change',e=>{ungatedOnly=e.target.checked;renderPapers();});
+    document.getElementById('podcastOnly').addEventListener('change',e=>{podcastOnly=e.target.checked;renderPapers();});
+    document.getElementById('groupByYear').addEventListener('change',e=>{groupByYear=e.target.checked;renderPapers();});
+    document.getElementById('bibtexModal').addEventListener('click',e=>{if(e.target.id==='bibtexModal')closeBibtexModal();});
+    document.getElementById('cvModal').addEventListener('click',e=>{if(e.target.id==='cvModal')closeCVModal();});
+    document.getElementById('networkModal').addEventListener('click',e=>{if(e.target.id==='networkModal')closeNetworkModal();});
+    docum
