@@ -22,7 +22,7 @@ nav{display:flex;gap:2rem}nav a{color:var(--text-secondary);text-decoration:none
 .upcoming-talks{margin-top:1rem;padding-top:1rem;border-top:1px solid var(--border-light)}.upcoming-talks-title{font-size:.7rem;font-weight:600;color:var(--text-muted);text-transform:uppercase;margin-bottom:.5rem}
 .talk-item{display:flex;gap:.5rem;font-size:.75rem;color:var(--text-secondary);margin-bottom:.35rem}.talk-date{color:var(--accent-primary);font-weight:500;min-width:65px}
 .card-title{font-family:'Source Serif 4',serif;font-size:1.1rem;font-weight:600;margin-bottom:1.25rem}
-.news-item{margin-bottom:1.25rem;padding-bottom:1.25rem;border-bottom:1px solid var(--border-light)}.news-item:last-child{margin-bottom:0;padding-bottom:0;border-bottom:none}
+.news-item{margin-bottom:1.25rem;padding-bottom:1.25rem;border-bottom:1px solid var(--border-light)}.news-item:last-child,.news-item.last{margin-bottom:0;padding-bottom:0;border-bottom:none}
 .news-meta{display:flex;gap:.5rem;margin-bottom:.5rem}.news-date{font-size:.75rem;color:var(--text-muted)}.news-type{font-size:.65rem;font-weight:600;text-transform:uppercase;padding:.15rem .5rem;border-radius:4px}
 .news-type.award{background:rgba(255,166,87,.15);color:var(--accent-orange)}.news-type.working{background:rgba(201,160,220,.15);color:var(--accent-primary)}.news-type.publication{background:rgba(126,231,135,.15);color:var(--accent-tertiary)}.news-type.announcement{background:rgba(121,192,255,.15);color:var(--accent-secondary)}
 .news-text{font-size:.85rem;color:var(--text-secondary)}.news-text a{color:var(--accent-primary);text-decoration:none}.news-text a:hover{text-decoration:underline}
@@ -66,11 +66,17 @@ nav{display:flex;gap:2rem}nav a{color:var(--text-secondary);text-decoration:none
 .network-stats{background:var(--bg-secondary);border-radius:6px;padding:.75rem;margin-top:1rem}
 .network-stat{display:flex;justify-content:space-between;font-size:.7rem;margin-bottom:.35rem;color:var(--text-secondary)}.network-stat:last-child{margin-bottom:0}.network-stat-value{color:var(--accent-secondary);font-weight:600}
 .network-legend{margin-top:1rem}.legend-item{display:flex;align-items:center;gap:.5rem;margin-bottom:.35rem;color:var(--text-secondary);font-size:.7rem}.legend-item:last-child{margin-bottom:0}.legend-dot{width:10px;height:10px;border-radius:50%}.legend-dot.center{background:var(--accent-primary)}.legend-dot.coauthor{background:var(--accent-secondary)}.legend-line{width:20px;height:2px;background:var(--border-color)}
-.network-tooltip{position:absolute;background:var(--bg-card);border:1px solid var(--border-color);border-radius:6px;padding:.5rem .75rem;font-size:.75rem;pointer-events:none;opacity:0;z-index:10;max-width:280px}.network-tooltip.show{opacity:1}.network-tooltip-name{font-weight:600;color:var(--text-primary)}.network-tooltip-papers{color:var(--text-secondary);margin-top:.25rem}.network-tooltip-topics{font-size:.65rem;color:var(--accent-primary);margin-top:.25rem}.network-tooltip-titles{font-size:.6rem;color:var(--text-muted);margin-top:.35rem;max-height:80px;overflow-y:auto;border-top:1px solid var(--border-light);padding-top:.25rem}
-.network-search{width:100%;background:var(--bg-secondary);border:1px solid var(--border-color);border-radius:4px;padding:.4rem .6rem;font-size:.7rem;color:var(--text-primary);margin-bottom:.5rem}.network-search:focus{outline:none;border-color:var(--accent-primary)}.network-search::placeholder{color:var(--text-muted)}
+.network-tooltip{position:absolute;background:var(--bg-card);border:1px solid var(--border-color);border-radius:6px;padding:.5rem .75rem;font-size:.75rem;pointer-events:none;opacity:0;z-index:10;max-width:280px;box-shadow:0 4px 12px rgba(0,0,0,.3)}.network-tooltip.show{opacity:1}.network-tooltip-name{font-weight:600;color:var(--text-primary);font-size:.85rem}.network-tooltip-papers{color:var(--text-secondary);margin-top:.25rem}.network-tooltip-topics{font-size:.65rem;color:var(--accent-primary);margin-top:.25rem}.network-tooltip-years{font-size:.65rem;color:var(--accent-tertiary);margin-top:.15rem}.network-tooltip-titles{font-size:.6rem;color:var(--text-muted);margin-top:.35rem;max-height:80px;overflow-y:auto;border-top:1px solid var(--border-light);padding-top:.25rem}
+.network-search{width:100%;background:var(--bg-secondary);border:1px solid var(--border-color);border-radius:4px;padding:.4rem .6rem;font-size:.7rem;color:var(--text-primary);margin-bottom:.25rem}.network-search:focus{outline:none;border-color:var(--accent-primary)}.network-search::placeholder{color:var(--text-muted)}
+.search-results{max-height:120px;overflow-y:auto;margin-bottom:.5rem}.search-result-item{padding:.3rem .5rem;font-size:.7rem;color:var(--text-secondary);cursor:pointer;border-radius:3px}.search-result-item:hover{background:var(--bg-hover);color:var(--text-primary)}.search-result-item.active{background:var(--accent-primary);color:var(--bg-primary)}
 .zoom-controls{display:flex;gap:.35rem;margin-top:.5rem}.zoom-btn{flex:1;padding:.4rem;font-size:.8rem;border-radius:4px;border:1px solid var(--border-color);background:var(--bg-secondary);color:var(--text-secondary);cursor:pointer}.zoom-btn:hover{background:var(--bg-hover);color:var(--text-primary)}
-.legend-dot.frequent{background:var(--accent-tertiary)}
+.legend-dot.frequent{background:var(--accent-tertiary)}.legend-dot.super{background:var(--accent-orange)}
 .network-instructions{margin-top:1rem;padding-top:.75rem;border-top:1px solid var(--border-light);color:var(--text-muted);text-align:center}
+.network-checkboxes{display:flex;flex-direction:column;gap:.25rem}.network-checkbox{display:flex;align-items:center;gap:.35rem;font-size:.7rem;color:var(--text-secondary);cursor:pointer}.network-checkbox input{accent-color:var(--accent-primary);width:12px;height:12px}
+.network-selected{background:var(--bg-secondary);border-radius:6px;padding:.6rem;font-size:.7rem;min-height:60px}.network-selected-hint{color:var(--text-muted);font-style:italic;margin:0}.network-selected-name{font-weight:600;color:var(--accent-primary);margin-bottom:.25rem}.network-selected-info{color:var(--text-secondary);line-height:1.4}.network-selected-btn{margin-top:.5rem;padding:.3rem .6rem;font-size:.65rem;border-radius:4px;border:1px solid var(--accent-primary);background:transparent;color:var(--accent-primary);cursor:pointer}.network-selected-btn:hover{background:var(--accent-primary);color:var(--bg-primary)}
+.network-minimap{position:absolute;bottom:10px;left:10px;background:var(--bg-card);border:1px solid var(--border-color);border-radius:6px;padding:5px;opacity:.8}.network-minimap:hover{opacity:1}.network-minimap canvas{display:block;border-radius:4px}
+.modal-header-actions{display:flex;gap:.5rem;margin-left:auto;margin-right:1rem}.header-action-btn{background:var(--bg-hover);border:1px solid var(--border-color);border-radius:4px;padding:.3rem .5rem;font-size:.8rem;cursor:pointer;color:var(--text-secondary)}.header-action-btn:hover{background:var(--accent-primary);color:var(--bg-primary)}
+.network-modal.fullscreen{max-width:100vw;max-height:100vh;width:100vw;height:100vh;border-radius:0}.network-modal.fullscreen .modal-body.network-body{min-height:calc(100vh - 60px)}
 .bibtex-code{background:var(--bg-primary);border:1px solid var(--border-color);border-radius:8px;padding:1rem;font-family:monospace;font-size:.75rem;color:var(--text-secondary);white-space:pre-wrap;word-break:break-all}
 .modal-footer{padding:1rem 1.5rem;border-top:1px solid var(--border-color);display:flex;justify-content:flex-end;gap:.75rem}.modal-btn{padding:.6rem 1.25rem;font-size:.85rem;border-radius:8px;border:none;cursor:pointer;text-decoration:none}.modal-btn.primary{background:var(--accent-primary);color:var(--bg-primary)}.modal-btn.secondary{background:var(--bg-hover);color:var(--text-primary);border:1px solid var(--border-color)}.modal-btn:hover{filter:brightness(1.1)}
 .toast{position:fixed;bottom:2rem;right:2rem;background:var(--accent-tertiary);color:var(--bg-primary);padding:.875rem 1.25rem;border-radius:8px;font-weight:500;font-size:.85rem;transform:translateY(100px);opacity:0;transition:all .3s;z-index:1001}.toast.show{transform:translateY(0);opacity:1}
@@ -93,13 +99,7 @@ nav{display:flex;gap:2rem}nav a{color:var(--text-secondary);text-decoration:none
 <div class="profile-tags"><span class="profile-tags-label">Methods</span><span class="profile-tags-list">lab & field experiments, observational data</span></div>
 <div class="upcoming-talks" id="upcomingTalks"><div class="upcoming-talks-title">Upcoming Talks</div><div id="talksContainer"></div></div>
 </div>
-<div class="news-card"><h2 class="card-title">Research news</h2>
-<div class="news-item"><div class="news-meta"><span class="news-date">Sep 2025</span><span class="news-type award">Award</span></div><p class="news-text">Deeply honored and grateful to be included in <a href="https://www.capital.de/karriere/capital-ranking--das-sind-deutschlands-top-40-unter-40-fuer-2025-36192498.html" target="_blank">Capital Magazine's</a> German "Top 40 under 40" list. It's humbling to be recognized alongside such inspiring individuals whose work is making a real difference. Thank you to everyone who has supported my journey! 🙏 <a href="https://www.linkedin.com/posts/eugendimant_top40under40-activity-7243574589953654785-YQZV" target="_blank">Read on →</a></p></div>
-<div class="news-item"><div class="news-meta"><span class="news-date">Sep 2025</span><span class="news-type working">Working paper</span></div><p class="news-text"><a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=5414817" target="_blank">Aid and Exodus</a>: U.S. Military Assistance and Refugee Flows to the U.S.</p></div>
-<div class="news-item"><div class="news-meta"><span class="news-date">Aug 2025</span><span class="news-type publication">Publication</span></div><p class="news-text">Experimental Methods: Eliciting Social Norms in <a href="https://doi.org/10.1016/j.jebo.2025.107187" target="_blank">JEBO</a>.</p></div>
-<div class="news-item"><div class="news-meta"><span class="news-date">Jun 2025</span><span class="news-type announcement">Announcement</span></div><p class="news-text"><a href="https://normsandbehavior.sas.upenn.edu/polarization-workshop" target="_blank">Workshop on Polarization</a> at MIT, Dec 5–6, 2025.</p></div>
-<div class="news-item"><div class="news-meta"><span class="news-date">Mar 2025</span><span class="news-type publication">Publication</span></div><p class="news-text">Nudging Teachers Megastudy in <a href="https://doi.org/10.1073/pnas.2418616122" target="_blank">PNAS</a>.</p></div>
-</div>
+<div class="news-card"><h2 class="card-title">Research news</h2><div id="newsContainer"></div></div>
 <div class="selected-card"><h2 class="card-title">Selected publications</h2>
 <div class="selected-item"><p class="selected-title">Nudging Teachers: A Megastudy (<a href="https://doi.org/10.1073/pnas.2418616122" target="_blank">PNAS</a>, 2025)</p></div>
 <div class="selected-item"><p class="selected-title">Hate Trumps Love: Political Polarization (<a href="https://doi.org/10.1287/mnsc.2023.4701" target="_blank">Management Science</a>, 2024)</p></div>
@@ -136,7 +136,7 @@ nav{display:flex;gap:2rem}nav a{color:var(--text-secondary);text-decoration:none
 </section>
 <div class="modal-overlay" id="bibtexModal"><div class="modal-content"><div class="modal-header"><span class="modal-title">BibTeX Citation</span><button class="modal-close" onclick="closeBibtexModal()">✕</button></div><div class="modal-body"><pre class="bibtex-code" id="bibtexContent"></pre></div><div class="modal-footer"><button class="modal-btn primary" onclick="copyBibtex()">Copy to Clipboard</button></div></div></div>
 <div class="modal-overlay" id="cvModal"><div class="modal-content cv-modal"><div class="modal-header"><span class="modal-title">Curriculum Vitae</span><button class="modal-close" onclick="closeCVModal()">✕</button></div><div class="modal-body cv-body"><iframe id="cvFrame" class="cv-frame" src="about:blank"></iframe></div><div class="modal-footer"><a href="https://raw.githubusercontent.com/eugendimant/eugendimant.github.io/main/CV_Eugen_Dimant.pdf" target="_blank" class="modal-btn secondary">Open in New Tab</a><a href="https://raw.githubusercontent.com/eugendimant/eugendimant.github.io/main/CV_Eugen_Dimant.pdf" download class="modal-btn primary">⬇ Download PDF</a></div></div></div>
-<div class="modal-overlay" id="networkModal"><div class="modal-content network-modal"><div class="modal-header"><span class="modal-title">Co-Author Network</span><button class="modal-close" onclick="closeNetworkModal()">✕</button></div><div class="modal-body network-body"><canvas id="networkCanvas" class="network-canvas"></canvas><div class="network-sidebar"><div class="network-sidebar-title">Search</div><div class="network-control-group"><input type="text" class="network-search" id="networkSearch" placeholder="Find co-author..."></div><div class="network-sidebar-title">Controls</div><div class="network-controls"><div class="network-control-group"><div class="network-control-label">Highlight by Topic</div><select class="network-select" id="networkTopicFilter"><option value="all">All Topics</option><option value="norms">Social Norms</option><option value="polarization">Polarization</option><option value="honesty">Honesty</option><option value="corruption">Corruption</option><option value="terrorism">Terrorism/Migration</option></select></div><div class="network-control-group"><div class="network-control-label">Size Nodes By</div><select class="network-select" id="networkSizeBy"><option value="papers">Number of Papers</option><option value="equal">Equal Size</option></select></div><div class="network-control-group"><div class="network-control-label">Min. Papers Filter</div><select class="network-select" id="networkMinPapers"><option value="1">All (1+)</option><option value="2">2+ papers</option><option value="3">3+ papers</option><option value="5">5+ papers</option></select></div><div class="network-control-group"><div class="network-control-label">Layout</div><select class="network-select" id="networkLayout"><option value="radial">Radial</option><option value="force">Force-Directed</option></select></div><div class="network-control-group zoom-controls"><button class="zoom-btn" onclick="networkZoom(1.2)">＋</button><button class="zoom-btn" onclick="networkZoom(0.8)">－</button><button class="zoom-btn" onclick="networkReset()">⟲</button></div></div><div class="network-sidebar-title">Statistics</div><div class="network-stats" id="networkStats"></div><div class="network-legend"><div class="network-sidebar-title">Legend</div><div class="legend-item"><div class="legend-dot center"></div><span>Eugen Dimant</span></div><div class="legend-item"><div class="legend-dot coauthor"></div><span>Co-author</span></div><div class="legend-item"><div class="legend-dot frequent"></div><span>Frequent (3+ papers)</span></div><div class="legend-item"><div class="legend-line"></div><span>Collaboration</span></div></div><div class="network-instructions"><small>Drag nodes • Click to filter • Scroll to zoom • Double-click to center</small></div></div><div class="network-tooltip" id="networkTooltip"><div class="network-tooltip-name"></div><div class="network-tooltip-papers"></div><div class="network-tooltip-topics"></div><div class="network-tooltip-titles"></div></div></div></div></div>
+<div class="modal-overlay" id="networkModal"><div class="modal-content network-modal"><div class="modal-header"><span class="modal-title">Co-Author Network</span><div class="modal-header-actions"><button class="header-action-btn" onclick="exportNetwork()" title="Export as PNG">📷</button><button class="header-action-btn" onclick="toggleFullscreen()" title="Fullscreen">⛶</button></div><button class="modal-close" onclick="closeNetworkModal()">✕</button></div><div class="modal-body network-body"><canvas id="networkCanvas" class="network-canvas"></canvas><div class="network-minimap" id="networkMinimap"><canvas id="minimapCanvas" width="150" height="100"></canvas></div><div class="network-sidebar"><div class="network-sidebar-title">Search</div><div class="network-control-group"><input type="text" class="network-search" id="networkSearch" placeholder="Find co-author..."><div class="search-results" id="searchResults"></div></div><div class="network-sidebar-title">View Controls</div><div class="network-controls"><div class="network-control-group"><div class="network-control-label">Color By</div><select class="network-select" id="networkColorBy"><option value="frequency">Collaboration Frequency</option><option value="topic">Primary Topic</option><option value="recency">Most Recent Paper</option><option value="cluster">Cluster</option></select></div><div class="network-control-group"><div class="network-control-label">Size Nodes By</div><select class="network-select" id="networkSizeBy"><option value="papers">Number of Papers</option><option value="citations">Total Citations</option><option value="equal">Equal Size</option></select></div><div class="network-control-group"><div class="network-control-label">Min. Papers</div><select class="network-select" id="networkMinPapers"><option value="1">All (1+)</option><option value="2">2+ papers</option><option value="3">3+ papers</option><option value="5">5+ papers</option></select></div><div class="network-control-group"><div class="network-control-label">Layout</div><select class="network-select" id="networkLayout"><option value="radial">Radial (by frequency)</option><option value="force">Force-Directed</option><option value="cluster">Clustered</option><option value="timeline">Timeline</option></select></div><div class="network-control-group"><div class="network-control-label">Show</div><div class="network-checkboxes"><label class="network-checkbox"><input type="checkbox" id="showLabels" checked>Labels</label><label class="network-checkbox"><input type="checkbox" id="showEdgeWeights">Edge weights</label><label class="network-checkbox"><input type="checkbox" id="animatePhysics" checked>Physics</label></div></div><div class="network-control-group zoom-controls"><button class="zoom-btn" onclick="networkZoom(1.3)">＋</button><button class="zoom-btn" onclick="networkZoom(0.7)">－</button><button class="zoom-btn" onclick="networkFitAll()">⊡</button><button class="zoom-btn" onclick="networkReset()">⟲</button></div></div><div class="network-sidebar-title">Statistics</div><div class="network-stats" id="networkStats"></div><div class="network-sidebar-title">Selected Node</div><div class="network-selected" id="networkSelected"><p class="network-selected-hint">Click a node to see details</p></div><div class="network-legend"><div class="network-sidebar-title">Legend</div><div class="legend-item"><div class="legend-dot center"></div><span>Eugen Dimant</span></div><div class="legend-item"><div class="legend-dot coauthor"></div><span>1-2 papers</span></div><div class="legend-item"><div class="legend-dot frequent"></div><span>3-4 papers</span></div><div class="legend-item"><div class="legend-dot super"></div><span>5+ papers</span></div></div><div class="network-instructions"><small>Drag nodes • Click to select • Double-click to filter<br>Scroll to zoom • Right-click for options</small></div></div><div class="network-tooltip" id="networkTooltip"><div class="network-tooltip-name"></div><div class="network-tooltip-papers"></div><div class="network-tooltip-topics"></div><div class="network-tooltip-years"></div><div class="network-tooltip-titles"></div></div></div></div></div>
 <div class="toast" id="toast">Copied to clipboard!</div>
 <script>
 const papers=[
@@ -242,10 +242,38 @@ function findRelatedPapers(paper,max=5){
     return related.sort((a,b)=>b.score-a.score).slice(0,max);
 }
 
-function init(){renderUpcomingTalks();allCoauthors=extractCoauthors();buildFilters();renderPapers();setupEventListeners();}
+function init(){renderNews();renderUpcomingTalks();allCoauthors=extractCoauthors();buildFilters();renderPapers();setupEventListeners();}
+
+function renderNews(){
+    const newsItems=[
+        {date:"Sep 2025",year:2025,month:9,type:"award",text:'Deeply honored and grateful to be included in <a href="https://www.capital.de/karriere/capital-ranking--das-sind-deutschlands-top-40-unter-40-fuer-2025-36192498.html" target="_blank">Capital Magazine\'s</a> German "Top 40 under 40" list. It\'s humbling to be recognized alongside such inspiring individuals whose work is making a real difference. Thank you to everyone who has supported my journey! 🙏 <a href="https://www.linkedin.com/posts/eugendimant_top40under40-activity-7243574589953654785-YQZV" target="_blank">Read on →</a>'},
+        {date:"Sep 2025",year:2025,month:9,type:"working",text:'<a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=5414817" target="_blank">Aid and Exodus</a>: U.S. Military Assistance and Refugee Flows to the U.S.'},
+        {date:"Aug 2025",year:2025,month:8,type:"publication",text:'Experimental Methods: Eliciting Social Norms in <a href="https://doi.org/10.1016/j.jebo.2025.107187" target="_blank">JEBO</a>.'},
+        {date:"Jun 2025",year:2025,month:6,type:"announcement",text:'<a href="https://normsandbehavior.sas.upenn.edu/polarization-workshop" target="_blank">Workshop on Polarization</a> at MIT, Dec 5–6, 2025.'},
+        {date:"Mar 2025",year:2025,month:3,type:"publication",text:'Nudging Teachers Megastudy in <a href="https://doi.org/10.1073/pnas.2418616122" target="_blank">PNAS</a>.'}
+    ];
+    const now=new Date();
+    const twelveMonthsAgo=new Date(now.getFullYear()-1,now.getMonth(),1);
+    const activeNews=newsItems.filter(n=>{
+        const newsDate=new Date(n.year,n.month-1,1);
+        return newsDate>=twelveMonthsAgo;
+    });
+    if(activeNews.length===0){
+        document.getElementById('newsContainer').innerHTML='<p class="news-text" style="color:var(--text-muted);font-style:italic;">No recent news. Check back soon!</p>';
+        return;
+    }
+    let html='';
+    activeNews.forEach((n,i)=>{
+        const isLast=i===activeNews.length-1;
+        html+='<div class="news-item'+(isLast?' last':'')+'">';
+        html+='<div class="news-meta"><span class="news-date">'+n.date+'</span><span class="news-type '+n.type+'">'+n.type.replace('working','Working paper')+'</span></div>';
+        html+='<p class="news-text">'+n.text+'</p></div>';
+    });
+    document.getElementById('newsContainer').innerHTML=html;
+}
 
 function renderUpcomingTalks(){
-    const talks=[{date:"Jan 2026",venue:"ASSA, Philadelphia",expireYear:2026,expireMonth:1},{date:"Apr 2026",venue:"Intl. Behavioral Public Policy Workshop, NYU",expireYear:2026,expireMonth:4},{date:"Apr 2026",venue:"University of Michigan",expireYear:2026,expireMonth:4},{date:"May 2026",venue:"Keynote, Young Economists' Meeting (YEM), Brno",expireYear:2026,expireMonth:5},{date:"Jul 2026",venue:"University of Freiburg",expireYear:2026,expireMonth:7}];
+    const talks=[{date:"Jan 2026",venue:"ASSA, Philadelphia",expireYear:2026,expireMonth:1},{date:"Apr 2026",venue:"Intl. Behavioral Public Policy Workshop, NYU",expireYear:2026,expireMonth:4},{date:"Apr 2026",venue:"University of Michigan",expireYear:2026,expireMonth:4},{date:"May 2026",venue:"Keynote, Young Economists' Meeting (YEM), Brno",expireYear:2026,expireMonth:5},{date:"Jun 2026",venue:"Corvinus Institute of Advanced Studies, Budapest",expireYear:2026,expireMonth:6},{date:"Jun 2026",venue:"University of Amsterdam",expireYear:2026,expireMonth:6},{date:"Jul 2026",venue:"University of Freiburg",expireYear:2026,expireMonth:7}];
     const now=new Date();const future=talks.filter(t=>t.expireYear>now.getFullYear()||(t.expireYear===now.getFullYear()&&t.expireMonth>now.getMonth()));
     const section=document.getElementById('upcomingTalks');const container=document.getElementById('talksContainer');
     if(future.length===0){section.style.display='none';return;}
@@ -404,40 +432,161 @@ function showBibtex(el){document.getElementById('bibtexContent').textContent=dec
 function closeBibtexModal(){document.getElementById('bibtexModal').classList.remove('active');}
 function copyBibtex(){navigator.clipboard.writeText(document.getElementById('bibtexContent').textContent).then(()=>{document.getElementById('toast').classList.add('show');setTimeout(()=>{document.getElementById('toast').classList.remove('show');},2000);});}
 
-let networkNodes=[],networkEdges=[],networkAnimation=null,networkTopicFilter='all',networkSizeBy='papers',networkMinPapers=1,networkLayout='radial',networkZoomLevel=1,networkPanX=0,networkPanY=0,networkDragNode=null,networkSearchTerm='',networkHighlightNode=null;
+let networkNodes=[],networkEdges=[],networkAnimation=null,networkColorBy='frequency',networkSizeBy='papers',networkMinPapers=1,networkLayout='radial',networkZoomLevel=1,networkPanX=0,networkPanY=0,networkDragNode=null,networkSearchTerm='',networkHighlightNode=null,networkSelectedNode=null,networkShowLabels=true,networkShowEdgeWeights=false,networkAnimatePhysics=true,networkClusters=[];
+
 function openNetworkModal(){document.getElementById('networkModal').classList.add('active');setTimeout(initNetwork,100);}
 function closeNetworkModal(){document.getElementById('networkModal').classList.remove('active');if(networkAnimation){cancelAnimationFrame(networkAnimation);networkAnimation=null;}}
-function networkZoom(factor){networkZoomLevel=Math.max(0.3,Math.min(3,networkZoomLevel*factor));}
-function networkReset(){networkZoomLevel=1;networkPanX=0;networkPanY=0;networkSearchTerm='';document.getElementById('networkSearch').value='';networkHighlightNode=null;}
+function networkZoom(factor){networkZoomLevel=Math.max(0.2,Math.min(5,networkZoomLevel*factor));}
+function networkReset(){networkZoomLevel=1;networkPanX=0;networkPanY=0;networkSearchTerm='';networkSelectedNode=null;document.getElementById('networkSearch').value='';document.getElementById('searchResults').innerHTML='';networkHighlightNode=null;updateSelectedPanel();}
+function networkFitAll(){
+    if(networkNodes.length===0)return;
+    let minX=Infinity,maxX=-Infinity,minY=Infinity,maxY=-Infinity;
+    networkNodes.forEach(n=>{minX=Math.min(minX,n.x-n.radius);maxX=Math.max(maxX,n.x+n.radius);minY=Math.min(minY,n.y-n.radius);maxY=Math.max(maxY,n.y+n.radius);});
+    const canvas=document.getElementById('networkCanvas');
+    const padding=50,w=maxX-minX+padding*2,h=maxY-minY+padding*2;
+    networkZoomLevel=Math.min((canvas.width-220)/w,canvas.height/h,2);
+    networkPanX=canvas.width/2-((minX+maxX)/2)*networkZoomLevel;
+    networkPanY=canvas.height/2-((minY+maxY)/2)*networkZoomLevel;
+}
+function exportNetwork(){
+    const canvas=document.getElementById('networkCanvas');
+    const link=document.createElement('a');
+    link.download='coauthor_network.png';
+    link.href=canvas.toDataURL('image/png');
+    link.click();
+}
+function toggleFullscreen(){
+    const modal=document.querySelector('.network-modal');
+    modal.classList.toggle('fullscreen');
+    setTimeout(initNetwork,100);
+}
+
+function detectClusters(nodes,edges){
+    // Simple clustering based on shared co-authorship
+    const clusters=[];
+    const visited=new Set();
+    nodes.filter(n=>n.id!=='center').forEach(n=>{
+        if(visited.has(n.id))return;
+        const cluster=[n.id];
+        visited.add(n.id);
+        edges.filter(e=>e.from===n.id||e.to===n.id).forEach(e=>{
+            const other=e.from===n.id?e.to:e.from;
+            if(other!=='center'&&!visited.has(other)&&e.weight>=2){
+                cluster.push(other);
+                visited.add(other);
+            }
+        });
+        if(cluster.length>1)clusters.push(cluster);
+    });
+    return clusters;
+}
+
+function getNodeColor(node,colorBy,clusters){
+    if(node.id==='center')return '#c9a0dc';
+    if(colorBy==='frequency'){
+        if(node.papers>=5)return '#ffa657';
+        if(node.papers>=3)return '#7ee787';
+        return '#79c0ff';
+    }
+    if(colorBy==='topic'){
+        const topics=Array.from(node.topics);
+        if(topics.includes('polarization'))return '#ff7b72';
+        if(topics.includes('norms'))return '#79c0ff';
+        if(topics.includes('honesty'))return '#7ee787';
+        if(topics.includes('corruption'))return '#ffa657';
+        if(topics.includes('terrorism'))return '#d2a8ff';
+        return '#8b949e';
+    }
+    if(colorBy==='recency'){
+        const years=node.paperYears||[];
+        const maxYear=Math.max(...years,2020);
+        if(maxYear>=2024)return '#7ee787';
+        if(maxYear>=2022)return '#79c0ff';
+        if(maxYear>=2020)return '#ffa657';
+        return '#8b949e';
+    }
+    if(colorBy==='cluster'){
+        const idx=clusters.findIndex(c=>c.includes(node.id));
+        const clusterColors=['#79c0ff','#7ee787','#ffa657','#ff7b72','#d2a8ff','#a5d6ff','#ffd700','#ff69b4'];
+        return idx>=0?clusterColors[idx%clusterColors.length]:'#8b949e';
+    }
+    return '#79c0ff';
+}
+
+function updateSelectedPanel(){
+    const panel=document.getElementById('networkSelected');
+    if(!networkSelectedNode||networkSelectedNode.id==='center'){
+        panel.innerHTML='<p class="network-selected-hint">Click a node to see details</p>';
+        return;
+    }
+    const n=networkSelectedNode;
+    const coauthor=allCoauthors.find(c=>c.name===n.id);
+    const years=coauthor?[...new Set(coauthor.papers.map(pid=>{const p=papers.find(x=>x.id===pid);return p?p.year:null;}).filter(y=>y))].sort((a,b)=>b-a):[];
+    panel.innerHTML=
+        '<div class="network-selected-name">'+n.name.split(',')[0]+'</div>'+
+        '<div class="network-selected-info">'+n.papers+' paper'+(n.papers>1?'s':'')+'<br>'+
+        'Years: '+(years.length?years.join(', '):'N/A')+'<br>'+
+        'Topics: '+Array.from(n.topics).map(t=>topicLabels[t]||t).join(', ')+'</div>'+
+        '<button class="network-selected-btn" onclick="filterByCoauthor(\''+n.id.replace(/'/g,"\\'")+'\')">Filter Papers →</button>';
+}
+
+function filterByCoauthor(name){
+    closeNetworkModal();
+    activeCoauthorFilter=name;
+    buildFilters();
+    renderPapers();
+}
 
 function initNetwork(){
     const canvas=document.getElementById('networkCanvas'),ctx=canvas.getContext('2d'),tooltip=document.getElementById('networkTooltip');
-    const rect=canvas.parentElement.getBoundingClientRect();
-    canvas.width=rect.width-220;canvas.height=Math.max(550,rect.height-40);
+    const container=canvas.parentElement;
+    const rect=container.getBoundingClientRect();
+    const sidebarWidth=220;
+    canvas.width=rect.width-sidebarWidth;
+    canvas.height=Math.max(550,rect.height-40);
     const cx=canvas.width/2,cy=canvas.height/2;
     
     // Filter coauthors by min papers
     const filteredCoauthors=allCoauthors.filter(c=>c.papers.length>=networkMinPapers);
     
+    // Get coauthor years for recency coloring
+    const getCoauthorYears=(c)=>c.papers.map(pid=>{const p=papers.find(x=>x.id===pid);return p?p.year:null;}).filter(y=>y);
+    
+    // Get citations for sizing
+    const getCoauthorCitations=(c)=>c.papers.reduce((sum,pid)=>{const p=papers.find(x=>x.id===pid);return sum+(p&&p.citations?p.citations:0);},0);
+    
     // Build nodes
-    networkNodes=[{id:'center',name:'Eugen Dimant',x:cx,y:cy,vx:0,vy:0,radius:35,color:'#c9a0dc',fixed:true,papers:papers.length,topics:new Set(Object.keys(topicLabels)),paperTitles:papers.map(p=>p.title)}];
+    networkNodes=[{id:'center',name:'Eugen Dimant',x:cx,y:cy,vx:0,vy:0,radius:40,color:'#c9a0dc',fixed:true,papers:papers.length,topics:new Set(Object.keys(topicLabels)),paperTitles:papers.slice(0,10).map(p=>p.title),paperYears:papers.map(p=>p.year),citations:papers.reduce((s,p)=>s+(p.citations||0),0)}];
     
     const angleStep=(2*Math.PI)/Math.max(filteredCoauthors.length,1);
-    const baseRadius=Math.min(canvas.width,canvas.height)*0.38;
+    const baseRadius=Math.min(canvas.width,canvas.height)*0.36;
     
     filteredCoauthors.forEach((c,i)=>{
         const angle=i*angleStep-Math.PI/2;
-        const tierRadius=c.papers.length>=5?baseRadius*0.6:c.papers.length>=3?baseRadius*0.8:baseRadius;
-        const r=tierRadius+(Math.random()-0.5)*30;
-        const baseSize=networkSizeBy==='papers'?10+Math.min(c.papers.length*4,22):14;
-        const nodeColor=c.papers.length>=3?'#7ee787':'#79c0ff';
+        let tierRadius=baseRadius;
+        if(networkLayout==='radial'){
+            tierRadius=c.papers.length>=5?baseRadius*0.5:c.papers.length>=3?baseRadius*0.75:baseRadius;
+        }
+        const r=tierRadius+(Math.random()-0.5)*25;
+        
+        let nodeSize=14;
+        if(networkSizeBy==='papers')nodeSize=10+Math.min(c.papers.length*4,24);
+        else if(networkSizeBy==='citations'){
+            const cites=getCoauthorCitations(c);
+            nodeSize=10+Math.min(Math.sqrt(cites)*2,24);
+        }
+        
+        const years=getCoauthorYears(c);
         networkNodes.push({
             id:c.name,name:c.name,
             x:cx+Math.cos(angle)*r,y:cy+Math.sin(angle)*r,
             targetX:cx+Math.cos(angle)*r,targetY:cy+Math.sin(angle)*r,
-            vx:0,vy:0,radius:baseSize,color:nodeColor,fixed:false,
+            vx:0,vy:0,radius:nodeSize,color:'#79c0ff',fixed:false,
             papers:c.papers.length,topics:c.topics,
-            paperTitles:c.papers.map(pid=>{const paper=papers.find(p=>p.id===pid);return paper?paper.title:'';}).filter(t=>t)
+            paperTitles:c.papers.map(pid=>{const paper=papers.find(p=>p.id===pid);return paper?paper.title:'';}).filter(t=>t),
+            paperYears:years,
+            citations:getCoauthorCitations(c),
+            cluster:-1
         });
     });
     
@@ -447,25 +596,110 @@ function initNetwork(){
     for(let i=0;i<filteredCoauthors.length;i++){
         for(let j=i+1;j<filteredCoauthors.length;j++){
             const shared=filteredCoauthors[i].paperIds.filter(id=>filteredCoauthors[j].paperIds.includes(id));
-            if(shared.length>0)networkEdges.push({from:filteredCoauthors[i].name,to:filteredCoauthors[j].name,weight:shared.length});
+            if(shared.length>0){
+                const sharedTitles=shared.map(id=>{const p=papers.find(x=>x.id===id);return p?p.title:'';}).filter(t=>t);
+                networkEdges.push({from:filteredCoauthors[i].name,to:filteredCoauthors[j].name,weight:shared.length,titles:sharedTitles});
+            }
         }
+    }
+    
+    // Detect clusters
+    networkClusters=detectClusters(networkNodes,networkEdges);
+    networkClusters.forEach((cluster,idx)=>{
+        cluster.forEach(nodeId=>{
+            const node=networkNodes.find(n=>n.id===nodeId);
+            if(node)node.cluster=idx;
+        });
+    });
+    
+    // Apply colors
+    networkNodes.forEach(n=>{n.color=getNodeColor(n,networkColorBy,networkClusters);});
+    
+    // Timeline layout positions
+    if(networkLayout==='timeline'){
+        const yearGroups={};
+        networkNodes.slice(1).forEach(n=>{
+            const maxYear=Math.max(...(n.paperYears||[2020]));
+            if(!yearGroups[maxYear])yearGroups[maxYear]=[];
+            yearGroups[maxYear].push(n);
+        });
+        const years=Object.keys(yearGroups).sort((a,b)=>a-b);
+        const yearWidth=canvas.width/(years.length+1);
+        years.forEach((yr,yi)=>{
+            const nodes=yearGroups[yr];
+            const nodeHeight=canvas.height/(nodes.length+1);
+            nodes.forEach((n,ni)=>{
+                n.targetX=(yi+1)*yearWidth;
+                n.targetY=(ni+1)*nodeHeight;
+                n.x=n.targetX;n.y=n.targetY;
+            });
+        });
+    }
+    
+    // Cluster layout positions
+    if(networkLayout==='cluster'){
+        const clusterCenters=networkClusters.map((_,i)=>{
+            const angle=(i/networkClusters.length)*2*Math.PI;
+            return {x:cx+Math.cos(angle)*baseRadius*0.6,y:cy+Math.sin(angle)*baseRadius*0.6};
+        });
+        networkNodes.forEach(n=>{
+            if(n.cluster>=0&&n.cluster<clusterCenters.length){
+                const center=clusterCenters[n.cluster];
+                const angle=Math.random()*2*Math.PI;
+                const dist=30+Math.random()*50;
+                n.targetX=center.x+Math.cos(angle)*dist;
+                n.targetY=center.y+Math.sin(angle)*dist;
+            }
+        });
     }
     
     updateNetworkStats(filteredCoauthors);
     
     // Setup controls
-    document.getElementById('networkTopicFilter').onchange=e=>{networkTopicFilter=e.target.value;};
-    document.getElementById('networkSizeBy').onchange=e=>{
+    const colorByEl=document.getElementById('networkColorBy');
+    if(colorByEl)colorByEl.onchange=e=>{
+        networkColorBy=e.target.value;
+        networkNodes.forEach(n=>{n.color=getNodeColor(n,networkColorBy,networkClusters);});
+    };
+    
+    const sizeByEl=document.getElementById('networkSizeBy');
+    if(sizeByEl)sizeByEl.onchange=e=>{
         networkSizeBy=e.target.value;
         networkNodes.forEach((n,i)=>{
-            if(i>0){const c=filteredCoauthors[i-1];n.radius=networkSizeBy==='papers'?10+Math.min(c.papers.length*4,22):14;}
+            if(i>0){
+                const c=filteredCoauthors[i-1];
+                if(networkSizeBy==='papers')n.radius=10+Math.min(c.papers.length*4,24);
+                else if(networkSizeBy==='citations')n.radius=10+Math.min(Math.sqrt(n.citations)*2,24);
+                else n.radius=14;
+            }
         });
     };
-    document.getElementById('networkMinPapers').onchange=e=>{networkMinPapers=parseInt(e.target.value);initNetwork();};
-    document.getElementById('networkLayout').onchange=e=>{networkLayout=e.target.value;initNetwork();};
-    document.getElementById('networkSearch').oninput=e=>{
+    
+    const minPapersEl=document.getElementById('networkMinPapers');
+    if(minPapersEl)minPapersEl.onchange=e=>{networkMinPapers=parseInt(e.target.value);initNetwork();};
+    
+    const layoutEl=document.getElementById('networkLayout');
+    if(layoutEl)layoutEl.onchange=e=>{networkLayout=e.target.value;initNetwork();};
+    
+    const showLabelsEl=document.getElementById('showLabels');
+    if(showLabelsEl)showLabelsEl.onchange=e=>{networkShowLabels=e.target.checked;};
+    
+    const showEdgeWeightsEl=document.getElementById('showEdgeWeights');
+    if(showEdgeWeightsEl)showEdgeWeightsEl.onchange=e=>{networkShowEdgeWeights=e.target.checked;};
+    
+    const animatePhysicsEl=document.getElementById('animatePhysics');
+    if(animatePhysicsEl)animatePhysicsEl.onchange=e=>{networkAnimatePhysics=e.target.checked;};
+    
+    const searchEl=document.getElementById('networkSearch');
+    if(searchEl)searchEl.oninput=e=>{
         networkSearchTerm=e.target.value.toLowerCase();
-        networkHighlightNode=networkSearchTerm?networkNodes.find(n=>n.name.toLowerCase().includes(networkSearchTerm)&&n.id!=='center'):null;
+        const results=document.getElementById('searchResults');
+        if(networkSearchTerm.length<2){results.innerHTML='';networkHighlightNode=null;return;}
+        const matches=networkNodes.filter(n=>n.id!=='center'&&n.name.toLowerCase().includes(networkSearchTerm)).slice(0,5);
+        if(matches.length>0){
+            results.innerHTML=matches.map(m=>'<div class="search-result-item" onclick="selectSearchResult(\''+m.id.replace(/'/g,"\\'")+'\')">'+m.name.split(',')[0]+' ('+m.papers+')</div>').join('');
+            networkHighlightNode=matches[0];
+        }else{results.innerHTML='<div class="search-result-item">No matches</div>';networkHighlightNode=null;}
     };
     
     let hoveredNode=null,isDragging=false,lastMouseX=0,lastMouseY=0,frameCount=0;
@@ -480,12 +714,13 @@ function initNetwork(){
                 break;
             }
         }
-        if(!networkDragNode){isDragging=true;lastMouseX=e.clientX;lastMouseY=e.clientY;}
+        if(!networkDragNode){isDragging=true;lastMouseX=e.clientX;lastMouseY=e.clientY;canvas.style.cursor='grabbing';}
     };
     
-    canvas.onmouseup=()=>{
+    canvas.onmouseup=e=>{
         if(networkDragNode){networkDragNode.fixed=false;networkDragNode=null;}
         isDragging=false;
+        canvas.style.cursor='grab';
     };
     
     canvas.onmousemove=e=>{
@@ -509,34 +744,89 @@ function initNetwork(){
         if(hoveredNode){
             canvas.style.cursor='pointer';
             tooltip.querySelector('.network-tooltip-name').textContent=hoveredNode.name;
-            tooltip.querySelector('.network-tooltip-papers').textContent=hoveredNode.papers+' paper'+(hoveredNode.papers!==1?'s':'');
+            tooltip.querySelector('.network-tooltip-papers').textContent=hoveredNode.papers+' paper'+(hoveredNode.papers!==1?'s':'')+' • '+hoveredNode.citations+' citations';
             const topicList=Array.from(hoveredNode.topics).map(t=>topicLabels[t]||t).join(', ');
             tooltip.querySelector('.network-tooltip-topics').textContent=topicList?'Topics: '+topicList:'';
+            const yearsEl=tooltip.querySelector('.network-tooltip-years');
+            if(yearsEl){
+                const years=[...new Set(hoveredNode.paperYears||[])].sort((a,b)=>b-a).slice(0,5);
+                yearsEl.textContent=years.length?'Years: '+years.join(', '):'';
+            }
             const titlesEl=tooltip.querySelector('.network-tooltip-titles');
             if(titlesEl&&hoveredNode.paperTitles){
-                titlesEl.innerHTML=hoveredNode.paperTitles.slice(0,5).map(t=>'• '+t.substring(0,50)+(t.length>50?'...':'')).join('<br>')+(hoveredNode.paperTitles.length>5?'<br>...+'+(hoveredNode.paperTitles.length-5)+' more':'');
+                titlesEl.innerHTML=hoveredNode.paperTitles.slice(0,4).map(t=>'• '+t.substring(0,45)+(t.length>45?'...':'')).join('<br>')+(hoveredNode.paperTitles.length>4?'<br><i>+'+(hoveredNode.paperTitles.length-4)+' more</i>':'');
             }
-            tooltip.style.left=Math.min(e.clientX-rect.left+15,canvas.width-220)+'px';
+            tooltip.style.left=Math.min(e.clientX-rect.left+15,canvas.width-250)+'px';
             tooltip.style.top=Math.max(10,e.clientY-rect.top-10)+'px';
             tooltip.classList.add('show');
-        }else{canvas.style.cursor=isDragging?'grabbing':'grab';tooltip.classList.remove('show');}
-    };
-    
-    canvas.onclick=()=>{if(hoveredNode&&hoveredNode.id!=='center'&&!networkDragNode){closeNetworkModal();activeCoauthorFilter=hoveredNode.id;buildFilters();renderPapers();}};
-    canvas.ondblclick=e=>{
-        const rect=canvas.getBoundingClientRect();
-        const mx=(e.clientX-rect.left-networkPanX)/networkZoomLevel;
-        const my=(e.clientY-rect.top-networkPanY)/networkZoomLevel;
-        for(const n of networkNodes){
-            if(Math.sqrt((mx-n.x)**2+(my-n.y)**2)<n.radius+5){
-                networkPanX=canvas.width/2-n.x*networkZoomLevel;
-                networkPanY=canvas.height/2-n.y*networkZoomLevel;
-                break;
-            }
+        }else{
+            canvas.style.cursor=isDragging?'grabbing':'grab';
+            tooltip.classList.remove('show');
         }
     };
+    
+    canvas.onclick=e=>{
+        if(hoveredNode&&!networkDragNode){
+            networkSelectedNode=hoveredNode;
+            updateSelectedPanel();
+        }
+    };
+    
+    canvas.ondblclick=e=>{
+        if(hoveredNode&&hoveredNode.id!=='center'){
+            filterByCoauthor(hoveredNode.id);
+        }
+    };
+    
+    canvas.oncontextmenu=e=>{e.preventDefault();};
     canvas.onmouseleave=()=>{tooltip.classList.remove('show');isDragging=false;};
-    canvas.onwheel=e=>{e.preventDefault();networkZoom(e.deltaY>0?0.9:1.1);};
+    canvas.onwheel=e=>{
+        e.preventDefault();
+        const rect=canvas.getBoundingClientRect();
+        const mouseX=e.clientX-rect.left;
+        const mouseY=e.clientY-rect.top;
+        const oldZoom=networkZoomLevel;
+        networkZoom(e.deltaY>0?0.9:1.1);
+        // Zoom toward mouse position
+        networkPanX=mouseX-(mouseX-networkPanX)*(networkZoomLevel/oldZoom);
+        networkPanY=mouseY-(mouseY-networkPanY)*(networkZoomLevel/oldZoom);
+    };
+    
+    // Minimap
+    const minimapCanvas=document.getElementById('minimapCanvas');
+    const minimapCtx=minimapCanvas?minimapCanvas.getContext('2d'):null;
+    
+    function drawMinimap(){
+        if(!minimapCtx)return;
+        minimapCtx.fillStyle='#161b22';
+        minimapCtx.fillRect(0,0,150,100);
+        const scale=Math.min(140/canvas.width,90/canvas.height)*0.8;
+        const offsetX=75,offsetY=50;
+        networkEdges.forEach(e=>{
+            const from=networkNodes.find(n=>n.id===e.from),to=networkNodes.find(n=>n.id===e.to);
+            if(!from||!to)return;
+            minimapCtx.strokeStyle='#30363d';
+            minimapCtx.lineWidth=0.5;
+            minimapCtx.beginPath();
+            minimapCtx.moveTo(offsetX+(from.x-canvas.width/2)*scale,offsetY+(from.y-canvas.height/2)*scale);
+            minimapCtx.lineTo(offsetX+(to.x-canvas.width/2)*scale,offsetY+(to.y-canvas.height/2)*scale);
+            minimapCtx.stroke();
+        });
+        networkNodes.forEach(n=>{
+            minimapCtx.fillStyle=n.color;
+            minimapCtx.beginPath();
+            minimapCtx.arc(offsetX+(n.x-canvas.width/2)*scale,offsetY+(n.y-canvas.height/2)*scale,Math.max(2,n.radius*scale),0,Math.PI*2);
+            minimapCtx.fill();
+        });
+        // Viewport rectangle
+        const vpX=(-networkPanX/networkZoomLevel-canvas.width/2)*scale+offsetX;
+        const vpY=(-networkPanY/networkZoomLevel-canvas.height/2)*scale+offsetY;
+        const vpW=(canvas.width/networkZoomLevel)*scale;
+        const vpH=(canvas.height/networkZoomLevel)*scale;
+        minimapCtx.strokeStyle='#c9a0dc';
+        minimapCtx.lineWidth=1;
+        minimapCtx.strokeRect(vpX,vpY,vpW,vpH);
+    }
     
     function animate(){
         frameCount++;
@@ -546,40 +836,37 @@ function initNetwork(){
         ctx.scale(networkZoomLevel,networkZoomLevel);
         
         // Physics
-        if(frameCount<300||networkLayout==='force'){
+        if(networkAnimatePhysics&&(frameCount<400||networkLayout==='force')){
             networkNodes.forEach(n=>{
                 if(n.fixed)return;
-                if(networkLayout==='radial'){
+                if(networkLayout==='radial'||networkLayout==='cluster'||networkLayout==='timeline'){
                     const dtx=n.targetX-n.x,dty=n.targetY-n.y;
-                    n.vx+=dtx*0.03;n.vy+=dty*0.03;
+                    n.vx+=dtx*0.04;n.vy+=dty*0.04;
                 }else{
-                    // Force-directed: attract to center slightly
                     const dcx=cx-n.x,dcy=cy-n.y;
-                    n.vx+=dcx*0.001;n.vy+=dcy*0.001;
+                    n.vx+=dcx*0.0008;n.vy+=dcy*0.0008;
                 }
-                // Repulsion between nodes
                 networkNodes.forEach(o=>{
                     if(o.id===n.id)return;
                     const dx=n.x-o.x,dy=n.y-o.y,d=Math.sqrt(dx*dx+dy*dy);
-                    const minDist=n.radius+o.radius+(networkLayout==='force'?40:15);
-                    if(d<minDist&&d>0){const force=(minDist-d)*(networkLayout==='force'?0.08:0.05);n.vx+=dx/d*force;n.vy+=dy/d*force;}
+                    const minDist=n.radius+o.radius+(networkLayout==='force'?50:20);
+                    if(d<minDist&&d>0){const force=(minDist-d)*(networkLayout==='force'?0.1:0.06);n.vx+=dx/d*force;n.vy+=dy/d*force;}
                 });
-                // Edge attraction for force layout
                 if(networkLayout==='force'){
                     networkEdges.forEach(e=>{
                         if(e.from===n.id||e.to===n.id){
                             const other=networkNodes.find(x=>x.id===(e.from===n.id?e.to:e.from));
                             if(other){
                                 const dx=other.x-n.x,dy=other.y-n.y,d=Math.sqrt(dx*dx+dy*dy);
-                                if(d>100){n.vx+=dx*0.002;n.vy+=dy*0.002;}
+                                if(d>80){n.vx+=dx*0.003*e.weight;n.vy+=dy*0.003*e.weight;}
                             }
                         }
                     });
                 }
                 n.x+=n.vx;n.y+=n.vy;
-                n.vx*=0.85;n.vy*=0.85;
-                n.x=Math.max(n.radius+20,Math.min(canvas.width/networkZoomLevel-n.radius-20,n.x));
-                n.y=Math.max(n.radius+20,Math.min(canvas.height/networkZoomLevel-n.radius-20,n.y));
+                n.vx*=0.82;n.vy*=0.82;
+                n.x=Math.max(n.radius+30,Math.min(canvas.width/networkZoomLevel-n.radius-30,n.x));
+                n.y=Math.max(n.radius+30,Math.min(canvas.height/networkZoomLevel-n.radius-30,n.y));
             });
         }
         
@@ -587,16 +874,30 @@ function initNetwork(){
         networkEdges.forEach(e=>{
             const from=networkNodes.find(n=>n.id===e.from),to=networkNodes.find(n=>n.id===e.to);
             if(!from||!to)return;
-            let alpha=0.2+Math.min(e.weight*0.15,0.5);
-            const lineWidth=1+Math.min(e.weight*0.8,3);
-            if(networkTopicFilter!=='all'){
-                const fromMatch=from.topics.has(networkTopicFilter);
-                const toMatch=to.topics.has(networkTopicFilter);
-                if(!fromMatch&&!toMatch)alpha=0.05;
+            let alpha=0.15+Math.min(e.weight*0.12,0.45);
+            const lineWidth=1+Math.min(e.weight*0.7,3.5);
+            const isHighlightedEdge=networkHighlightNode&&(from.id===networkHighlightNode.id||to.id===networkHighlightNode.id);
+            const isSelectedEdge=networkSelectedNode&&(from.id===networkSelectedNode.id||to.id===networkSelectedNode.id);
+            if(networkHighlightNode&&!isHighlightedEdge)alpha*=0.2;
+            if(isSelectedEdge)alpha=0.8;
+            
+            ctx.strokeStyle=isSelectedEdge?'#c9a0dc':'#30363d';
+            ctx.lineWidth=lineWidth;
+            ctx.globalAlpha=alpha;
+            ctx.beginPath();
+            ctx.moveTo(from.x,from.y);
+            ctx.lineTo(to.x,to.y);
+            ctx.stroke();
+            
+            // Edge weight labels
+            if(networkShowEdgeWeights&&e.weight>1&&networkZoomLevel>0.7){
+                const midX=(from.x+to.x)/2,midY=(from.y+to.y)/2;
+                ctx.globalAlpha=alpha*0.8;
+                ctx.fillStyle='#8b949e';
+                ctx.font='9px Inter';
+                ctx.textAlign='center';
+                ctx.fillText(e.weight,midX,midY-3);
             }
-            if(networkHighlightNode&&from.id!==networkHighlightNode.id&&to.id!==networkHighlightNode.id)alpha*=0.3;
-            ctx.strokeStyle='#30363d';ctx.lineWidth=lineWidth;
-            ctx.globalAlpha=alpha;ctx.beginPath();ctx.moveTo(from.x,from.y);ctx.lineTo(to.x,to.y);ctx.stroke();
         });
         ctx.globalAlpha=1;
         
@@ -604,45 +905,75 @@ function initNetwork(){
         networkNodes.forEach(n=>{
             const isHovered=hoveredNode&&hoveredNode.id===n.id;
             const isHighlighted=networkHighlightNode&&networkHighlightNode.id===n.id;
-            const isConnectedToHighlight=networkHighlightNode&&networkEdges.some(e=>(e.from===networkHighlightNode.id&&e.to===n.id)||(e.to===networkHighlightNode.id&&e.from===n.id));
-            let nodeAlpha=1,nodeColor=n.color;
+            const isSelected=networkSelectedNode&&networkSelectedNode.id===n.id;
+            const isConnected=networkSelectedNode&&networkEdges.some(e=>(e.from===networkSelectedNode.id&&e.to===n.id)||(e.to===networkSelectedNode.id&&e.from===n.id));
+            let nodeAlpha=1;
             
-            if(networkTopicFilter!=='all'&&n.id!=='center'){
-                if(!n.topics.has(networkTopicFilter)){nodeAlpha=0.25;}
-                else{nodeColor=topicColors[networkTopicFilter]||n.color;}
-            }
-            if(networkHighlightNode&&!isHighlighted&&!isConnectedToHighlight&&n.id!=='center')nodeAlpha*=0.3;
+            if(networkHighlightNode&&!isHighlighted&&!networkEdges.some(e=>(e.from===networkHighlightNode.id&&e.to===n.id)||(e.to===networkHighlightNode.id&&e.from===n.id))&&n.id!=='center')nodeAlpha=0.25;
+            if(networkSelectedNode&&!isSelected&&!isConnected&&n.id!=='center')nodeAlpha*=0.4;
             
             ctx.globalAlpha=nodeAlpha;
-            if(isHovered||isHighlighted){ctx.shadowColor=nodeColor;ctx.shadowBlur=25;}
             
-            // Draw node
-            ctx.fillStyle=nodeColor;
-            ctx.beginPath();ctx.arc(n.x,n.y,n.radius,0,Math.PI*2);ctx.fill();
+            // Glow effect
+            if(isHovered||isHighlighted||isSelected){
+                ctx.shadowColor=n.color;
+                ctx.shadowBlur=isSelected?30:20;
+            }
             
-            // Border for highlighted/hovered
-            if(isHovered||isHighlighted){
-                ctx.strokeStyle='#fff';ctx.lineWidth=2;
+            // Node circle
+            ctx.fillStyle=n.color;
+            ctx.beginPath();
+            ctx.arc(n.x,n.y,n.radius,0,Math.PI*2);
+            ctx.fill();
+            
+            // Selection ring
+            if(isSelected){
+                ctx.strokeStyle='#fff';
+                ctx.lineWidth=3;
+                ctx.stroke();
+            }else if(isHovered||isHighlighted){
+                ctx.strokeStyle='rgba(255,255,255,0.5)';
+                ctx.lineWidth=2;
                 ctx.stroke();
             }
             ctx.shadowBlur=0;
             
             // Labels
             if(n.id==='center'){
-                ctx.fillStyle='#0d1117';ctx.font='bold 12px Inter';ctx.textAlign='center';ctx.textBaseline='middle';
+                ctx.fillStyle='#0d1117';
+                ctx.font='bold 13px Inter';
+                ctx.textAlign='center';
+                ctx.textBaseline='middle';
                 ctx.fillText('ED',n.x,n.y);
-            }else if(n.radius>=16||isHovered||isHighlighted||networkZoomLevel>1.3){
-                ctx.fillStyle='#e6edf3';ctx.font=(isHovered||isHighlighted?'bold ':'')+Math.max(8,10/networkZoomLevel)+'px Inter';ctx.textAlign='center';
+            }else if(networkShowLabels&&(n.radius>=15||isHovered||isHighlighted||isSelected||networkZoomLevel>1.5)){
+                ctx.fillStyle='#e6edf3';
+                ctx.font=(isHovered||isHighlighted||isSelected?'bold ':'')+'10px Inter';
+                ctx.textAlign='center';
                 const name=n.name.split(',')[0];
-                ctx.fillText(name.length>15?name.substring(0,12)+'...':name,n.x,n.y+n.radius+12);
+                ctx.fillText(name.length>18?name.substring(0,15)+'...':name,n.x,n.y+n.radius+14);
             }
             ctx.globalAlpha=1;
         });
         
         ctx.restore();
+        
+        // Draw minimap periodically
+        if(frameCount%10===0)drawMinimap();
+        
         networkAnimation=requestAnimationFrame(animate);
     }
     animate();
+}
+
+function selectSearchResult(nodeId){
+    networkHighlightNode=networkNodes.find(n=>n.id===nodeId);
+    networkSelectedNode=networkHighlightNode;
+    updateSelectedPanel();
+    if(networkHighlightNode){
+        networkPanX=document.getElementById('networkCanvas').width/2-networkHighlightNode.x*networkZoomLevel;
+        networkPanY=document.getElementById('networkCanvas').height/2-networkHighlightNode.y*networkZoomLevel;
+    }
+    document.getElementById('searchResults').innerHTML='';
 }
 
 function updateNetworkStats(coauthors){
@@ -650,16 +981,18 @@ function updateNetworkStats(coauthors){
     const coauthorLinks=networkEdges.filter(e=>e.from!=='center'&&e.to!=='center').length;
     const avgPapers=totalCoauthors>0?(coauthors||allCoauthors).filter(c=>c.papers.length>=networkMinPapers).reduce((s,c)=>s+c.papers.length,0)/totalCoauthors:0;
     const frequentCollabs=(coauthors||allCoauthors).filter(c=>c.papers.length>=3).length;
+    const superCollabs=(coauthors||allCoauthors).filter(c=>c.papers.length>=5).length;
     const maxPapers=Math.max(...(coauthors||allCoauthors).map(c=>c.papers.length),0);
-    const topCoauthor=(coauthors||allCoauthors)[0]?.name||'N/A';
+    const totalCitations=(coauthors||allCoauthors).filter(c=>c.papers.length>=networkMinPapers).reduce((s,c)=>s+c.papers.reduce((ps,pid)=>{const p=papers.find(x=>x.id===pid);return ps+(p&&p.citations?p.citations:0);},0),0);
+    const clusterCount=networkClusters.length;
     
     document.getElementById('networkStats').innerHTML=
         '<div class="network-stat"><span>Co-authors</span><span class="network-stat-value">'+totalCoauthors+'</span></div>'+
-        '<div class="network-stat"><span>Co-author Links</span><span class="network-stat-value">'+coauthorLinks+'</span></div>'+
+        '<div class="network-stat"><span>Connections</span><span class="network-stat-value">'+coauthorLinks+'</span></div>'+
         '<div class="network-stat"><span>Frequent (3+)</span><span class="network-stat-value">'+frequentCollabs+'</span></div>'+
-        '<div class="network-stat"><span>Avg Papers</span><span class="network-stat-value">'+avgPapers.toFixed(1)+'</span></div>'+
-        '<div class="network-stat"><span>Max Papers</span><span class="network-stat-value">'+maxPapers+'</span></div>'+
-        '<div class="network-stat"><span>Top Collaborator</span><span class="network-stat-value" style="font-size:.55rem">'+topCoauthor.split(',')[0]+'</span></div>';
+        '<div class="network-stat"><span>Super (5+)</span><span class="network-stat-value">'+superCollabs+'</span></div>'+
+        '<div class="network-stat"><span>Clusters</span><span class="network-stat-value">'+clusterCount+'</span></div>'+
+        '<div class="network-stat"><span>Total Citations</span><span class="network-stat-value">'+totalCitations.toLocaleString()+'</span></div>';
 }
 
 function resetFilters(){activeTypeFilter='all';activeYearFilter='all';activeTopicFilter='all';activeMethodFilter='all';activeJournalFilter='all';activeCoauthorFilter='all';searchQuery='';coauthorSearchQuery='';groupByYear=true;ungatedOnly=false;podcastOnly=false;document.getElementById('searchInput').value='';document.getElementById('coauthorSearchInput').value='';document.getElementById('groupByYear').checked=true;document.getElementById('ungatedOnly').checked=false;document.getElementById('podcastOnly').checked=false;document.querySelectorAll('.top-tab').forEach(t=>t.classList.remove('active'));document.querySelector('.top-tab[data-filter="all"]').classList.add('active');buildFilters();renderPapers();}
