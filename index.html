@@ -32,15 +32,51 @@ nav{display:flex;gap:2rem}nav a{color:var(--text-secondary);text-decoration:none
 .research-header-left{display:flex;flex-direction:column;gap:1rem}
 .research-title{font-family:'Source Serif 4',serif;font-size:1.5rem;font-weight:600;text-transform:uppercase;margin:0}
 .top-tabs{display:flex;gap:.5rem}.top-tab{padding:.5rem 1rem;font-size:.8rem;border-radius:6px;border:1px solid var(--border-color);background:transparent;color:var(--text-secondary);cursor:pointer}.top-tab:hover{background:var(--bg-hover);color:var(--text-primary)}.top-tab.active{background:var(--accent-primary);color:var(--bg-primary);border-color:var(--accent-primary)}
-.citation-dashboard{background:var(--bg-card);border:1px solid var(--border-color);border-radius:12px;padding:1.25rem 1.5rem;display:flex;align-items:center;gap:2rem}
-.citation-main{display:flex;flex-direction:column;align-items:center;padding-right:1.5rem;border-right:1px solid var(--border-light)}
-.citation-number{font-family:'Source Serif 4',serif;font-size:2.5rem;font-weight:700;color:var(--accent-primary);line-height:1}
-.citation-label{font-size:.7rem;color:var(--text-muted);text-transform:uppercase;letter-spacing:.5px}
-.citation-metrics{display:flex;gap:1.5rem}
+.citation-dashboard{background:var(--bg-card);border:1px solid var(--border-color);border-radius:10px;padding:.75rem 1rem;display:flex;align-items:center;gap:1rem}
+.citation-main{display:flex;flex-direction:column;align-items:center;padding-right:1rem;border-right:1px solid var(--border-light)}
+.citation-number{font-family:'Source Serif 4',serif;font-size:1.5rem;font-weight:700;color:var(--accent-primary);line-height:1}
+.citation-label{font-size:.55rem;color:var(--text-muted);text-transform:uppercase;letter-spacing:.5px}
+.citation-metrics{display:flex;gap:1rem}
 .citation-metric{display:flex;flex-direction:column;align-items:center}
-.metric-value{font-size:1.4rem;font-weight:600;color:var(--text-primary)}
-.metric-label{font-size:.65rem;color:var(--text-muted);text-transform:uppercase}
-.citation-link{font-size:.7rem;color:var(--accent-secondary);text-decoration:none;margin-top:.5rem}.citation-link:hover{text-decoration:underline}
+.metric-value{font-size:1rem;font-weight:600;color:var(--text-primary)}
+.metric-label{font-size:.55rem;color:var(--text-muted);text-transform:uppercase}
+.citation-link{font-size:.6rem;color:var(--accent-secondary);text-decoration:none}.citation-link:hover{text-decoration:underline}
+.explorer-btn{background:linear-gradient(135deg,var(--accent-tertiary),var(--accent-secondary));color:var(--bg-primary);border:none;padding:.5rem .75rem;border-radius:6px;font-size:.7rem;font-weight:600;cursor:pointer;display:flex;align-items:center;gap:.35rem;transition:all .2s;white-space:nowrap}.explorer-btn:hover{transform:translateY(-1px);box-shadow:0 4px 12px rgba(126,231,135,.3)}
+.modal-content.explorer-modal{max-width:800px;max-height:85vh}
+.explorer-body{padding:1.5rem}
+.explorer-intro{margin-bottom:1.5rem;padding-bottom:1rem;border-bottom:1px solid var(--border-light)}
+.explorer-intro h3{font-family:'Source Serif 4',serif;font-size:1.1rem;color:var(--accent-tertiary);margin-bottom:.5rem}
+.explorer-intro p{font-size:.85rem;color:var(--text-secondary);line-height:1.6}
+.explorer-input-group{margin-bottom:1.5rem}
+.explorer-input-label{font-size:.75rem;font-weight:600;color:var(--text-muted);text-transform:uppercase;margin-bottom:.5rem;display:block}
+.explorer-textarea{width:100%;min-height:100px;background:var(--bg-secondary);border:1px solid var(--border-color);border-radius:8px;padding:.75rem;font-size:.85rem;color:var(--text-primary);resize:vertical;font-family:inherit;line-height:1.5}.explorer-textarea:focus{outline:none;border-color:var(--accent-tertiary)}
+.explorer-textarea::placeholder{color:var(--text-muted)}
+.explorer-actions{display:flex;gap:.75rem;margin-bottom:1.5rem}
+.explorer-search-btn{background:var(--accent-tertiary);color:var(--bg-primary);border:none;padding:.6rem 1.25rem;border-radius:6px;font-size:.8rem;font-weight:600;cursor:pointer}.explorer-search-btn:hover{filter:brightness(1.1)}.explorer-search-btn:disabled{opacity:.5;cursor:not-allowed}
+.explorer-clear-btn{background:var(--bg-hover);color:var(--text-secondary);border:1px solid var(--border-color);padding:.6rem 1rem;border-radius:6px;font-size:.8rem;cursor:pointer}.explorer-clear-btn:hover{color:var(--text-primary)}
+.explorer-results{display:none}
+.explorer-results.show{display:block}
+.explorer-results-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:1rem}
+.explorer-results-title{font-family:'Source Serif 4',serif;font-size:1rem;color:var(--accent-tertiary)}
+.explorer-results-count{font-size:.75rem;color:var(--text-muted)}
+.explorer-result-card{background:var(--bg-secondary);border:1px solid var(--border-color);border-radius:8px;padding:1rem;margin-bottom:.75rem;transition:all .2s}.explorer-result-card:hover{border-color:var(--accent-tertiary)}
+.explorer-result-header{display:flex;justify-content:space-between;align-items:flex-start;gap:1rem;margin-bottom:.5rem}
+.explorer-result-title{font-family:'Source Serif 4',serif;font-size:.9rem;font-weight:600;color:var(--text-primary);flex:1;cursor:pointer}.explorer-result-title:hover{color:var(--accent-tertiary)}
+.explorer-result-score{background:var(--accent-tertiary);color:var(--bg-primary);font-size:.65rem;font-weight:700;padding:.2rem .5rem;border-radius:4px;white-space:nowrap}
+.explorer-result-meta{font-size:.75rem;color:var(--text-muted);margin-bottom:.5rem}
+.explorer-result-match{font-size:.75rem;color:var(--text-secondary);line-height:1.5}
+.explorer-match-tag{display:inline-block;font-size:.65rem;padding:.15rem .4rem;border-radius:3px;margin-right:.35rem;margin-bottom:.25rem}
+.explorer-match-tag.topic{background:rgba(201,160,220,.15);color:var(--accent-primary)}
+.explorer-match-tag.method{background:rgba(121,192,255,.15);color:var(--accent-secondary)}
+.explorer-match-tag.keyword{background:rgba(126,231,135,.15);color:var(--accent-tertiary)}
+.explorer-collab{margin-top:1.5rem;padding-top:1rem;border-top:1px solid var(--border-light);text-align:center}
+.explorer-collab p{font-size:.8rem;color:var(--text-secondary);margin-bottom:.75rem}
+.explorer-collab-btn{background:var(--accent-primary);color:var(--bg-primary);border:none;padding:.6rem 1.5rem;border-radius:6px;font-size:.8rem;font-weight:600;cursor:pointer;text-decoration:none;display:inline-block}.explorer-collab-btn:hover{filter:brightness(1.1)}
+.explorer-empty{text-align:center;padding:2rem;color:var(--text-muted)}
+.explorer-empty-icon{font-size:2rem;margin-bottom:.5rem}
+.explorer-suggestions{margin-top:1rem}
+.explorer-suggestions-title{font-size:.7rem;font-weight:600;color:var(--text-muted);text-transform:uppercase;margin-bottom:.5rem}
+.explorer-suggestion{display:inline-block;padding:.35rem .6rem;margin:.25rem;font-size:.75rem;background:var(--bg-hover);border:1px solid var(--border-color);border-radius:4px;color:var(--text-secondary);cursor:pointer}.explorer-suggestion:hover{background:var(--accent-tertiary);color:var(--bg-primary);border-color:var(--accent-tertiary)}
 .research-layout{display:grid;grid-template-columns:280px 1fr;gap:2rem}.sidebar{display:flex;flex-direction:column;gap:1.5rem}.sidebar-section{background:var(--bg-card);border:1px solid var(--border-color);border-radius:10px;padding:1rem}
 .sidebar-title{font-size:.75rem;font-weight:600;text-transform:uppercase;color:var(--text-muted);margin-bottom:.75rem;display:flex;align-items:center;justify-content:space-between}
 .sidebar-title .network-btn,.sidebar-title .dna-btn{font-size:.65rem;padding:.2rem .5rem;background:var(--bg-hover);border:1px solid var(--border-color);border-radius:4px;color:var(--accent-secondary);cursor:pointer}.sidebar-title .network-btn:hover,.sidebar-title .dna-btn:hover{background:var(--accent-secondary);color:var(--bg-primary)}
@@ -134,7 +170,8 @@ nav{display:flex;gap:2rem}nav a{color:var(--text-secondary);text-decoration:none
 <div class="citation-dashboard" id="citationDashboard">
 <div class="citation-main"><div class="citation-number" id="totalCitations">—</div><div class="citation-label">Total Citations</div></div>
 <div class="citation-metrics"><div class="citation-metric"><div class="metric-value" id="hIndex">—</div><div class="metric-label">h-index</div></div><div class="citation-metric"><div class="metric-value" id="i10Index">—</div><div class="metric-label">i10-index</div></div><div class="citation-metric"><div class="metric-value" id="paperCount">—</div><div class="metric-label">Papers</div></div></div>
-<a href="https://scholar.google.com/citations?user=3Ylbe0YAAAAJ" target="_blank" class="citation-link">View Google Scholar →</a>
+<a href="https://scholar.google.com/citations?user=3Ylbe0YAAAAJ" target="_blank" class="citation-link">Scholar →</a>
+<button class="explorer-btn" onclick="openExplorerModal()">🔬 Research Explorer</button>
 </div>
 </div>
 <div class="research-layout">
@@ -157,6 +194,14 @@ nav{display:flex;gap:2rem}nav a{color:var(--text-secondary);text-decoration:none
 <div class="modal-overlay" id="networkModal"><div class="modal-content network-modal"><div class="modal-header"><span class="modal-title">Co-Author Network</span><button class="modal-close" onclick="closeNetworkModal()">✕</button></div><div class="modal-body network-body"><canvas id="networkCanvas" class="network-canvas"></canvas><div class="network-sidebar"><div class="network-sidebar-title">Search</div><div class="network-control-group"><input type="text" class="network-search" id="networkSearch" placeholder="Find co-author..."></div><div class="network-sidebar-title">Controls</div><div class="network-controls"><div class="network-control-group"><div class="network-control-label">Highlight by Topic</div><select class="network-select" id="networkTopicFilter"><option value="all">All Topics</option><option value="norms">Social Norms</option><option value="polarization">Polarization</option><option value="honesty">Honesty</option><option value="corruption">Corruption</option><option value="terrorism">Terrorism/Migration</option></select></div><div class="network-control-group"><div class="network-control-label">Size Nodes By</div><select class="network-select" id="networkSizeBy"><option value="papers">Number of Papers</option><option value="citations">Total Citations</option><option value="equal">Equal Size</option></select></div><div class="network-control-group"><div class="network-control-label">Min. Papers Filter</div><select class="network-select" id="networkMinPapers"><option value="1">All (1+)</option><option value="2">2+ papers</option><option value="3">3+ papers</option><option value="5">5+ papers</option></select></div><div class="network-control-group"><div class="network-control-label">Layout</div><select class="network-select" id="networkLayout"><option value="radial">Radial</option><option value="force">Force-Directed</option></select></div><div class="network-control-group zoom-controls"><button class="zoom-btn" onclick="networkZoom(1.2)">＋</button><button class="zoom-btn" onclick="networkZoom(0.8)">－</button><button class="zoom-btn" onclick="networkReset()">⟲</button></div></div><div class="network-sidebar-title">Statistics</div><div class="network-stats" id="networkStats"></div><div class="network-legend"><div class="network-sidebar-title">Legend</div><div class="legend-item"><div class="legend-dot center"></div><span>Eugen Dimant</span></div><div class="legend-item"><div class="legend-dot coauthor"></div><span>1-2 papers</span></div><div class="legend-item"><div class="legend-dot frequent"></div><span>3-4 papers</span></div><div class="legend-item"><div class="legend-dot super"></div><span>5+ papers</span></div><div class="legend-item"><div class="legend-line"></div><span>Collaboration</span></div></div><div class="network-instructions"><small>Drag nodes • Click to filter • Scroll to zoom • Double-click to center</small></div></div><div class="network-tooltip" id="networkTooltip"><div class="network-tooltip-name"></div><div class="network-tooltip-papers"></div><div class="network-tooltip-topics"></div><div class="network-tooltip-titles"></div></div></div></div></div>
 <div class="modal-overlay" id="dnaModal"><div class="modal-content dna-modal"><div class="modal-header"><span class="modal-title">🧬 Research DNA</span><button class="modal-close" onclick="closeDNAModal()">✕</button></div><div class="modal-body dna-body"><canvas id="dnaCanvas"></canvas><div class="dna-sidebar"><div class="dna-info" id="dnaInfo"><h3 class="dna-title">Research Evolution</h3><p class="dna-desc">This visualization maps my intellectual journey through interconnected research themes. Click any node to explore how different strands of inquiry developed and branched over time.</p></div><div class="dna-selected" id="dnaSelected"></div><div class="dna-controls"><div class="network-control-label">Era Filter</div><select class="network-select" id="dnaEraFilter"><option value="all">All Eras (2015-2026)</option><option value="early">2015-2018: Foundations</option><option value="middle">2019-2021: Expansion</option><option value="recent">2022-2026: Integration</option></select></div><div class="dna-legend"><div class="network-sidebar-title">Research Strands</div><div class="legend-item"><div class="legend-dot" style="background:#c9a0dc"></div><span>Social Norms</span></div><div class="legend-item"><div class="legend-dot" style="background:#ff6b6b"></div><span>Polarization</span></div><div class="legend-item"><div class="legend-dot" style="background:#7ee787"></div><span>Honesty</span></div><div class="legend-item"><div class="legend-dot" style="background:#ffa657"></div><span>Corruption</span></div><div class="legend-item"><div class="legend-dot" style="background:#79c0ff"></div><span>Terrorism/Migration</span></div></div></div></div></div></div>
 <div class="toast" id="toast">Copied to clipboard!</div>
+<div class="modal-overlay" id="explorerModal"><div class="modal-content explorer-modal"><div class="modal-header"><span class="modal-title">🔬 Research Explorer</span><button class="modal-close" onclick="closeExplorerModal()">✕</button></div><div class="modal-body explorer-body">
+<div class="explorer-intro"><h3>Find Research That Matches Your Interests</h3><p>Describe your research interests, questions, or topics you'd like to explore. I'll match you with the most relevant papers from my portfolio and explain why they might be valuable for your work.</p></div>
+<div class="explorer-input-group"><label class="explorer-input-label">What are you interested in?</label><textarea class="explorer-textarea" id="explorerInput" placeholder="Examples:&#10;• I'm studying how social norms affect tax compliance&#10;• Looking for experimental methods to measure dishonesty&#10;• Interested in political polarization and cooperation&#10;• Working on migration policy and want behavioral insights"></textarea></div>
+<div class="explorer-actions"><button class="explorer-search-btn" id="explorerSearchBtn" onclick="runExplorerSearch()">Find Matching Research</button><button class="explorer-clear-btn" onclick="clearExplorer()">Clear</button></div>
+<div class="explorer-suggestions"><div class="explorer-suggestions-title">Quick searches</div><span class="explorer-suggestion" onclick="setExplorerQuery('social norms and behavior change')">Social norms</span><span class="explorer-suggestion" onclick="setExplorerQuery('political polarization effects on cooperation')">Polarization</span><span class="explorer-suggestion" onclick="setExplorerQuery('dishonesty and ethical decision making')">Honesty research</span><span class="explorer-suggestion" onclick="setExplorerQuery('corruption measurement and causes')">Corruption</span><span class="explorer-suggestion" onclick="setExplorerQuery('migration policy and terrorism')">Migration</span><span class="explorer-suggestion" onclick="setExplorerQuery('experimental economics methods')">Methods</span></div>
+<div class="explorer-results" id="explorerResults"></div>
+<div class="explorer-collab" id="explorerCollab" style="display:none"><p>Found something interesting? I'd love to discuss potential collaboration opportunities.</p><a href="mailto:edimant@sas.upenn.edu?subject=Research%20Collaboration%20Inquiry&body=Hi%20Eugen%2C%0A%0AI%20found%20your%20research%20through%20your%20Research%20Explorer%20and%20am%20interested%20in%20discussing%20potential%20collaboration.%0A%0AMy%20research%20interests%3A%0A%0A%0ABest%20regards" class="explorer-collab-btn">📧 Discuss Collaboration</a></div>
+</div></div></div>
 <script>
 const papers=[
 {id:1,year:2025,status:"review",title:"Promoting Responsible Disposal of Opioids: A Randomized Evaluation",authors:"Toma, Mattie; Burnett, Russell; Debroy, Pompa; Dimant, Eugen; Liu, Jean; Safran, Elana; Saya, Uzaib & Schultz, Bill",journal:"R&R: Health Economics",journalShort:"Health Economics",topics:["norms"],method:"experimental",journalUrl:"https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4502634",pdfUrl:"https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4502634",pitch:"We conduct a large-scale RCT to test behavioral interventions promoting safe disposal of unused prescription opioids. Using pharmacy-based interventions including social norm messaging and reminders, we measure disposal rates and retention of unused medications. Our findings inform scalable public health strategies to reduce opioid diversion and accidental overdoses through low-cost behavioral nudges.",bibtex:"@unpublished{toma2024opioid,\n  title={Promoting Responsible Disposal of Opioids},\n  author={Toma, Mattie and Burnett, Russell and Debroy, Pompa and Dimant, Eugen and Liu, Jean and Safran, Elana and Saya, Uzaib and Schultz, Bill},\n  year={2024}\n}"},
@@ -454,207 +499,357 @@ function networkZoom(factor){networkZoomLevel=Math.max(0.3,Math.min(3,networkZoo
 function networkReset(){networkZoomLevel=1;networkPanX=0;networkPanY=0;networkSearchTerm='';document.getElementById('networkSearch').value='';networkHighlightNode=null;}
 
 // ========== DNA VISUALIZATION ==========
-let dnaNodes=[],dnaAnimation=null,dnaSelectedNode=null,dnaEraFilter='all';
+let dnaAnimation=null,dnaEraFilter='all',dnaSelectedNode=null;
 
 function openDNAModal(){document.getElementById('dnaModal').classList.add('active');setTimeout(initDNA,100);}
 function closeDNAModal(){document.getElementById('dnaModal').classList.remove('active');if(dnaAnimation){cancelAnimationFrame(dnaAnimation);dnaAnimation=null;}}
 
 function initDNA(){
-    const canvas=document.getElementById('dnaCanvas'),ctx=canvas.getContext('2d');
-    const rect=canvas.parentElement.getBoundingClientRect();
-    canvas.width=rect.width-280;canvas.height=Math.max(500,rect.height);
+    // Cancel any existing animation
+    if(dnaAnimation){cancelAnimationFrame(dnaAnimation);dnaAnimation=null;}
     
-    // Research themes with their evolution
+    const canvas=document.getElementById('dnaCanvas'),ctx=canvas.getContext('2d');
+    const container=canvas.parentElement;
+    
+    // Set canvas size once based on container
+    const containerRect=container.getBoundingClientRect();
+    const sidebarWidth=280;
+    canvas.width=containerRect.width-sidebarWidth;
+    canvas.height=Math.max(500,containerRect.height);
+    
+    const cx=canvas.width/2,cy=canvas.height/2;
+    const baseRadius=Math.min(canvas.width,canvas.height)*0.32;
+    
+    // Research themes
     const themes=[
-        {id:'norms',name:'Social Norms',color:'#c9a0dc',desc:'Understanding how social expectations shape behavior, from norm measurement to norm-nudging interventions.',startYear:2017,x:0,y:0},
-        {id:'honesty',name:'Honesty & Ethics',color:'#7ee787',desc:'Investigating the psychology of dishonesty, moral behavior, and ethical decision-making.',startYear:2019,x:0,y:0},
-        {id:'polarization',name:'Polarization',color:'#ff6b6b',desc:'Examining political and social polarization, its measurement, causes, and consequences for cooperation.',startYear:2020,x:0,y:0},
-        {id:'corruption',name:'Corruption',color:'#ffa657',desc:'Analyzing causes and effects of corruption using cross-country data and behavioral experiments.',startYear:2015,x:0,y:0},
-        {id:'terrorism',name:'Terrorism & Migration',color:'#79c0ff',desc:'Studying the complex relationships between conflict, migration, and international policy.',startYear:2015,x:0,y:0}
+        {id:'norms',name:'Social Norms',color:'#c9a0dc',desc:'Understanding how social expectations shape behavior, from norm measurement to norm-nudging interventions.'},
+        {id:'honesty',name:'Honesty & Ethics',color:'#7ee787',desc:'Investigating the psychology of dishonesty, moral behavior, and ethical decision-making.'},
+        {id:'polarization',name:'Polarization',color:'#ff6b6b',desc:'Examining political and social polarization, its measurement, causes, and consequences for cooperation.'},
+        {id:'corruption',name:'Corruption',color:'#ffa657',desc:'Analyzing causes and effects of corruption using cross-country data and behavioral experiments.'},
+        {id:'terrorism',name:'Terrorism & Migration',color:'#79c0ff',desc:'Studying the complex relationships between conflict, migration, and international policy.'}
     ];
     
-    // Filter by era
-    const eraFilter=document.getElementById('dnaEraFilter');
-    if(eraFilter)eraFilter.onchange=e=>{dnaEraFilter=e.target.value;initDNA();};
-    
-    // Get papers for each theme
+    // Get papers for each theme based on era filter
+    const currentEra=document.getElementById('dnaEraFilter').value;
     themes.forEach(t=>{
-        t.papers=papers.filter(p=>p.topics.includes(t.id));
-        if(dnaEraFilter==='early')t.papers=t.papers.filter(p=>p.year<=2018);
-        else if(dnaEraFilter==='middle')t.papers=t.papers.filter(p=>p.year>=2019&&p.year<=2021);
-        else if(dnaEraFilter==='recent')t.papers=t.papers.filter(p=>p.year>=2022);
-        t.citations=t.papers.reduce((s,p)=>s+(p.citations||0),0);
+        let themePapers=papers.filter(p=>p.topics&&p.topics.includes(t.id));
+        if(currentEra==='early')themePapers=themePapers.filter(p=>p.year<=2018);
+        else if(currentEra==='middle')themePapers=themePapers.filter(p=>p.year>=2019&&p.year<=2021);
+        else if(currentEra==='recent')themePapers=themePapers.filter(p=>p.year>=2022);
+        t.papers=themePapers;
+        t.citations=themePapers.reduce((s,p)=>s+(p.citations||0),0);
     });
     
-    // Position themes in a DNA helix pattern
-    const cx=canvas.width/2,cy=canvas.height/2;
-    const baseRadius=Math.min(canvas.width,canvas.height)*0.35;
+    // Position nodes in a circle
+    const nodes=[];
     
+    // Center node
+    const allCitations=papers.reduce((s,p)=>s+(p.citations||0),0);
+    nodes.push({id:'center',name:'Eugen Dimant',color:'#e6edf3',x:cx,y:cy,radius:28,fixed:true,papers:papers,citations:allCitations,desc:'Behavioral economist studying social norms, honesty, and polarization.'});
+    
+    // Theme nodes
     themes.forEach((t,i)=>{
         const angle=(i/themes.length)*Math.PI*2-Math.PI/2;
-        t.x=cx+Math.cos(angle)*baseRadius;
-        t.y=cy+Math.sin(angle)*baseRadius;
-        t.radius=20+Math.min(Math.sqrt(t.citations)*0.8,30);
-        t.targetX=t.x;t.targetY=t.y;
-        t.vx=0;t.vy=0;
+        const nodeRadius=18+Math.min(Math.sqrt(t.citations)*0.6,25);
+        nodes.push({
+            id:t.id,name:t.name,color:t.color,
+            x:cx+Math.cos(angle)*baseRadius,
+            y:cy+Math.sin(angle)*baseRadius,
+            radius:nodeRadius,fixed:false,
+            papers:t.papers,citations:t.citations,desc:t.desc
+        });
     });
     
-    // Build connections between themes that share papers
+    // Build connections between themes
     const connections=[];
-    for(let i=0;i<themes.length;i++){
-        for(let j=i+1;j<themes.length;j++){
-            const shared=themes[i].papers.filter(p=>themes[j].papers.some(p2=>p2.id===p.id));
+    for(let i=1;i<nodes.length;i++){
+        for(let j=i+1;j<nodes.length;j++){
+            const shared=nodes[i].papers.filter(p=>nodes[j].papers.some(p2=>p2.id===p.id));
             if(shared.length>0){
-                connections.push({from:themes[i],to:themes[j],weight:shared.length,papers:shared});
+                connections.push({from:nodes[i],to:nodes[j],weight:shared.length});
             }
         }
     }
     
-    // Center node for Eugen
-    const centerNode={id:'center',name:'Eugen Dimant',color:'#e6edf3',x:cx,y:cy,radius:30,fixed:true,papers:papers,citations:papers.reduce((s,p)=>s+(p.citations||0),0)};
+    // Track mouse state
+    let mouseX=0,mouseY=0,hoveredNode=null;
     
-    dnaNodes=[centerNode,...themes];
+    // Remove old listeners by cloning canvas
+    const newCanvas=canvas.cloneNode(true);
+    canvas.parentNode.replaceChild(newCanvas,canvas);
+    const newCtx=newCanvas.getContext('2d');
     
-    let hoveredNode=null,frameCount=0;
-    
-    canvas.onmousemove=e=>{
-        const rect=canvas.getBoundingClientRect();
-        const mx=e.clientX-rect.left,my=e.clientY-rect.top;
+    // Mouse move handler
+    newCanvas.addEventListener('mousemove',function(e){
+        const rect=newCanvas.getBoundingClientRect();
+        mouseX=e.clientX-rect.left;
+        mouseY=e.clientY-rect.top;
+        
         hoveredNode=null;
-        for(const n of dnaNodes){
-            if(Math.sqrt((mx-n.x)**2+(my-n.y)**2)<n.radius+5){hoveredNode=n;break;}
+        for(const n of nodes){
+            const dist=Math.sqrt((mouseX-n.x)**2+(mouseY-n.y)**2);
+            if(dist<n.radius+5){hoveredNode=n;break;}
         }
-        canvas.style.cursor=hoveredNode?'pointer':'default';
-    };
+        newCanvas.style.cursor=hoveredNode?'pointer':'default';
+    });
     
-    canvas.onclick=e=>{
+    // Click handler
+    newCanvas.addEventListener('click',function(e){
         if(hoveredNode){
             dnaSelectedNode=hoveredNode;
-            updateDNASelected();
+            updateDNAPanel();
         }
-    };
+    });
     
-    function updateDNASelected(){
+    // Era filter handler
+    const eraFilter=document.getElementById('dnaEraFilter');
+    eraFilter.onchange=function(){initDNA();};
+    
+    // Update selected panel
+    function updateDNAPanel(){
         const panel=document.getElementById('dnaSelected');
-        if(!dnaSelectedNode){panel.innerHTML='<p style="color:var(--text-muted);font-style:italic;font-size:.75rem;">Click a node to explore</p>';return;}
+        if(!dnaSelectedNode){
+            panel.innerHTML='<p style="color:var(--text-muted);font-style:italic;font-size:.75rem;">Click a node to explore</p>';
+            return;
+        }
         const n=dnaSelectedNode;
-        const paperList=n.papers.slice(0,6).map(p=>'<div class="dna-selected-paper" onclick="scrollToPaperFromDNA('+p.id+')">'+p.title.substring(0,50)+(p.title.length>50?'...':'')+'</div>').join('');
+        const paperItems=n.papers.slice(0,6).map(p=>'<div class="dna-selected-paper" onclick="scrollToPaperFromDNA('+p.id+')">'+p.title.substring(0,45)+(p.title.length>45?'...':'')+'</div>').join('');
         panel.innerHTML='<div class="dna-selected-title">'+n.name+'</div>'+
             '<div class="dna-selected-meta">'+(n.papers?n.papers.length:0)+' papers • '+(n.citations||0)+' citations</div>'+
-            (n.desc?'<p style="font-size:.7rem;color:var(--text-secondary);margin-bottom:.5rem;">'+n.desc+'</p>':'')+
-            '<div class="dna-selected-papers">'+paperList+(n.papers&&n.papers.length>6?'<div style="color:var(--text-muted);font-size:.65rem;margin-top:.25rem;">+'+(n.papers.length-6)+' more papers</div>':'')+'</div>';
+            (n.desc?'<p style="font-size:.7rem;color:var(--text-secondary);margin-bottom:.5rem;line-height:1.4;">'+n.desc+'</p>':'')+
+            '<div class="dna-selected-papers">'+paperItems+(n.papers&&n.papers.length>6?'<div style="color:var(--text-muted);font-size:.65rem;margin-top:.25rem;">+'+(n.papers.length-6)+' more</div>':'')+'</div>';
     }
     
-    function animate(){
-        frameCount++;
-        ctx.fillStyle='#0d1117';ctx.fillRect(0,0,canvas.width,canvas.height);
+    // Animation loop
+    function draw(){
+        newCtx.fillStyle='#0d1117';
+        newCtx.fillRect(0,0,newCanvas.width,newCanvas.height);
         
-        // Draw helix DNA strands (decorative)
-        ctx.strokeStyle='rgba(201,160,220,0.1)';ctx.lineWidth=2;
+        // Draw decorative background helix
+        newCtx.strokeStyle='rgba(201,160,220,0.08)';
+        newCtx.lineWidth=1.5;
         for(let strand=0;strand<2;strand++){
-            ctx.beginPath();
-            for(let t=0;t<Math.PI*4;t+=0.1){
-                const x=cx+Math.cos(t+strand*Math.PI)*baseRadius*0.3+t*15-100;
-                const y=cy+Math.sin(t*2)*50;
-                if(t===0)ctx.moveTo(x,y);else ctx.lineTo(x,y);
+            newCtx.beginPath();
+            for(let t=0;t<Math.PI*6;t+=0.1){
+                const x=50+t*40;
+                const y=cy+Math.sin(t*2+strand*Math.PI)*60;
+                if(t===0)newCtx.moveTo(x,y);else newCtx.lineTo(x,y);
             }
-            ctx.stroke();
+            newCtx.stroke();
         }
         
-        // Physics for theme nodes
-        if(frameCount<200){
-            dnaNodes.forEach(n=>{
-                if(n.fixed)return;
-                const dx=n.targetX-n.x,dy=n.targetY-n.y;
-                n.vx+=dx*0.02;n.vy+=dy*0.02;
-                n.vx*=0.9;n.vy*=0.9;
-                n.x+=n.vx;n.y+=n.vy;
-            });
-        }
-        
-        // Draw connections
+        // Draw connections between themes
         connections.forEach(c=>{
-            const alpha=Math.min(0.3+c.weight*0.1,0.7);
-            ctx.strokeStyle='rgba(255,255,255,'+alpha+')';
-            ctx.lineWidth=1+c.weight*0.5;
-            ctx.beginPath();
-            ctx.moveTo(c.from.x,c.from.y);
-            ctx.lineTo(c.to.x,c.to.y);
-            ctx.stroke();
+            newCtx.strokeStyle='rgba(255,255,255,'+(0.2+c.weight*0.08)+')';
+            newCtx.lineWidth=1+c.weight*0.4;
+            newCtx.beginPath();
+            newCtx.moveTo(c.from.x,c.from.y);
+            newCtx.lineTo(c.to.x,c.to.y);
+            newCtx.stroke();
             
-            // Draw weight label
             if(c.weight>=3){
                 const midX=(c.from.x+c.to.x)/2,midY=(c.from.y+c.to.y)/2;
-                ctx.fillStyle='rgba(255,255,255,0.5)';
-                ctx.font='10px Inter';
-                ctx.textAlign='center';
-                ctx.fillText(c.weight+' shared',midX,midY);
+                newCtx.fillStyle='rgba(255,255,255,0.4)';
+                newCtx.font='9px Inter';
+                newCtx.textAlign='center';
+                newCtx.fillText(c.weight+' shared',midX,midY-3);
             }
         });
         
-        // Draw connections to center
-        themes.forEach(t=>{
-            ctx.strokeStyle='rgba(255,255,255,0.15)';
-            ctx.lineWidth=1;
-            ctx.beginPath();
-            ctx.moveTo(cx,cy);
-            ctx.lineTo(t.x,t.y);
-            ctx.stroke();
-        });
+        // Draw spokes to center
+        for(let i=1;i<nodes.length;i++){
+            newCtx.strokeStyle='rgba(255,255,255,0.12)';
+            newCtx.lineWidth=1;
+            newCtx.beginPath();
+            newCtx.moveTo(cx,cy);
+            newCtx.lineTo(nodes[i].x,nodes[i].y);
+            newCtx.stroke();
+        }
         
         // Draw nodes
-        dnaNodes.forEach(n=>{
+        nodes.forEach(n=>{
             const isHovered=hoveredNode===n;
             const isSelected=dnaSelectedNode===n;
             
-            // Glow effect
+            // Glow
             if(isHovered||isSelected){
-                ctx.shadowColor=n.color||'#fff';
-                ctx.shadowBlur=isSelected?25:15;
+                newCtx.shadowColor=n.color;
+                newCtx.shadowBlur=isSelected?20:12;
             }
             
-            ctx.fillStyle=n.color;
-            ctx.beginPath();
-            ctx.arc(n.x,n.y,n.radius+(isHovered?3:0),0,Math.PI*2);
-            ctx.fill();
+            // Node circle
+            newCtx.fillStyle=n.color;
+            newCtx.beginPath();
+            newCtx.arc(n.x,n.y,n.radius+(isHovered?3:0),0,Math.PI*2);
+            newCtx.fill();
             
+            // Selection ring
             if(isSelected){
-                ctx.strokeStyle='#fff';
-                ctx.lineWidth=3;
-                ctx.stroke();
+                newCtx.strokeStyle='#fff';
+                newCtx.lineWidth=2;
+                newCtx.stroke();
             }
             
-            ctx.shadowBlur=0;
+            newCtx.shadowBlur=0;
             
             // Label
-            ctx.fillStyle='#fff';
-            ctx.font=(n.id==='center'?'bold 11px':'10px')+' Inter';
-            ctx.textAlign='center';
-            ctx.fillText(n.name,n.x,n.y+n.radius+15);
+            newCtx.fillStyle='#fff';
+            newCtx.font=(n.id==='center'?'bold 10px':'9px')+' Inter';
+            newCtx.textAlign='center';
+            newCtx.fillText(n.name,n.x,n.y+n.radius+14);
             
-            // Paper count
-            if(n.papers&&n.id!=='center'){
-                ctx.font='9px Inter';
-                ctx.fillStyle='rgba(255,255,255,0.7)';
-                ctx.fillText(n.papers.length+' papers',n.x,n.y+n.radius+27);
+            // Paper count (not for center)
+            if(n.id!=='center'){
+                newCtx.font='8px Inter';
+                newCtx.fillStyle='rgba(255,255,255,0.6)';
+                newCtx.fillText(n.papers.length+' papers',n.x,n.y+n.radius+24);
             }
         });
         
         // Title
-        ctx.fillStyle='rgba(255,255,255,0.3)';
-        ctx.font='24px Source Serif 4';
-        ctx.textAlign='center';
-        ctx.fillText('Research DNA',canvas.width/2,40);
+        newCtx.fillStyle='rgba(255,255,255,0.2)';
+        newCtx.font='20px Source Serif 4';
+        newCtx.textAlign='center';
+        newCtx.fillText('Research DNA',newCanvas.width/2,35);
         
-        dnaAnimation=requestAnimationFrame(animate);
+        dnaAnimation=requestAnimationFrame(draw);
     }
     
-    animate();
-    updateDNASelected();
+    draw();
+    updateDNAPanel();
 }
 
 function scrollToPaperFromDNA(id){
     closeDNAModal();
+    showSection('research');
+    setTimeout(()=>scrollToPaper(id),300);
+}
+
+// ========== RESEARCH EXPLORER ==========
+function openExplorerModal(){document.getElementById('explorerModal').classList.add('active');}
+function closeExplorerModal(){document.getElementById('explorerModal').classList.remove('active');}
+
+function setExplorerQuery(query){
+    document.getElementById('explorerInput').value=query;
+    runExplorerSearch();
+}
+
+function clearExplorer(){
+    document.getElementById('explorerInput').value='';
+    document.getElementById('explorerResults').classList.remove('show');
+    document.getElementById('explorerResults').innerHTML='';
+    document.getElementById('explorerCollab').style.display='none';
+}
+
+function runExplorerSearch(){
+    const query=document.getElementById('explorerInput').value.trim().toLowerCase();
+    if(!query){return;}
+    
+    // Keyword mappings for better matching
+    const keywordMap={
+        'norm':'norms',social:'norms',behavior:'norms',nudge:'norms',expectation:'norms',compliance:'norms',
+        'honest':'honesty',dishonest:'honesty',lie:'honesty',lying:'honesty',cheat:'honesty',ethics:'honesty',moral:'honesty',deceiv:'honesty',
+        'polar':'polarization',partisan:'polarization',politic:'polarization',democrat:'polarization',republican:'polarization',divide:'polarization',outgroup:'polarization',ingroup:'polarization',
+        'corrupt':'corruption',bribe:'corruption',fraud:'corruption',
+        'terror':'terrorism',migra:'terrorism',refugee:'terrorism',asylum:'terrorism',war:'terrorism',conflict:'terrorism',
+        'experiment':'experimental',rct:'experimental',lab:'experimental',field:'experimental',
+        'survey':'observational',empiric:'observational',data:'observational',
+        'method':'methods',measure:'methods',elicit:'methods'
+    };
+    
+    // Extract keywords from query
+    const queryWords=query.split(/\s+/).filter(w=>w.length>2);
+    
+    // Score each paper
+    const scored=papers.map(paper=>{
+        let score=0;
+        const matches=[];
+        const title=(paper.title||'').toLowerCase();
+        const abstract=(paper.pitch||'').toLowerCase();
+        const authors=(paper.authors||'').toLowerCase();
+        const journal=(paper.journal||'').toLowerCase();
+        const topics=paper.topics||[];
+        const method=paper.method||'';
+        
+        // Direct keyword matches in title (high weight)
+        queryWords.forEach(word=>{
+            if(title.includes(word)){score+=15;matches.push({type:'keyword',text:'Title: "'+word+'"'});}
+        });
+        
+        // Direct keyword matches in abstract
+        queryWords.forEach(word=>{
+            if(abstract.includes(word)){score+=5;if(!matches.some(m=>m.text.includes(word)))matches.push({type:'keyword',text:'Abstract: "'+word+'"'});}
+        });
+        
+        // Topic matches
+        queryWords.forEach(word=>{
+            Object.entries(keywordMap).forEach(([key,topic])=>{
+                if(word.includes(key)||key.includes(word)){
+                    if(topics.includes(topic)){
+                        score+=12;
+                        const topicName=topicLabels[topic]||topic;
+                        if(!matches.some(m=>m.text===topicName))matches.push({type:'topic',text:topicName});
+                    }
+                }
+            });
+        });
+        
+        // Method matches
+        queryWords.forEach(word=>{
+            Object.entries(keywordMap).forEach(([key,m])=>{
+                if(word.includes(key)&&method===m){
+                    score+=8;
+                    if(!matches.some(m2=>m2.type==='method'))matches.push({type:'method',text:methodLabels[method]||method});
+                }
+            });
+        });
+        
+        // Citation bonus (popular papers slightly preferred)
+        if(paper.citations>50)score+=3;
+        if(paper.citations>100)score+=2;
+        
+        // Recency bonus
+        if(paper.year>=2023)score+=2;
+        
+        return {paper,score,matches};
+    });
+    
+    // Sort by score and filter
+    const results=scored.filter(s=>s.score>0).sort((a,b)=>b.score-a.score).slice(0,8);
+    
+    const resultsDiv=document.getElementById('explorerResults');
+    
+    if(results.length===0){
+        resultsDiv.innerHTML='<div class="explorer-empty"><div class="explorer-empty-icon">🔍</div><p>No strong matches found. Try different keywords or browse the research page directly.</p></div>';
+        resultsDiv.classList.add('show');
+        document.getElementById('explorerCollab').style.display='none';
+        return;
+    }
+    
+    const maxScore=results[0].score;
+    
+    let html='<div class="explorer-results-header"><span class="explorer-results-title">Matching Research</span><span class="explorer-results-count">'+results.length+' papers found</span></div>';
+    
+    results.forEach(r=>{
+        const pct=Math.min(99,Math.round((r.score/maxScore)*100));
+        const matchTags=r.matches.slice(0,4).map(m=>'<span class="explorer-match-tag '+m.type+'">'+m.text+'</span>').join('');
+        html+='<div class="explorer-result-card">'+
+            '<div class="explorer-result-header">'+
+            '<span class="explorer-result-title" onclick="goToPaperFromExplorer('+r.paper.id+')">'+r.paper.title+'</span>'+
+            '<span class="explorer-result-score">'+pct+'% match</span>'+
+            '</div>'+
+            '<div class="explorer-result-meta">'+r.paper.authors.split(';')[0]+(r.paper.authors.includes(';')?', et al.':'')+' • '+r.paper.journalShort+' ('+r.paper.year+')'+(r.paper.citations?' • '+r.paper.citations+' citations':'')+'</div>'+
+            '<div class="explorer-result-match">'+matchTags+'</div>'+
+            '</div>';
+    });
+    
+    resultsDiv.innerHTML=html;
+    resultsDiv.classList.add('show');
+    document.getElementById('explorerCollab').style.display='block';
+}
+
+function goToPaperFromExplorer(id){
+    closeExplorerModal();
     showSection('research');
     setTimeout(()=>scrollToPaper(id),300);
 }
@@ -941,6 +1136,7 @@ function setupEventListeners(){
     document.getElementById('cvModal').addEventListener('click',e=>{if(e.target.id==='cvModal')closeCVModal();});
     document.getElementById('networkModal').addEventListener('click',e=>{if(e.target.id==='networkModal')closeNetworkModal();});
     document.getElementById('dnaModal').addEventListener('click',e=>{if(e.target.id==='dnaModal')closeDNAModal();});
+    document.getElementById('explorerModal').addEventListener('click',e=>{if(e.target.id==='explorerModal')closeExplorerModal();});
 }
 init();
 </script>
