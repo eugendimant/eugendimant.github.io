@@ -41,7 +41,7 @@ nav{display:flex;gap:2rem}nav a{color:var(--text-secondary);text-decoration:none
 .metric-value{font-size:1rem;font-weight:600;color:var(--text-primary)}
 .metric-label{font-size:.55rem;color:var(--text-muted);text-transform:uppercase}
 .citation-link{font-size:.6rem;color:var(--accent-secondary);text-decoration:none}.citation-link:hover{text-decoration:underline}
-.explorer-btn{background:linear-gradient(135deg,var(--accent-tertiary),var(--accent-secondary));color:var(--bg-primary);border:none;padding:.5rem .75rem;border-radius:6px;font-size:.7rem;font-weight:600;cursor:pointer;display:flex;align-items:center;gap:.35rem;transition:all .2s;white-space:nowrap}.explorer-btn:hover{transform:translateY(-1px);box-shadow:0 4px 12px rgba(126,231,135,.3)}
+.explorer-btn{background:var(--accent-primary);color:var(--bg-primary);border:none;padding:.5rem .75rem;border-radius:6px;font-size:.7rem;font-weight:600;cursor:pointer;display:flex;align-items:center;gap:.35rem;transition:all .2s;white-space:nowrap}.explorer-btn:hover{transform:translateY(-1px);filter:brightness(1.1)}
 .modal-content.explorer-modal{max-width:800px;max-height:85vh}
 .explorer-body{padding:1.5rem}
 .explorer-intro{margin-bottom:1.5rem;padding-bottom:1rem;border-bottom:1px solid var(--border-light)}
@@ -51,27 +51,25 @@ nav{display:flex;gap:2rem}nav a{color:var(--text-secondary);text-decoration:none
 .explorer-input-label{font-size:.75rem;font-weight:600;color:var(--text-muted);text-transform:uppercase;margin-bottom:.5rem;display:block}
 .explorer-textarea{width:100%;min-height:100px;background:var(--bg-secondary);border:1px solid var(--border-color);border-radius:8px;padding:.75rem;font-size:.85rem;color:var(--text-primary);resize:vertical;font-family:inherit;line-height:1.5}.explorer-textarea:focus{outline:none;border-color:var(--accent-tertiary)}
 .explorer-textarea::placeholder{color:var(--text-muted)}
-.explorer-actions{display:flex;gap:.75rem;margin-bottom:1.5rem}
-.explorer-search-btn{background:var(--accent-tertiary);color:var(--bg-primary);border:none;padding:.6rem 1.25rem;border-radius:6px;font-size:.8rem;font-weight:600;cursor:pointer}.explorer-search-btn:hover{filter:brightness(1.1)}.explorer-search-btn:disabled{opacity:.5;cursor:not-allowed}
+.explorer-actions{display:flex;gap:.75rem;margin-bottom:1.5rem;flex-wrap:wrap}
+.explorer-search-btn{background:var(--accent-primary);color:var(--bg-primary);border:none;padding:.6rem 1.25rem;border-radius:6px;font-size:.8rem;font-weight:600;cursor:pointer}.explorer-search-btn:hover{filter:brightness(1.1)}.explorer-search-btn:disabled{opacity:.5;cursor:not-allowed}
 .explorer-clear-btn{background:var(--bg-hover);color:var(--text-secondary);border:1px solid var(--border-color);padding:.6rem 1rem;border-radius:6px;font-size:.8rem;cursor:pointer}.explorer-clear-btn:hover{color:var(--text-primary)}
+.explorer-collab-btn{background:var(--accent-secondary);color:var(--bg-primary);border:none;padding:.6rem 1rem;border-radius:6px;font-size:.8rem;font-weight:600;cursor:pointer;margin-left:auto}.explorer-collab-btn:hover{filter:brightness(1.1)}
 .explorer-results{display:none}
 .explorer-results.show{display:block}
 .explorer-results-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:1rem}
-.explorer-results-title{font-family:'Source Serif 4',serif;font-size:1rem;color:var(--accent-tertiary)}
+.explorer-results-title{font-family:'Source Serif 4',serif;font-size:1rem;color:var(--accent-primary)}
 .explorer-results-count{font-size:.75rem;color:var(--text-muted)}
-.explorer-result-card{background:var(--bg-secondary);border:1px solid var(--border-color);border-radius:8px;padding:1rem;margin-bottom:.75rem;transition:all .2s}.explorer-result-card:hover{border-color:var(--accent-tertiary)}
+.explorer-result-card{background:var(--bg-secondary);border:1px solid var(--border-color);border-radius:8px;padding:1rem;margin-bottom:.75rem;transition:all .2s}.explorer-result-card:hover{border-color:var(--accent-primary)}
 .explorer-result-header{display:flex;justify-content:space-between;align-items:flex-start;gap:1rem;margin-bottom:.5rem}
-.explorer-result-title{font-family:'Source Serif 4',serif;font-size:.9rem;font-weight:600;color:var(--text-primary);flex:1;cursor:pointer}.explorer-result-title:hover{color:var(--accent-tertiary)}
-.explorer-result-score{background:var(--accent-tertiary);color:var(--bg-primary);font-size:.65rem;font-weight:700;padding:.2rem .5rem;border-radius:4px;white-space:nowrap}
+.explorer-result-title{font-family:'Source Serif 4',serif;font-size:.9rem;font-weight:600;color:var(--text-primary);flex:1;cursor:pointer}.explorer-result-title:hover{color:var(--accent-primary)}
+.explorer-result-score{background:var(--accent-primary);color:var(--bg-primary);font-size:.65rem;font-weight:700;padding:.2rem .5rem;border-radius:4px;white-space:nowrap}
 .explorer-result-meta{font-size:.75rem;color:var(--text-muted);margin-bottom:.5rem}
 .explorer-result-match{font-size:.75rem;color:var(--text-secondary);line-height:1.5}
 .explorer-match-tag{display:inline-block;font-size:.65rem;padding:.15rem .4rem;border-radius:3px;margin-right:.35rem;margin-bottom:.25rem}
 .explorer-match-tag.topic{background:rgba(201,160,220,.15);color:var(--accent-primary)}
 .explorer-match-tag.method{background:rgba(121,192,255,.15);color:var(--accent-secondary)}
 .explorer-match-tag.keyword{background:rgba(126,231,135,.15);color:var(--accent-tertiary)}
-.explorer-collab{margin-top:1.5rem;padding-top:1rem;border-top:1px solid var(--border-light);text-align:center}
-.explorer-collab p{font-size:.8rem;color:var(--text-secondary);margin-bottom:.75rem}
-.explorer-collab-btn{background:var(--accent-primary);color:var(--bg-primary);border:none;padding:.6rem 1.5rem;border-radius:6px;font-size:.8rem;font-weight:600;cursor:pointer;text-decoration:none;display:inline-block}.explorer-collab-btn:hover{filter:brightness(1.1)}
 .explorer-empty{text-align:center;padding:2rem;color:var(--text-muted)}
 .explorer-empty-icon{font-size:2rem;margin-bottom:.5rem}
 .explorer-suggestions{margin-top:1rem}
@@ -143,8 +141,8 @@ nav{display:flex;gap:2rem}nav a{color:var(--text-secondary);text-decoration:none
 <div class="profile-tags"><span class="profile-tags-label">Methods</span><span class="profile-tags-list">lab & field experiments, observational data</span></div>
 <div class="upcoming-talks" id="upcomingTalks"><div class="upcoming-talks-title">Upcoming Talks</div><div id="talksContainer"></div></div>
 </div>
-<div class="news-card"><h2 class="card-title">Research news</h2><div id="newsContainer"></div></div>
-<div class="selected-card"><h2 class="card-title">Selected publications</h2>
+<div class="news-card"><h2 class="card-title">Research News</h2><div id="newsContainer"></div></div>
+<div class="selected-card"><h2 class="card-title">Selected Publications</h2>
 <div class="selected-item"><p class="selected-title">Nudging Teachers: A Megastudy (<a href="https://doi.org/10.1073/pnas.2418616122" target="_blank">PNAS</a>, 2025)</p></div>
 <div class="selected-item"><p class="selected-title">Hate Trumps Love: Political Polarization (<a href="https://doi.org/10.1287/mnsc.2023.4701" target="_blank">Management Science</a>, 2024)</p></div>
 <div class="selected-item"><p class="selected-title">Strategic Behavior with Tight, Loose & Polarized Norms (<a href="https://doi.org/10.1287/mnsc.2023.01022" target="_blank">Management Science</a>, 2024)</p></div>
@@ -152,6 +150,7 @@ nav{display:flex;gap:2rem}nav a{color:var(--text-secondary);text-decoration:none
 <div class="selected-item"><p class="selected-title">Competition & Moral Behavior: Meta-Analysis (<a href="https://www.pnas.org/doi/10.1073/pnas.2215572120" target="_blank">PNAS</a>, 2023)</p></div>
 <div class="selected-item"><p class="selected-title">It's Not a Lie If You Believe the Norm Does Not Apply (<a href="https://doi.org/10.1016/j.geb.2023.01.005" target="_blank">Games & Econ. Behavior</a>, 2023)</p></div>
 <div class="selected-item"><p class="selected-title">Social Proximity and Norm Compliance (<a href="https://doi.org/10.1016/j.geb.2021.11.012" target="_blank">Games & Econ. Behavior</a>, 2022)</p></div>
+<div style="margin-top:1rem;padding-top:1rem;border-top:1px solid var(--border-light);"><button class="explorer-btn" onclick="openExplorerModal()" style="width:100%;justify-content:center;">🔬 Explore My Research</button></div>
 </div>
 </div>
 <div class="about-card"><h2 class="about-title">About Me</h2><div class="about-text"><div class="about-grid">
@@ -170,7 +169,6 @@ nav{display:flex;gap:2rem}nav a{color:var(--text-secondary);text-decoration:none
 <div class="citation-dashboard" id="citationDashboard">
 <div class="citation-main"><div class="citation-number" id="totalCitations">—</div><div class="citation-label">Total Citations</div></div>
 <div class="citation-metrics"><div class="citation-metric"><div class="metric-value" id="hIndex">—</div><div class="metric-label">h-index</div></div><div class="citation-metric"><div class="metric-value" id="i10Index">—</div><div class="metric-label">i10-index</div></div><div class="citation-metric"><div class="metric-value" id="paperCount">—</div><div class="metric-label">Papers</div></div></div>
-<a href="https://scholar.google.com/citations?user=3Ylbe0YAAAAJ" target="_blank" class="citation-link">Scholar →</a>
 <button class="explorer-btn" onclick="openExplorerModal()">🔬 Research Explorer</button>
 </div>
 </div>
@@ -197,10 +195,9 @@ nav{display:flex;gap:2rem}nav a{color:var(--text-secondary);text-decoration:none
 <div class="modal-overlay" id="explorerModal"><div class="modal-content explorer-modal"><div class="modal-header"><span class="modal-title">🔬 Research Explorer</span><button class="modal-close" onclick="closeExplorerModal()">✕</button></div><div class="modal-body explorer-body">
 <div class="explorer-intro"><h3>Find Research That Matches Your Interests</h3><p>Describe your research interests, questions, or topics you'd like to explore. I'll match you with the most relevant papers from my portfolio and explain why they might be valuable for your work.</p></div>
 <div class="explorer-input-group"><label class="explorer-input-label">What are you interested in?</label><textarea class="explorer-textarea" id="explorerInput" placeholder="Examples:&#10;• I'm studying how social norms affect tax compliance&#10;• Looking for experimental methods to measure dishonesty&#10;• Interested in political polarization and cooperation&#10;• Working on migration policy and want behavioral insights"></textarea></div>
-<div class="explorer-actions"><button class="explorer-search-btn" id="explorerSearchBtn" onclick="runExplorerSearch()">Find Matching Research</button><button class="explorer-clear-btn" onclick="clearExplorer()">Clear</button></div>
+<div class="explorer-actions"><button class="explorer-search-btn" id="explorerSearchBtn" onclick="runExplorerSearch()">Find Matching Research</button><button class="explorer-clear-btn" onclick="clearExplorer()">Clear</button><button class="explorer-collab-btn" onclick="openCollabEmail()">📧 Discuss Collaboration</button></div>
 <div class="explorer-suggestions"><div class="explorer-suggestions-title">Quick searches</div><span class="explorer-suggestion" onclick="setExplorerQuery('social norms and behavior change')">Social norms</span><span class="explorer-suggestion" onclick="setExplorerQuery('political polarization effects on cooperation')">Polarization</span><span class="explorer-suggestion" onclick="setExplorerQuery('dishonesty and ethical decision making')">Honesty research</span><span class="explorer-suggestion" onclick="setExplorerQuery('corruption measurement and causes')">Corruption</span><span class="explorer-suggestion" onclick="setExplorerQuery('migration policy and terrorism')">Migration</span><span class="explorer-suggestion" onclick="setExplorerQuery('experimental economics methods')">Methods</span></div>
 <div class="explorer-results" id="explorerResults"></div>
-<div class="explorer-collab" id="explorerCollab" style="display:none"><p>Found something interesting? I'd love to discuss potential collaboration opportunities.</p><a href="mailto:edimant@sas.upenn.edu?subject=Research%20Collaboration%20Inquiry&body=Hi%20Eugen%2C%0A%0AI%20found%20your%20research%20through%20your%20Research%20Explorer%20and%20am%20interested%20in%20discussing%20potential%20collaboration.%0A%0AMy%20research%20interests%3A%0A%0A%0ABest%20regards" class="explorer-collab-btn">📧 Discuss Collaboration</a></div>
 </div></div></div>
 <script>
 const papers=[
@@ -208,7 +205,7 @@ const papers=[
 {id:2,year:2025,status:"review",title:"Aid and Exodus: U.S. Military Assistance and Refugee Flows to the United States",authors:"Dimant, Eugen; Krieger, Tim; Meierrieks, Daniel & Renner, Laura",journal:"Under Review",journalShort:"Under Review",topics:["terrorism"],method:"observational",journalUrl:"https://papers.ssrn.com/sol3/papers.cfm?abstract_id=5414817",pdfUrl:"https://papers.ssrn.com/sol3/papers.cfm?abstract_id=5414817",pitch:"We examine the relationship between U.S. military assistance to foreign countries and subsequent refugee flows to the United States using panel data from 1975-2020. Our identification strategy exploits variation in aid allocation to isolate causal effects from confounding geopolitical factors. The results reveal that military aid can inadvertently increase displacement, suggesting policymakers should consider migration consequences when designing foreign assistance programs.",bibtex:"@unpublished{dimant2025aid,\n  title={Aid and Exodus: U.S. Military Assistance and Refugee Flows},\n  author={Dimant, Eugen and Krieger, Tim and Meierrieks, Daniel and Renner, Laura},\n  year={2025}\n}"},
 {id:3,year:2025,status:"review",title:"Pluralism Breeds Tolerance",authors:"Panizza, Folco; Dimant, Eugen; Kimbrough, Erik & Vostroknutov, Alexander",journal:"Under Review",journalShort:"Under Review",topics:["polarization","norms"],method:"experimental",journalUrl:"https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4649792",pdfUrl:"https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4649792",citations:16,pitch:"We investigate whether exposure to norm pluralism—awareness that others hold diverse normative views—increases tolerance for norm violations. Through incentivized experiments, we show that learning about normative diversity reduces punitive responses and increases acceptance of behavioral variation. These findings suggest that highlighting pluralism rather than consensus may be a more effective strategy for building tolerant societies.",bibtex:"@unpublished{panizza2024pluralism,\n  title={Pluralism Breeds Tolerance},\n  author={Panizza, Folco and Dimant, Eugen and Kimbrough, Erik O. and Vostroknutov, Alexander},\n  year={2024}\n}"},
 {id:4,year:2025,status:"review",title:"Identity and Economic Incentives",authors:"Donkor, Kwabena; Götte, Lorenz; Müller, Max; Dimant, Eugen & Kurschilgen, Michael",journal:"Under Review",journalShort:"Under Review",topics:["polarization"],method:"experimental",journalUrl:"https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4670092",pdfUrl:"https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4670092",citations:11,pitch:"We study how identity-based group membership interacts with economic incentives in shaping cooperation and competition in social dilemmas. Using lab experiments with real and minimal group paradigms, we test whether monetary incentives can overcome or amplify identity-driven biases. Our results inform organizational design and policy interventions aimed at promoting cooperation across identity divides.",bibtex:"@unpublished{donkor2024identity,\n  title={Identity and Economic Incentives},\n  author={Donkor, Kwabena and Götte, Lorenz and Müller, Max and Dimant, Eugen and Kurschilgen, Michael},\n  year={2024}\n}"},
-{id:5,year:2025,status:"review",title:"Making Information Stick: Goal Setting and Attention",authors:"Guido, Andrea; Romaniuc, Rustam; Boun My, Kene; Dimant, Eugen; Dubois, Dimitri; Chessa, Michela; Fares, Dorra; Gassmann, Xavier; Martinangeli, Andrea F.M.; Spiegelman, Eli; Sutan, Angela; Brun, Arthur & Dhaleine, Louis",journal:"Under Review",journalShort:"Under Review",topics:["norms"],method:"experimental",journalUrl:"https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4989494",pdfUrl:"https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4989494",citations:1,pitch:"We investigate how goal-setting interventions affect attention allocation and information retention in decision-making contexts through a multi-site experiment. Our design tests whether explicit goals help people focus on relevant information and remember it better when making subsequent choices. The findings provide actionable insights for designing more effective information campaigns and educational interventions.",bibtex:"@unpublished{guido2024making,\n  title={Making Information Stick: Goal Setting and Attention},\n  author={Guido, Andrea and Romaniuc, Rustam and Boun My, Kene and Dimant, Eugen and Dubois, Dimitri and Chessa, Michela and Fares, Dorra and Gassmann, Xavier and Martinangeli, Andrea F.M. and Spiegelman, Eli and Sutan, Angela and Brun, Arthur and Dhaleine, Louis},\n  year={2024}\n}"},
+{id:5,year:2025,status:"review",title:"Making Information Stick: Goal Setting and Attention",authors:"Guido, Andrea; Romaniuc, Rustam; Boun My, Kene; Dimant, Eugen; Dubois, Dimitri; Chessa, Michela; Fares, Dorra; Gassmann, Xavier; Martinangeli, Andrea F.M.; Spiegelman, Eli; Sutan, Angela; Brun, Arthur & Dhaleine, Louis",journal:"R&R: Economic Journal",journalShort:"Economic Journal",topics:["norms"],method:"experimental",journalUrl:"https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4989494",pdfUrl:"https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4989494",citations:1,pitch:"We investigate how goal-setting interventions affect attention allocation and information retention in decision-making contexts through a multi-site experiment. Our design tests whether explicit goals help people focus on relevant information and remember it better when making subsequent choices. The findings provide actionable insights for designing more effective information campaigns and educational interventions.",bibtex:"@unpublished{guido2024making,\n  title={Making Information Stick: Goal Setting and Attention},\n  author={Guido, Andrea and Romaniuc, Rustam and Boun My, Kene and Dimant, Eugen and Dubois, Dimitri and Chessa, Michela and Fares, Dorra and Gassmann, Xavier and Martinangeli, Andrea F.M. and Spiegelman, Eli and Sutan, Angela and Brun, Arthur and Dhaleine, Louis},\n  year={2024}\n}"},
 {id:6,year:2025,status:"review",title:"Do Planning Prompts Suggesting a Default Plan Increase Follow-through?",authors:"Duckworth, Angela; Milkman, Katherine; Dimant, Eugen & BCFG Collective",journal:"Under Review",journalShort:"Under Review",topics:["norms"],method:"experimental",journalUrl:"",pdfUrl:"",pitch:"We conduct two massive field experiments (N>1 million each) testing whether planning prompts with suggested default plans improve follow-through on intended actions compared to open-ended planning prompts. The studies span diverse behavioral domains to assess generalizability of planning interventions. Our findings have direct implications for designing scalable behavioral interventions in public health and education.",bibtex:"@unpublished{duckworth2025planning,\n  title={Do Planning Prompts Suggesting a Default Plan Increase Follow-through?},\n  author={Duckworth, Angela L. and Milkman, Katherine L. and Dimant, Eugen and {Behavior Change for Good Collective}},\n  year={2025}\n}"},
 {id:7,year:2025,status:"progress",title:"Divided We Act: The Role of Social Sanctions in a Polarized World",authors:"Dimant, Eugen; Gelfand, Michele; Hochleitner, Anna & Sonderegger, Silvia",journal:"Work in Progress",journalShort:"Work in Progress",topics:["polarization","norms"],method:"experimental",journalUrl:"https://papers.ssrn.com/sol3/papers.cfm?abstract_id=5636792",pdfUrl:"https://papers.ssrn.com/sol3/papers.cfm?abstract_id=5636792",pitch:"We examine how political polarization affects the willingness to impose and receive social sanctions for norm violations across partisan lines. Using incentivized experiments, we measure whether people sanction norm violators differently based on shared versus opposing political identity. The research reveals how polarization undermines informal enforcement mechanisms that sustain cooperation in society.",bibtex:"@unpublished{dimant2025divided,\n  title={Divided We Act: The Role of Social Sanctions in a Polarized World},\n  author={Dimant, Eugen and Gelfand, Michele J. and Hochleitner, Anna and Sonderegger, Silvia},\n  year={2025}\n}"},
 {id:8,year:2025,status:"progress",title:"Becoming Friends or Foes? How Competitive Environments Shape Altruistic Preferences",authors:"Cao, Anna; Dimant, Eugen; Hyndman, Kyle & Yang, Nan",journal:"Work in Progress",journalShort:"Work in Progress",topics:["norms"],method:"experimental",journalUrl:"https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3326107",pdfUrl:"https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3326107",citations:9,pitch:"We study how exposure to competitive versus cooperative environments shapes subsequent prosocial preferences toward former competitors or collaborators. Through multi-stage experiments, we track how initial competitive interactions influence later altruistic behavior even when competition has ended. Our findings inform workplace design and educational settings where competition may have lasting effects on social cohesion.",bibtex:"@unpublished{cao2019becoming,\n  title={Becoming Friends or Foes?},\n  author={Cao, Anna and Dimant, Eugen and Hyndman, Kyle and Yang, Nan},\n  year={2019}\n}"},
@@ -258,7 +255,8 @@ const papers=[
 {id:52,year:2026,status:"published",title:"Racial Identity, Reactions to Inequality, and Fairness Concepts among Americans",authors:"Dimant, Eugen; Reinhardt, Lukas & Sambanis, Nicholas",journal:"Journal of Experimental Political Science (Accepted)",journalShort:"JEPS",topics:["polarization","norms"],method:"experimental",journalUrl:"https://dx.doi.org/10.2139/ssrn.4706524",pdfUrl:"https://dx.doi.org/10.2139/ssrn.4706524",citations:2,pitch:"We investigate how racial identity shapes reactions to economic inequality and concepts of fairness using a series of incentivized experiments with diverse American participants. The study examines whether different racial groups respond differently to advantageous versus disadvantageous inequality and what fairness principles they invoke. Our findings reveal important heterogeneity in fairness preferences that has implications for understanding intergroup dynamics and designing inclusive policies.",bibtex:"@article{dimant2024racial,\n  title={Racial Identity, Reactions to Inequality, and Fairness Concepts among Americans},\n  author={Dimant, Eugen and Reinhardt, Lukas and Sambanis, Nicholas},\n  journal={Journal of Experimental Political Science},\n  year={2026}\n}"},
 {id:53,year:2023,status:"published",title:"The Long-Run Causal Effects of Single-Sex Schooling on Work-Related Outcomes in South Korea",authors:"Kim, Hyun Jin (Katelyn); Ahn, Chloe; Behrman, Jere R.; Choi, Jaesung; Dimant, Eugen; Hannum, Emily; Lee, Amber Hye-Yon; Mutz, Diana & Park, Hyunjoon",journal:"Research in Social Stratification and Mobility",journalShort:"RSSM",topics:["norms"],method:"observational",journalUrl:"https://doi.org/10.1016/j.rssm.2023.100876",pdfUrl:"",citations:3,pitch:"We exploit quasi-random assignment to single-sex versus coeducational high schools in South Korea to estimate long-run causal effects on labor market outcomes. Using administrative data linking school records to employment outcomes decades later, we find significant effects of single-sex schooling on occupational choices and earnings. The findings inform debates about gender-segregated education and its lasting economic consequences.",bibtex:"@article{kim2023longrun,\n  title={The Long-Run Causal Effects of Single-Sex Schooling on Work-Related Outcomes in South Korea},\n  author={Kim, Hyun Jin (Katelyn) and Ahn, Chloe and Behrman, Jere R. and Choi, Jaesung and Dimant, Eugen and Hannum, Emily and Lee, Amber Hye-Yon and Mutz, Diana and Park, Hyunjoon},\n  journal={Research in Social Stratification and Mobility},\n  year={2023}\n}"},
 {id:54,year:2024,status:"progress",title:"Norm Multiplicity and the Enforcement of Democratic Principles",authors:"Panizza, Folco; Dimant, Eugen; Druckman, James N. & Kimbrough, Erik",journal:"Work in Progress",journalShort:"Work in Progress",topics:["polarization","norms"],method:"experimental",journalUrl:"",pdfUrl:"",citations:1,pitch:"We study how election outcomes affect citizens' willingness to support and comply with democratic norms using pre-registered experiments conducted around major elections. The research examines whether electoral winners and losers respond differently to norm violations by political leaders and how this shapes democratic erosion. Our findings reveal mechanisms through which polarized elections can undermine shared commitment to democratic institutions.",bibtex:"@unpublished{panizza2024norm,\n  title={Norm Multiplicity and the Enforcement of Democratic Principles},\n  author={Panizza, Folco and Dimant, Eugen and Druckman, James N. and Kimbrough, Erik O.},\n  year={2024}\n}"},
-{id:55,year:2023,status:"published",title:"Nation Building Through Military Aid? Unintended Consequences of US Interventionism",authors:"Dimant, Eugen; Krieger, Tim & Meierrieks, Daniel",journal:"Nation Building: Big Lessons from Successes and Failures",journalShort:"Book Chapter",topics:["terrorism","corruption"],method:"observational",journalUrl:"",pdfUrl:"",citations:1,pitch:"We examine the unintended consequences of U.S. military assistance on nation-building efforts and state stability in recipient countries. Using historical data on military aid flows, we analyze how external military support affects institutional development, governance quality, and domestic conflict. The chapter highlights the complex trade-offs inherent in using military aid as a tool for promoting state capacity and stability abroad.",bibtex:"@incollection{dimant2023nation,\n  title={Nation Building Through Military Aid? Unintended Consequences of US Interventionism},\n  author={Dimant, Eugen and Krieger, Tim and Meierrieks, Daniel},\n  booktitle={Nation Building: Big Lessons from Successes and Failures},\n  year={2023}\n}"}
+{id:55,year:2023,status:"published",title:"Nation Building Through Military Aid? Unintended Consequences of US Interventionism",authors:"Dimant, Eugen; Krieger, Tim & Meierrieks, Daniel",journal:"Nation Building: Big Lessons from Successes and Failures",journalShort:"Book Chapter",topics:["terrorism","corruption"],method:"observational",journalUrl:"",pdfUrl:"",citations:1,pitch:"We examine the unintended consequences of U.S. military assistance on nation-building efforts and state stability in recipient countries. Using historical data on military aid flows, we analyze how external military support affects institutional development, governance quality, and domestic conflict. The chapter highlights the complex trade-offs inherent in using military aid as a tool for promoting state capacity and stability abroad.",bibtex:"@incollection{dimant2023nation,\n  title={Nation Building Through Military Aid? Unintended Consequences of US Interventionism},\n  author={Dimant, Eugen and Krieger, Tim and Meierrieks, Daniel},\n  booktitle={Nation Building: Big Lessons from Successes and Failures},\n  year={2023}\n}"},
+{id:56,year:2026,status:"progress",title:"From Single Fixes to Intervention Bundles: Combating Polarization in Complex Information and Norm Systems",authors:"Kish Bar-On, Kati; Berinsky, Adam J.; Dimant, Eugen; Lelkes, Yphtach & Rand, David G.",journal:"Work in Progress",journalShort:"Work in Progress",topics:["polarization","norms"],method:"methods",journalUrl:"",pdfUrl:"",pitch:"We argue that the next phase of research on misinformation and polarization should move beyond single-shot belief correction toward designing multi-level intervention bundles that act simultaneously on attention, social norms, identities, and trust in institutions. By 'intervention bundles,' we mean a decision framework for selecting complementary components across levels, specifying who implements and coordinates them, and pre-registering success metrics and trade-offs to monitor over time. Our perspective proposes concrete design principles and measurement strategies for evaluating bundles, including how to think about discernment, trust, norm change, cross-level spillovers, and the trade-offs that emerge when interventions operate in complex environments.",bibtex:"@unpublished{kishbaron2026bundles,\n  title={From Single Fixes to Intervention Bundles: Combating Polarization in Complex Information and Norm Systems},\n  author={Kish Bar-On, Kati and Berinsky, Adam J. and Dimant, Eugen and Lelkes, Yphtach and Rand, David G.},\n  year={2026}\n}"}
 ];
 
 const topicLabels={'norms':'Social Norms & Behavior Change','polarization':'Polarization & Intergroup Conflict','honesty':'Honesty & Behavioral Ethics','corruption':'Corruption & Institutions','terrorism':'Terrorism & Migration'};
@@ -738,27 +736,42 @@ function clearExplorer(){
     document.getElementById('explorerInput').value='';
     document.getElementById('explorerResults').classList.remove('show');
     document.getElementById('explorerResults').innerHTML='';
-    document.getElementById('explorerCollab').style.display='none';
+}
+
+function openCollabEmail(){
+    const query=document.getElementById('explorerInput').value.trim();
+    const subject=encodeURIComponent('Research Collaboration Inquiry');
+    let body='Hi Eugen,\n\nI found your research through your Research Explorer and am interested in discussing potential collaboration.\n\n';
+    if(query){
+        body+='My research interests:\n'+query+'\n\n';
+    }else{
+        body+='My research interests:\n[Please describe your interests]\n\n';
+    }
+    body+='Best regards';
+    window.location.href='mailto:edimant@sas.upenn.edu?subject='+subject+'&body='+encodeURIComponent(body);
 }
 
 function runExplorerSearch(){
     const query=document.getElementById('explorerInput').value.trim().toLowerCase();
     if(!query){return;}
     
+    // Stop words to ignore
+    const stopWords=new Set(['the','a','an','and','or','but','in','on','at','to','for','of','with','by','from','as','is','was','are','were','been','be','have','has','had','do','does','did','will','would','could','should','may','might','must','shall','can','need','dare','ought','used','i','you','he','she','it','we','they','what','which','who','whom','this','that','these','those','am','your','my','its','his','her','our','their','how','why','when','where','if','then','so','than','too','very','just','about','into','through','during','before','after','above','below','between','under','again','further','once','here','there','all','each','few','more','most','other','some','such','no','nor','not','only','own','same','also','any','both','each','etc']);
+    
     // Keyword mappings for better matching
     const keywordMap={
-        'norm':'norms',social:'norms',behavior:'norms',nudge:'norms',expectation:'norms',compliance:'norms',
-        'honest':'honesty',dishonest:'honesty',lie:'honesty',lying:'honesty',cheat:'honesty',ethics:'honesty',moral:'honesty',deceiv:'honesty',
-        'polar':'polarization',partisan:'polarization',politic:'polarization',democrat:'polarization',republican:'polarization',divide:'polarization',outgroup:'polarization',ingroup:'polarization',
-        'corrupt':'corruption',bribe:'corruption',fraud:'corruption',
-        'terror':'terrorism',migra:'terrorism',refugee:'terrorism',asylum:'terrorism',war:'terrorism',conflict:'terrorism',
-        'experiment':'experimental',rct:'experimental',lab:'experimental',field:'experimental',
-        'survey':'observational',empiric:'observational',data:'observational',
-        'method':'methods',measure:'methods',elicit:'methods'
+        'norm':'norms','norms':'norms','social':'norms','behavior':'norms','behavioural':'norms','nudge':'norms','nudging':'norms','expectation':'norms','compliance':'norms',
+        'honest':'honesty','honesty':'honesty','dishonest':'honesty','dishonesty':'honesty','lie':'honesty','lying':'honesty','cheat':'honesty','cheating':'honesty','ethics':'honesty','ethical':'honesty','moral':'honesty','morality':'honesty','deceiv':'honesty','deception':'honesty','truth':'honesty',
+        'polar':'polarization','polarization':'polarization','polarisation':'polarization','partisan':'polarization','partisanship':'polarization','politic':'polarization','political':'polarization','democrat':'polarization','republican':'polarization','divide':'polarization','division':'polarization','outgroup':'polarization','ingroup':'polarization','affective':'polarization',
+        'corrupt':'corruption','corruption':'corruption','bribe':'corruption','bribery':'corruption','fraud':'corruption',
+        'terror':'terrorism','terrorism':'terrorism','migra':'terrorism','migration':'terrorism','refugee':'terrorism','asylum':'terrorism','war':'terrorism','conflict':'terrorism','immigra':'terrorism',
+        'experiment':'experimental','experimental':'experimental','rct':'experimental','lab':'experimental','laboratory':'experimental','field':'experimental',
+        'survey':'observational','observational':'observational','empiric':'observational','empirical':'observational',
+        'method':'methods','methods':'methods','measure':'methods','measurement':'methods','elicit':'methods','elicitation':'methods','metastudy':'methods','meta-analysis':'methods','review':'methods'
     };
     
-    // Extract keywords from query
-    const queryWords=query.split(/\s+/).filter(w=>w.length>2);
+    // Extract meaningful keywords from query (filter stop words and short words)
+    const queryWords=query.split(/\s+/).filter(w=>w.length>2&&!stopWords.has(w));
     
     // Score each paper
     const scored=papers.map(paper=>{
@@ -766,29 +779,37 @@ function runExplorerSearch(){
         const matches=[];
         const title=(paper.title||'').toLowerCase();
         const abstract=(paper.pitch||'').toLowerCase();
-        const authors=(paper.authors||'').toLowerCase();
-        const journal=(paper.journal||'').toLowerCase();
         const topics=paper.topics||[];
         const method=paper.method||'';
         
-        // Direct keyword matches in title (high weight)
+        // Direct keyword matches in title (high weight) - only meaningful words
         queryWords.forEach(word=>{
-            if(title.includes(word)){score+=15;matches.push({type:'keyword',text:'Title: "'+word+'"'});}
+            if(title.includes(word)&&word.length>3){
+                score+=15;
+                matches.push({type:'keyword',text:'Title match: "'+word+'"'});
+            }
         });
         
-        // Direct keyword matches in abstract
+        // Direct keyword matches in abstract (medium weight)
         queryWords.forEach(word=>{
-            if(abstract.includes(word)){score+=5;if(!matches.some(m=>m.text.includes(word)))matches.push({type:'keyword',text:'Abstract: "'+word+'"'});}
+            if(abstract.includes(word)&&word.length>3){
+                score+=5;
+                if(!matches.some(m=>m.text.includes(word))){
+                    matches.push({type:'keyword',text:'Abstract match: "'+word+'"'});
+                }
+            }
         });
         
-        // Topic matches
+        // Topic matches via keyword mapping
         queryWords.forEach(word=>{
             Object.entries(keywordMap).forEach(([key,topic])=>{
-                if(word.includes(key)||key.includes(word)){
+                if((word.includes(key)||key.includes(word))&&word.length>3){
                     if(topics.includes(topic)){
                         score+=12;
                         const topicName=topicLabels[topic]||topic;
-                        if(!matches.some(m=>m.text===topicName))matches.push({type:'topic',text:topicName});
+                        if(!matches.some(m=>m.text===topicName)){
+                            matches.push({type:'topic',text:topicName});
+                        }
                     }
                 }
             });
@@ -797,9 +818,11 @@ function runExplorerSearch(){
         // Method matches
         queryWords.forEach(word=>{
             Object.entries(keywordMap).forEach(([key,m])=>{
-                if(word.includes(key)&&method===m){
+                if((word.includes(key)||key.includes(word))&&method===m){
                     score+=8;
-                    if(!matches.some(m2=>m2.type==='method'))matches.push({type:'method',text:methodLabels[method]||method});
+                    if(!matches.some(m2=>m2.type==='method')){
+                        matches.push({type:'method',text:methodLabels[method]||method});
+                    }
                 }
             });
         });
@@ -822,7 +845,6 @@ function runExplorerSearch(){
     if(results.length===0){
         resultsDiv.innerHTML='<div class="explorer-empty"><div class="explorer-empty-icon">🔍</div><p>No strong matches found. Try different keywords or browse the research page directly.</p></div>';
         resultsDiv.classList.add('show');
-        document.getElementById('explorerCollab').style.display='none';
         return;
     }
     
@@ -845,7 +867,6 @@ function runExplorerSearch(){
     
     resultsDiv.innerHTML=html;
     resultsDiv.classList.add('show');
-    document.getElementById('explorerCollab').style.display='block';
 }
 
 function goToPaperFromExplorer(id){
