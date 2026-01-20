@@ -176,7 +176,7 @@ nav a{font-size:.8rem}
 <div class="home-grid">
 <div class="profile-card">
 <div class="profile-header"><img src="https://raw.githubusercontent.com/eugendimant/eugendimant.github.io/main/assets/eugen_dimant.jpg" alt="Eugen Dimant" class="profile-photo" onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect fill=%22%23252c35%22 width=%22100%22 height=%22100%22/><text x=%2250%22 y=%2255%22 font-size=%2240%22 text-anchor=%22middle%22 fill=%22%238b949e%22>ED</text></svg>'"><div class="profile-info"><h1>Eugen Dimant</h1><p class="title">Associate Professor of Practice, Behavioral & Decision Sciences, University of Pennsylvania</p></div></div>
-<div class="profile-buttons"><a class="profile-btn primary" onclick="showSection('research')">Explore publications</a><a class="profile-btn" onclick="openCVModal()">CV preview</a><a href="/cdn-cgi/l/email-protection#9bfefff2f6faf5efdbe8fae8b5eeebfef5f5b5feffee" class="profile-btn">Email</a></div>
+<div class="profile-buttons"><a class="profile-btn primary" onclick="showSection('research')">Explore publications</a><a class="profile-btn" onclick="openCVModal()">CV preview</a><a href="/cdn-cgi/l/email-protection#a5c0c1ccc8c4cbd1e5d6c4d68bd0d5c0cbcb8bc0c1d0" class="profile-btn">Email</a></div>
 <div class="profile-links"><a href="https://scholar.google.com/citations?user=3Ylbe0YAAAAJ" target="_blank" class="profile-link">Google Scholar</a><a href="https://www.linkedin.com/in/eugendimant/" target="_blank" class="profile-link">LinkedIn</a><a href="https://x.com/eugen_dimant" target="_blank" class="profile-link">X (Twitter)</a></div>
 <div class="profile-tags"><span class="profile-tags-label">Focus</span><span class="profile-tags-list">behavior change, migration, norms, polarization</span></div>
 <div class="profile-tags"><span class="profile-tags-label">Methods</span><span class="profile-tags-list">lab & field experiments, observational data</span></div>
@@ -363,8 +363,8 @@ function renderNews(){
 }
 
 function updateCitationDashboard(){
+    // Google Scholar verified metrics (Jan 2026)
     const totalCitations=4362;
-    const papersWithCitations=papers.filter(p=>p.citations>0).sort((a,b)=>b.citations-a.citations);
     const hIndex=30;
     const i10Index=39;
     const el=document.getElementById('citationDashboard');
@@ -632,7 +632,7 @@ function initDNA(){
     });
     
     const nodes=[];
-    const allCitations=4362; // Google Scholar verified
+    const allCitations=4362;
     nodes.push({id:'center',name:'Eugen Dimant',color:'#e6edf3',x:cx,y:cy,radius:28,fixed:true,papers:papers,citations:allCitations,desc:'Behavioral economist studying social norms, honesty, and polarization.',phase:0});
     
     themes.forEach((t,i)=>{
@@ -644,7 +644,7 @@ function initDNA(){
             y:cy+Math.sin(angle)*baseRadius,
             radius:nodeRadius,fixed:false,
             papers:t.papers,citations:t.citations,desc:t.desc,
-            phase:i*0.5 // Staggered pulse animation
+            phase:i*0.5
         });
     });
     
@@ -723,6 +723,11 @@ function initDNA(){
             '<div class="dna-selected-papers">'+paperItems+(sortedPapers.length>6?'<div style="color:var(--text-muted);font-size:.65rem;margin-top:.25rem;">+'+(sortedPapers.length-6)+' more papers</div>':'')+'</div>';
     }
     
+    function hexToRgb(hex){
+        const result=/^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+        return result?parseInt(result[1],16)+','+parseInt(result[2],16)+','+parseInt(result[3],16):'255,255,255';
+    }
+    
     function draw(){
         dnaTime+=0.016;
         ctx.fillStyle='#0d1117';
@@ -754,7 +759,7 @@ function initDNA(){
             ctx.stroke();
         }
         
-        // Draw connections between themes with animation
+        // Draw connections with animation
         connections.forEach(c=>{
             const isHovered=hoveredConnection===c;
             const pulse=Math.sin(dnaTime*2+c.weight)*0.5+0.5;
@@ -769,20 +774,19 @@ function initDNA(){
             const midX=(c.from.x+c.to.x)/2,midY=(c.from.y+c.to.y)/2;
             if(c.weight>=2||isHovered){
                 ctx.fillStyle=isHovered?'rgba(255,255,255,0.8)':'rgba(255,255,255,0.35)';
-                ctx.font=(isHovered?'bold ':'')+' 8px Inter';
+                ctx.font=(isHovered?'bold ':'')+'8px Inter';
                 ctx.textAlign='center';
                 ctx.fillText(c.weight+' shared',midX,midY-3);
             }
         });
         
-        // Draw nodes with pulse animation
+        // Draw nodes with pulse
         nodes.forEach(n=>{
             const isHovered=hoveredNode===n;
             const isSelected=dnaSelectedNode&&dnaSelectedNode.id===n.id;
-            const pulse=Math.sin(dnaTime*1.5+n.phase)*0.08;
+            const pulse=Math.sin(dnaTime*1.5+(n.phase||0))*0.08;
             const radiusAnim=n.radius*(1+pulse)+(isHovered?3:0);
             
-            // Outer glow ring for selected/hovered
             if(isHovered||isSelected){
                 ctx.beginPath();
                 ctx.arc(n.x,n.y,radiusAnim+8,0,Math.PI*2);
@@ -790,17 +794,14 @@ function initDNA(){
                 ctx.fill();
             }
             
-            // Shadow glow
             ctx.shadowColor=n.color;
             ctx.shadowBlur=isSelected?25:(isHovered?18:8);
             
-            // Node circle
             ctx.fillStyle=n.color;
             ctx.beginPath();
             ctx.arc(n.x,n.y,radiusAnim,0,Math.PI*2);
             ctx.fill();
             
-            // Selection ring
             if(isSelected){
                 ctx.strokeStyle='#fff';
                 ctx.lineWidth=2.5;
@@ -809,13 +810,11 @@ function initDNA(){
             
             ctx.shadowBlur=0;
             
-            // Label
             ctx.fillStyle='#fff';
             ctx.font=(n.id==='center'?'bold 10px':'9px')+' Inter';
             ctx.textAlign='center';
             ctx.fillText(n.name,n.x,n.y+radiusAnim+14);
             
-            // Stats (not for center)
             if(n.id!=='center'){
                 ctx.font='7px Inter';
                 ctx.fillStyle='rgba(255,255,255,0.6)';
@@ -838,30 +837,24 @@ function initDNA(){
                 ctx.strokeStyle='rgba(255,255,255,0.2)';
                 ctx.lineWidth=1;
                 ctx.stroke();
-                ctx.fillStyle='var(--text-muted)';
+                ctx.fillStyle='#6e7681';
                 ctx.font='7px Inter';
                 ctx.textAlign='left';
                 ctx.fillText('TOP CITED:',tooltipX+8,tooltipY+14);
                 ctx.fillStyle='#fff';
                 ctx.font='8px Inter';
                 ctx.fillText(topPaper.title.substring(0,28)+(topPaper.title.length>28?'...':''),tooltipX+8,tooltipY+27);
-                ctx.fillStyle='var(--accent-secondary)';
+                ctx.fillStyle='#79c0ff';
                 ctx.fillText((topPaper.citations||0)+' citations',tooltipX+8,tooltipY+38);
             }
         }
         
-        // Title
         ctx.fillStyle='rgba(255,255,255,0.12)';
         ctx.font='18px Source Serif 4';
         ctx.textAlign='center';
         ctx.fillText('Research DNA',canvas.width/2,28);
         
         dnaAnimation=requestAnimationFrame(draw);
-    }
-    
-    function hexToRgb(hex){
-        const result=/^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
-        return result?parseInt(result[1],16)+','+parseInt(result[2],16)+','+parseInt(result[3],16):'255,255,255';
     }
     
     dnaInitialized=true;
