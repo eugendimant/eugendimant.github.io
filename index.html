@@ -176,7 +176,7 @@ nav a{font-size:.8rem}
 <div class="home-grid">
 <div class="profile-card">
 <div class="profile-header"><img src="https://raw.githubusercontent.com/eugendimant/eugendimant.github.io/main/assets/eugen_dimant.jpg" alt="Eugen Dimant" class="profile-photo" onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect fill=%22%23252c35%22 width=%22100%22 height=%22100%22/><text x=%2250%22 y=%2255%22 font-size=%2240%22 text-anchor=%22middle%22 fill=%22%238b949e%22>ED</text></svg>'"><div class="profile-info"><h1>Eugen Dimant</h1><p class="title">Associate Professor of Practice, Behavioral & Decision Sciences, University of Pennsylvania</p></div></div>
-<div class="profile-buttons"><a class="profile-btn primary" onclick="showSection('research')">Explore publications</a><a class="profile-btn" onclick="openCVModal()">CV preview</a><a href="/cdn-cgi/l/email-protection#a5c0c1ccc8c4cbd1e5d6c4d68bd0d5c0cbcb8bc0c1d0" class="profile-btn">Email</a></div>
+<div class="profile-buttons"><a class="profile-btn primary" onclick="showSection('research')">Explore publications</a><a class="profile-btn" onclick="openCVModal()">CV preview</a><a href="/cdn-cgi/l/email-protection#a9cccdc0c4c8c7dde9dac8da87dcd9ccc7c787cccddc" class="profile-btn">Email</a></div>
 <div class="profile-links"><a href="https://scholar.google.com/citations?user=3Ylbe0YAAAAJ" target="_blank" class="profile-link">Google Scholar</a><a href="https://www.linkedin.com/in/eugendimant/" target="_blank" class="profile-link">LinkedIn</a><a href="https://x.com/eugen_dimant" target="_blank" class="profile-link">X (Twitter)</a></div>
 <div class="profile-tags"><span class="profile-tags-label">Focus</span><span class="profile-tags-list">behavior change, migration, norms, polarization</span></div>
 <div class="profile-tags"><span class="profile-tags-label">Methods</span><span class="profile-tags-list">lab & field experiments, observational data</span></div>
@@ -363,10 +363,7 @@ function renderNews(){
 }
 
 function updateCitationDashboard(){
-    // Google Scholar verified metrics (Jan 2026)
-    const totalCitations=4362;
-    const hIndex=30;
-    const i10Index=39;
+    const totalCitations=4362;const hIndex=30;const i10Index=39;
     const el=document.getElementById('citationDashboard');
     if(el){el.querySelector('#totalCitations').textContent=totalCitations.toLocaleString();el.querySelector('#hIndex').textContent=hIndex;el.querySelector('#i10Index').textContent=i10Index;el.querySelector('#paperCount').textContent=papers.length;}
 }
@@ -733,7 +730,6 @@ function initDNA(){
         ctx.fillStyle='#0d1117';
         ctx.fillRect(0,0,canvas.width,canvas.height);
         
-        // Animated background helix
         ctx.strokeStyle='rgba(201,160,220,0.05)';
         ctx.lineWidth=1.5;
         for(let strand=0;strand<2;strand++){
@@ -746,7 +742,6 @@ function initDNA(){
             ctx.stroke();
         }
         
-        // Draw spokes to center with gradient
         for(let i=1;i<nodes.length;i++){
             const gradient=ctx.createLinearGradient(cx,cy,nodes[i].x,nodes[i].y);
             gradient.addColorStop(0,'rgba(255,255,255,0.03)');
@@ -759,7 +754,6 @@ function initDNA(){
             ctx.stroke();
         }
         
-        // Draw connections with animation
         connections.forEach(c=>{
             const isHovered=hoveredConnection===c;
             const pulse=Math.sin(dnaTime*2+c.weight)*0.5+0.5;
@@ -780,7 +774,6 @@ function initDNA(){
             }
         });
         
-        // Draw nodes with pulse
         nodes.forEach(n=>{
             const isHovered=hoveredNode===n;
             const isSelected=dnaSelectedNode&&dnaSelectedNode.id===n.id;
@@ -822,7 +815,6 @@ function initDNA(){
             }
         });
         
-        // Hover tooltip
         if(hoveredNode&&hoveredNode.id!=='center'){
             const n=hoveredNode;
             const topPaper=n.papers.slice().sort((a,b)=>(b.citations||0)-(a.citations||0))[0];
