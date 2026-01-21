@@ -55,6 +55,50 @@ wc -l index.html
 
 ---
 
+## 🔄 Development to Production Workflow
+
+**Overview:** This website uses GitHub Pages for automatic deployment. Here's the complete workflow:
+
+### Development Process
+
+1. **Work on feature branch** (e.g., `claude/feature-name-XYZ`)
+   - Make changes to `index.html`
+   - Create backups before each change
+   - Validate after each change
+   - Commit with clear messages
+   - Push to remote branch
+
+2. **Provide live preview**
+   - Start local server: `python3 -m http.server 8080 &`
+   - Give user URL: `http://localhost:8080` or `file:///home/user/eugendimant.github.io/index.html`
+   - Let user test visually before committing
+
+3. **Create Pull Request**
+   - URL: `https://github.com/eugendimant/eugendimant.github.io/pull/new/BRANCH-NAME`
+   - User reviews changes visually in GitHub
+   - User clicks "Merge pull request" when satisfied
+
+4. **Automatic Deployment** ⚡
+   - GitHub Pages automatically detects merge to `main`
+   - Builds and deploys site (3-10 minutes)
+   - Live site updates: https://eugendimant.github.io
+   - **NO manual steps needed - it's automatic!**
+
+5. **Verify Deployment**
+   - Monitor: https://github.com/eugendimant/eugendimant.github.io/actions
+   - Check for green ✓ on "pages build and deployment"
+   - Tell user to hard refresh browser (Ctrl+F5) to see changes
+
+### Key Points
+
+- ✅ **Main branch = Production** - Changes to `main` automatically deploy
+- ✅ **PR workflow is required** - Never push directly to `main`
+- ✅ **GitHub Pages is automatic** - No manual deployment needed
+- ✅ **Deployment takes 3-10 minutes** - Be patient after merge
+- ✅ **Hard refresh required** - Users must clear browser cache
+
+---
+
 ## 📍 Section Locators
 
 Use `grep -n "PATTERN" index.html` to find exact line numbers:
@@ -397,6 +441,93 @@ git commit -m "Update citations: From Google Scholar export"
 git commit -m "Add news: Capital Magazine Top 40 Under 40"
 git commit -m "Update talks: Add MIT and NYU seminars"
 ```
+
+---
+
+## 🔀 Pull Request & Deployment Workflow
+
+### Creating a Pull Request
+
+After pushing your changes to the branch, create a pull request for user review:
+
+**PR URL format:**
+```
+https://github.com/eugendimant/eugendimant.github.io/pull/new/BRANCH-NAME
+```
+
+**What to include in PR description:**
+- Summary of changes made
+- List of features added/updated
+- Testing performed
+- Any breaking changes (should be none if following rules)
+
+### After User Merges the PR
+
+**IMPORTANT:** Once the user merges your PR, GitHub Pages automatically deploys the changes to the live website.
+
+#### Automatic Deployment Process
+
+1. **Merge happens** → GitHub detects changes to `main` branch
+2. **Build starts** → GitHub Pages workflow begins (1-2 minutes)
+3. **Build completes** → Site is built with Jekyll/static processing (2-3 minutes)
+4. **Deploy completes** → Changes go live at eugendimant.github.io (total: 3-10 minutes)
+
+#### Deployment Monitoring
+
+**Check deployment status:**
+- Actions page: `https://github.com/eugendimant/eugendimant.github.io/actions`
+- Deployments page: `https://github.com/eugendimant/eugendimant.github.io/deployments`
+- Look for "pages build and deployment" workflow
+- Green ✓ = successfully deployed
+- Red ✗ = deployment failed (investigate logs)
+
+**Live website:** https://eugendimant.github.io
+
+#### What to Tell the User After Merge
+
+Always inform the user:
+
+```
+✅ Changes merged successfully!
+
+Your website is now deploying:
+- Monitor: https://github.com/eugendimant/eugendimant.github.io/actions
+- Timeline: 3-10 minutes
+- Live site: https://eugendimant.github.io
+
+After deployment completes:
+1. Visit https://eugendimant.github.io
+2. Hard refresh your browser:
+   - Windows/Linux: Ctrl + F5 or Ctrl + Shift + R
+   - Mac: Cmd + Shift + R
+3. Test the new features!
+
+Note: You may need to wait 5-10 minutes and clear browser cache to see changes.
+```
+
+#### Verifying Deployment
+
+**After deployment completes, verify:**
+1. New features work as expected on live site
+2. No console errors (open browser DevTools → Console tab)
+3. All sections still navigate correctly
+4. Existing features still work
+5. Mobile/responsive views work
+
+**If deployment fails:**
+- Check GitHub Actions logs for errors
+- Common issues: JavaScript syntax errors, missing files, broken links
+- Fix issues in a new branch and create another PR
+
+#### Branch Cleanup
+
+After successful merge and deployment:
+```bash
+# User can safely delete the feature branch
+# It's already merged into main
+```
+
+GitHub will offer a "Delete branch" button after merge - user can click it.
 
 ---
 
