@@ -105,7 +105,7 @@ nav{display:flex;gap:2rem}nav a{color:var(--text-secondary);text-decoration:none
 .modal-body{padding:1.5rem;overflow-y:auto;flex:1}.modal-body.cv-body{padding:0;background:#525659}.modal-body.network-body{padding:0;background:var(--bg-primary);min-height:550px;position:relative;display:flex}
 .cv-frame{width:100%;height:70vh;border:none}.network-canvas{flex:1;display:block}
 .modal-body.dna-body{padding:0;background:var(--bg-primary);min-height:500px;position:relative;display:flex}
-#dnaCanvas{flex:1;display:block}.dna-sidebar{width:280px;background:var(--bg-card);border-left:1px solid var(--border-color);padding:1rem;overflow-y:auto}.dna-info{margin-bottom:1rem}.dna-title{font-family:'Source Serif 4',serif;font-size:1rem;font-weight:600;color:var(--accent-primary);margin-bottom:.5rem}.dna-desc{font-size:.75rem;color:var(--text-secondary);line-height:1.5}.dna-selected{min-height:100px;margin-bottom:1rem;padding:.75rem;background:var(--bg-secondary);border-radius:6px}.dna-selected-title{font-weight:600;color:var(--accent-primary);font-size:.85rem;margin-bottom:.35rem}.dna-selected-meta{font-size:.7rem;color:var(--text-muted);margin-bottom:.5rem}.dna-selected-papers{font-size:.7rem;color:var(--text-secondary);max-height:150px;overflow-y:auto}.dna-selected-paper{padding:.3rem .4rem;background:var(--bg-hover);border-radius:4px;margin-bottom:.25rem;cursor:pointer}.dna-selected-paper:hover{background:var(--accent-primary);color:var(--bg-primary)}.dna-controls{margin-bottom:1rem}.dna-legend{margin-top:1rem;padding-top:.75rem;border-top:1px solid var(--border-light)}.dna-toggle-btn{font-size:.65rem;padding:.35rem .5rem;background:var(--bg-secondary);border:1px solid var(--border-color);border-radius:4px;color:var(--text-secondary);cursor:pointer;transition:all .2s}.dna-toggle-btn:hover{background:var(--bg-hover);border-color:var(--accent-primary);color:var(--accent-primary)}.dna-toggle-btn.active{background:var(--accent-primary);border-color:var(--accent-primary);color:var(--bg-primary)}
+#dnaCanvas{flex:1;display:block}.dna-sidebar{width:280px;background:var(--bg-card);border-left:1px solid var(--border-color);padding:1rem;overflow-y:auto}.dna-info{margin-bottom:1rem}.dna-title{font-family:'Source Serif 4',serif;font-size:1rem;font-weight:600;color:var(--accent-primary);margin-bottom:.5rem}.dna-desc{font-size:.75rem;color:var(--text-secondary);line-height:1.5}.dna-selected{min-height:100px;margin-bottom:1rem;padding:.75rem;background:var(--bg-secondary);border-radius:6px}.dna-selected-title{font-weight:600;color:var(--accent-primary);font-size:.85rem;margin-bottom:.35rem}.dna-selected-meta{font-size:.7rem;color:var(--text-muted);margin-bottom:.5rem}.dna-selected-papers{font-size:.7rem;color:var(--text-secondary);max-height:150px;overflow-y:auto}.dna-selected-paper{padding:.3rem .4rem;background:var(--bg-hover);border-radius:4px;margin-bottom:.25rem;cursor:pointer}.dna-selected-paper:hover{background:var(--accent-primary);color:var(--bg-primary)}.dna-controls{margin-bottom:1rem}.dna-legend{margin-top:1rem;padding-top:.75rem;border-top:1px solid var(--border-light)}
 .network-sidebar{width:220px;background:var(--bg-card);border-left:1px solid var(--border-color);padding:1rem;overflow-y:auto}
 .network-sidebar-title{font-size:.7rem;font-weight:600;text-transform:uppercase;color:var(--text-muted);margin-bottom:.5rem}
 .network-controls{margin-bottom:1rem}.network-control-group{margin-bottom:.75rem}
@@ -231,7 +231,7 @@ nav a{font-size:.8rem}
 <div class="modal-overlay" id="bibtexModal"><div class="modal-content"><div class="modal-header"><span class="modal-title">BibTeX Citation</span><button class="modal-close" onclick="closeBibtexModal()">✕</button></div><div class="modal-body"><pre class="bibtex-code" id="bibtexContent"></pre></div><div class="modal-footer"><button class="modal-btn primary" onclick="copyBibtex()">Copy to Clipboard</button></div></div></div>
 <div class="modal-overlay" id="cvModal"><div class="modal-content cv-modal"><div class="modal-header"><span class="modal-title">Curriculum Vitae</span><button class="modal-close" onclick="closeCVModal()">✕</button></div><div class="modal-body cv-body"><iframe id="cvFrame" class="cv-frame" src="about:blank"></iframe></div><div class="modal-footer"><a href="https://raw.githubusercontent.com/eugendimant/eugendimant.github.io/main/CV_Eugen_Dimant.pdf" target="_blank" class="modal-btn secondary">Open in New Tab</a><a href="https://raw.githubusercontent.com/eugendimant/eugendimant.github.io/main/CV_Eugen_Dimant.pdf" download class="modal-btn primary">⬇ Download PDF</a></div></div></div>
 <div class="modal-overlay" id="networkModal"><div class="modal-content network-modal"><div class="modal-header"><span class="modal-title">Co-Author Network</span><button class="modal-close" onclick="closeNetworkModal()">✕</button></div><div class="modal-body network-body"><canvas id="networkCanvas" class="network-canvas"></canvas><div class="network-sidebar"><div class="network-sidebar-title">Search</div><div class="network-control-group"><input type="text" class="network-search" id="networkSearch" placeholder="Find co-author..."></div><div class="network-sidebar-title">Controls</div><div class="network-controls"><div class="network-control-group"><div class="network-control-label">Highlight by Topic</div><select class="network-select" id="networkTopicFilter"><option value="all">All Topics</option><option value="norms">Social Norms</option><option value="nudging">Nudging</option><option value="polarization">Polarization</option><option value="honesty">Honesty</option><option value="corruption">Corruption</option><option value="terrorism">Migration</option></select></div><div class="network-control-group"><div class="network-control-label">Size Nodes By</div><select class="network-select" id="networkSizeBy"><option value="papers">Number of Papers</option><option value="citations">Total Citations</option><option value="equal">Equal Size</option></select></div><div class="network-control-group"><div class="network-control-label">Min. Papers Filter</div><select class="network-select" id="networkMinPapers"><option value="1">All (1+)</option><option value="2">2+ papers</option><option value="3">3+ papers</option><option value="5">5+ papers</option></select></div><div class="network-control-group"><div class="network-control-label">Layout</div><select class="network-select" id="networkLayout"><option value="radial">Radial</option><option value="force">Force-Directed</option></select></div><div class="network-control-group zoom-controls"><button class="zoom-btn" onclick="networkZoom(1.2)">＋</button><button class="zoom-btn" onclick="networkZoom(0.8)">－</button><button class="zoom-btn" onclick="networkReset()">⟲</button></div></div><div class="network-sidebar-title">Statistics</div><div class="network-stats" id="networkStats"></div><div class="network-legend"><div class="network-sidebar-title">Legend</div><div class="legend-item"><div class="legend-dot center"></div><span>Eugen Dimant</span></div><div class="legend-item"><div class="legend-dot coauthor"></div><span>1-2 papers</span></div><div class="legend-item"><div class="legend-dot frequent"></div><span>3-4 papers</span></div><div class="legend-item"><div class="legend-dot super"></div><span>5+ papers</span></div><div class="legend-item"><div class="legend-line"></div><span>Collaboration</span></div></div><div class="network-instructions"><small>Drag nodes • Click to filter • Scroll to zoom • Double-click to center</small></div></div><div class="network-tooltip" id="networkTooltip"><div class="network-tooltip-name"></div><div class="network-tooltip-papers"></div><div class="network-tooltip-topics"></div><div class="network-tooltip-titles"></div></div></div></div></div>
-<div class="modal-overlay" id="dnaModal"><div class="modal-content dna-modal"><div class="modal-header"><span class="modal-title">🧬 Research DNA</span><button class="modal-close" onclick="closeDNAModal()">✕</button></div><div class="modal-body dna-body"><canvas id="dnaCanvas"></canvas><div class="dna-sidebar"><div class="dna-info" id="dnaInfo"><h3 class="dna-title">Research Evolution</h3><p class="dna-desc">This visualization maps my intellectual journey through interconnected research themes. Click any node to explore how different strands of inquiry developed and branched over time.</p></div><div class="dna-selected" id="dnaSelected"></div><div class="dna-controls"><div class="network-control-label">Search Papers</div><input type="text" class="network-search" id="dnaSearchInput" placeholder="Search titles, authors..."><div class="network-control-label" style="margin-top:.75rem;">Citation Threshold</div><select class="network-select" id="dnaCitationFilter"><option value="0">All Papers</option><option value="10">10+ citations</option><option value="50">50+ citations</option><option value="100">100+ citations</option></select><div class="network-control-label" style="margin-top:.75rem;">Era Filter</div><select class="network-select" id="dnaEraFilter"><option value="all">All Eras (2013-2026)</option><option value="early">2013-2018: Foundations</option><option value="middle">2019-2021: Expansion</option><option value="recent">2022-2026: Integration</option></select><div class="network-control-label" style="margin-top:.75rem;">Timeline</div><input type="range" id="dnaTimeline" min="2013" max="2026" value="2026" step="1" style="width:100%;margin:.25rem 0;"><div style="display:flex;justify-content:space-between;font-size:.65rem;color:var(--text-muted);margin-bottom:.5rem;"><span>2013</span><span id="dnaTimelineYear">2026</span><span>2026</span></div><div style="display:flex;gap:.3rem;flex-wrap:wrap;margin-top:.5rem;"><button class="dna-toggle-btn" id="dnaMultiSelectBtn" onclick="toggleDNAMultiSelect()" title="Ctrl+Click to select multiple themes">🔗 Multi-Select</button><button class="dna-toggle-btn" id="dnaCoauthorBtn" onclick="toggleDNACoauthors()" title="Show top co-authors">👥 Co-authors</button><button class="dna-toggle-btn" onclick="exportDNASelection()" title="Export selected papers">💾 Export</button></div></div><div class="dna-legend"><div class="network-sidebar-title">Research Strands</div><div class="legend-item"><div class="legend-dot" style="background:#c9a0dc"></div><span>Social Norms</span></div><div class="legend-item"><div class="legend-dot" style="background:#e0b0ff"></div><span>Nudging</span></div><div class="legend-item"><div class="legend-dot" style="background:#ff6b6b"></div><span>Polarization</span></div><div class="legend-item"><div class="legend-dot" style="background:#7ee787"></div><span>Honesty</span></div><div class="legend-item"><div class="legend-dot" style="background:#ffa657"></div><span>Corruption</span></div><div class="legend-item"><div class="legend-dot" style="background:#79c0ff"></div><span>Migration</span></div></div></div></div></div></div>
+<div class="modal-overlay" id="dnaModal"><div class="modal-content dna-modal"><div class="modal-header"><span class="modal-title">🧬 Research DNA</span><button class="modal-close" onclick="closeDNAModal()">✕</button></div><div class="modal-body dna-body"><canvas id="dnaCanvas"></canvas><div class="dna-sidebar"><div class="dna-info" id="dnaInfo"><h3 class="dna-title">Research Evolution</h3><p class="dna-desc">This visualization maps my intellectual journey through interconnected research themes. Click any node to explore how different strands of inquiry developed and branched over time.</p></div><div class="dna-selected" id="dnaSelected"></div><div class="dna-controls"><div class="network-control-label">Era Filter</div><select class="network-select" id="dnaEraFilter"><option value="all">All Eras (2015-2026)</option><option value="early">2015-2018: Foundations</option><option value="middle">2019-2021: Expansion</option><option value="recent">2022-2026: Integration</option></select></div><div class="dna-legend"><div class="network-sidebar-title">Research Strands</div><div class="legend-item"><div class="legend-dot" style="background:#c9a0dc"></div><span>Social Norms</span></div><div class="legend-item"><div class="legend-dot" style="background:#e0b0ff"></div><span>Nudging</span></div><div class="legend-item"><div class="legend-dot" style="background:#ff6b6b"></div><span>Polarization</span></div><div class="legend-item"><div class="legend-dot" style="background:#7ee787"></div><span>Honesty</span></div><div class="legend-item"><div class="legend-dot" style="background:#ffa657"></div><span>Corruption</span></div><div class="legend-item"><div class="legend-dot" style="background:#79c0ff"></div><span>Migration</span></div></div></div></div></div></div>
 <div class="toast" id="toast">Copied to clipboard!</div>
 <div class="modal-overlay" id="explorerModal"><div class="modal-content explorer-modal"><div class="modal-header"><span class="modal-title">🔬 Research & Collaboration Explorer</span><button class="modal-close" onclick="closeExplorerModal()">✕</button></div><div class="modal-body explorer-body">
 <div class="explorer-intro"><h3>Find Research That Matches Your Interests</h3><p>Describe your research interests, questions, or topics you'd like to explore. I'll match you with the most relevant papers from my portfolio and explain why they might be valuable for your work.</p></div>
@@ -571,7 +571,7 @@ function networkZoom(factor){networkZoomLevel=Math.max(0.3,Math.min(3,networkZoo
 function networkReset(){networkZoomLevel=1;networkPanX=0;networkPanY=0;networkSearchTerm='';document.getElementById('networkSearch').value='';networkHighlightNode=null;}
 
 // ========== DNA VISUALIZATION ==========
-let dnaAnimation=null,dnaEraFilter='all',dnaSelectedNode=null,dnaSelectedNodes=[],dnaInitialized=false,dnaMultiSelect=false,dnaShowCoauthors=false,dnaSearchQuery='',dnaCitationMin=0,dnaTimelineYear=2026;
+let dnaAnimation=null,dnaEraFilter='all',dnaSelectedNode=null,dnaInitialized=false;
 
 function openDNAModal(){
     document.getElementById('dnaModal').classList.add('active');
@@ -629,32 +629,14 @@ function initDNA(){
         {id:'terrorism',name:'Terrorism & Migration',color:'#79c0ff',desc:'Studying the complex relationships between conflict, migration, and international policy.'}
     ];
     
-    // Get filter values
+    // Get papers for each theme based on era filter
     const eraSelect=document.getElementById('dnaEraFilter');
-    const citationSelect=document.getElementById('dnaCitationFilter');
-    const searchInput=document.getElementById('dnaSearchInput');
-    const timelineInput=document.getElementById('dnaTimeline');
-    const timelineYearDisplay=document.getElementById('dnaTimelineYear');
-
     const currentEra=eraSelect?eraSelect.value:'all';
-    dnaCitationMin=citationSelect?parseInt(citationSelect.value):0;
-    dnaSearchQuery=(searchInput?searchInput.value:'').toLowerCase();
-    dnaTimelineYear=timelineInput?parseInt(timelineInput.value):2026;
-    if(timelineYearDisplay)timelineYearDisplay.textContent=dnaTimelineYear;
-
-    // Filter papers
     themes.forEach(t=>{
         let themePapers=papers.filter(p=>p.topics&&p.topics.includes(t.id));
-        // Era filter
         if(currentEra==='early')themePapers=themePapers.filter(p=>p.year<=2018);
         else if(currentEra==='middle')themePapers=themePapers.filter(p=>p.year>=2019&&p.year<=2021);
         else if(currentEra==='recent')themePapers=themePapers.filter(p=>p.year>=2022);
-        // Citation threshold
-        if(dnaCitationMin>0)themePapers=themePapers.filter(p=>(p.citations||0)>=dnaCitationMin);
-        // Search query
-        if(dnaSearchQuery)themePapers=themePapers.filter(p=>p.title.toLowerCase().includes(dnaSearchQuery)||p.authors.toLowerCase().includes(dnaSearchQuery));
-        // Timeline year
-        themePapers=themePapers.filter(p=>p.year<=dnaTimelineYear);
         t.papers=themePapers;
         t.citations=themePapers.reduce((s,p)=>s+(p.citations||0),0);
     });
@@ -709,85 +691,34 @@ function initDNA(){
     
     function handleClick(e){
         if(hoveredNode){
-            if(dnaMultiSelect&&e.ctrlKey){
-                const idx=dnaSelectedNodes.findIndex(n=>n.id===hoveredNode.id);
-                if(idx>=0)dnaSelectedNodes.splice(idx,1);
-                else dnaSelectedNodes.push(hoveredNode);
-                dnaSelectedNode=dnaSelectedNodes.length>0?dnaSelectedNodes[dnaSelectedNodes.length-1]:null;
-            }else{
-                dnaSelectedNode=hoveredNode;
-                if(dnaMultiSelect)dnaSelectedNodes=[hoveredNode];
-            }
+            dnaSelectedNode=hoveredNode;
             updateDNAPanel();
         }
     }
-
-    function handleFilterChange(){
+    
+    function handleEraChange(){
         initDNA();
     }
-
+    
     // Remove old event listeners and add new ones
     canvas.onmousemove=handleMouseMove;
     canvas.onclick=handleClick;
-    if(eraSelect)eraSelect.onchange=handleFilterChange;
-    if(citationSelect)citationSelect.onchange=handleFilterChange;
-    if(searchInput){
-        searchInput.oninput=()=>{
-            clearTimeout(searchInput.timeout);
-            searchInput.timeout=setTimeout(handleFilterChange,300);
-        };
-    }
-    if(timelineInput){
-        timelineInput.oninput=()=>{
-            if(timelineYearDisplay)timelineYearDisplay.textContent=timelineInput.value;
-            clearTimeout(timelineInput.timeout);
-            timelineInput.timeout=setTimeout(handleFilterChange,100);
-        };
-    }
+    if(eraSelect)eraSelect.onchange=handleEraChange;
     
     // Update selected panel
     function updateDNAPanel(){
         const panel=document.getElementById('dnaSelected');
         if(!panel)return;
-        if(dnaMultiSelect&&dnaSelectedNodes.length>0){
-            const allPapers=[];
-            dnaSelectedNodes.forEach(n=>{if(n.papers)allPapers.push(...n.papers);});
-            const uniquePapers=[...new Set(allPapers.map(p=>p.id))].map(id=>allPapers.find(p=>p.id===id));
-            const totalCitations=uniquePapers.reduce((s,p)=>s+(p.citations||0),0);
-            const paperItems=uniquePapers.slice(0,6).map(p=>'<div class="dna-selected-paper" onclick="scrollToPaperFromDNA('+p.id+')">'+p.title.substring(0,42)+(p.title.length>42?'...':'')+'</div>').join('');
-            panel.innerHTML='<div class="dna-selected-title">Multi-Selection ('+dnaSelectedNodes.length+' themes)</div>'+
-                '<div class="dna-selected-meta">'+uniquePapers.length+' papers • '+totalCitations+' citations</div>'+
-                '<div class="dna-selected-papers">'+paperItems+(uniquePapers.length>6?'<div style="color:var(--text-muted);font-size:.65rem;margin-top:.25rem;">+'+(uniquePapers.length-6)+' more</div>':'')+'</div>';
-        }else if(!dnaSelectedNode){
-            panel.innerHTML='<p style="color:var(--text-muted);font-style:italic;font-size:.75rem;">Click a node to explore'+(dnaMultiSelect?'<br><small>Ctrl+Click to select multiple</small>':'')+'</p>';
+        if(!dnaSelectedNode){
+            panel.innerHTML='<p style="color:var(--text-muted);font-style:italic;font-size:.75rem;">Click a node to explore</p>';
             return;
-        }else{
-            const n=dnaSelectedNode;
-            let content='<div class="dna-selected-title">'+n.name+'</div>'+
-                '<div class="dna-selected-meta">'+(n.papers?n.papers.length:0)+' papers • '+(n.citations||0)+' citations</div>'+
-                (n.desc?'<p style="font-size:.7rem;color:var(--text-secondary);margin-bottom:.5rem;line-height:1.4;">'+n.desc+'</p>':'');
-            if(dnaShowCoauthors&&n.papers&&n.papers.length>0){
-                const coauthorMap={};
-                n.papers.forEach(p=>{
-                    p.authors.replace(/\(incl\.[^)]+\)/g,'').split(/;\s*|\s*&\s*/).forEach(a=>{
-                        a=a.trim();
-                        if(!a||a.includes('Dimant')||a.includes('et al')||a.includes('others')||a.includes('BCFG')||a.includes('Collective'))return;
-                        const name=a.split(',')[0];
-                        if(name)coauthorMap[name]=(coauthorMap[name]||0)+1;
-                    });
-                });
-                const topCoauthors=Object.entries(coauthorMap).sort((a,b)=>b[1]-a[1]).slice(0,5);
-                if(topCoauthors.length>0){
-                    content+='<div style="margin-top:.5rem;padding-top:.5rem;border-top:1px solid var(--border-light);">'+
-                        '<div style="font-size:.7rem;color:var(--text-muted);margin-bottom:.25rem;">Top Co-authors</div>'+
-                        topCoauthors.map(([name,count])=>'<div style="font-size:.65rem;color:var(--text-secondary);margin-bottom:.15rem;">'+name+' ('+count+')</div>').join('')+
-                        '</div>';
-                }
-            }
-            const paperItems=n.papers.slice(0,6).map(p=>'<div class="dna-selected-paper" onclick="scrollToPaperFromDNA('+p.id+')">'+p.title.substring(0,42)+(p.title.length>42?'...':'')+'</div>').join('');
-            content+='<div class="dna-selected-papers">'+paperItems+(n.papers&&n.papers.length>6?'<div style="color:var(--text-muted);font-size:.65rem;margin-top:.25rem;">+'+(n.papers.length-6)+' more</div>':'')+'</div>';
-            panel.innerHTML=content;
         }
+        const n=dnaSelectedNode;
+        const paperItems=n.papers.slice(0,6).map(p=>'<div class="dna-selected-paper" onclick="scrollToPaperFromDNA('+p.id+')">'+p.title.substring(0,42)+(p.title.length>42?'...':'')+'</div>').join('');
+        panel.innerHTML='<div class="dna-selected-title">'+n.name+'</div>'+
+            '<div class="dna-selected-meta">'+(n.papers?n.papers.length:0)+' papers • '+(n.citations||0)+' citations</div>'+
+            (n.desc?'<p style="font-size:.7rem;color:var(--text-secondary);margin-bottom:.5rem;line-height:1.4;">'+n.desc+'</p>':'')+
+            '<div class="dna-selected-papers">'+paperItems+(n.papers&&n.papers.length>6?'<div style="color:var(--text-muted);font-size:.65rem;margin-top:.25rem;">+'+(n.papers.length-6)+' more</div>':'')+'</div>';
     }
     
     // Animation loop
@@ -840,27 +771,26 @@ function initDNA(){
         nodes.forEach(n=>{
             const isHovered=hoveredNode===n;
             const isSelected=dnaSelectedNode===n;
-            const isMultiSelected=dnaMultiSelect&&dnaSelectedNodes.some(sn=>sn.id===n.id);
-
+            
             // Glow
-            if(isHovered||isSelected||isMultiSelected){
+            if(isHovered||isSelected){
                 ctx.shadowColor=n.color;
-                ctx.shadowBlur=(isSelected||isMultiSelected)?18:10;
+                ctx.shadowBlur=isSelected?18:10;
             }
-
+            
             // Node circle
             ctx.fillStyle=n.color;
             ctx.beginPath();
             ctx.arc(n.x,n.y,n.radius+(isHovered?2:0),0,Math.PI*2);
             ctx.fill();
-
+            
             // Selection ring
-            if(isSelected||isMultiSelected){
-                ctx.strokeStyle=isMultiSelected?'#ff6b6b':'#fff';
-                ctx.lineWidth=isMultiSelected?3:2;
+            if(isSelected){
+                ctx.strokeStyle='#fff';
+                ctx.lineWidth=2;
                 ctx.stroke();
             }
-
+            
             ctx.shadowBlur=0;
             
             // Label
@@ -895,49 +825,6 @@ function scrollToPaperFromDNA(id){
     closeDNAModal();
     showSection('research');
     setTimeout(()=>scrollToPaper(id),300);
-}
-
-function toggleDNAMultiSelect(){
-    dnaMultiSelect=!dnaMultiSelect;
-    const btn=document.getElementById('dnaMultiSelectBtn');
-    if(dnaMultiSelect){
-        btn.classList.add('active');
-        dnaSelectedNodes=dnaSelectedNode?[dnaSelectedNode]:[];
-    }else{
-        btn.classList.remove('active');
-        dnaSelectedNodes=[];
-    }
-    updateDNAPanel();
-}
-
-function toggleDNACoauthors(){
-    dnaShowCoauthors=!dnaShowCoauthors;
-    const btn=document.getElementById('dnaCoauthorBtn');
-    if(dnaShowCoauthors)btn.classList.add('active');
-    else btn.classList.remove('active');
-}
-
-function exportDNASelection(){
-    let papers=[];
-    if(dnaMultiSelect&&dnaSelectedNodes.length>0){
-        dnaSelectedNodes.forEach(n=>{if(n.papers)papers=papers.concat(n.papers);});
-        papers=[...new Set(papers.map(p=>p.id))].map(id=>papers.find(p=>p.id===id));
-    }else if(dnaSelectedNode&&dnaSelectedNode.papers){
-        papers=dnaSelectedNode.papers;
-    }else{
-        alert('Please select a theme node first');
-        return;
-    }
-    if(papers.length===0){alert('No papers to export');return;}
-    const bibtex=papers.map(p=>p.bibtex).join('\n\n');
-    const blob=new Blob([bibtex],{type:'text/plain'});
-    const url=URL.createObjectURL(blob);
-    const a=document.createElement('a');
-    a.href=url;
-    a.download='dimant_papers_export.bib';
-    a.click();
-    URL.revokeObjectURL(url);
-    showToast('Exported '+papers.length+' paper'+(papers.length>1?'s':''));
 }
 
 // ========== RESEARCH EXPLORER ==========
