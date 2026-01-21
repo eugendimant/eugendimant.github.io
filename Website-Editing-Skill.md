@@ -519,4 +519,4 @@ wc -l index.html  # Should be ~1270
 ---
 
 *Last updated: January 2026*
-*File location: `/home/user/eugendimant.github.io/CLAUDE.md`*
+*File location: `/home/user/eugendimant.github.io/Website-Editing-Skill.md`*
