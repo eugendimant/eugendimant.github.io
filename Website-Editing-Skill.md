@@ -287,6 +287,57 @@ To feature a paper in the "Selected Publications" section:
 
 ---
 
+## 🌐 Live Preview Workflow
+
+**IMPORTANT:** Before committing changes, ALWAYS provide a live preview for the user to test:
+
+### Starting the Preview Server
+
+```bash
+# Start Python HTTP server in background
+python3 -m http.server 8080 &
+
+# Server will be available at:
+# http://localhost:8080
+```
+
+**When to provide preview:**
+- After making ANY changes to index.html
+- Before asking user to approve changes
+- When implementing new features
+- After updating citations or content
+
+### Preview Checklist
+
+Tell the user to test:
+1. **Navigation** - All sections load correctly
+2. **New features** - Any features you added work properly
+3. **Existing features** - Nothing broke
+4. **Visual appearance** - Styling looks correct
+5. **Interactive elements** - Buttons, modals, DNA work
+6. **Responsive design** - Test at different screen sizes
+
+### Stopping the Preview
+
+```bash
+# Find the process
+ps aux | grep "python3 -m http.server"
+
+# Kill it
+kill <PID>
+
+# Or kill all Python servers
+pkill -f "python3 -m http.server"
+```
+
+**User Experience:**
+- User opens http://localhost:8080 in their browser
+- They can click around, test features, explore visually
+- Only after approval should you commit and push
+- This ensures user satisfaction before changes go live
+
+---
+
 ## ✅ Pre-Commit Checklist
 
 Before committing ANY changes, verify:
