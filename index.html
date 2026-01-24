@@ -84,6 +84,7 @@ nav{display:flex;gap:2rem}nav a{color:var(--text-secondary);text-decoration:none
 .filter-chip{padding:.3rem .6rem;font-size:.7rem;border-radius:4px;border:1px solid var(--border-color);background:transparent;color:var(--text-secondary);cursor:pointer;white-space:nowrap}.filter-chip:hover{background:var(--bg-hover);color:var(--text-primary)}.filter-chip.active{background:var(--accent-primary);color:var(--bg-primary);border-color:var(--accent-primary)}.filter-chip .count{opacity:.7;margin-left:.15rem}
 .filter-list{display:flex;flex-direction:column;gap:.25rem}.filter-list-item{display:flex;justify-content:space-between;padding:.4rem .6rem;font-size:.75rem;border-radius:5px;border:none;background:transparent;color:var(--text-secondary);cursor:pointer;text-align:left}.filter-list-item:hover{background:var(--bg-hover);color:var(--text-primary)}.filter-list-item.active{background:var(--accent-primary);color:var(--bg-primary)}.filter-list-item .count{font-size:.7rem;opacity:.7}
 .filter-checkboxes{display:flex;flex-direction:column;gap:.5rem}.filter-checkbox{display:flex;align-items:center;gap:.5rem;font-size:.75rem;color:var(--text-secondary);cursor:pointer}.filter-checkbox input{accent-color:var(--accent-primary)}
+.sort-select{width:100%;padding:.5rem;font-size:.75rem;border-radius:6px;border:1px solid var(--border-color);background:var(--bg-secondary);color:var(--text-primary);cursor:pointer;margin-bottom:.75rem}.sort-select:focus{outline:none;border-color:var(--accent-primary)}.sort-select option{background:var(--bg-primary);color:var(--text-primary)}
 .reset-btn{width:100%;padding:.5rem;font-size:.75rem;border-radius:6px;border:1px solid var(--border-color);background:var(--bg-secondary);color:var(--text-secondary);cursor:pointer;margin-top:.75rem}.reset-btn:hover{background:var(--bg-hover);color:var(--text-primary)}
 .scrollable-list{max-height:200px;overflow-y:auto}.coauthor-search{margin-bottom:.5rem}.coauthor-search input{width:100%;background:var(--bg-secondary);border:1px solid var(--border-color);border-radius:4px;padding:.4rem .6rem;font-size:.7rem;color:var(--text-primary)}.coauthor-search input:focus{outline:none;border-color:var(--accent-primary)}.coauthor-search input::placeholder{color:var(--text-muted)}
 .papers-content{min-width:0}.section-divider{display:flex;align-items:center;gap:1rem;margin:2rem 0 1rem}.section-divider:first-child{margin-top:0}.section-label{font-family:'Source Serif 4',serif;font-size:1.25rem;font-weight:600;color:var(--accent-primary);white-space:nowrap}.section-line{flex:1;height:1px;background:var(--border-color)}
@@ -221,7 +222,7 @@ nav a{font-size:.8rem}
 <div class="sidebar-section"><div class="sidebar-title">Methods</div><div class="filter-list" id="methodFilters"></div></div>
 <div class="sidebar-section"><div class="sidebar-title"><span>Co-Authors</span><button class="network-btn" onclick="openNetworkModal()">🔗 Network</button></div><div class="coauthor-search"><input type="text" placeholder="Search co-authors..." id="coauthorSearchInput"></div><div class="filter-list scrollable-list" id="coauthorFilters"></div></div>
 <div class="sidebar-section"><div class="sidebar-title">Journals</div><div class="filter-list scrollable-list" id="journalFilters"></div></div>
-<div class="sidebar-section"><div class="filter-checkboxes"><label class="filter-checkbox"><input type="checkbox" id="ungatedOnly"> Show only ungated PDF</label><label class="filter-checkbox"><input type="checkbox" id="podcastOnly"> Show only with AI Podcast</label><label class="filter-checkbox"><input type="checkbox" id="groupByYear" checked> Group by year</label></div><button class="reset-btn" onclick="resetFilters()">Reset filters</button></div>
+<div class="sidebar-section"><div class="filter-checkboxes"><label class="filter-checkbox"><input type="checkbox" id="ungatedOnly"> Show only ungated PDF</label><label class="filter-checkbox"><input type="checkbox" id="podcastOnly"> Show only with AI Podcast</label><label class="filter-checkbox"><input type="checkbox" id="groupByYear" checked> Group by year</label></div><div class="sidebar-title" style="margin-top:16px">Sort Order</div><select class="sort-select" id="sortOrder" onchange="applySorting()"><option value="default">Default order</option><option value="citations-desc">Citations (high to low)</option><option value="year-desc">Year (newest first)</option><option value="year-asc">Year (oldest first)</option></select><button class="reset-btn" onclick="resetFilters()">Reset filters</button></div>
 </aside>
 <div class="papers-content" id="papersContainer"></div>
 </div>
@@ -259,7 +260,7 @@ const papers=[
 {id:15,year:2024,status:"published",title:"A Synthesis of Evidence for Policy from Behavioural Science During COVID-19",authors:"with K. Ruggeri, F. Stock, S. Haslam et al.",journal:"Nature",journalShort:"Nature",topics:["norms"],method:"methods",journalUrl:"https://www.nature.com/articles/s41586-023-06840-9",pdfUrl:"https://drive.google.com/file/d/1sHiKmZmDvhquJPM27u_XzcT3_9c3mJ23/view",podcastUrl:"https://drive.google.com/file/d/1bmAZknhkOd6Yj-DtEo2MOReGQniCrq_e/view",citations:144,pitch:"We synthesize behavioral science evidence from the COVID-19 pandemic across 747 studies to identify which interventions effectively promoted protective behaviors like vaccination, masking, and distancing. The analysis reveals that interventions leveraging social norms, trusted messengers, and removing barriers consistently outperformed purely informational approaches. These lessons provide an evidence base for rapid behavioral response to future public health emergencies.",bibtex:"@article{ruggeri2024synthesis,\n  title={A Synthesis of Evidence for Policy from Behavioural Science During COVID-19},\n  author={Ruggeri, Kai and Stock, Friederike and Haslam, S. Alexander and others},\n  journal={Nature},\n  volume={625},\n  pages={134--147},\n  year={2024}\n}"},
 {id:16,year:2024,status:"published",title:"Strategic Behavior with Tight, Loose, and Polarized Norms",authors:"with M. Gelfand, A. Hochleitner & S. Sonderegger",journal:"Management Science",journalShort:"Management Science",topics:["norms","polarization"],method:"experimental",journalUrl:"https://doi.org/10.1287/mnsc.2023.01022",pdfUrl:"https://drive.google.com/file/d/1N_ugrMwPomlefoFRgILd9vSqW33TzkvZ/view",podcastUrl:"https://drive.google.com/file/d/1G1hhIXN-EMpajPtPyPu0zl5eNKl3PEhL/view",citations:69,pitch:"We develop theory and experiments to study how norm tightness (consensus about what's appropriate), looseness (tolerance for deviation), and polarization (disagreement) affect strategic behavior in coordination and cooperation games. Our novel experimental paradigm induces different norm environments and measures their causal effects on behavior. The findings show that norm polarization creates coordination failures even when cooperation would benefit everyone, with implications for managing diverse teams.",bibtex:"@article{dimant2024strategic,\n  title={Strategic Behavior with Tight, Loose, and Polarized Norms},\n  author={Dimant, Eugen and Gelfand, Michele J. and Hochleitner, Anna and Sonderegger, Silvia},\n  journal={Management Science},\n  volume={70},\n  number={8},\n  pages={5028--5055},\n  year={2024}\n}"},
 {id:17,year:2024,status:"published",title:"Hate Trumps Love: The Impact of Political Polarization on Social Preferences",authors:"Solo-authored",journal:"Management Science",journalShort:"Management Science",topics:["polarization"],method:"experimental",journalUrl:"https://doi.org/10.1287/mnsc.2023.4701",pdfUrl:"https://drive.google.com/file/d/15aVL3kOh-A6L0XJbgJblNEazKpsypdUC/view",podcastUrl:"https://drive.google.com/file/d/1LhrlfeGNBamsVUm8NJ_9ozhYjuwPpRhq/view",citations:165,pitch:"Through 15 pre-registered experiments with over 8,600 participants, I examine how political polarization affects altruism, cooperation, and willingness to harm others across partisan lines. The key finding is that outgroup-hate (punishing political opponents) dominates ingroup-love (favoring allies) in driving behavioral polarization. Standard behavioral interventions like defaults and norm-nudges improve prosociality overall but fail to close the partisan gap, suggesting polarization requires targeted interventions.",bibtex:"@article{dimant2024hate,\n  title={Hate Trumps Love: The Impact of Political Polarization on Social Preferences},\n  author={Dimant, Eugen},\n  journal={Management Science},\n  volume={70},\n  number={1},\n  pages={1--31},\n  year={2024}\n}"},
-{id:18,year:2024,status:"published",title:"Reproducibility in Management Science",authors:"with M. Fišar, B. Greiner, C. Huber, E. Katok, A. Ozkes et al.",journal:"Management Science",journalShort:"Management Science",topics:[],method:"methods",journalUrl:"https://doi.org/10.1287/mnsc.2023.03556",pdfUrl:"",citations:59,pitch:"We conduct a large-scale replication project assessing whether experimental results published in Management Science can be reproduced by independent research teams. Following pre-registered protocols, multiple labs attempt to replicate key findings from influential papers. The results inform best practices for experimental economics and highlight the importance of transparency and pre-registration for scientific credibility.",bibtex:"@article{fisar2024reproducibility,\n  title={Reproducibility in Management Science},\n  author={Fišar, Miloš and Greiner, Ben and Huber, Christoph and Katok, Elena and Ozkes, Ali I. and others},\n  journal={Management Science},\n  volume={70},\n  number={3},\n  pages={1343--1356},\n  year={2024}\n}"},
+{id:18,year:2024,status:"published",title:"Reproducibility in Management Science",authors:"with M. Fišar, B. Greiner, C. Huber, E. Katok, A. Ozkes et al.",journal:"Management Science",journalShort:"Management Science",topics:[],method:"methods",journalUrl:"https://doi.org/10.1287/mnsc.2023.03556",pdfUrl:"",citations:61,pitch:"We conduct a large-scale replication project assessing whether experimental results published in Management Science can be reproduced by independent research teams. Following pre-registered protocols, multiple labs attempt to replicate key findings from influential papers. The results inform best practices for experimental economics and highlight the importance of transparency and pre-registration for scientific credibility.",bibtex:"@article{fisar2024reproducibility,\n  title={Reproducibility in Management Science},\n  author={Fišar, Miloš and Greiner, Ben and Huber, Christoph and Katok, Elena and Ozkes, Ali I. and others},\n  journal={Management Science},\n  volume={70},\n  number={3},\n  pages={1343--1356},\n  year={2024}\n}"},
 {id:19,year:2024,status:"published",title:"Paying Them to Hate US: The Effect of U.S. Military Aid on Anti-American Terrorism, 1968-2018",authors:"with T. Krieger & D. Meierrieks",journal:"The Economic Journal",journalShort:"Economic Journal",topics:["terrorism"],method:"observational",journalUrl:"https://doi.org/10.1093/ej/ueae034",pdfUrl:"https://drive.google.com/file/d/1YHvdv6fOfoQUbydwCObyPQAIQ-qjM_0C/view",podcastUrl:"https://drive.google.com/file/d/1dYTIkyY_TU4vq3z01OFheIMGiuqIUtUj/view",citations:36,pitch:"We analyze 50 years of data to test whether U.S. military aid to foreign countries increases anti-American terrorism originating from those recipient nations. Using instrumental variable strategies to address endogeneity, we find robust evidence that military assistance fuels grievance-based terrorism against the United States. The findings suggest that foreign policy decisions about military aid should account for potential blowback effects on U.S. security.",bibtex:"@article{dimant2024paying,\n  title={Paying Them to Hate US},\n  author={Dimant, Eugen and Krieger, Tim and Meierrieks, Daniel},\n  journal={The Economic Journal},\n  volume={134},\n  number={662},\n  pages={2256--2289},\n  year={2024}\n}"},
 {id:20,year:2024,status:"published",title:"Measuring Norm Pluralism and Perceived Polarization in U.S. Politics",authors:"with F. Panizza, E. Kimbrough & A. Vostroknutov",journal:"Proceedings of the National Academy of Sciences (PNAS) Nexus",journalShort:"PNAS Nexus",topics:["polarization","norms"],method:"experimental",journalUrl:"https://doi.org/10.1093/pnasnexus/pgae413",pdfUrl:"https://drive.google.com/file/d/1-t7OuZUAh0CHNVcRpBzYVVIk8KU-Zurp/view",podcastUrl:"https://drive.google.com/file/d/1EhGA6-MeFGuULtrAPvCC70q1vBrW36NU/view",citations:24,pitch:"We develop and validate new measures of norm pluralism (actual diversity in normative beliefs) and perceived polarization (beliefs about how divided others are) using large U.S. samples. Our approach distinguishes between real disagreement and exaggerated perceptions of division, which often diverge substantially. The measures reveal that Americans overestimate polarization on many issues, suggesting interventions correcting misperceptions could reduce intergroup conflict.",bibtex:"@article{panizza2024measuring,\n  title={Measuring Norm Pluralism and Perceived Polarization in U.S. Politics},\n  author={Panizza, Folco and Dimant, Eugen and Kimbrough, Erik O. and Vostroknutov, Alexander},\n  journal={PNAS Nexus},\n  volume={3},\n  number={10},\n  pages={pgae413},\n  year={2024}\n}"},
 {id:21,year:2024,status:"published",title:"Unraveling Polarization: Insights into Individual and Collective Dynamics",authors:"with K. Kish Bar-On, Y. Lelkes & D. Rand",journal:"Proceedings of the National Academy of Sciences (PNAS) Nexus",journalShort:"PNAS Nexus",topics:["polarization"],method:"methods",journalUrl:"https://doi.org/10.1093/pnasnexus/pgae426",pdfUrl:"https://drive.google.com/file/d/13hRDYbCGYZkBynmfeeWEPKTJshS9HP7O/view",podcastUrl:"https://drive.google.com/file/d/1DSrYyX8vBcJMOEq8HD9t51BUClvQedHw/view",citations:17,pitch:"We provide an integrative framework for understanding political polarization that bridges individual psychology, social dynamics, and institutional factors. The paper synthesizes insights from psychology, economics, and political science to distinguish affective polarization (emotional dislike) from ideological polarization (policy disagreement). Our framework identifies intervention points at each level and offers guidance for researchers and practitioners working to reduce destructive polarization.",bibtex:"@article{kishbaron2024unraveling,\n  title={Unraveling Polarization},\n  author={Kish Bar-On, Kati and Dimant, Eugen and Lelkes, Yphtach and Rand, David G.},\n  journal={PNAS Nexus},\n  volume={3},\n  number={10},\n  pages={pgae426},\n  year={2024}\n}"},
@@ -283,7 +284,7 @@ const papers=[
 {id:39,year:2021,status:"published",title:"A Creative Destruction Approach to Replication: Implicit Work and Sex Morality Across Cultures",authors:"with W. Tierney, J. Hardy et al.",journal:"Journal of Experimental Social Psychology",journalShort:"JESP",topics:[],method:"methods",journalUrl:"https://doi.org/10.1016/j.jesp.2020.104060",pdfUrl:"",citations:58,pitch:"We demonstrate a 'creative destruction' approach to replication that simultaneously tests original findings and competing theoretical predictions across multiple cultures. Focusing on implicit associations between work/sex and morality, international teams attempt replications while proposing alternative hypotheses. The methodology advances replication science by turning replications into generative theory-testing exercises rather than simple pass/fail verdicts.",bibtex:"@article{tierney2021creative,\n  title={A Creative Destruction Approach to Replication},\n  author={Tierney, Warren and Hardy, Jay H. and others},\n  journal={JESP},\n  volume={93},\n  pages={104060},\n  year={2021}\n}"},
 {id:40,year:2021,status:"published",title:"Efficient Institutions and Effective Deterrence: On Timing and Uncertainty of Formal Sanctions",authors:"with J. Buckenmaier, A. Posten & U. Schmidt",journal:"Journal of Risk and Uncertainty",journalShort:"J. Risk & Uncertainty",topics:["norms","corruption"],method:"experimental",journalUrl:"https://link.springer.com/article/10.1007/s11166-021-09352-x",pdfUrl:"https://drive.google.com/file/d/1Mp0ugvj-tCQ6Scqxyj8vsrquoaqDtECM/view",citations:31,pitch:"We study how the timing (immediate vs. delayed) and uncertainty of formal punishment affect its deterrent power against unethical behavior. Experiments reveal that immediate certain punishment deters most effectively, but uncertain punishment can be efficient by reducing enforcement costs while maintaining deterrence. The findings provide guidance for designing sanction regimes that balance effectiveness with resource constraints.",bibtex:"@article{buckenmaier2021efficient,\n  title={Efficient Institutions and Effective Deterrence},\n  author={Buckenmaier, Johannes and Dimant, Eugen and Posten, Ann-Christin and Schmidt, Ulrich},\n  journal={Journal of Risk and Uncertainty},\n  volume={62},\n  pages={177--199},\n  year={2021}\n}"},
 {id:41,year:2021,status:"published",title:"The Experience is (Not) Everything: Sequential Outcomes and Social Decision-Making",authors:"with J. Buckenmaier",journal:"Economics Letters",journalShort:"Economics Letters",topics:["norms"],method:"experimental",journalUrl:"https://doi.org/10.1016/j.econlet.2021.109916",pdfUrl:"https://drive.google.com/file/d/1lm0mgy4Cr6biIDASDbvkwRgcaBxluaxu/view",citations:11,pitch:"We examine how the sequence of positive and negative experiences in social interactions affects subsequent prosocial behavior toward the same and different partners. Our findings show that recent experiences disproportionately influence current choices—a recency effect in social decision-making. The results inform understanding of how relationship histories shape ongoing cooperation and trust.",bibtex:"@article{buckenmaier2021experience,\n  title={The Experience is (Not) Everything},\n  author={Buckenmaier, Johannes and Dimant, Eugen},\n  journal={Economics Letters},\n  volume={205},\n  pages={109916},\n  year={2021}\n}"},
-{id:42,year:2020,status:"published",title:"Requiem for a Nudge: Framing Effects in Nudging Honesty",authors:"with G. van Kleef & S. Shalvi",journal:"Journal of Economic Behavior & Organization",journalShort:"JEBO",topics:["honesty","norms","nudging"],method:"experimental",journalUrl:"https://www.sciencedirect.com/science/article/pii/S0167268120300597",pdfUrl:"https://drive.google.com/file/d/1hSaCg6ZVPofoa7phBDBgX9OryAqPItQM/view",citations:155,pitch:"We test whether honesty nudges work and find that their effectiveness depends critically on how they are framed—some framings even backfire and increase dishonesty. Experiments comparing different nudge formats reveal that highlighting high dishonesty rates (descriptive norms) can license cheating rather than deter it. The findings caution practitioners against assuming nudges will work universally and emphasize the importance of pilot testing.",bibtex:"@article{dimant2020requiem,\n  title={Requiem for a Nudge},\n  author={Dimant, Eugen and van Kleef, Gerben A. and Shalvi, Shaul},\n  journal={JEBO},\n  volume={172},\n  pages={247--266},\n  year={2020}\n}"},
+{id:42,year:2020,status:"published",title:"Requiem for a Nudge: Framing Effects in Nudging Honesty",authors:"with G. van Kleef & S. Shalvi",journal:"Journal of Economic Behavior & Organization",journalShort:"JEBO",topics:["honesty","norms","nudging"],method:"experimental",journalUrl:"https://www.sciencedirect.com/science/article/pii/S0167268120300597",pdfUrl:"https://drive.google.com/file/d/1hSaCg6ZVPofoa7phBDBgX9OryAqPItQM/view",citations:156,pitch:"We test whether honesty nudges work and find that their effectiveness depends critically on how they are framed—some framings even backfire and increase dishonesty. Experiments comparing different nudge formats reveal that highlighting high dishonesty rates (descriptive norms) can license cheating rather than deter it. The findings caution practitioners against assuming nudges will work universally and emphasize the importance of pilot testing.",bibtex:"@article{dimant2020requiem,\n  title={Requiem for a Nudge},\n  author={Dimant, Eugen and van Kleef, Gerben A. and Shalvi, Shaul},\n  journal={JEBO},\n  volume={172},\n  pages={247--266},\n  year={2020}\n}"},
 {id:43,year:2020,status:"published",title:"Effects of Institutional History and Leniency on Collusive Corruption and Tax Evasion",authors:"with J. Buckenmaier & L. Mittone",journal:"Journal of Economic Behavior & Organization",journalShort:"JEBO",topics:["corruption"],method:"experimental",journalUrl:"https://www.sciencedirect.com/science/article/pii/S0167268118301057",pdfUrl:"https://drive.google.com/file/d/1lJJA1a7B31DhJrQ1EMftBBX62eljXEZS/view",citations:44,pitch:"We study how a society's institutional history of corruption and the availability of leniency programs affect collusive behavior and tax evasion using laboratory experiments. Participants exposed to historically corrupt institutions continue evading even after reforms, showing persistence effects. Leniency programs that forgive confessors can break corruption equilibria, informing anti-corruption policy design in transitional contexts.",bibtex:"@article{buckenmaier2020effects,\n  title={Effects of Institutional History and Leniency on Collusive Corruption},\n  author={Buckenmaier, Johannes and Dimant, Eugen and Mittone, Luigi},\n  journal={JEBO},\n  volume={175},\n  pages={296--313},\n  year={2020}\n}"},
 {id:44,year:2020,status:"published",title:"Creative Destruction in Science",authors:"with W. Tierney, J. Hardy et al.",journal:"Organizational Behavior and Human Decision Processes",journalShort:"OBHDP",topics:[],method:"methods",journalUrl:"https://doi.org/10.1016/j.obhdp.2020.09.004",pdfUrl:"",citations:75,pitch:"We propose and demonstrate a new approach to replication that harnesses theoretical disagreement productively by having multiple teams simultaneously test original hypotheses alongside competing alternatives. Applied to classic findings in organizational behavior, the method generates new knowledge even when replications fail. The creative destruction framework transforms replication from a verification exercise into a catalyst for theoretical progress.",bibtex:"@article{tierney2020creative,\n  title={Creative Destruction in Science},\n  author={Tierney, Warren and Hardy, Jay H. and others},\n  journal={OBHDP},\n  volume={161},\n  pages={291--309},\n  year={2020}\n}"},
 {id:45,year:2019,status:"published",title:"Nudging with Care: The Risks and Benefits of Social Information",authors:"with C. Bicchieri",journal:"Public Choice",journalShort:"Public Choice",topics:["norms","nudging"],method:"methods",journalUrl:"https://link.springer.com/article/10.1007%2Fs11127-019-00684-6",pdfUrl:"https://drive.google.com/file/d/1L_4s_P2eNMlsx-5X-j8EsMIDIy3CVBIm/view",podcastUrl:"https://drive.google.com/file/d/1J3ABfTj9dwZTY7x8ifBBUt7osh1tiuAW/view",citations:551,pitch:"We provide a comprehensive framework analyzing when social information nudges—messages about what others do or approve—promote versus undermine desirable behavior. Drawing on social norms theory, we identify conditions under which norm-based nudges backfire, such as when they reveal undesirable behavior is common. The paper offers practitioners a decision framework for deploying social information interventions responsibly in policy contexts.",bibtex:"@article{bicchieri2019nudging,\n  title={Nudging with Care},\n  author={Bicchieri, Cristina and Dimant, Eugen},\n  journal={Public Choice},\n  volume={191},\n  pages={443--464},\n  year={2019}\n}"},
@@ -302,7 +303,7 @@ const papers=[
 
 const topicLabels={'norms':'Social Norms','nudging':'Nudging & Behavior Change','polarization':'Polarization & Intergroup Conflict','honesty':'Honesty & Behavioral Ethics','corruption':'Corruption & Institutions','terrorism':'Terrorism & Migration'};
 const topicColors={'norms':'#c9a0dc','nudging':'#e0b0ff','polarization':'#ff6b6b','honesty':'#7ee787','corruption':'#ffa657','terrorism':'#79c0ff'};
-let activeTypeFilter='all',activeYearFilter='all',activeTopicFilter='all',activeMethodFilter='all',activeJournalFilter='all',activeCoauthorFilter='all',searchQuery='',coauthorSearchQuery='',groupByYear=true,ungatedOnly=false,podcastOnly=false;
+let activeTypeFilter='all',activeYearFilter='all',activeTopicFilter='all',activeMethodFilter='all',activeJournalFilter='all',activeCoauthorFilter='all',searchQuery='',coauthorSearchQuery='',groupByYear=true,ungatedOnly=false,podcastOnly=false,sortOrder='default';
 let allCoauthors=[];
 
 function extractCoauthors(){
@@ -490,7 +491,7 @@ function renderPapers(){
     document.getElementById('emptyState').style.display='none';
     let html='';
     const review=filtered.filter(p=>p.status==='review'),progress=filtered.filter(p=>p.status==='progress'),published=filtered.filter(p=>p.status==='published');
-    
+
     // Helper function to sort by citations then alphabetically
     const sortByCitationsThenAlpha=(a,b)=>{
         if((b.citations||0)!==(a.citations||0))return(b.citations||0)-(a.citations||0);
@@ -498,37 +499,75 @@ function renderPapers(){
         const bAuthor=(b.authors||'').split(',')[0].split(';')[0].trim();
         return aAuthor.localeCompare(bAuthor);
     };
-    
-    // Sort Under Review: Revise & Resubmit first, then Reject & Resubmit, then others by citations (ties: alphabetically)
-    review.sort((a,b)=>{
-        const aJournal=(a.journal||'').toLowerCase();
-        const bJournal=(b.journal||'').toLowerCase();
-        const aIsRR=aJournal.includes('revise & resubmit')?1:0;
-        const bIsRR=bJournal.includes('revise & resubmit')?1:0;
-        const aIsReject=aJournal.includes('reject & resubmit')?1:0;
-        const bIsReject=bJournal.includes('reject & resubmit')?1:0;
-        if(aIsRR!==bIsRR)return bIsRR-aIsRR;
-        if(aIsReject!==bIsReject)return bIsReject-aIsReject;
-        return sortByCitationsThenAlpha(a,b);
-    });
-    
-    // Sort Work in Progress by citations then alphabetically
-    progress.sort(sortByCitationsThenAlpha);
+
+    // Apply user-selected sort order or default sorting
+    if(sortOrder==='citations-desc'){
+        // Sort all by citations (high to low)
+        const sortByCitations=(a,b)=>(b.citations||0)-(a.citations||0);
+        review.sort(sortByCitations);
+        progress.sort(sortByCitations);
+    }else if(sortOrder==='year-desc'){
+        // Sort all by year (newest first)
+        const sortByYearDesc=(a,b)=>b.year-a.year;
+        review.sort(sortByYearDesc);
+        progress.sort(sortByYearDesc);
+    }else if(sortOrder==='year-asc'){
+        // Sort all by year (oldest first)
+        const sortByYearAsc=(a,b)=>a.year-b.year;
+        review.sort(sortByYearAsc);
+        progress.sort(sortByYearAsc);
+    }else{
+        // Default sorting: Sort Under Review: Revise & Resubmit first, then Reject & Resubmit, then others by citations (ties: alphabetically)
+        review.sort((a,b)=>{
+            const aJournal=(a.journal||'').toLowerCase();
+            const bJournal=(b.journal||'').toLowerCase();
+            const aIsRR=aJournal.includes('revise & resubmit')?1:0;
+            const bIsRR=bJournal.includes('revise & resubmit')?1:0;
+            const aIsReject=aJournal.includes('reject & resubmit')?1:0;
+            const bIsReject=bJournal.includes('reject & resubmit')?1:0;
+            if(aIsRR!==bIsRR)return bIsRR-aIsRR;
+            if(aIsReject!==bIsReject)return bIsReject-aIsReject;
+            return sortByCitationsThenAlpha(a,b);
+        });
+
+        // Sort Work in Progress by citations then alphabetically
+        progress.sort(sortByCitationsThenAlpha);
+    }
     
     if(groupByYear){
         if(review.length>0){html+='<div class="section-divider"><span class="section-label">Under Review</span><div class="section-line"></div></div>';review.forEach(p=>html+=renderPaperCard(p));}
         if(progress.length>0){html+='<div class="section-divider"><span class="section-label">Work in Progress</span><div class="section-line"></div></div>';progress.forEach(p=>html+=renderPaperCard(p));}
         const byYear={};published.forEach(p=>{if(!byYear[p.year])byYear[p.year]=[];byYear[p.year].push(p);});
-        Object.keys(byYear).sort((a,b)=>b-a).forEach(y=>{
+        const years=Object.keys(byYear).sort((a,b)=>sortOrder==='year-asc'?a-b:b-a);
+        years.forEach(y=>{
             html+='<div class="section-divider"><span class="section-label">'+y+'</span><div class="section-line"></div></div>';
-            // Sort each year's papers by sortOrder first (if exists), then by citations, then alphabetically
-            byYear[y].sort((a,b)=>{
-                if((a.sortOrder||99)!==(b.sortOrder||99))return(a.sortOrder||99)-(b.sortOrder||99);
-                return sortByCitationsThenAlpha(a,b);
-            });
+            // Sort each year's papers based on user selection
+            if(sortOrder==='citations-desc'){
+                byYear[y].sort((a,b)=>(b.citations||0)-(a.citations||0));
+            }else if(sortOrder==='year-desc'||sortOrder==='year-asc'){
+                // When sorting by year, within each year group keep original order or sort by citations
+                byYear[y].sort(sortByCitationsThenAlpha);
+            }else{
+                // Default: Sort by sortOrder first (if exists), then by citations, then alphabetically
+                byYear[y].sort((a,b)=>{
+                    if((a.sortOrder||99)!==(b.sortOrder||99))return(a.sortOrder||99)-(b.sortOrder||99);
+                    return sortByCitationsThenAlpha(a,b);
+                });
+            }
             byYear[y].forEach(p=>html+=renderPaperCard(p));
         });
-    }else{filtered.forEach(p=>html+=renderPaperCard(p));}
+    }else{
+        // When not grouping by year, sort all filtered papers by user selection
+        let allPapers=[...review,...progress,...published];
+        if(sortOrder==='citations-desc'){
+            allPapers.sort((a,b)=>(b.citations||0)-(a.citations||0));
+        }else if(sortOrder==='year-desc'){
+            allPapers.sort((a,b)=>b.year-a.year);
+        }else if(sortOrder==='year-asc'){
+            allPapers.sort((a,b)=>a.year-b.year);
+        }
+        allPapers.forEach(p=>html+=renderPaperCard(p));
+    }
     document.getElementById('papersContainer').innerHTML=html;
 }
 
@@ -1375,7 +1414,9 @@ function updateNetworkStats(coauthors){
         '<div class="network-stat"><span>Top Collaborator</span><span class="network-stat-value" style="font-size:.55rem">'+topCoauthor.split(',')[0]+'</span></div>';
 }
 
-function resetFilters(){activeTypeFilter='all';activeYearFilter='all';activeTopicFilter='all';activeMethodFilter='all';activeJournalFilter='all';activeCoauthorFilter='all';searchQuery='';coauthorSearchQuery='';groupByYear=true;ungatedOnly=false;podcastOnly=false;document.getElementById('searchInput').value='';document.getElementById('coauthorSearchInput').value='';document.getElementById('groupByYear').checked=true;document.getElementById('ungatedOnly').checked=false;document.getElementById('podcastOnly').checked=false;document.querySelectorAll('.top-tab').forEach(t=>t.classList.remove('active'));document.querySelector('.top-tab[data-filter="all"]').classList.add('active');buildFilters();renderPapers();}
+function applySorting(){sortOrder=document.getElementById('sortOrder').value;renderPapers();}
+
+function resetFilters(){activeTypeFilter='all';activeYearFilter='all';activeTopicFilter='all';activeMethodFilter='all';activeJournalFilter='all';activeCoauthorFilter='all';searchQuery='';coauthorSearchQuery='';groupByYear=true;ungatedOnly=false;podcastOnly=false;sortOrder='default';document.getElementById('searchInput').value='';document.getElementById('coauthorSearchInput').value='';document.getElementById('groupByYear').checked=true;document.getElementById('ungatedOnly').checked=false;document.getElementById('podcastOnly').checked=false;document.getElementById('sortOrder').value='default';document.querySelectorAll('.top-tab').forEach(t=>t.classList.remove('active'));document.querySelector('.top-tab[data-filter="all"]').classList.add('active');buildFilters();renderPapers();}
 
 function setupEventListeners(){
     document.querySelectorAll('.top-tab').forEach(t=>t.addEventListener('click',()=>{document.querySelectorAll('.top-tab').forEach(x=>x.classList.remove('active'));t.classList.add('active');activeTypeFilter=t.dataset.filter;renderPapers();}));
