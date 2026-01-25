@@ -309,38 +309,67 @@ let allCoauthors=[];
 function extractCoauthors(){
     const map={};
     papers.forEach(p=>{
-        let str=p.authors.replace(/\(incl\.[^)]+\)/g,'');
-        str.split(/;\s*|\s*&\s*/).forEach(a=>{
+        if(!p.bibtex) return;
+        // Extract author field from bibtex
+        const authorMatch = p.bibtex.match(/author\s*=\s*\{([^}]+)\}/);
+        if(!authorMatch) return;
+
+        const authorsStr = authorMatch[1];
+        // Split by " and " to get individual authors
+        authorsStr.split(' and ').forEach(a=>{
             a=a.trim();
+            // Skip Dimant and other special cases
             if(!a||a.includes('Dimant')||a.includes('et al')||a.includes('others')||a.includes('BCFG')||a.includes('Collective'))return;
+
+            // Parse "Last, First" format from bibtex
             const parts=a.split(',').map(x=>x.trim());
             if(parts.length>=2){
-                const key=parts[0]+', '+parts[1];
-                if(!map[key])map[key]={name:key,lastName:parts[0],firstName:parts[1],papers:[],paperIds:[],topics:new Set()};
+                const lastName = parts[0];
+                const firstName = parts[1];
+                const key=lastName+', '+firstName;
+                if(!map[key])map[key]={name:key,lastName:lastName,firstName:firstName,papers:[],paperIds:[],topics:new Set()};
                 map[key].papers.push(p.title);
                 map[key].paperIds.push(p.id);
                 p.topics.forEach(t=>map[key].topics.add(t));
             }
         });
     });
-    // Sort by number of papers (descending), then alphabetically
-    return Object.values(map).sort((a,b)=>{
-        const diff=b.papers.length-a.papers.length;
-        if(diff!==0)return diff;
-        return a.lastName.localeCompare(b.lastName);
-    });
+    // Sort alphabetically by last name
+    return Object.values(map).sort((a,b)=>a.lastName.localeCompare(b.lastName));
 }
 
 function findRelatedPapers(paper,max=5){
     const coauthors=new Set();
-    paper.authors.replace(/\(incl\.[^)]+\)/g,'').split(/;\s*|\s*&\s*/).forEach(a=>{if(!a.includes('Dimant')&&!a.includes('et al')&&!a.includes('others'))coauthors.add(a.trim());});
+    // Extract coauthors from bibtex
+    if(paper.bibtex){
+        const authorMatch = paper.bibtex.match(/author\s*=\s*\{([^}]+)\}/);
+        if(authorMatch){
+            authorMatch[1].split(' and ').forEach(a=>{
+                a=a.trim();
+                if(!a.includes('Dimant')&&!a.includes('et al')&&!a.includes('others'))coauthors.add(a);
+            });
+        }
+    }
     const related=[];
     papers.forEach(p=>{
         if(p.id===paper.id)return;
         let score=0;const reasons=[];
         const sharedTopics=paper.topics.filter(t=>p.topics.includes(t));
         if(sharedTopics.length>0){score+=sharedTopics.length*2;reasons.push({type:'topic',label:topicLabels[sharedTopics[0]]||sharedTopics[0]});}
-        p.authors.replace(/\(incl\.[^)]+\)/g,'').split(/;\s*|\s*&\s*/).forEach(a=>{if(coauthors.has(a.trim())){score+=3;reasons.push({type:'coauthor',label:a.split(',')[0]});}});
+        // Check for shared coauthors from bibtex
+        if(p.bibtex){
+            const pAuthorMatch = p.bibtex.match(/author\s*=\s*\{([^}]+)\}/);
+            if(pAuthorMatch){
+                pAuthorMatch[1].split(' and ').forEach(a=>{
+                    a=a.trim();
+                    if(coauthors.has(a)){
+                        score+=3;
+                        const parts=a.split(',');
+                        reasons.push({type:'coauthor',label:parts[0]});
+                    }
+                });
+            }
+        }
         if(score>0)related.push({paper:p,score,reasons});
     });
     return related.sort((a,b)=>b.score-a.score).slice(0,max);
@@ -821,12 +850,17 @@ function initDNA(){
             if(dnaShowCoauthors&&n.papers&&n.papers.length>0){
                 const coauthorMap={};
                 n.papers.forEach(p=>{
-                    p.authors.replace(/\(incl\.[^)]+\)/g,'').split(/;\s*|\s*&\s*/).forEach(a=>{
-                        a=a.trim();
-                        if(!a||a.includes('Dimant')||a.includes('et al')||a.includes('others')||a.includes('BCFG')||a.includes('Collective'))return;
-                        const name=a.split(',')[0];
-                        if(name)coauthorMap[name]=(coauthorMap[name]||0)+1;
-                    });
+                    if(p.bibtex){
+                        const authorMatch = p.bibtex.match(/author\s*=\s*\{([^}]+)\}/);
+                        if(authorMatch){
+                            authorMatch[1].split(' and ').forEach(a=>{
+                                a=a.trim();
+                                if(!a||a.includes('Dimant')||a.includes('et al')||a.includes('others')||a.includes('BCFG')||a.includes('Collective'))return;
+                                const name=a.split(',')[0];
+                                if(name)coauthorMap[name]=(coauthorMap[name]||0)+1;
+                            });
+                        }
+                    }
                 });
                 const topCoauthors=Object.entries(coauthorMap).sort((a,b)=>b[1]-a[1]).slice(0,5);
                 if(topCoauthors.length>0){
