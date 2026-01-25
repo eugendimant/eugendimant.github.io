@@ -1,0 +1,28 @@
+# Ignore Git files
+.git
+.gitignore
+
+# Ignore backups
+backups/
+
+# Ignore documentation (can be included if you want)
+# CHATBOT_SETUP.md
+
+# Ignore local env files (use Vercel dashboard for env vars)
+.env
+.env.local
+.env*.local
+
+# Ignore node_modules (Vercel will install from package.json)
+node_modules/
+
+# Ignore IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Ignore OS files
+.DS_Store
+Thumbs.db
