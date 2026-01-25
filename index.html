@@ -334,8 +334,12 @@ function extractCoauthors(){
             }
         });
     });
-    // Sort alphabetically by last name
-    return Object.values(map).sort((a,b)=>a.lastName.localeCompare(b.lastName));
+    // Sort by number of papers (descending), then alphabetically by last name
+    return Object.values(map).sort((a,b)=>{
+        const diff=b.papers.length-a.papers.length;
+        if(diff!==0)return diff;
+        return a.lastName.localeCompare(b.lastName);
+    });
 }
 
 function findRelatedPapers(paper,max=5){
@@ -1331,17 +1335,15 @@ function initNetwork(){
         }else{canvas.style.cursor=isDragging?'grabbing':'grab';tooltip.classList.remove('show');}
     };
     
-    canvas.onclick=()=>{if(hoveredNode&&hoveredNode.id!=='center'&&!networkDragNode){closeNetworkModal();activeCoauthorFilter=hoveredNode.id;buildFilters();renderPapers();}};
+    // Single click - allow dragging without jumping to papers
+    canvas.onclick=()=>{/* Allow dragging without jumping */};
+    // Double click - jump to co-author papers
     canvas.ondblclick=e=>{
-        const rect=canvas.getBoundingClientRect();
-        const mx=(e.clientX-rect.left-networkPanX)/networkZoomLevel;
-        const my=(e.clientY-rect.top-networkPanY)/networkZoomLevel;
-        for(const n of networkNodes){
-            if(Math.sqrt((mx-n.x)**2+(my-n.y)**2)<n.radius+5){
-                networkPanX=canvas.width/2-n.x*networkZoomLevel;
-                networkPanY=canvas.height/2-n.y*networkZoomLevel;
-                break;
-            }
+        if(hoveredNode&&hoveredNode.id!=='center'){
+            closeNetworkModal();
+            activeCoauthorFilter=hoveredNode.id;
+            buildFilters();
+            renderPapers();
         }
     };
     canvas.onmouseleave=()=>{tooltip.classList.remove('show');isDragging=false;};
