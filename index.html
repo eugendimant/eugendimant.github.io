@@ -168,10 +168,83 @@ nav a{font-size:.8rem}
 }
 @keyframes fadeIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
 ::-webkit-scrollbar{width:8px}::-webkit-scrollbar-track{background:var(--bg-primary)}::-webkit-scrollbar-thumb{background:var(--border-color);border-radius:4px}
+
+/* ========== RESEARCH CHAT STYLES ========== */
+.chat-container{max-width:1400px;margin:0 auto;padding:2rem;display:grid;grid-template-columns:300px 1fr;gap:1.5rem;height:calc(100vh - 150px)}
+.chat-sidebar{background:var(--bg-card);border:1px solid var(--border-color);border-radius:12px;padding:1.5rem;overflow-y:auto}
+.chat-main{background:var(--bg-card);border:1px solid var(--border-color);border-radius:12px;display:flex;flex-direction:column;min-height:0}
+.chat-header{padding:1.5rem;border-bottom:1px solid var(--border-light)}
+.chat-header-title{font-family:'Source Serif 4',serif;font-size:1.3rem;font-weight:600;margin-bottom:.5rem;color:var(--accent-primary)}
+.chat-header-subtitle{font-size:.8rem;color:var(--text-muted)}
+.chat-messages{flex:1;overflow-y:auto;padding:1.5rem;display:flex;flex-direction:column;gap:1rem;min-height:0}
+.chat-input-container{padding:1rem 1.5rem;border-top:1px solid var(--border-light)}
+.chat-input-wrapper{display:flex;gap:.5rem;align-items:flex-end}
+.chat-input{flex:1;background:var(--bg-secondary);border:1px solid var(--border-color);border-radius:8px;padding:.75rem 1rem;color:var(--text-primary);font-size:.9rem;font-family:inherit;resize:none;min-height:44px;max-height:120px}
+.chat-input:focus{outline:none;border-color:var(--accent-primary)}
+.chat-send-btn{background:var(--accent-primary);color:var(--bg-primary);border:none;padding:.75rem 1.25rem;border-radius:8px;font-size:.9rem;font-weight:600;cursor:pointer;transition:all .2s;white-space:nowrap}
+.chat-send-btn:hover:not(:disabled){transform:translateY(-1px);filter:brightness(1.1)}
+.chat-send-btn:disabled{opacity:.5;cursor:not-allowed}
+.message{display:flex;flex-direction:column;gap:.5rem;animation:fadeIn .3s ease}
+.message-header{display:flex;align-items:center;gap:.5rem}
+.message-avatar{width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.85rem;font-weight:600}
+.message-avatar.user{background:var(--accent-secondary);color:var(--bg-primary)}
+.message-avatar.assistant{background:var(--accent-primary);color:var(--bg-primary)}
+.message-author{font-size:.8rem;font-weight:600;color:var(--text-primary)}
+.message-time{font-size:.7rem;color:var(--text-muted)}
+.message-content{background:var(--bg-secondary);padding:.875rem 1rem;border-radius:8px;margin-left:36px;font-size:.875rem;line-height:1.6;color:var(--text-secondary)}
+.message.user .message-content{background:var(--accent-secondary);color:var(--bg-primary)}
+.message.assistant .message-content{border:1px solid var(--border-light)}
+.message-content a{color:var(--accent-primary);text-decoration:none}
+.message-content a:hover{text-decoration:underline}
+.message-citation{background:var(--bg-primary);border-left:3px solid var(--accent-primary);padding:.5rem .75rem;margin-top:.5rem;border-radius:4px;font-size:.75rem}
+.message-citation-title{font-weight:600;color:var(--text-primary);margin-bottom:.25rem}
+.message-citation-text{color:var(--text-muted);font-style:italic}
+.message-loading{display:flex;gap:.3rem;padding:.5rem}
+.message-loading span{width:8px;height:8px;border-radius:50%;background:var(--text-muted);animation:bounce 1.4s infinite}
+.message-loading span:nth-child(2){animation-delay:.2s}
+.message-loading span:nth-child(3){animation-delay:.4s}
+@keyframes bounce{0%,80%,100%{transform:scale(0)}40%{transform:scale(1)}}
+.chat-sidebar-section{margin-bottom:1.5rem}
+.chat-sidebar-title{font-size:.75rem;font-weight:600;color:var(--text-muted);text-transform:uppercase;margin-bottom:.75rem;letter-spacing:.5px}
+.paper-select-list{display:flex;flex-direction:column;gap:.5rem}
+.paper-select-item{display:flex;align-items:flex-start;gap:.5rem;padding:.5rem;border-radius:6px;cursor:pointer;transition:background .2s}
+.paper-select-item:hover{background:var(--bg-hover)}
+.paper-checkbox{margin-top:.2rem;width:16px;height:16px;cursor:pointer}
+.paper-select-label{font-size:.75rem;color:var(--text-secondary);line-height:1.4;cursor:pointer;flex:1}
+.paper-select-item.selected{background:var(--bg-hover)}
+.paper-select-item.selected .paper-select-label{color:var(--text-primary)}
+.topic-filter-list{display:flex;flex-direction:column;gap:.3rem}
+.topic-filter-btn{background:transparent;border:1px solid var(--border-color);padding:.4rem .75rem;border-radius:6px;font-size:.75rem;color:var(--text-secondary);cursor:pointer;text-align:left;transition:all .2s}
+.topic-filter-btn:hover{background:var(--bg-hover);color:var(--text-primary)}
+.topic-filter-btn.active{background:var(--accent-primary);color:var(--bg-primary);border-color:var(--accent-primary)}
+.paper-count-badge{font-size:.65rem;color:var(--text-muted);margin-left:.5rem}
+.conversation-starters{display:flex;flex-direction:column;gap:.5rem;margin-bottom:1rem}
+.starter-btn{background:var(--bg-secondary);border:1px solid var(--border-color);padding:.75rem;border-radius:8px;font-size:.8rem;color:var(--text-secondary);cursor:pointer;text-align:left;transition:all .2s;line-height:1.4}
+.starter-btn:hover{background:var(--bg-hover);color:var(--text-primary);border-color:var(--accent-primary)}
+.chat-controls{display:flex;gap:.5rem;margin-top:1rem}
+.chat-control-btn{background:var(--bg-secondary);border:1px solid var(--border-color);padding:.5rem .75rem;border-radius:6px;font-size:.7rem;color:var(--text-secondary);cursor:pointer;flex:1;text-align:center;transition:all .2s}
+.chat-control-btn:hover{background:var(--bg-hover);color:var(--text-primary)}
+.chat-status{padding:.75rem;background:var(--bg-secondary);border-radius:6px;font-size:.75rem;color:var(--text-muted);margin-top:1rem;text-align:center}
+.chat-status.warning{background:rgba(255,166,87,.15);color:var(--accent-orange);border:1px solid var(--accent-orange)}
+.chat-status.error{background:rgba(255,107,107,.15);color:#ff6b6b;border:1px solid #ff6b6b}
+.chat-status.success{background:rgba(126,231,135,.15);color:var(--accent-tertiary);border:1px solid var(--accent-tertiary)}
+.chat-empty-state{display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%;padding:2rem;text-align:center}
+.chat-empty-icon{font-size:3rem;margin-bottom:1rem}
+.chat-empty-title{font-family:'Source Serif 4',serif;font-size:1.2rem;color:var(--text-primary);margin-bottom:.5rem}
+.chat-empty-text{font-size:.85rem;color:var(--text-muted);line-height:1.6;max-width:400px}
+@media (max-width:1024px){.chat-container{grid-template-columns:1fr;height:auto}.chat-sidebar{max-height:400px}.chat-main{height:600px}}
 </style>
 </head>
 <body>
-<header><div class="header-content"><div class="logo-section"><span class="logo" onclick="showSection('home')">Eugen Dimant</span><span class="logo-subtitle">Research Website</span></div><nav><a class="active" data-section="home" onclick="showSection('home')">Home</a><a data-section="research" onclick="showSection('research')">Research</a><a onclick="openCVModal()" style="cursor:pointer">Vita</a></nav></div></header>
+<!--
+  RESEARCH CHATBOT FEATURE FLAG:
+  - The Research Chat tab is controlled by the CHATBOT_ENABLED flag in <script>
+  - Currently: DISABLED (hidden from navigation)
+  - Private access: Add ?research-chat=true or ?chat=true to URL
+  - To enable for all: Change CHATBOT_ENABLED = false to true in JavaScript
+  - Backend: Requires Vercel deployment (see chatbot-archive/CHATBOT_SETUP.md)
+-->
+<header><div class="header-content"><div class="logo-section"><span class="logo" onclick="showSection('home')">Eugen Dimant</span><span class="logo-subtitle">Research Website</span></div><nav><a class="active" data-section="home" onclick="showSection('home')">Home</a><a data-section="research" onclick="showSection('research')">Research</a><a onclick="openCVModal()" style="cursor:pointer">Vita</a><a data-section="chat" onclick="showSection('chat')">Research Chat</a></nav></div></header>
 <section id="home" class="page-section active">
 <div class="home-container">
 <div class="home-grid">
@@ -229,6 +302,63 @@ nav a{font-size:.8rem}
 <div class="empty-state" id="emptyState" style="display:none"><p>No papers match your criteria</p></div>
 </div>
 </section>
+
+<section id="chat" class="page-section">
+<div class="chat-container">
+<div class="chat-sidebar">
+<div class="chat-sidebar-section">
+<div class="chat-sidebar-title">📚 Select Papers</div>
+<div class="topic-filter-list">
+<button class="topic-filter-btn active" data-topic="all" onclick="filterChatPapers('all')">All Papers <span class="paper-count-badge" id="countAll">0</span></button>
+<button class="topic-filter-btn" data-topic="norms" onclick="filterChatPapers('norms')">Social Norms <span class="paper-count-badge" id="countNorms">0</span></button>
+<button class="topic-filter-btn" data-topic="nudging" onclick="filterChatPapers('nudging')">Behavioral Nudging <span class="paper-count-badge" id="countNudging">0</span></button>
+<button class="topic-filter-btn" data-topic="polarization" onclick="filterChatPapers('polarization')">Polarization <span class="paper-count-badge" id="countPolarization">0</span></button>
+<button class="topic-filter-btn" data-topic="honesty" onclick="filterChatPapers('honesty')">Honesty & Dishonesty <span class="paper-count-badge" id="countHonesty">0</span></button>
+<button class="topic-filter-btn" data-topic="corruption" onclick="filterChatPapers('corruption')">Corruption <span class="paper-count-badge" id="countCorruption">0</span></button>
+<button class="topic-filter-btn" data-topic="terrorism" onclick="filterChatPapers('terrorism')">Migration & Terrorism <span class="paper-count-badge" id="countTerrorism">0</span></button>
+</div>
+</div>
+<div class="chat-sidebar-section">
+<div class="chat-sidebar-title">📄 Available Papers</div>
+<div class="paper-select-list" id="chatPaperList"></div>
+</div>
+<div class="chat-controls">
+<button class="chat-control-btn" onclick="selectAllChatPapers()">Select All</button>
+<button class="chat-control-btn" onclick="clearChatPapers()">Clear</button>
+</div>
+<div class="chat-status" id="chatStatus">
+<span id="chatSelectedCount">0</span> papers selected
+</div>
+</div>
+<div class="chat-main">
+<div class="chat-header">
+<div class="chat-header-title">💬 Research Assistant</div>
+<div class="chat-header-subtitle">Ask questions about my research papers and get accurate, cited answers</div>
+</div>
+<div class="chat-messages" id="chatMessages">
+<div class="chat-empty-state" id="chatEmptyState">
+<div class="chat-empty-icon">🤖</div>
+<div class="chat-empty-title">Start a Conversation</div>
+<div class="chat-empty-text">Select one or more papers from the sidebar, then ask questions about methodology, findings, or comparisons across studies.</div>
+</div>
+<div class="conversation-starters" id="conversationStarters" style="display:none;">
+<div style="font-size:.75rem;color:var(--text-muted);margin-bottom:.5rem;">Try asking:</div>
+<button class="starter-btn" onclick="sendStarterQuestion(this)">What are the main findings of the selected papers?</button>
+<button class="starter-btn" onclick="sendStarterQuestion(this)">How do these papers define and measure dishonesty?</button>
+<button class="starter-btn" onclick="sendStarterQuestion(this)">What experimental methods were used in these studies?</button>
+<button class="starter-btn" onclick="sendStarterQuestion(this)">Compare the policy implications across these papers</button>
+</div>
+</div>
+<div class="chat-input-container">
+<div class="chat-input-wrapper">
+<textarea class="chat-input" id="chatInput" placeholder="Ask a question about the selected papers..." rows="1"></textarea>
+<button class="chat-send-btn" id="chatSendBtn" onclick="sendChatMessage()">Send</button>
+</div>
+</div>
+</div>
+</div>
+</section>
+
 <div class="modal-overlay" id="bibtexModal"><div class="modal-content"><div class="modal-header"><span class="modal-title">BibTeX Citation</span><button class="modal-close" onclick="closeBibtexModal()">✕</button></div><div class="modal-body"><pre class="bibtex-code" id="bibtexContent"></pre></div><div class="modal-footer"><button class="modal-btn primary" onclick="copyBibtex()">Copy to Clipboard</button></div></div></div>
 <div class="modal-overlay" id="cvModal"><div class="modal-content cv-modal"><div class="modal-header"><span class="modal-title">Curriculum Vitae</span><button class="modal-close" onclick="closeCVModal()">✕</button></div><div class="modal-body cv-body"><iframe id="cvFrame" class="cv-frame" src="about:blank"></iframe></div><div class="modal-footer"><a href="https://raw.githubusercontent.com/eugendimant/eugendimant.github.io/main/CV_Eugen_Dimant.pdf" target="_blank" class="modal-btn secondary">Open in New Tab</a><a href="https://raw.githubusercontent.com/eugendimant/eugendimant.github.io/main/CV_Eugen_Dimant.pdf" download class="modal-btn primary">⬇ Download PDF</a></div></div></div>
 <div class="modal-overlay" id="networkModal"><div class="modal-content network-modal"><div class="modal-header"><span class="modal-title">Co-Author Network</span><button class="modal-close" onclick="closeNetworkModal()">✕</button></div><div class="modal-body network-body"><canvas id="networkCanvas" class="network-canvas"></canvas><div class="network-sidebar"><div class="network-sidebar-title">Search</div><div class="network-control-group"><input type="text" class="network-search" id="networkSearch" placeholder="Find co-author..."></div><div class="network-sidebar-title">Controls</div><div class="network-controls"><div class="network-control-group"><div class="network-control-label">Highlight by Topic</div><select class="network-select" id="networkTopicFilter"><option value="all">All Topics</option><option value="norms">Social Norms</option><option value="nudging">Nudging</option><option value="polarization">Polarization</option><option value="honesty">Honesty</option><option value="corruption">Corruption</option><option value="terrorism">Migration</option></select></div><div class="network-control-group"><div class="network-control-label">Size Nodes By</div><select class="network-select" id="networkSizeBy"><option value="papers">Number of Papers</option><option value="citations">Total Citations</option><option value="equal">Equal Size</option></select></div><div class="network-control-group"><div class="network-control-label">Min. Papers Filter</div><select class="network-select" id="networkMinPapers"><option value="1">All (1+)</option><option value="2">2+ papers</option><option value="3">3+ papers</option><option value="5">5+ papers</option></select></div><div class="network-control-group"><div class="network-control-label">Layout</div><select class="network-select" id="networkLayout"><option value="radial">Radial</option><option value="force">Force-Directed</option></select></div><div class="network-control-group zoom-controls"><button class="zoom-btn" onclick="networkZoom(1.2)">＋</button><button class="zoom-btn" onclick="networkZoom(0.8)">－</button><button class="zoom-btn" onclick="networkReset()">⟲</button></div></div><div class="network-sidebar-title">Statistics</div><div class="network-stats" id="networkStats"></div><div class="network-legend"><div class="network-sidebar-title">Legend</div><div class="legend-item"><div class="legend-dot center"></div><span>Eugen Dimant</span></div><div class="legend-item"><div class="legend-dot coauthor"></div><span>1-2 papers</span></div><div class="legend-item"><div class="legend-dot frequent"></div><span>3-4 papers</span></div><div class="legend-item"><div class="legend-dot super"></div><span>5+ papers</span></div><div class="legend-item"><div class="legend-line"></div><span>Collaboration</span></div></div><div class="network-instructions"><small>Drag nodes • Click to filter • Scroll to zoom • Double-click to center</small></div></div><div class="network-tooltip" id="networkTooltip"><div class="network-tooltip-name"></div><div class="network-tooltip-papers"></div><div class="network-tooltip-topics"></div><div class="network-tooltip-titles"></div></div></div></div></div>
@@ -242,6 +372,27 @@ nav a{font-size:.8rem}
 <div class="explorer-results" id="explorerResults"></div>
 </div></div></div>
 <script>
+// ========== FEATURE FLAGS ==========
+// Set to true to enable Research Chat for all visitors
+const CHATBOT_ENABLED = false;
+
+// Check for URL parameter to access chatbot privately
+// Usage: ?research-chat=true or ?chat=true
+const urlParams = new URLSearchParams(window.location.search);
+const chatbotPrivateAccess = urlParams.get('research-chat') === 'true' || urlParams.get('chat') === 'true';
+const SHOW_CHATBOT = CHATBOT_ENABLED || chatbotPrivateAccess;
+
+// If chatbot is not globally enabled, hide the nav link on page load
+if (!CHATBOT_ENABLED) {
+    document.addEventListener('DOMContentLoaded', function() {
+        const chatLink = document.querySelector('nav a[data-section="chat"]');
+        if (chatLink && !chatbotPrivateAccess) {
+            chatLink.style.display = 'none';
+        }
+    });
+}
+
+// ========== DATA ==========
 const papers=[
 {id:1,year:2025,status:"review",title:"Promoting Responsible Disposal of Opioids: A Randomized Evaluation",authors:"with M. Toma, R. Burnett, P. Debroy, J. Liu, E. Safran, U. Saya, B. Schultz",journal:"Revise & Resubmit: Health Economics",journalShort:"Health Economics",topics:["norms","nudging"],method:"experimental",journalUrl:"https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4502634",pdfUrl:"https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4502634",pitch:"We conduct a large-scale RCT to test behavioral interventions promoting safe disposal of unused prescription opioids. Using pharmacy-based interventions including social norm messaging and reminders, we measure disposal rates and retention of unused medications. Our findings inform scalable public health strategies to reduce opioid diversion and accidental overdoses through low-cost behavioral nudges.",bibtex:"@unpublished{toma2024opioid,\n  title={Promoting Responsible Disposal of Opioids},\n  author={Toma, Mattie and Burnett, Russell and Debroy, Pompa and Dimant, Eugen and Liu, Jean and Safran, Elana and Saya, Uzaib and Schultz, Bill},\n  year={2024}\n}"},
 {id:2,year:2025,status:"review",title:"Aid and Exodus: U.S. Military Assistance and Refugee Flows to the United States",authors:"with T. Krieger, D. Meierrieks & L. Renner",journal:"Under Review",journalShort:"Under Review",topics:["terrorism"],method:"observational",journalUrl:"https://papers.ssrn.com/sol3/papers.cfm?abstract_id=5414817",pdfUrl:"https://papers.ssrn.com/sol3/papers.cfm?abstract_id=5414817",pitch:"We examine the relationship between U.S. military assistance to foreign countries and subsequent refugee flows to the United States using panel data from 1975-2020. Our identification strategy exploits variation in aid allocation to isolate causal effects from confounding geopolitical factors. The results reveal that military aid can inadvertently increase displacement, suggesting policymakers should consider migration consequences when designing foreign assistance programs.",bibtex:"@unpublished{dimant2025aid,\n  title={Aid and Exodus: U.S. Military Assistance and Refugee Flows},\n  author={Dimant, Eugen and Krieger, Tim and Meierrieks, Daniel and Renner, Laura},\n  year={2025}\n}"},
@@ -379,7 +530,127 @@ function findRelatedPapers(paper,max=5){
     return related.sort((a,b)=>b.score-a.score).slice(0,max);
 }
 
-function init(){renderNews();renderUpcomingTalks();updateCitationDashboard();allCoauthors=extractCoauthors();buildFilters();renderPapers();setupEventListeners();}
+// ========== RESEARCH CHAT FUNCTIONS ==========
+let chatMessages=[];
+let selectedChatPapers=[];
+let chatActiveTopic='all';
+let chatConversationId=null;
+
+function initChat(){
+    const counts={all:0,norms:0,nudging:0,polarization:0,honesty:0,corruption:0,terrorism:0};
+    papers.forEach(p=>{
+        if(p.pdfUrl){
+            counts.all++;
+            p.topics.forEach(t=>{if(counts[t]!==undefined)counts[t]++;});
+        }
+    });
+    document.getElementById('countAll').textContent=counts.all;
+    document.getElementById('countNorms').textContent=counts.norms;
+    document.getElementById('countNudging').textContent=counts.nudging;
+    document.getElementById('countPolarization').textContent=counts.polarization;
+    document.getElementById('countHonesty').textContent=counts.honesty;
+    document.getElementById('countCorruption').textContent=counts.corruption;
+    document.getElementById('countTerrorism').textContent=counts.terrorism;
+    filterChatPapers('all');
+    const input=document.getElementById('chatInput');
+    input.addEventListener('input',function(){this.style.height='auto';this.style.height=(this.scrollHeight)+'px';});
+    input.addEventListener('keydown',function(e){if(e.key==='Enter'&&!e.shiftKey){e.preventDefault();sendChatMessage();}});
+}
+
+function filterChatPapers(topic){
+    chatActiveTopic=topic;
+    document.querySelectorAll('.topic-filter-btn').forEach(btn=>btn.classList.toggle('active',btn.dataset.topic===topic));
+    const filtered=papers.filter(p=>{if(!p.pdfUrl)return false;if(topic==='all')return true;return p.topics.includes(topic);});
+    const listEl=document.getElementById('chatPaperList');
+    listEl.innerHTML=filtered.map(p=>`<div class="paper-select-item ${selectedChatPapers.includes(p.id)?'selected':''}" onclick="toggleChatPaper(${p.id})"><input type="checkbox" class="paper-checkbox" ${selectedChatPapers.includes(p.id)?'checked':''} onclick="event.stopPropagation();toggleChatPaper(${p.id})"><label class="paper-select-label">${p.title} (${p.year})</label></div>`).join('');
+    updateChatStatus();
+}
+
+function toggleChatPaper(id){
+    const idx=selectedChatPapers.indexOf(id);
+    if(idx>-1){selectedChatPapers.splice(idx,1);}else{selectedChatPapers.push(id);}
+    filterChatPapers(chatActiveTopic);
+    updateConversationStarters();
+}
+
+function selectAllChatPapers(){
+    const filtered=papers.filter(p=>{if(!p.pdfUrl)return false;if(chatActiveTopic==='all')return true;return p.topics.includes(chatActiveTopic);});
+    selectedChatPapers=filtered.map(p=>p.id);
+    filterChatPapers(chatActiveTopic);
+    updateConversationStarters();
+}
+
+function clearChatPapers(){selectedChatPapers=[];filterChatPapers(chatActiveTopic);updateConversationStarters();}
+
+function updateChatStatus(){
+    const count=selectedChatPapers.length;
+    const status=document.getElementById('chatStatus');
+    const countEl=document.getElementById('chatSelectedCount');
+    countEl.textContent=count;
+    if(count===0){status.className='chat-status warning';status.innerHTML='⚠️ Please select at least one paper to start chatting';}else{status.className='chat-status success';status.innerHTML=`✓ <span id="chatSelectedCount">${count}</span> paper${count===1?'':'s'} selected`;}
+}
+
+function updateConversationStarters(){
+    const empty=document.getElementById('chatEmptyState');
+    const starters=document.getElementById('conversationStarters');
+    if(selectedChatPapers.length>0&&chatMessages.length===0){empty.style.display='none';starters.style.display='flex';}else if(chatMessages.length===0){empty.style.display='flex';starters.style.display='none';}else{empty.style.display='none';starters.style.display='none';}
+}
+
+function sendStarterQuestion(btn){document.getElementById('chatInput').value=btn.textContent;sendChatMessage();}
+
+async function sendChatMessage(){
+    const input=document.getElementById('chatInput');
+    const message=input.value.trim();
+    if(!message)return;
+    if(selectedChatPapers.length===0){showChatError('Please select at least one paper before sending a message.');return;}
+    input.value='';
+    input.style.height='auto';
+    addChatMessage('user',message);
+    const sendBtn=document.getElementById('chatSendBtn');
+    sendBtn.disabled=true;
+    sendBtn.textContent='Thinking...';
+    const loadingId=addChatMessage('assistant','',true);
+    try{
+        const selectedPapers=papers.filter(p=>selectedChatPapers.includes(p.id));
+        const response=await fetch('/api/chat',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({message:message,papers:selectedPapers.map(p=>({id:p.id,title:p.title,year:p.year,authors:p.authors,pdfUrl:p.pdfUrl,abstract:p.pitch||'',bibtex:p.bibtex||''})),conversationId:chatConversationId})});
+        if(!response.ok)throw new Error(`API error: ${response.status} ${response.statusText}`);
+        const data=await response.json();
+        removeChatMessage(loadingId);
+        addChatMessage('assistant',data.response,false,data.citations);
+        if(data.conversationId)chatConversationId=data.conversationId;
+    }catch(error){
+        console.error('Chat error:',error);
+        removeChatMessage(loadingId);
+        if(error.message.includes('Failed to fetch')||error.message.includes('404')){showChatError('⚠️ Backend not configured. Please see setup instructions in CHATBOT_SETUP.md');}else{showChatError(`Error: ${error.message}`);}
+    }finally{sendBtn.disabled=false;sendBtn.textContent='Send';}
+}
+
+function addChatMessage(role,content,isLoading=false,citations=null){
+    const messagesEl=document.getElementById('chatMessages');
+    const messageId='msg-'+Date.now();
+    const time=new Date().toLocaleTimeString('en-US',{hour:'numeric',minute:'2-digit'});
+    const avatar=role==='user'?'You':'AI';
+    const name=role==='user'?'You':'Research Assistant';
+    let citationHTML='';
+    if(citations&&citations.length>0){citationHTML=citations.map(c=>`<div class="message-citation"><div class="message-citation-title">${c.paper}</div><div class="message-citation-text">"${c.quote}"</div></div>`).join('');}
+    const messageHTML=`<div class="message ${role}" id="${messageId}"><div class="message-header"><div class="message-avatar ${role}">${avatar[0]}</div><span class="message-author">${name}</span><span class="message-time">${time}</span></div><div class="message-content">${isLoading?'<div class="message-loading"><span></span><span></span><span></span></div>':content}</div>${citationHTML}</div>`;
+    messagesEl.insertAdjacentHTML('beforeend',messageHTML);
+    messagesEl.scrollTop=messagesEl.scrollHeight;
+    chatMessages.push({id:messageId,role,content,time});
+    updateConversationStarters();
+    return messageId;
+}
+
+function removeChatMessage(messageId){const el=document.getElementById(messageId);if(el)el.remove();chatMessages=chatMessages.filter(m=>m.id!==messageId);}
+
+function showChatError(message){
+    const messagesEl=document.getElementById('chatMessages');
+    const errorHTML=`<div class="message assistant"><div class="message-header"><div class="message-avatar assistant">⚠</div><span class="message-author">System</span></div><div class="message-content" style="background:rgba(255,107,107,.15);color:#ff6b6b;border:1px solid #ff6b6b;">${message}</div></div>`;
+    messagesEl.insertAdjacentHTML('beforeend',errorHTML);
+    messagesEl.scrollTop=messagesEl.scrollHeight;
+}
+
+function init(){renderNews();renderUpcomingTalks();updateCitationDashboard();allCoauthors=extractCoauthors();buildFilters();renderPapers();setupEventListeners();initChat();}
 
 function renderNews(){
     const newsItems=[
@@ -414,7 +685,7 @@ function renderUpcomingTalks(){
     container.innerHTML=future.map(t=>'<div class="talk-item"><span class="talk-date">'+t.date+'</span><span>'+t.venue+'</span></div>').join('');
 }
 
-function showSection(id){if(event)event.preventDefault();document.querySelectorAll('.page-section').forEach(s=>s.classList.remove('active'));document.querySelectorAll('nav a').forEach(a=>a.classList.remove('active'));document.getElementById(id).classList.add('active');document.querySelector('nav a[data-section="'+id+'"]')?.classList.add('active');if(id==='research'){buildFilters();renderPapers();}}
+function showSection(id){if(event)event.preventDefault();if(id==='chat'&&!SHOW_CHATBOT){console.log('Chatbot access denied. Use ?research-chat=true to access.');return;}document.querySelectorAll('.page-section').forEach(s=>s.classList.remove('active'));document.querySelectorAll('nav a').forEach(a=>a.classList.remove('active'));document.getElementById(id).classList.add('active');document.querySelector('nav a[data-section="'+id+'"]')?.classList.add('active');if(id==='research'){buildFilters();renderPapers();}}
 
 function openCVModal(){document.getElementById('cvFrame').src='https://docs.google.com/viewer?url=https://raw.githubusercontent.com/eugendimant/eugendimant.github.io/main/CV_Eugen_Dimant.pdf&embedded=true';document.getElementById('cvModal').classList.add('active');}
 function closeCVModal(){document.getElementById('cvModal').classList.remove('active');document.getElementById('cvFrame').src='about:blank';}
