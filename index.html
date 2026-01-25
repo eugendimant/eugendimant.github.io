@@ -524,8 +524,20 @@ function renderPapers(){
     // Helper function to sort by citations then alphabetically
     const sortByCitationsThenAlpha=(a,b)=>{
         if((b.citations||0)!==(a.citations||0))return(b.citations||0)-(a.citations||0);
-        const aAuthor=(a.authors||'').split(',')[0].split(';')[0].trim();
-        const bAuthor=(b.authors||'').split(',')[0].split(';')[0].trim();
+        // Extract first author from new format: "with F. Last, ..." or "Solo-authored"
+        const getFirstAuthor=(authors)=>{
+            if(!authors)return'';
+            if(authors==='Solo-authored')return'Solo-authored';
+            if(authors.startsWith('with ')){
+                const firstAuthor=authors.substring(5).split(',')[0].trim();
+                // Extract last name (after initial and space)
+                const parts=firstAuthor.split(' ');
+                return parts.length>1?parts[1]:firstAuthor;
+            }
+            return authors;
+        };
+        const aAuthor=getFirstAuthor(a.authors);
+        const bAuthor=getFirstAuthor(b.authors);
         return aAuthor.localeCompare(bAuthor);
     };
 
@@ -1164,7 +1176,18 @@ function runExplorerSearch(){
             '<span class="explorer-result-title" onclick="goToPaperFromExplorer('+r.paper.id+')">'+r.paper.title+'</span>'+
             '<span class="explorer-result-score">'+pct+'% match</span>'+
             '</div>'+
-            '<div class="explorer-result-meta">'+r.paper.authors.split(';')[0]+(r.paper.authors.includes(';')?', et al.':'')+' • '+r.paper.journalShort+' ('+r.paper.year+')'+(r.paper.citations?' • '+r.paper.citations+' citations':'')+'</div>'+
+            '<div class="explorer-result-meta">'+(()=>{
+                const auth=r.paper.authors;
+                if(auth==='Solo-authored')return'Solo-authored';
+                if(auth.startsWith('with ')){
+                    const hasMultiple=auth.includes(',')||auth.includes('&')||auth.includes('et al');
+                    if(hasMultiple){
+                        const firstAuthor=auth.substring(5).split(',')[0].split('&')[0].trim();
+                        return'with '+firstAuthor+', et al.';
+                    }
+                }
+                return auth;
+            })()+' • '+r.paper.journalShort+' ('+r.paper.year+')'+(r.paper.citations?' • '+r.paper.citations+' citations':'')+'</div>'+
             '<div class="explorer-result-match">'+matchTags+'</div>'+
             '</div>';
     });
