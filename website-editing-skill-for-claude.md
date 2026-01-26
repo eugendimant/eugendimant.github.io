@@ -44,7 +44,10 @@ grep -q "function renderNews()" index.html && echo "✓ Functions" || echo "✗ 
 6. **Commit** with clear message
 7. **Push** to feature branch (format: `claude/feature-name-XXXXX`)
 8. **Create PR** for user review
-9. **After merge** → GitHub Pages auto-deploys (3-10 min)
+9. **ALWAYS provide direct PR link** in response:
+   - Format: `https://github.com/eugendimant/eugendimant.github.io/pull/new/{branch-name}`
+   - Example: `https://github.com/eugendimant/eugendimant.github.io/pull/new/claude/update-publication-names-ds1i4`
+10. **After merge** → GitHub Pages auto-deploys (3-10 min)
 
 ---
 

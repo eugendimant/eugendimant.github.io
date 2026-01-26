@@ -1,0 +1,24 @@
+# Chatbot archive (for future deployment)
+chatbot-archive/
+
+# Backups
+backups/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Node modules (if ever needed)
+node_modules/
+
+# Environment variables
+.env
+.env.local
+.env*.local
