@@ -23,7 +23,7 @@
 **Status:** Published
 **Links:** [PDF](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=5193882) | [Journal](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=5193882)
 
-## 3. Promoting Responsible Disposal of Opioids: A Randomized Evaluation
+## 3. Promoting Safe Opioid Disposal: Experimental Evidence on Behavioral Messaging with Financial Incentives
 
 **Authors:** with M. Toma, R. Burnett, P. Debroy, J. Liu, E. Safran, U. Saya, B. Schultz
 **Journal:** Health Economics
@@ -60,7 +60,7 @@
 **Status:** Review
 **Links:** [PDF](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4649792) | [Journal](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4649792)
 
-## 4. Identity and Economic Incentives (11 citations)
+## 4. The Price of Identity: Overoptimism and Congruence Concerns (11 citations)
 
 **Authors:** with K. Donkor, L. Götte, M. Müller & M. Kurschilgen
 **Journal:** Under Review
