@@ -22,7 +22,7 @@ nav{display:flex;gap:2rem}nav a{color:var(--text-secondary);text-decoration:none
 .upcoming-talks{margin-top:1rem;padding-top:1rem;border-top:1px solid var(--border-light)}.upcoming-talks-title{font-size:.7rem;font-weight:600;color:var(--text-muted);text-transform:uppercase;margin-bottom:.5rem}
 .talk-item{display:flex;gap:.5rem;font-size:.75rem;color:var(--text-secondary);margin-bottom:.35rem}.talk-date{color:var(--accent-primary);font-weight:500;min-width:65px}
 .card-title{font-family:'Source Serif 4',serif;font-size:1.1rem;font-weight:600;margin-bottom:1.25rem}
-.news-item{margin-bottom:1.25rem;padding-bottom:1.25rem;border-bottom:1px solid var(--border-light)}.news-item:last-child,.news-item.last{margin-bottom:0;padding-bottom:0;border-bottom:none}
+.news-item{margin-bottom:.75rem;padding-bottom:.75rem;border-bottom:1px solid var(--border-light)}.news-item:last-child,.news-item.last{margin-bottom:0;padding-bottom:0;border-bottom:none}
 .news-meta{display:flex;gap:.5rem;margin-bottom:.5rem}.news-date{font-size:.75rem;color:var(--text-muted)}.news-type{font-size:.65rem;font-weight:600;text-transform:uppercase;padding:.15rem .5rem;border-radius:4px}
 .news-type.award{background:rgba(255,166,87,.15);color:var(--accent-orange)}.news-type.working{background:rgba(201,160,220,.15);color:var(--accent-primary)}.news-type.publication{background:rgba(126,231,135,.15);color:var(--accent-tertiary)}.news-type.announcement{background:rgba(121,192,255,.15);color:var(--accent-secondary)}
 .news-text{font-size:.85rem;color:var(--text-secondary)}.news-text a{color:var(--accent-primary);text-decoration:none}.news-text a:hover{text-decoration:underline}
@@ -274,11 +274,13 @@ nav a{font-size:.8rem}
 </div></div></div>
 <div class="media-card"><h2 class="about-title">Selected Media Features</h2>
 <div class="about-text" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1.5rem">
+<div class="selected-item"><p class="selected-title">When US Military Aid Has Unintended Consequences (<a href="https://voxdev.org/topic/institutions-political-economy/anti-american-terrorism-when-us-military-aid-has-unintended" target="_blank">VoxDev</a>, 2025)</p></div>
 <div class="selected-item"><p class="selected-title">NYT Op-Ed discussing <a href="https://doi.org/10.1016/j.jesp.2022.104421" target="_blank">conspiracy theory research</a> with B. Ren & M. Schweitzer (<a href="https://www.nytimes.com/2023/06/28/opinion/donald-trump-presidency-lies.html" target="_blank">New York Times</a>, 2023)</p></div>
 <div class="selected-item"><p class="selected-title">Talk: A Norm Based Account of Deviant Behavior (<a href="https://www.youtube.com/watch?v=w25NNNrj3ks" target="_blank">Norwegian Tax Administration</a>, 2022)</p></div>
 <div class="selected-item"><p class="selected-title">NYT Op-Ed discussing <a href="https://doi.org/10.1016/j.jesp.2022.104421" target="_blank">conspiracy theory research</a> with B. Ren & M. Schweitzer (<a href="https://www.nytimes.com/2022/06/22/opinion/trump-conspiracy-theories.html" target="_blank">New York Times</a>, 2022)</p></div>
 <div class="selected-item"><p class="selected-title">Putting Collective Momentum Into Behavior Change (<a href="https://www.psychologytoday.com/us/blog/norms-and-behavior-change/202208/putting-collective-momentum-behavior-change" target="_blank">Psychology Today</a>, 2022)</p></div>
 <div class="selected-item"><p class="selected-title">Why People Are Not Budging Despite Mask-Wearing Nudging (<a href="https://www.psychologytoday.com/us/blog/norms-and-behavior-change/202110/why-people-are-not-budging-despite-mask-wearing-nudging" target="_blank">Psychology Today</a>, 2021)</p></div>
+<div class="selected-item"><p class="selected-title">Why People Share Conspiracy Theories Even When They Know They Are Untrue (<a href="https://www.psychologytoday.com/us/blog/norms-and-behavior-change/202109/why-people-share-conspiracy-theories-even-when-they-know-they" target="_blank">Psychology Today</a>, 2021)</p></div>
 </div></div>
 </div>
 </section>
@@ -663,6 +665,7 @@ function init(){renderNews();renderUpcomingTalks();updateCitationDashboard();all
 
 function renderNews(){
     const newsItems=[
+        {date:"Feb 2026",year:2026,month:2,type:"announcement",text:'Working on a new <a href="https://behavioral-experiment-simulation.streamlit.app/" target="_blank">Behavioral Experiment Simulation Tool</a> to help researchers design and simulate behavioral experiments. Feedback appreciated!'},
         {date:"Jan 2026",year:2026,month:1,type:"publication",text:'Promoting Safe Opioid Disposal in <a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4502634" target="_blank">Health Economics</a>.'},
         {date:"Sep 2025",year:2025,month:9,type:"award",text:'Deeply honored to be included in <a href="https://www.capital.de/karriere/capital-ranking--das-sind-deutschlands-top-40-unter-40-fuer-2025-36192498.html" target="_blank">Capital Magazine\'s</a> German "Top 40 under 40" list. <a href="https://www.linkedin.com/posts/eugendimant_top40under40-activity-7243574589953654785-YQZV" target="_blank">Read on →</a>'},
         {date:"Sep 2025",year:2025,month:9,type:"working",text:'<a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=5414817" target="_blank">Aid and Exodus</a>: U.S. Military Assistance and Refugee Flows to the U.S.'},
