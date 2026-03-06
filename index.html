@@ -506,7 +506,7 @@ function extractCoauthors(){
     });
 }
 
-function findRelatedPapers(paper,max=5){
+function findRelatedPapers(paper,max=7){
     const coauthors=new Set();
     // Extract coauthors from bibtex
     if(paper.bibtex){
