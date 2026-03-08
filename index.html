@@ -22,6 +22,7 @@ nav{display:flex;gap:2rem}nav a{color:var(--text-secondary);text-decoration:none
 .profile-tags{margin-bottom:.75rem}.profile-tags-label{font-size:.7rem;font-weight:600;color:var(--text-muted);background:var(--bg-hover);padding:.2rem .5rem;border-radius:4px;margin-right:.5rem}.profile-tags-list{font-size:.8rem;color:var(--text-secondary)}
 .upcoming-talks{margin-top:1rem;padding-top:1rem;border-top:1px solid var(--border-light)}.upcoming-talks-title{font-size:.7rem;font-weight:600;color:var(--text-muted);text-transform:uppercase;margin-bottom:.5rem}
 .talk-item{display:flex;gap:.5rem;font-size:.75rem;color:var(--text-secondary);margin-bottom:.35rem}.talk-date{color:var(--accent-primary);font-weight:500;min-width:65px}
+.previous-talks{margin-top:.75rem}.previous-talks-header{display:flex;justify-content:space-between;align-items:center;cursor:pointer;padding:.5rem 0;user-select:none}.previous-talks-header:hover .previous-talks-title{color:var(--accent-primary)}.previous-talks-title{font-size:.7rem;font-weight:600;color:var(--text-muted);text-transform:uppercase}.previous-talks-toggle{font-size:.6rem;color:var(--text-muted);transition:transform .2s}.previous-talks-toggle.open{transform:rotate(180deg)}.previous-talks-content{padding-top:.5rem}
 .card-title{font-family:'Source Serif 4',serif;font-size:1.1rem;font-weight:600;margin-bottom:1.25rem}
 .news-item{margin-bottom:.75rem;padding-bottom:.75rem;border-bottom:1px solid var(--border-light)}.news-item:last-child,.news-item.last{margin-bottom:0;padding-bottom:0;border-bottom:none}
 .news-meta{display:flex;gap:.5rem;margin-bottom:.5rem}.news-date{font-size:.75rem;color:var(--text-muted)}.news-type{font-size:.65rem;font-weight:600;text-transform:uppercase;padding:.15rem .5rem;border-radius:4px}
@@ -256,6 +257,13 @@ nav a{font-size:.8rem}
 <div class="profile-tags"><span class="profile-tags-label">Focus</span><span class="profile-tags-list">behavior change, migration, norms, polarization</span></div>
 <div class="profile-tags"><span class="profile-tags-label">Methods</span><span class="profile-tags-list">lab & field experiments, observational data</span></div>
 <div class="upcoming-talks" id="upcomingTalks"><div class="upcoming-talks-title">Upcoming Talks</div><div id="talksContainer"></div></div>
+<div class="previous-talks" id="previousTalks" style="display:none;">
+<div class="previous-talks-header" onclick="togglePreviousTalks()">
+<span class="previous-talks-title" id="previousTalksTitle">Previous Talks</span>
+<span class="previous-talks-toggle" id="previousTalksToggle">▼</span>
+</div>
+<div class="previous-talks-content" id="previousTalksContainer" style="display:none;"></div>
+</div>
 </div>
 <div class="news-card"><h2 class="card-title">Research News</h2><div id="newsContainer"></div></div>
 <div class="selected-card"><h2 class="card-title">Selected Publications</h2>
@@ -697,11 +705,47 @@ function updateCitationDashboard(){
 
 function renderUpcomingTalks(){
     const talks=[{date:"Jan 2026",venue:"ASSA, Philadelphia",expireYear:2026,expireMonth:1},{date:"Mar 2026",venue:"Keynote, AI & Big Data Conference, Bucharest",expireYear:2026,expireMonth:3},{date:"Apr 2026",venue:"Intl. Behavioral Public Policy Workshop, NYU",expireYear:2026,expireMonth:4},{date:"Apr 2026",venue:"University of Michigan",expireYear:2026,expireMonth:4},{date:"May 2026",venue:"Keynote, Young Economists' Meeting (YEM), Brno",expireYear:2026,expireMonth:5},{date:"Jun 2026",venue:"University of Amsterdam",expireYear:2026,expireMonth:6},{date:"Jun 2026",venue:"University of Milan Bicocca",expireYear:2026,expireMonth:6},{date:"Jun 2026",venue:"University of Augsburg",expireYear:2026,expireMonth:6},{date:"Jul 2026",venue:"University of Freiburg",expireYear:2026,expireMonth:7}];
-    const now=new Date();const future=talks.filter(t=>t.expireYear>now.getFullYear()||(t.expireYear===now.getFullYear()&&t.expireMonth>now.getMonth()));
-    const section=document.getElementById('upcomingTalks');const container=document.getElementById('talksContainer');
-    if(future.length===0){section.style.display='none';return;}
-    section.style.display='block';
-    container.innerHTML=future.map(t=>'<div class="talk-item"><span class="talk-date">'+t.date+'</span><span>'+t.venue+'</span></div>').join('');
+    const now=new Date();
+    const currentYear=now.getFullYear();
+    const currentMonth=now.getMonth();
+
+    // Filter upcoming talks
+    const future=talks.filter(t=>t.expireYear>currentYear||(t.expireYear===currentYear&&t.expireMonth>currentMonth));
+
+    // Filter previous talks from current year only
+    const previous=talks.filter(t=>t.expireYear===currentYear&&t.expireMonth<=currentMonth);
+
+    // Render upcoming talks
+    const section=document.getElementById('upcomingTalks');
+    const container=document.getElementById('talksContainer');
+    if(future.length===0){section.style.display='none';}
+    else{
+        section.style.display='block';
+        container.innerHTML=future.map(t=>'<div class="talk-item"><span class="talk-date">'+t.date+'</span><span>'+t.venue+'</span></div>').join('');
+    }
+
+    // Render previous talks
+    const prevSection=document.getElementById('previousTalks');
+    const prevContainer=document.getElementById('previousTalksContainer');
+    const prevTitle=document.getElementById('previousTalksTitle');
+    if(previous.length===0){prevSection.style.display='none';}
+    else{
+        prevSection.style.display='block';
+        prevTitle.textContent='Previous Talks ('+currentYear+')';
+        prevContainer.innerHTML=previous.map(t=>'<div class="talk-item"><span class="talk-date">'+t.date+'</span><span>'+t.venue+'</span></div>').join('');
+    }
+}
+
+function togglePreviousTalks(){
+    const container=document.getElementById('previousTalksContainer');
+    const toggle=document.getElementById('previousTalksToggle');
+    if(container.style.display==='none'){
+        container.style.display='block';
+        toggle.classList.add('open');
+    }else{
+        container.style.display='none';
+        toggle.classList.remove('open');
+    }
 }
 
 function showSection(id){if(event)event.preventDefault();if(id==='chat'&&!SHOW_CHATBOT){console.log('Chatbot access denied. Use ?research-chat=true to access.');return;}document.querySelectorAll('.page-section').forEach(s=>s.classList.remove('active'));document.querySelectorAll('nav a').forEach(a=>a.classList.remove('active'));document.getElementById(id).classList.add('active');document.querySelector('nav a[data-section="'+id+'"]')?.classList.add('active');if(id==='research'){buildFilters();renderPapers();}}
