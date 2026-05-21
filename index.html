@@ -265,7 +265,7 @@ nav a{font-size:.8rem}
 <div class="previous-talks-content" id="previousTalksContainer" style="display:none;"></div>
 </div>
 </div>
-<div class="news-card"><h2 class="card-title">Research News</h2><div id="newsContainer"></div></div>
+<div class="news-card"><h2 class="card-title">Research News</h2><div id="newsContainer"></div><div class="previous-talks" id="previousNews" style="display:none;"><div class="previous-talks-header" onclick="togglePreviousNews()" style="cursor:pointer;"><span class="previous-talks-title" id="previousNewsTitle">Previous Research News</span><span class="previous-talks-toggle" id="previousNewsToggle">▼</span></div><div class="previous-talks-content" id="previousNewsContainer" style="display:none;"></div></div></div>
 <div class="selected-card"><h2 class="card-title">Selected Publications</h2>
 <div class="selected-item"><p class="selected-title">Nudging Teachers: A Megastudy (<a href="https://doi.org/10.1073/pnas.2418616122" target="_blank">PNAS</a>, 2025)</p></div>
 <div class="selected-item"><p class="selected-title">Hate Trumps Love: Political Polarization (<a href="https://doi.org/10.1287/mnsc.2023.4701" target="_blank">Management Science</a>, 2024)</p></div>
@@ -686,7 +686,7 @@ function init(){renderNews();renderUpcomingTalks();updateCitationDashboard();all
 
 function renderNews(){
     const newsItems=[
-        {date:"Apr 2026",year:2026,month:4,type:"announcement",text:'Today I said goodbye to Lanie, my rescue pup who made it to 18 years old (fun fact: the first of 3 I named after Seinfeld characters). She brought joy and love to every day.<br><br><img src="/images/Lanie.PNG" onclick="openImageModal(\'/images/Lanie.PNG\')" style="max-width:120px;border-radius:8px;cursor:pointer;transition:transform 0.2s;box-shadow:0 2px 8px rgba(0,0,0,0.2);display:inline-block;" onmouseover="this.style.transform=\'scale(1.05)\'" onmouseout="this.style.transform=\'scale(1)\'" alt="Lanie"><br><br><em>Much love, sweet girl.</em>'},
+        {date:"Apr 2026",year:2026,month:4,type:"announcement",text:'Today I said goodbye to Lanie, my rescue pup who made it to 18 years old (fun fact: the first of 3 I named after Seinfeld characters). She brought joy to every day.<br><br><img src="/images/Lanie.PNG" onclick="openImageModal(\'/images/Lanie.PNG\')" style="max-width:120px;border-radius:8px;cursor:pointer;transition:transform 0.2s;box-shadow:0 2px 8px rgba(0,0,0,0.2);display:inline-block;" onmouseover="this.style.transform=\'scale(1.05)\'" onmouseout="this.style.transform=\'scale(1)\'" alt="Lanie"><br><br><em>Much love, sweet girl.</em>'},
         {date:"Apr 2026",year:2026,month:4,type:"publication",text:'<span style="color:var(--text-primary);font-weight:500">Racial Identity, Reactions to Inequality, and Fairness Concepts among Americans</span> in <a href="https://doi.org/10.1017/XPS.2026.10028" target="_blank">Journal of Experimental Political Science</a>.'},
         {date:"Apr 2026",year:2026,month:4,type:"working",text:'New preprint: <a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=6622458" target="_blank" style="color:var(--text-primary);font-weight:500">On the Limits of Moral Surrender to AI</a>. Shows AI moral influence is directional and confirmatory rather than overriding.'},
         {date:"Mar 2026",year:2026,month:3,type:"publication",text:'<span style="color:var(--text-primary);font-weight:500">Promoting Safe Opioid Disposal: Experimental Evidence on Behavioral Messaging with Financial Incentives</span> in <a href="http://doi.org/10.1002/hec.70085" target="_blank">Health Economics</a>.'},
@@ -700,10 +700,42 @@ function renderNews(){
         {date:"Mar 2025",year:2025,month:3,type:"publication",text:'<span style="color:var(--text-primary);font-weight:500">Nudging Teachers Megastudy</span> in <a href="https://doi.org/10.1073/pnas.2418616122" target="_blank">PNAS</a>.'}
     ];
     const now=new Date();
+    const sixMonthsAgo=new Date(now.getFullYear(),now.getMonth()-6,1);
     const twelveMonthsAgo=new Date(now.getFullYear()-1,now.getMonth(),1);
-    const activeNews=newsItems.filter(n=>new Date(n.year,n.month-1,1)>=twelveMonthsAgo);
-    if(activeNews.length===0){document.getElementById('newsContainer').innerHTML='<p class="news-text" style="color:var(--text-muted);font-style:italic;">No recent news. Check back soon!</p>';return;}
-    document.getElementById('newsContainer').innerHTML=activeNews.map((n,i)=>'<div class="news-item'+(i===activeNews.length-1?' last':'')+'"><div class="news-meta"><span class="news-date">'+n.date+'</span><span class="news-type '+n.type+'">'+n.type.replace('working','Working paper')+'</span></div><p class="news-text">'+n.text+'</p></div>').join('');
+
+    // Recent news (past 6 months)
+    const recentNews=newsItems.filter(n=>new Date(n.year,n.month-1,1)>=sixMonthsAgo);
+
+    // Previous news (6-12 months ago)
+    const previousNews=newsItems.filter(n=>{
+        const newsDate=new Date(n.year,n.month-1,1);
+        return newsDate>=twelveMonthsAgo&&newsDate<sixMonthsAgo;
+    });
+
+    // Render recent news
+    if(recentNews.length===0){document.getElementById('newsContainer').innerHTML='<p class="news-text" style="color:var(--text-muted);font-style:italic;">No recent news. Check back soon!</p>';}
+    else{document.getElementById('newsContainer').innerHTML=recentNews.map((n,i)=>'<div class="news-item'+(i===recentNews.length-1?' last':'')+'"><div class="news-meta"><span class="news-date">'+n.date+'</span><span class="news-type '+n.type+'">'+n.type.replace('working','Working paper')+'</span></div><p class="news-text">'+n.text+'</p></div>').join('');}
+
+    // Render previous news section
+    const prevSection=document.getElementById('previousNews');
+    const prevContainer=document.getElementById('previousNewsContainer');
+    if(previousNews.length===0){prevSection.style.display='none';}
+    else{
+        prevSection.style.display='block';
+        prevContainer.innerHTML=previousNews.map((n,i)=>'<div class="news-item'+(i===previousNews.length-1?' last':'')+'"><div class="news-meta"><span class="news-date">'+n.date+'</span><span class="news-type '+n.type+'">'+n.type.replace('working','Working paper')+'</span></div><p class="news-text">'+n.text+'</p></div>').join('');
+    }
+}
+
+function togglePreviousNews(){
+    const container=document.getElementById('previousNewsContainer');
+    const toggle=document.getElementById('previousNewsToggle');
+    if(container.style.display==='none'){
+        container.style.display='block';
+        toggle.textContent='▲';
+    }else{
+        container.style.display='none';
+        toggle.textContent='▼';
+    }
 }
 
 function updateCitationDashboard(){
