@@ -13,12 +13,13 @@ nav{display:flex;gap:2rem}nav a{color:var(--text-secondary);text-decoration:none
 .page-section{display:none}.page-section.active{display:block}.home-container,.research-container{max-width:1400px;margin:0 auto;padding:2rem}
 .home-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:1.5rem;margin-bottom:1.5rem}
 .profile-card,.news-card,.selected-card,.about-card,.media-card{background:var(--bg-card);border:1px solid var(--border-color);border-radius:12px;padding:1.75rem}.about-card,.media-card{grid-column:1/-1}
-.home-grid>.profile-card,.home-grid>.news-card,.home-grid>.selected-card{height:clamp(560px,74vh,820px);overflow-y:auto;scrollbar-width:thin;scrollbar-color:var(--border-color) transparent}
-.home-grid>.profile-card::-webkit-scrollbar,.home-grid>.news-card::-webkit-scrollbar,.home-grid>.selected-card::-webkit-scrollbar{width:8px}
-.home-grid>.profile-card::-webkit-scrollbar-track,.home-grid>.news-card::-webkit-scrollbar-track,.home-grid>.selected-card::-webkit-scrollbar-track{background:transparent}
-.home-grid>.profile-card::-webkit-scrollbar-thumb,.home-grid>.news-card::-webkit-scrollbar-thumb,.home-grid>.selected-card::-webkit-scrollbar-thumb{background:var(--border-color);border-radius:4px}
-.home-grid>.profile-card::-webkit-scrollbar-thumb:hover,.home-grid>.news-card::-webkit-scrollbar-thumb:hover,.home-grid>.selected-card::-webkit-scrollbar-thumb:hover{background:var(--text-muted)}
-.home-grid>.news-card>.card-title,.home-grid>.selected-card>.card-title{position:sticky;top:0;z-index:2;background:var(--bg-card);margin:-1.75rem -1.75rem 1rem;padding:1.75rem 1.75rem .85rem}
+.home-grid>.profile-card{overflow-y:auto;scrollbar-width:thin;scrollbar-color:var(--border-color) transparent}
+.home-grid>.news-card{display:flex;flex-direction:column;overflow:hidden}
+.home-grid>.news-card>.card-scroll{flex:1 1 auto;min-height:0;overflow-y:auto;scrollbar-width:thin;scrollbar-color:var(--border-color) transparent}
+.home-grid>.profile-card::-webkit-scrollbar,.home-grid>.news-card>.card-scroll::-webkit-scrollbar{width:8px}
+.home-grid>.profile-card::-webkit-scrollbar-track,.home-grid>.news-card>.card-scroll::-webkit-scrollbar-track{background:transparent}
+.home-grid>.profile-card::-webkit-scrollbar-thumb,.home-grid>.news-card>.card-scroll::-webkit-scrollbar-thumb{background:var(--border-color);border-radius:4px}
+.home-grid>.profile-card::-webkit-scrollbar-thumb:hover,.home-grid>.news-card>.card-scroll::-webkit-scrollbar-thumb:hover{background:var(--text-muted)}
 .media-card{margin-top:1.5rem}
 .profile-header{display:flex;gap:1.25rem;margin-bottom:1.25rem}.profile-photo{width:90px;height:90px;border-radius:50%;object-fit:cover;border:3px solid var(--border-color)}
 .profile-info h1{font-family:'Source Serif 4',serif;font-size:1.75rem;font-weight:700}.profile-info .title{font-size:.85rem;color:var(--text-secondary)}
@@ -132,7 +133,7 @@ nav{display:flex;gap:2rem}nav a{color:var(--text-secondary);text-decoration:none
 .modal-footer{padding:1rem 1.5rem;border-top:1px solid var(--border-color);display:flex;justify-content:flex-end;gap:.75rem}.modal-btn{padding:.6rem 1.25rem;font-size:.85rem;border-radius:8px;border:none;cursor:pointer;text-decoration:none}.modal-btn.primary{background:var(--accent-primary);color:var(--bg-primary)}.modal-btn.secondary{background:var(--bg-hover);color:var(--text-primary);border:1px solid var(--border-color)}.modal-btn:hover{filter:brightness(1.1)}
 .toast{position:fixed;bottom:2rem;right:2rem;background:var(--accent-tertiary);color:var(--bg-primary);padding:.875rem 1.25rem;border-radius:8px;font-weight:500;font-size:.85rem;transform:translateY(100px);opacity:0;transition:all .3s;z-index:1001}.toast.show{transform:translateY(0);opacity:1}
 .empty-state{text-align:center;padding:3rem 2rem;color:var(--text-muted)}
-@media(max-width:1100px){.home-grid{grid-template-columns:1fr}.home-grid>.profile-card,.home-grid>.news-card,.home-grid>.selected-card{height:auto;overflow-y:visible}.home-grid>.news-card>.card-title,.home-grid>.selected-card>.card-title{position:static}.about-grid{grid-template-columns:1fr;gap:0}.research-layout{grid-template-columns:1fr}.sidebar{order:2}}
+@media(max-width:1100px){.home-grid{grid-template-columns:1fr}.home-grid>.profile-card{height:auto!important;overflow-y:visible}.home-grid>.news-card{display:block;height:auto!important;overflow:visible}.home-grid>.news-card>.card-scroll{overflow-y:visible}.about-grid{grid-template-columns:1fr;gap:0}.research-layout{grid-template-columns:1fr}.sidebar{order:2}}
 @media(max-width:768px){
 .header-content{flex-direction:column;gap:.75rem;padding:0 1rem}
 nav{gap:1.5rem}
@@ -274,7 +275,7 @@ nav a{font-size:.8rem}
 <div class="previous-talks-content" id="previousTalksContainer" style="display:none;"></div>
 </div>
 </div>
-<div class="news-card"><h2 class="card-title">Research News</h2><div id="newsContainer"></div><div class="previous-talks" id="previousNews" style="display:none;"><div class="previous-talks-header" onclick="togglePreviousNews()" style="cursor:pointer;"><span class="previous-talks-title" id="previousNewsTitle">Previous Research News</span><span class="previous-talks-toggle" id="previousNewsToggle">▼</span></div><div class="previous-talks-content" id="previousNewsContainer" style="display:none;"></div></div></div>
+<div class="news-card"><h2 class="card-title">Research News</h2><div class="card-scroll"><div id="newsContainer"></div><div class="previous-talks" id="previousNews" style="display:none;"><div class="previous-talks-header" onclick="togglePreviousNews()" style="cursor:pointer;"><span class="previous-talks-title" id="previousNewsTitle">Previous Research News</span><span class="previous-talks-toggle" id="previousNewsToggle">▼</span></div><div class="previous-talks-content" id="previousNewsContainer" style="display:none;"></div></div></div></div>
 <div class="selected-card"><h2 class="card-title">Selected Publications</h2>
 <div class="selected-item"><p class="selected-title">Nudging Teachers: A Megastudy (<a href="https://doi.org/10.1073/pnas.2418616122" target="_blank">PNAS</a>, 2025)</p></div>
 <div class="selected-item"><p class="selected-title">Hate Trumps Love: Political Polarization (<a href="https://doi.org/10.1287/mnsc.2023.4701" target="_blank">Management Science</a>, 2024)</p></div>
@@ -690,7 +691,7 @@ function showChatError(message){
     messagesEl.scrollTop=messagesEl.scrollHeight;
 }
 
-function init(){renderNews();renderUpcomingTalks();updateCitationDashboard();allCoauthors=extractCoauthors();buildFilters();renderPapers();setupEventListeners();initChat();}
+function init(){renderNews();renderUpcomingTalks();updateCitationDashboard();allCoauthors=extractCoauthors();buildFilters();renderPapers();setupEventListeners();initChat();syncHomeCardHeights();window.addEventListener('resize',scheduleSyncHomeCardHeights);window.addEventListener('load',scheduleSyncHomeCardHeights);if(document.fonts&&document.fonts.ready){document.fonts.ready.then(scheduleSyncHomeCardHeights);}}
 
 function renderNews(){
     const newsItems=[
@@ -749,6 +750,39 @@ function togglePreviousNews(){
     }
 }
 
+// The Selected Publications (right) card dictates the height of the home cards.
+// The profile (left) and news (middle) cards match it and scroll internally.
+function syncHomeCardHeights(){
+    const grid=document.querySelector('.home-grid');
+    if(!grid)return;
+    const profile=grid.querySelector('.profile-card');
+    const news=grid.querySelector('.news-card');
+    const selected=grid.querySelector('.selected-card');
+    if(!profile||!news||!selected)return;
+    // Reset so heights are re-measured cleanly
+    profile.style.height='';
+    news.style.height='';
+    // On stacked (mobile) layout, let cards flow naturally
+    if(window.innerWidth<=1100)return;
+    // Collapse left/middle cards first so their (often longer) content doesn't
+    // inflate the stretched grid row while we measure the right card's natural height.
+    profile.style.height='0px';
+    news.style.height='0px';
+    const h=selected.offsetHeight;
+    if(!h){ // section hidden; restore natural flow and skip
+        profile.style.height='';
+        news.style.height='';
+        return;
+    }
+    profile.style.height=h+'px';
+    news.style.height=h+'px';
+}
+let _syncRaf;
+function scheduleSyncHomeCardHeights(){
+    cancelAnimationFrame(_syncRaf);
+    _syncRaf=requestAnimationFrame(syncHomeCardHeights);
+}
+
 function updateCitationDashboard(){
     const totalCitations=papers.reduce((sum,p)=>sum+(p.citations||0),0);
     const papersWithCitations=papers.filter(p=>p.citations>0).sort((a,b)=>b.citations-a.citations);
@@ -803,7 +837,7 @@ function togglePreviousTalks(){
     }
 }
 
-function showSection(id){if(event)event.preventDefault();if(id==='chat'&&!SHOW_CHATBOT){console.log('Chatbot access denied. Use ?research-chat=true to access.');return;}document.querySelectorAll('.page-section').forEach(s=>s.classList.remove('active'));document.querySelectorAll('nav a').forEach(a=>a.classList.remove('active'));document.getElementById(id).classList.add('active');document.querySelector('nav a[data-section="'+id+'"]')?.classList.add('active');if(id==='research'){buildFilters();renderPapers();}}
+function showSection(id){if(event)event.preventDefault();if(id==='chat'&&!SHOW_CHATBOT){console.log('Chatbot access denied. Use ?research-chat=true to access.');return;}document.querySelectorAll('.page-section').forEach(s=>s.classList.remove('active'));document.querySelectorAll('nav a').forEach(a=>a.classList.remove('active'));document.getElementById(id).classList.add('active');document.querySelector('nav a[data-section="'+id+'"]')?.classList.add('active');if(id==='research'){buildFilters();renderPapers();}if(id==='home'){scheduleSyncHomeCardHeights();}}
 
 function openCVModal(){document.getElementById('cvFrame').src='https://docs.google.com/viewer?url=https://raw.githubusercontent.com/eugendimant/eugendimant.github.io/main/CV_Eugen_Dimant.pdf&embedded=true';document.getElementById('cvModal').classList.add('active');}
 function closeCVModal(){document.getElementById('cvModal').classList.remove('active');document.getElementById('cvFrame').src='about:blank';}
