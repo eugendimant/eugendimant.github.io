@@ -796,9 +796,8 @@ function scheduleSyncHomeCardHeights(){
 function updateCitationDashboard(){
     const totalCitations=papers.reduce((sum,p)=>sum+(p.citations||0),0);
     const papersWithCitations=papers.filter(p=>p.citations>0).sort((a,b)=>b.citations-a.citations);
-    // Authoritative Google Scholar metrics (updated manually with each citation refresh)
-    const hIndex=32;
-    const i10Index=44;
+    let hIndex=0;for(let i=0;i<papersWithCitations.length;i++){if(papersWithCitations[i].citations>=i+1)hIndex=i+1;else break;}
+    const i10Index=papersWithCitations.filter(p=>p.citations>=10).length;
     const el=document.getElementById('citationDashboard');
     if(el){el.querySelector('#totalCitations').textContent=totalCitations.toLocaleString();el.querySelector('#hIndex').textContent=hIndex;el.querySelector('#i10Index').textContent=i10Index;el.querySelector('#paperCount').textContent=papers.length;}
 }
