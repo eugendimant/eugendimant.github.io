@@ -1102,8 +1102,8 @@ function renderPaperCard(p){
     const badge=p.status==='published'?'status':p.status==='review'?'review':'progress';
     const badgeText=p.status==='published'?'Peer-reviewed':p.status==='review'?'Under review':'Work in progress';
     let actions='';
-    if(p.journalUrl)actions+='<a href="'+p.journalUrl+'" target="_blank" class="action-btn">'+(p.journalUrl.includes('ssrn.com')?'Pre-Print':'Journal Website')+'</a>';
-    if(p.pdfUrl&&p.pdfUrl!==p.journalUrl&&!p.pdfUrl.includes('ssrn.com'))actions+='<a href="'+p.pdfUrl+'" target="_blank" class="action-btn">Ungated PDF</a>';
+    if(p.journalUrl)actions+='<a href="'+p.journalUrl+'" target="_blank" class="action-btn">'+(p.journalUrl.includes('ssrn')?'Pre-Print':'Journal Website')+'</a>';
+    if(p.pdfUrl&&p.pdfUrl!==p.journalUrl&&!p.pdfUrl.includes('ssrn'))actions+='<a href="'+p.pdfUrl+'" target="_blank" class="action-btn">Ungated PDF</a>';
     actions+='<button class="action-btn" onclick="showBibtex(this)" data-bib="'+encodeURIComponent(p.bibtex)+'">BibTeX</button>';
     if(p.podcastUrl)actions+='<a href="'+p.podcastUrl+'" target="_blank" class="action-btn podcast">🎙️ AI Podcast</a>';
     if(p.pitch)actions+='<button class="action-btn abstract-btn" onclick="toggleAbstract('+p.id+')">📄 Project Pitch</button>';
