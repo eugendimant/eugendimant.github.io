@@ -1,0 +1,21 @@
+{
+ "schema": "scienceunbound.manifest/1",
+ "files": {
+  "CITATION.cff": "54fcd8551faa6f91d25b73837dd7eaf91bc858b8874da82b9be314cc791168af",
+  "data/analysis_input.csv": "9c3706f9a402618efb39a16c762611b4a5d83613b95a12926f4a397e5246dab2",
+  "figures/forest.png": "1b7ab9f53c16fbfb41356d9cf87b95177918054b506587989ed101ff18dad3a2",
+  "figures/spec_curves.png": "961108b21fdca1fd74db543feff0b60a58258af6d2d5d507361b82d48fed78c8",
+  "plan.json": "b3fdf2a44b978085ad288b9c16166231527a2bb963675db4c977daeabcefe417",
+  "plan.lock.json": "7dbfae8d16e906c7ed50dc7eb1de2f00d8d6c6f3d5ce1f517e10b8b7191c6a14",
+  "report.md": "d32233976cb20e2aed36457722ee945dc0cf272a6359baca5b887f609b487ff9",
+  "results/attrition.csv": "a13ecc32d4b35170d8ff4cf62ea9800c89a62ced1040286462686cf8af808fd7",
+  "results/balance.csv": "18433d2f81eb77bde939d3709420df334ec5b0c38ff16e4f9aa747c9d470a665",
+  "results/diagnostics.json": "a0576146604becf5790e4f22145c1d3e62412d3322f26c79624167dea87593ec",
+  "results/effects.csv": "6a92a76215d6cbd6ccc9551426230d8fa21d61a8b85921d657c9d76784658055",
+  "results/followups.csv": "6c8452d2485a740bfffe9a24b0eef3c20aacb5d348c90581a95e5ed5cca3bc32",
+  "results/spec_curve.csv": "d55092e8fd3e350ae1695d0636e1f604c22c36c354f06d82fe6195670da7661f",
+  "results/spec_summary.csv": "0845454b9ea96d361db783dc5093408022a40f33582f7f9d4ba30f5ac22601bc",
+  "scripts/reproduce.py": "fda44710237ffbbfd1b89fc5e2889e3ffa21b4a184e991af283325126967233a",
+  "study.json": "6720de2dbaa83be02bb643d24f31eeca31daf789dd53bbed1f0dc1c9853aafb6"
+ }
+}

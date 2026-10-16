@@ -1,0 +1,157 @@
+{
+ "lock_version": "1",
+ "sha256": "11826310a9f5ab467dd40bcdee7f18dabd2a23bb7b64d5b52baf64d4347005fb",
+ "locked_at": "2026-10-16T21:58:39Z",
+ "note": "",
+ "plan": {
+  "title": "Does an informational message raise trust? (synthetic demo)",
+  "slug": "demo-info-trust",
+  "authors": [
+   "ScienceUnbound demo"
+  ],
+  "summary": "Synthetic data with planted effects, used to demonstrate the pipeline. Nothing here is an empirical finding.",
+  "design": "randomized",
+  "arm_column": "condition",
+  "control_level": "control",
+  "arm_labels": {
+   "control": "Control",
+   "info": "Information",
+   "social": "Social norm"
+  },
+  "expected_allocation": {},
+  "outcomes": [
+   {
+    "name": "trust_index",
+    "items": [
+     "trust_1",
+     "trust_2",
+     "trust_3",
+     "trust_4"
+    ],
+    "reverse": [],
+    "scale": null,
+    "kind": "index"
+   },
+   {
+    "name": "donation",
+    "items": [
+     "donate"
+    ],
+    "reverse": [],
+    "scale": null,
+    "kind": "single"
+   },
+   {
+    "name": "policy_item",
+    "items": [
+     "policy"
+    ],
+    "reverse": [],
+    "scale": null,
+    "kind": "single"
+   }
+  ],
+  "hypotheses": [
+   {
+    "id": "H1",
+    "label": "Information raises trust",
+    "outcome": "trust_index",
+    "predictor": "",
+    "predictor_type": "categorical",
+    "reference": "",
+    "levels": [],
+    "direction": "positive",
+    "covariates": [
+     "party"
+    ],
+    "se": "HC2",
+    "cluster": "",
+    "moderator": "",
+    "confirmatory": true,
+    "construct": "institutional trust",
+    "sesoi": 0.2,
+    "weights": ""
+   },
+   {
+    "id": "H2",
+    "label": "Information raises donations",
+    "outcome": "donation",
+    "predictor": "",
+    "predictor_type": "categorical",
+    "reference": "",
+    "levels": [],
+    "direction": "positive",
+    "covariates": [
+     "party"
+    ],
+    "se": "HC2",
+    "cluster": "",
+    "moderator": "",
+    "confirmatory": true,
+    "construct": "prosocial behaviour",
+    "sesoi": 0.2,
+    "weights": ""
+   },
+   {
+    "id": "H3",
+    "label": "The information effect on the policy item differs by party",
+    "outcome": "policy_item",
+    "predictor": "",
+    "predictor_type": "categorical",
+    "reference": "",
+    "levels": [
+     "info"
+    ],
+    "direction": "two_sided",
+    "covariates": [],
+    "se": "HC2",
+    "cluster": "",
+    "moderator": "party",
+    "confirmatory": true,
+    "construct": "policy support",
+    "sesoi": null,
+    "weights": ""
+   },
+   {
+    "id": "E1",
+    "label": "Exploratory: do the messages move the policy item overall?",
+    "outcome": "policy_item",
+    "predictor": "",
+    "predictor_type": "categorical",
+    "reference": "",
+    "levels": [],
+    "direction": "two_sided",
+    "covariates": [],
+    "se": "HC2",
+    "cluster": "",
+    "moderator": "",
+    "confirmatory": false,
+    "construct": "policy support",
+    "sesoi": 0.2,
+    "weights": ""
+   }
+  ],
+  "exclusions": [
+   {
+    "column": "Finished",
+    "op": "!=",
+    "value": 1,
+    "reason": "Did not finish the survey"
+   },
+   {
+    "column": "attention",
+    "op": "!=",
+    "value": 1,
+    "reason": "Failed the attention check"
+   }
+  ],
+  "alpha": 0.05,
+  "multiplicity": "holm",
+  "population": "Synthetic respondents",
+  "registration_url": "",
+  "data_collected_through": "2026-10-16",
+  "deviation_notes": {},
+  "seed": 20260101
+ },
+ "anchor": null
+}

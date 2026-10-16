@@ -1,0 +1,18 @@
+analysis_id,basis,effect,metric,n_per_group,n_total
+H1:info,observed,0.4975,g,64,128
+H1:info,half of observed,0.2487,g,254,508
+H1:info,nearest confidence bound,0.3509,g,128,256
+H1:info,smallest effect of interest,0.2,g,393,786
+H1:social,observed,0.0422,g,8804,17608
+H1:social,smallest effect of interest,0.2,g,393,786
+H2:info,observed,0.0883,g,2014,4028
+H2:info,half of observed,0.0442,g,8053,16106
+H2:info,smallest effect of interest,0.2,g,393,786
+H2:social,observed,0.0302,g,17162,34324
+H2:social,smallest effect of interest,0.2,g,393,786
+E1:info,observed,0.2439,g,264,528
+E1:info,half of observed,0.122,g,1056,2112
+E1:info,nearest confidence bound,0.0982,g,1628,3256
+E1:info,smallest effect of interest,0.2,g,393,786
+E1:social,observed,0.0391,g,10263,20526
+E1:social,smallest effect of interest,0.2,g,393,786

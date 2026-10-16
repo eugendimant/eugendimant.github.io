@@ -1,0 +1,89 @@
+{
+ "srm": {
+  "chi2": 1.51,
+  "df": 2,
+  "p": 0.4700695334026975,
+  "flag": false,
+  "counts": {
+   "control": 378,
+   "info": 350,
+   "social": 349
+  }
+ },
+ "flow": [
+  {
+   "step": "Rows in the file",
+   "removed": 0,
+   "remaining": 1200
+  },
+  {
+   "step": "Did not finish the survey",
+   "removed": 35,
+   "remaining": 1165
+  },
+  {
+   "step": "Failed the attention check",
+   "removed": 88,
+   "remaining": 1077
+  }
+ ],
+ "outcome_info": {
+  "trust_index": {
+   "kind": "index",
+   "n_items": 4,
+   "alpha": 0.819,
+   "n_valid": 1077,
+   "mean": 4.284586815227484,
+   "sd": 0.9225460472145576
+  },
+  "donation": {
+   "kind": "single",
+   "n_items": 1,
+   "alpha": null,
+   "n_valid": 1077,
+   "mean": 23.915970287836583,
+   "sd": 17.04685172208652
+  },
+  "policy_item": {
+   "kind": "single",
+   "n_items": 1,
+   "alpha": null,
+   "n_valid": 1077,
+   "mean": 4.074280408542247,
+   "sd": 1.1877854058577273
+  }
+ },
+ "warnings": [],
+ "tags": [
+  {
+   "id": "H1",
+   "tag": "registered",
+   "differences": [],
+   "reason": ""
+  },
+  {
+   "id": "H2",
+   "tag": "registered",
+   "differences": [],
+   "reason": ""
+  },
+  {
+   "id": "H3",
+   "tag": "registered",
+   "differences": [],
+   "reason": ""
+  },
+  {
+   "id": "E1",
+   "tag": "exploratory",
+   "differences": [],
+   "reason": ""
+  }
+ ],
+ "timing": {
+  "status": "before_data",
+  "anchored": false,
+  "text": "Plan locked 2026-10-16T21:58:39Z (self-asserted time; not yet committed to GitHub), on or before the declared end of data collection (2026-10-16)."
+ },
+ "registered_not_run": []
+}

@@ -1,0 +1,18 @@
+cff-version: 1.2.0
+message: "If you use this report or its data, please cite it as below."
+title: "Does an informational message raise trust? (synthetic demo)"
+type: dataset
+authors:
+  - name: "ScienceUnbound demo"
+date-released: 2026-10-16
+license: CC-BY-4.0
+repository-code: "https://github.com/eugendimant/ScienceUnbound"
+references:
+  - type: software
+    title: "ScienceUnbound"
+    version: "0.1.0"
+  - type: generic
+    title: "Filedrawer.org: automated research reports for unpublished studies (idea and first implementation)"
+    authors:
+      - name: "Yamil Ricardo Velez"
+    url: "https://github.com/yrvelez/filedrawer"
