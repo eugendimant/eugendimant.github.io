@@ -557,6 +557,8 @@ svg.scope{display:block;width:100%;height:auto}
 .pres2 .water{background:#7FD6A6;margin:3vh 0}
 .pres2 .se{color:#E8B23A;font-size:3.6vh}.pres2 .sg{font-size:2.4vh;color:#F6F3EC}
 @media(max-width:800px){.pres2 .pgrid{grid-template-columns:1fr}.pres2 .pscope{width:min(80vw,360px)}.pres2 .pbig{font-size:34px}.pres2 .pst,.pres2 .pex{font-size:16px}.pres2 .se{font-size:22px}.pres2 .sg{font-size:16px}}
+.rp{min-height:42px}
+@media(max-width:620px){.rounds{display:grid;grid-template-columns:1fr 1fr}.rp{justify-content:flex-start}}
 </style>
 </head>
 <body>
@@ -2694,7 +2696,7 @@ function legendHTML(M) {
   if (!M.rev || !M.P.routes.length) return "";
   return '<ul class="routes">' + M.blips.filter(function (b) { return b.kind === "route"; }).map(function (b) {
     var r = b.r, s = E.SE[r.id], st = !r.counted ? "Not here" : r.seen ? (r.by.length ? "Seen in story " + r.by.map(function (i) { return i + 1; }).join(" and ") : "You had this") : "Missed";
-    return '<li class="' + b.cls + '"><span class="lt">' + b.letter + '</span><div><b>' + esc(s.name) + '</b> ' + strengthBadge(s.strength) + '<span class="stt">' + st + (r.exploit ? " · the red team hit it" : "") + '</span>' +
+    return '<li class="' + b.cls + '"><span class="lt">' + b.letter + '</span><div><b>' + esc(s.name).replace(/ (\S+)$/, "\u00a0$1") + '</b> ' + strengthBadge(s.strength) + '<span class="stt">' + st + (r.exploit ? " · the red team hit it" : "") + '</span>' +
       '<div class="marks"><button class="mk" aria-pressed="' + (r.mark === "had") + '" data-act="mark" data-arg="' + r.id + ':had">We had this</button><button class="mk" aria-pressed="' + (r.mark === "new") + '" data-act="mark" data-arg="' + r.id + ':new">New to us</button><button class="mk" aria-pressed="' + (r.mark === "na") + '" data-act="mark" data-arg="' + r.id + ':na">Not here</button></div></div></li>';
   }).join("") + '</ul>';
 }
@@ -2729,7 +2731,9 @@ function roundPanel() {
   }
   if (r === "sweep") {
     return '<h3 class="rhead" tabindex="-1">Round 2 · Sweep</h3><p class="scen">The scope now shows the backfire routes the evidence lists for this kind of change. Green: you saw it. Amber: you missed it. Check each match below.</p>' +
-      '<div data-live="snotes"></div><div class="nextr"><button class="ib pri" data-act="rnd" data-arg="red">Round 3: red team</button></div>';
+      (E.sideEffectsFor(S).length ? '<div data-live="snotes"></div>' :
+        '<div class="hint">Your change did not match a kind of change in the evidence graph. If one of these is close, choose it and its routes appear on the scope. Your stories and your own words are kept.</div>' + kindChips()) +
+      '<div class="nextr"><button class="ib pri" data-act="rnd" data-arg="red">Round 3: red team</button></div>';
   }
   if (r === "red") {
     if (S.rt_stage === "back" && S.exploit) return incomingHTML();
@@ -2792,7 +2796,7 @@ function screenRoutinise() {
     '<div class="deck"><div class="scopew"><div data-live="radar">' + radarSVG(M, false) + '</div><div class="legend" aria-hidden="true"><span class="lg seen">Seen</span><span class="lg missed">Missed</span><span class="lg st">Your story</span><span class="lg ex">Red team</span><span class="lg dash">Dashed: not yet tested in firms</span></div></div>' +
     '<div class="rpanel"><div data-live="rscore"></div>' + roundPanel() + '</div></div>' +
     (M.rev ? '<div data-live="rlegend"></div>' : "") +
-    (M.rev ? '<details class="evid"' + ((UI.folds || {}).evid ? " open" : "") + ' data-fold="evid"><summary>The evidence behind each route: what it is, its signal, what helps</summary><div data-live="sereveal"></div></details>' : "") +
+    (M.rev && M.P.routes.length ? '<details class="evid"' + ((UI.folds || {}).evid ? " open" : "") + ' data-fold="evid"><summary>The evidence behind each route: what it is, its signal, what helps</summary><div data-live="sereveal"></div></details>' : "") +
     afterClassHTML();
   return h + foot("act", "brief", "See your brief");
 }
