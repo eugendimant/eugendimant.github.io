@@ -1460,6 +1460,16 @@ var HELVB=[278, 278, 278, 278, 278, 278, 278, 278, 278, 278, 278, 278, 278, 278,
         return { se: b.id, hits: b.id ? b.hits : e.hits, elsewhere: e.id, actor: id ? SE[id].actor : "" };
       }
       var stories = pmStories(state).map(function (st) { var p = place(st.text); return { i: st.i, text: st.text, se: p.se, hits: p.hits, elsewhere: p.elsewhere, actor: p.actor }; });
+      /* the hosted version's AI coach may have read the stories for meaning: its reading replaces the word match, story by story */
+      var am = state.ai_match && typeof state.ai_match === "object" && Array.isArray(state.ai_match.m) ? state.ai_match.m : [];
+      stories.forEach(function (s) {
+        var m = null; am.forEach(function (x) { if (!m && x && typeof x === "object" && x.story === s.i + 1 && typeof x.route === "string") m = x; });
+        if (!m) return;
+        s.ai = true; s.ai_quote = typeof m.quote === "string" ? m.quote : ""; s.hits = [];
+        if (m.confidence === "low") { s.se = ""; s.elsewhere = ""; s.unclear = true; s.actor = ""; return; }
+        s.se = inList[m.route] ? m.route : ""; s.elsewhere = !inList[m.route] && SE[m.route] ? m.route : "";
+        s.actor = (s.se || s.elsewhere) ? SE[s.se || s.elsewhere].actor : "";
+      });
       var ex = null, et = String(state.exploit === null || state.exploit === undefined ? "" : state.exploit).trim();
       if (wordCount(et) >= 2) {
         var p = place(et);
