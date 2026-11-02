@@ -663,7 +663,6 @@ h1,h2,h3,h4,.q,.sh h2,.rh,.hero .tl{text-wrap:pretty}
 aside.rail .rnote{grid-template-columns:minmax(0,1fr)!important;gap:var(--s3);margin-bottom:var(--s5)}
 aside.rail .rh{font-size:20px}
 aside.rail .rf,aside.rail .rm{font-size:15.5px}
-@media(min-width:1101px){.rnote.rin{display:none}}
 @media(max-width:760px){.rnote.wplate{grid-template-columns:minmax(0,1fr)}}
 /* ---------------- the rail: light ---------------- */
 .chain h3{font-size:12px;letter-spacing:.08em}
@@ -781,7 +780,6 @@ details.bsf>summary{display:none}
 .still li::before{content:"";position:absolute;left:2px;top:8px;width:10px;height:10px;border:1.5px solid var(--muted)}
 @media(max-width:1100px){
  aside.rail{display:block;position:static;max-height:none;overflow:visible;margin-top:0}
- aside.rail .rnote.rside{display:none}
  details.bsf{border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
  details.bsf>summary{display:flex;align-items:center;min-height:44px;cursor:pointer;font-weight:700;font-size:14px;color:var(--ink)}
  details.bsf[open]>summary{margin-bottom:var(--s3)}
@@ -812,6 +810,24 @@ aside.rail .still h3{text-transform:uppercase;font-weight:700}
 .pitch .p5{margin:2vh 0 0}.pitch .p5 dt{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#7FD6A6;font-weight:700;margin-top:2.6vh}
 .pitch .p5 dd{margin:.6vh 0 0;font:600 4.2vh/1.2 "EB Garamond",Georgia,serif;color:#F6F3EC;text-wrap:pretty}.pitch .p5 dd.o{color:#9DB5AE;font-style:italic;font-weight:400}
 @media(max-width:700px){.pitch .p5 dd{font-size:21px}}
+
+/* the research under each step's task: open by default, one quiet control hides it on every step */
+.rbar{display:flex;justify-content:flex-start;margin:calc(-1 * var(--s2)) 0 var(--s2)}
+.rtog{font:inherit;font-size:13.5px;background:none;border:0;padding:10px 0;color:var(--teal);text-decoration:underline;text-underline-offset:3px;cursor:pointer;min-height:40px}
+.rtog:focus-visible{outline:2px solid var(--amber);outline-offset:2px}
+/* the header is not sticky on the start screen, so it never covers the opening text */
+body.onstart header.hd{position:static}
+/* the tagline's last three words ("interventions in organisations") always fit one line, so it never ends on two */
+@media(min-width:981px){.hero .tl{font-size:min(44px,3.9vw)}}
+@media(max-width:480px){.hero .tl{font-size:min(30px,calc(7.4vw - 3px))}}
+/* the scan's type column holds a tag, a name and the matched words: wide enough that its last line never holds one or two words */
+.scant th:nth-child(2),.scant td:nth-child(2){min-width:13.5em}
+@media(max-width:480px){.sh h2{font-size:min(30px,calc(6.6vw + 1px))}}
+/* the tagline reads as even lines at every width */
+.hero .tl{text-wrap:balance}
+/* toasts sit at the bottom left, clear of the header and its step tabs */
+#toast{top:auto;bottom:16px;left:16px;right:auto;transform:none;max-width:min(440px,calc(100% - 32px));white-space:normal;overflow:visible;text-overflow:clip}
+@media(max-width:620px){#toast{top:auto;bottom:12px;left:16px;right:16px;max-width:none}}
 </style>
 </head>
 <body>
@@ -878,14 +894,12 @@ var HELVB=[278, 278, 278, 278, 278, 278, 278, 278, 278, 278, 278, 278, 278, 278,
       if (fits(cur.concat([w]))) cur.push(w); else { lines.push(cur.join(" ")); cur = [w]; }
     });
     if (cur.length) lines.push(cur.join(" "));
-    /* no orphans: a lone last word takes its neighbour with it, if the pair fits */
+    /* no orphans: the last line holds at least three words and 12 characters, taking words from the line before while they fit */
     var n = lines.length;
     if (n >= 2) {
       var last = lines[n - 1].split(" "), prev = lines[n - 2].split(" ");
-      if (last.length === 1 && prev.length >= 2) {
-        var moved = prev.pop() + " " + last[0];
-        if (fits([moved])) { lines[n - 2] = prev.join(" "); lines[n - 1] = moved; }
-      }
+      while ((last.length < 3 || last.join(" ").length < 12) && prev.length >= 2 && fits([prev[prev.length - 1]].concat(last))) last.unshift(prev.pop());
+      lines[n - 2] = prev.join(" "); lines[n - 1] = last.join(" ");
     }
     return lines.length ? lines : [""];
   }
@@ -2058,8 +2072,8 @@ var HELVB=[278, 278, 278, 278, 278, 278, 278, 278, 278, 278, 278, 278, 278, 278,
       if (fw && fw.kind === "scheme") KB.steps.forEach(function (st) { mapping.push([st.letter + " " + st.name, fw.radar_map[st.id] || ""]); });
       var prov = kbProvenance(v("side_effect"), "text", state);
       var nNew = Object.keys(state.se_marks || {}).filter(function (k) { return (state.se_marks || {})[k] === "new"; }).length;
-      var OPTIONAL = {"Closest explanations": 1, "Type of intervention": 1, "Whose behaviour": 1, "Who benefits if it goes unnoticed": 1, "How we would check it": 1, "Baseline": 1, "Intervention already in place": 1, "Review date": 1, "Prediction": 1, "Side effects anticipated": 1, "Weakness identified by the red team": 1, "Anticipated in the pre-mortem?": 1, "Reviewer": 1, "Revisit threshold": 1};
-      var PMS = pmStories(state), PMX = premortem(state), seenL = {yes: "Yes", partly: "Partly", no: "No"};
+      var OPTIONAL = {"Closest explanations": 1, "Type of intervention": 1, "Whose behaviour": 1, "Who benefits if it goes unnoticed": 1, "How we would check it": 1, "Baseline": 1, "Intervention already in place": 1, "Review date": 1, "Prediction": 1, "Side effects anticipated": 1, "Reviewer": 1, "Revisit threshold": 1};
+      var PMS = pmStories(state), PMX = premortem(state);
       var pmText = PMS.length > 1 ? PMS.map(function (s, k) { return (k + 1) + ". " + s.text.replace(/[.\s]+$/, ""); }).join(". ") + "." : PMS.length ? PMS[0].text : v("forecast");
       var cmpL = {before_after: "Before and after", two_teams: "Two teams compared", staggered: "A staggered start", not_possible: "No comparison possible yet"};
       var check = cmpL[v("sep_compare")] || "";
@@ -2167,7 +2181,7 @@ function fresh() {
     baseline:"", baseline_src:"", sep_who:"", sep_source:"", rv_signal:"", rv_note:"", case_from:"", watcher:"",
     mode:"", origin:null, forked_at:null, private_fc:[], private_mode:"", fc_override:false, sep_compare:"", sep_when:"",
     rv_se:"", rv_crossed:"", rv_decision:"", candidates:[], short_route:false,
-    pm:[], exploit:"", rt_seen:"", rt_stage:"", rnd:"", block:30, research:false};
+    pm:[], exploit:"", rt_seen:"", rt_stage:"", rnd:"", block:30, research:false, research_hidden:false};
 }
 var S = fresh();
 var UI = {lookup:false, ltab:"frameworks", lq:"", pres:false, modal:null, saveFailed:false, restorable:null, scanText:"",
@@ -2233,7 +2247,7 @@ function sanitise(o) {
   s.rv_se = pick(o.rv_se, ["seen", "not_seen", "cannot_tell"]);
   s.rv_crossed = pick(o.rv_crossed, ["yes", "no"]);
   s.rv_decision = pick(o.rv_decision, ["keep", "revise", "stop"]);
-  ["fc_override", "short_route", "research"].forEach(function (k) { s[k] = o[k] === true; });
+  ["fc_override", "short_route", "research", "research_hidden"].forEach(function (k) { s[k] = o[k] === true; });
   if (typeof o.forked_at === "number" && isFinite(o.forked_at) && o.forked_at >= 0 && o.forked_at < 1e13) s.forked_at = Math.floor(o.forked_at);
   if (s.mode === "solo" && o.origin && typeof o.origin === "object" && !Array.isArray(o.origin)) {
     s.origin = {}; ORIGIN_KEYS.forEach(function (k) { s.origin[k] = typeof o.origin[k] === "string" ? cleanText(o.origin[k], 700) : ""; });
@@ -2386,12 +2400,18 @@ function plateHTML(pl) {
 }
 function researchHTML(st, where) {
   var r = st.research;
-  if (!S.research || !r) return "";
+  if (!r) return "";
+  /* shown by default under the step's task; one control hides it on every step until it is shown again */
+  var tog = '<button type="button" class="rtog" data-act="research" aria-expanded="' + (S.research_hidden ? "false" : "true") + '">' + (S.research_hidden ? "Show the research" : "Hide the research") + '</button>';
+  if (S.research_hidden) return '<div class="rbar">' + tog + '</div>';
+  return '<div class="rbar">' + tog + '</div>' + researchPanel(st, r, where);
+}
+function researchPanel(st, r, where) {
   var refs = (st.citations || []).filter(function (c) { return E.CIT[c]; });
   /* a study that names a documented side effect waits until the pre-mortem is locked, so the pre-mortem is written blind */
   if (r.after_pm && evidenceClosed()) return '<aside class="rnote ' + (where || "rin") + '" aria-label="The research behind this step"><div class="rtext"><div class="rnk">The research</div>' +
     (st.why ? '<p class="rwhy">' + esc(st.why) + '</p>' : "") + (st.id && sceptic(st.id) ? '<p class="rq"><b>Question to consider:</b> ' + esc(sceptic(st.id)) + '</p>' : "") +
-    '<p class="rlock">The study for this step names a side effect, so it opens after your pre-mortem.</p></div></aside>';
+    '</div></aside>';   /* the study itself waits, silently, until the pre-mortem is saved */
   return '<aside class="rnote ' + (where || "rin") + (r.plate ? " wplate" : "") + '" aria-label="The research behind this step"><div class="rtext"><div class="rnk">The research</div>' +
     (st.why ? '<p class="rwhy">' + esc(st.why) + '</p>' : "") + '<h3 class="rh">' + esc(r.headline) + '</h3><p class="rf">' + esc(r.finding) + '</p><p class="rm"><b>For a manager:</b> ' + esc(r.manager.charAt(0).toUpperCase() + r.manager.slice(1)) + '</p>' +
     (st.id && sceptic(st.id) ? '<p class="rq"><b>Question to consider:</b> ' + esc(sceptic(st.id)) + '</p>' : "") +
@@ -2972,7 +2992,7 @@ function roundPanel() {
         '<div data-live="rscore"></div><div data-live="rlegend"></div><div data-live="snotes"></div>' :
         '<p class="scen">The intervention does not match a type in the evidence base. Choose the closest type and its documented side effects will appear here. Your wording is kept.</p>' + kindChips()) +
       (E.sideEffectsFor(S).length ? '<details class="evid"' + ((UI.folds || {}).evid ? " open" : "") + ' data-fold="evid"><summary>The evidence for each side effect</summary><div data-live="sereveal"></div></details>' : "") +
-      '<div class="nextr"><button class="ib pri" data-act="rnd" data-arg="fix">Next: revise and pitch</button></div>';
+      '<div class="nextr"><button class="ib" data-act="lookup">Open the evidence table</button><button class="ib pri" data-act="rnd" data-arg="fix">Next: revise and pitch</button></div>';
   }
   return fixHTML();
 }
@@ -3132,6 +3152,7 @@ function screenBrief() {
     '<button class="ib pri" data-act="pdf">Download PDF</button><button class="ib" data-act="print">Print</button>' +
     '<button class="ib" data-act="email">Copy as email</button><button class="ib" data-act="ics"' + (S.review_date ? "" : " disabled") + '>Add review to calendar</button>' + (S.review_date ? "" : '<div class="why" style="grid-column:1/-1">A review date is needed first. It is set in Routinise.</div>') +
     '<button class="ib" data-act="savejson">Save progress</button><button class="ib" data-act="loadjson">Open saved file</button>' +
+    (evidenceClosed() ? "" : '<button class="ib" data-act="lookup" style="grid-column:1/-1">Open the evidence table</button>') +
     '<button class="ib" data-act="takehome" style="grid-column:1/-1">Download the tool with your brief included</button></div>' +
     '<input type="file" id="fileIn" accept="application/json,.json" hidden></div>';
   if (lean()) h += '<div class="card quiet"><div class="hint">During the session the brief shows only what the report-back requires.</div><button class="ib" data-act="showall">Show the full brief</button></div>';
@@ -3198,7 +3219,7 @@ function liveScanOut() {
   var rows = scanRows();
   return '<table class="scant"><thead><tr><th>Your intervention</th><th>Closest type</th><th>Possible side effect</th><th>Indicator</th></tr></thead><tbody>' + rows.map(function (r) {
     return '<tr><td>' + esc(r.line) + '</td><td>' + (r.family ? '<span class="fam ' + r.family + '">' + (r.family === "control" ? "Control" : "Enabling") + '</span><br>' : "") + esc(r.kind) +
-      (r.matched.length ? '<div class="cite">matched ' + r.matched.map(function (m) { return "“" + esc(orig(typedText(), m)).replace(/ /g, "\u00a0") + "”"; }).join(",\u00a0") + '</div>' : '<div class="cite">no\u00a0recognisable\u00a0wording</div>') + '</td><td>' + (r.strength ? esc(r.watch).replace(/ (\S+)$/, ' <span style="white-space:nowrap">$1') + " " + strengthBadge(r.strength) + (/ \S+$/.test(r.watch) ? "</span>" : "") : esc(r.watch)) + '</td><td>' + esc(r.signal) + '</td></tr>';
+      (r.matched.length ? '<div class="cite">matched ' + r.matched.map(function (m) { return "“" + esc(orig(typedText(), m)) + "”"; }).join(", ") + '</div>' : '<div class="cite">no\u00a0recognisable\u00a0wording</div>') + '</td><td>' + (r.strength ? esc(r.watch).replace(/ (\S+)$/, ' <span style="white-space:nowrap">$1') + " " + strengthBadge(r.strength) + (/ \S+$/.test(r.watch) ? "</span>" : "") : esc(r.watch)) + '</td><td>' + esc(r.signal) + '</td></tr>';
   }).join("") + '</tbody></table>';
 }
 
@@ -3277,23 +3298,17 @@ function headerHTML() {
     (UI.saveFailed ? '<span class="sub" title="This browser does not allow the page to store your work. Use Save progress on the brief page.">Work is not being stored on this device</span>' : "") +
     (solo() ? '<span class="sub">Individual copy \u00b7 untimed</span>' : "") +
     (clockOn() ? '<div class="clock" id="clock"><output aria-live="off" id="clockOut">' + fmt(S.paused_left !== null ? S.paused_left : S.deadline - Date.now()) + '</output><small id="clockNote"></small><button class="ib" data-act="clock" id="clockBtn">Pause</button></div>' : "") +
-    researchSwitch(S.started ? "rsw hasalt" : "rsw") +
-    (evidenceClosed() ? '<button class="ib" data-act="lookup" aria-disabled="true" title="Opens after your pre-mortem" aria-label="Evidence table, opens after your pre-mortem">Evidence<span class="nph">&nbsp;table</span></button>'
-      : '<button class="ib" data-act="lookup" aria-label="Evidence table">Evidence<span class="nph">&nbsp;table</span></button>') +
     '<details class="menu" style="position:relative"><summary class="ib" style="list-style:none">Options</summary><div class="mdd">' +
+    '<button class="ib" data-act="lookup"' + (evidenceClosed() ? ' data-arg="glossary"' : "") + '>Look it up</button>' +
     '<button class="ib" data-act="projector">' + (document.body.classList.contains("proj") ? "Leave projector mode" : "Projector mode") + '</button>' +
     '<button class="ib" data-act="savejson">Save progress</button><button class="ib" data-act="loadjson">Open saved file</button>' +
     (S.started ? '<button class="ib" data-act="resetclock">Reset the clock</button>' : "") +
     '<button class="ib" data-act="startover">Start again</button></div></details></div>' + tabs;
 }
 /* on a phone the tabs show only letters: the current step is named underneath */
-/* the research switch: a real button with aria-pressed, so Enter and Space work and a screen reader hears its state */
-function researchSwitch(cls) {
-  return '<button type="button" class="' + cls + '" data-act="research" aria-pressed="' + (S.research ? "true" : "false") + '"><span class="trk" aria-hidden="true"><i></i></span><span class="rlb">Show<span class="nph"> the</span> research</span></button>';
-}
 function curStepHTML() {
   var i = stepIndex(S.screen), name = i >= 0 ? "Step " + (i + 1) + " of 5: " + KB.steps[i].name : S.screen === "brief" ? "The brief" : S.screen === "scan" ? "Scan of existing interventions" : S.screen === "revisit" ? "Review" : "";
-  return name ? '<div class="curstep"><span aria-hidden="true">' + esc(name) + '</span>' + researchSwitch("rsw rsw2") + '</div>' : "";
+  return name ? '<div class="curstep"><span aria-hidden="true">' + esc(name) + '</span>' + '</div>' : "";
 }
 function railHTML() {
   var nodes = [
@@ -3309,7 +3324,7 @@ function railHTML() {
   var miss = E.briefCheck(S).filter(function (c) { return c.step === S.screen && !c.ok; });
   /* on a narrow screen the margin folds under one disclosure below the step */
   var wide = (window.innerWidth || 1440) > 1100, open = wide || (UI.folds || {}).bsf;
-  return (st ? researchHTML(st, "rside") : "") + '<details class="bsf" data-fold="bsf"' + (open ? " open" : "") + '><summary>Brief so far</summary>' +
+  return '<details class="bsf" data-fold="bsf"' + (open ? " open" : "") + '><summary>Brief so far</summary>' +
     (miss.length ? '<div class="still"><h3>Still open in this step</h3><ul>' + miss.map(function (c) { return '<li>' + esc(c.label) + '</li>'; }).join("") + '</ul></div>' : "") +
     '<div class="chain"><h3>The brief so far</h3>' + (filled.length ? filled.map(function (n) {
     return '<button class="cn ok' + (n[2] === S.screen ? " hot" : "") + '" data-act="go" data-arg="' + n[2] + '"><b>' + esc(n[0]) + '</b><span>' + esc(n[1]) + '</span></button>'; }).join("") :
@@ -3322,22 +3337,47 @@ function railHTML() {
    so a paragraph can never end on a lone word. Idempotent; input fields are never touched. */
 function tieLast(root) {
   var SEL = "p,li,dd,dt,td,th,h1,h2,h3,h4,.hint,.h,.q,.sub,.cq div,.cs b,.cs span,.s5 b,.s5 span,.livebar span,.exports .ib,.foot .ib,.closest,.given,.trail,.delta,.choice span,.choice em,.choice b,.who,.rbbig,.rb,.lab,.cite,.k,.rk,.tag,.railnote,.cn span,.whys span,.entry p,.se p,.mech .more div,.stMarkdown p,.stMarkdown div,.pres .above,.pres .se,.pres .sg,.pres .tgt,.ib,.chip,.mk,.kfam,.inb,.st,b,strong,i,em,.map div,.meta,.paper .meta,.card div,.reveal div";
+  SEL += ",button,summary,label,.lbl,.rnk,.tl,.out,.how,.lead";
   (root || document).querySelectorAll(SEL).forEach(function (el) {
-    if (el.closest("style,script") || el.querySelector("p,li,div,dd,td,table,ul,ol,input,textarea,button,select,style,script")) return;   /* never touch CSS or code */
+    if (el.closest("style,script,svg,.mark") || el.querySelector("p,li,div,dd,td,table,ul,ol,input,textarea,select,style,script,svg")) return;   /* leaf text blocks only, never CSS or code */
+    if (!el.closest("button,[role=button],a,input,textarea")) { var hw = document.createTreeWalker(el, NodeFilter.SHOW_TEXT), hn;
+      while ((hn = hw.nextNode())) if (/[A-Za-z0-9]-[A-Za-z0-9]/.test(hn.data)) hn.data = hn.data.replace(/([A-Za-z0-9])-(?=[A-Za-z0-9])/g, "$1\u2011"); }   /* "24-hour", "goods-received" never split at the hyphen */
+    /* an inline label or button that ends the block (an evidence label, a tag) stays on the line of the word before it */
+    Array.prototype.forEach.call(el.children, function (c) {
+      var pv = c.previousSibling; if (!pv || pv.nodeType !== 3 || !/^(BUTTON|SPAN|B|I|EM|STRONG)$/.test(c.tagName) || c.matches(".sr,.visually-hidden") || !c.offsetWidth) return;
+      if (/[ \t\n]$/.test(pv.data)) pv.data = pv.data.replace(/[ \t\n]+$/, "\u00a0");
+      else if (!/[\u00a0\u2060]$/.test(pv.data) && pv.data.length) pv.data += "\u2060";
+    });
+    var dsp = getComputedStyle(el).display; if ((/grid|flex/.test(dsp)) && el.children.length >= 2 && !/^(BUTTON|SUMMARY|LABEL)$/.test(el.tagName)) return;   /* a row of cells (label, bar, value): words never travel between cells */
     var walker = document.createTreeWalker(el, NodeFilter.SHOW_TEXT), nodes = [], n;
-    while ((n = walker.nextNode())) nodes.push(n);
+    while ((n = walker.nextNode())) if (!(n.parentElement && n.parentElement.closest(".sr,.visually-hidden"))) nodes.push(n);   /* screen-reader text takes no room on screen */
     var text = nodes.map(function (x) { return x.data; }).join("");
     var t = text.replace(/\s+$/, ""), words = t.replace(/^\s+/, "").split(/\s+/);
-    if (!el.closest("button,[role=button],a")) nodes.forEach(function (x) { if (/[A-Za-z0-9]-[A-Za-z0-9]/.test(x.data)) x.data = x.data.replace(/([A-Za-z0-9])-(?=[A-Za-z0-9])/g, "$1\u2011"); });   /* "24-hour", "goods-received" never split at the hyphen */
-    if (words.length < 3) return;   /* two-word labels wrap normally: tying them forces breaks inside words in narrow boxes */
-    var pair = words[words.length - 1].length + words[words.length - 2].length + 1, fs = parseFloat(getComputedStyle(el).fontSize) || 16;
-    if (pair * fs * 0.56 > el.getBoundingClientRect().width * 0.95) return;   /* the tied pair must fit its box, or the browser would break inside a word */
-    var at = t.search(/\s\S+$/); if (at < 0 || text.charAt(at) === "\u00a0") return;
-    for (var i = 0, off = 0; i < nodes.length; i++) {
-      var len = nodes[i].data.length;
-      if (at < off + len) { var d = nodes[i].data, k = at - off; nodes[i].data = d.slice(0, k) + "\u00a0" + d.slice(k + 1); return; }
-      off += len;
-    }
+    if (words.length < 2) return;
+    /* the last line must hold at least three words and 12 characters: tie the fewest last words that reach both, as far as they fit the box */
+    var tie = 1; while (tie < words.length - 1 && (tie + 1 < 3 || words.slice(-tie - 1).join(" ").length < 12)) tie++;
+    var box = el; while (box.parentElement && /^inline/.test(getComputedStyle(box).display) && !/^inline-(block|flex|grid)/.test(getComputedStyle(box).display)) box = box.parentElement;   /* an inline run wraps in its block */
+    var cs = getComputedStyle(box);
+    var wd = (box.clientWidth || box.getBoundingClientRect().width) - (parseFloat(cs.paddingLeft) || 0) - (parseFloat(cs.paddingRight) || 0);   /* layout width: a scaled preview keeps its own */
+    if (wd <= 0) return;   /* hidden now (a closed fold): it is tied when it opens */
+    var gaps = [], g = /\s+/g, m; while ((m = g.exec(t))) if (m.index > 0) gaps.push([m.index, m.index + m[0].length]);
+    var pos = function (off) { for (var i = 0, o = 0; i < nodes.length; i++) { var L = nodes[i].data.length; if (off < o + L || i === nodes.length - 1) return [nodes[i], Math.max(0, Math.min(off - o, L))]; o += L; } };
+    /* the rendered width of the last k words, measured on the page in its own font, across however many lines they now sit on */
+    var tw = function (k) {
+      var st = gaps.length - k >= 0 ? gaps[gaps.length - k][1] : t.search(/\S/), a = pos(st), b = pos(t.length), r = document.createRange(), sum = 0;
+      r.setStart(a[0], a[1]); r.setEnd(b[0], b[1]); Array.prototype.forEach.call(r.getClientRects(), function (q) { sum += q.width; }); return sum;
+    };
+    while (tie > 0 && tw(tie + 1) > wd * 0.98) tie--;   /* the tied words must fit their box, or the browser would break inside a word */
+    if (!tie) return;
+    gaps.slice(-tie).forEach(function (gp) {
+      var at = gp[1] - 1;
+      if (text.charAt(at) === "\u00a0") return;
+      for (var i = 0, off = 0; i < nodes.length; i++) {
+        var len = nodes[i].data.length;
+        if (at < off + len) { var d = nodes[i].data, k = at - off; nodes[i].data = d.slice(0, k) + "\u00a0" + d.slice(k + 1); return; }
+        off += len;
+      }
+    });
   });
 }
 
@@ -3390,6 +3430,7 @@ function render(nav) {
   var a = document.activeElement, keep = a && a.id ? {id: a.id, s: a.selectionStart, e: a.selectionEnd} : null, y = window.scrollY;
   /* buttons have no id: remember which action had focus, so keyboard users keep their place after a re-render */
   var keepAct = (!keep && a && a.getAttribute && a.getAttribute("data-act")) ? {act: a.getAttribute("data-act"), arg: a.getAttribute("data-arg")} : null;
+  document.body.classList.toggle("onstart", !S.started || S.screen === "start");
   $("#hd").innerHTML = headerHTML();
   $("#wrap").className = "wrap" + (isStep(S.screen) ? "" : " full");
   $("#main").innerHTML = (reviewDue() && S.screen !== "revisit" ? '<div class="banner"><div><b>The review is due on ' + esc(E.dateLong(S.review_date)) + '.</b> Please record whether the side effect occurred and the current value of its indicator.</div><span class="sp" style="flex:1"></span><button class="ib pri" data-act="go" data-arg="revisit">Record the review</button></div>' : "") +
@@ -3498,8 +3539,7 @@ var A = {
   rnd: function (x) { if (["sweep", "fix"].indexOf(x) < 0 || !S.revealed_at) return; S.rnd = x; save(); render(); var h = $(".rpanel .rhead"); if (h) h.focus({preventScroll: true}); },
   pickwatch: function (x) {
     var P = E.premortem(S), t = "", src = "";
-    if (x === "x" && P.exploit) { t = P.exploit.text; src = P.exploit.se || P.exploit.elsewhere; }
-    else if (x.indexOf("s:") === 0) { var s = P.stories.filter(function (y) { return String(y.i) === x.slice(2); })[0]; if (s) { t = s.text; src = s.se || s.elsewhere; } }
+    if (x.indexOf("s:") === 0) { var s = P.stories.filter(function (y) { return String(y.i) === x.slice(2); })[0]; if (s) { t = s.text; src = s.se || s.elsewhere; } }
     else if (x.indexOf("r:") === 0 && E.SE[x.slice(2)]) { return A.usese(x.slice(2)); }
     if (!t) return;
     S.side_effect = t; if (src && E.SE[src]) { S.se_source = src; if (!S.se_actor) S.se_actor = E.SE[src].actor; if (!S.se_signal.trim()) S.se_signal = E.SE[src].signal; }
@@ -3590,7 +3630,7 @@ var A = {
   testedonly: function () { UI.testedOnly = !UI.testedOnly; refreshLive(true); focusAct({act: "testedonly", arg: null}); },
   shortroute: function () { S.short_route = true; S.screen = S.hypothesis ? "design" : "analyse"; save(); render(true); toast("Shortened route: select a cause, state the intervention in one sentence, then continue to Routinise."); },
   showall: function () { UI.full = true; render(); },
-  research: function () { S.research = !S.research; save(); render(); focusAct({act: "research", arg: null}); announce(S.research ? "Research notes shown on each step." : "Research notes hidden."); },
+  research: function () { S.research_hidden = !S.research_hidden; save(); render(); focusAct({act: "research", arg: null}); announce(S.research_hidden ? "Research hidden on every step." : "Research shown on every step."); },
   sepcmp: function (x) { S.sep_compare = S.sep_compare === x ? "" : x; save(); render(); },
   sepwhen: function (x) { S.sep_when = S.sep_when === x ? "" : x; save(); render(); },
   septemplate: function () { if (!S.separating.trim()) S.separating = SEP_TEMPLATE; save(); render(); var f = $("#f_separating"); if (f) { f.focus(); f.setSelectionRange(0, 0); } },
@@ -3668,7 +3708,6 @@ function onInput(e) {
     var cn = document.getElementById("cnt_" + f), left = (MAXLEN[f] || 400) - t.value.length;
     if (cn) cn.textContent = left <= Math.max(20, (MAXLEN[f] || 400) * 0.1) ? (left > 0 ? left + " characters remaining" : "That is the limit for this field.") : "";
     if (f === "forecast" && !S.forecast_at && words(S.forecast) >= 5) S.forecast_at = Date.now();
-    if (f === "exploit") { saveSoon(); grow(t); return; }
     if (f === "change") pruneDirs();
     grow(t); saveSoon(); liveSoon(); return;
   }
@@ -3757,7 +3796,7 @@ function boot() {
   document.addEventListener("input", onInput);
   document.addEventListener("change", onChange);
   document.addEventListener("keydown", onKey);
-  document.addEventListener("toggle", function (e) { var d = e.target; if (d && d.getAttribute && d.getAttribute("data-fold")) { UI.folds = UI.folds || {}; UI.folds[d.getAttribute("data-fold")] = d.open; } }, true);
+  document.addEventListener("toggle", function (e) { var d = e.target; if (d && d.getAttribute && d.getAttribute("data-fold")) { UI.folds = UI.folds || {}; UI.folds[d.getAttribute("data-fold")] = d.open; } if (d && d.open && d.tagName === "DETAILS") tieLast(d); }, true);
   window.addEventListener("resize", function () { setHdr(); growAll(); });
   /* a fast reload or a closed tab must never lose the last edit: write it now, not after the typing pause */
   window.addEventListener("pagehide", flushSave);
