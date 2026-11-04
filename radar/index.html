@@ -1127,6 +1127,8 @@ input[type=date]{max-width:240px;font-size:15px;padding:8px 13px}
 /* 2.0.0.15 (invariants a): on a narrow phone the research fold inside Revise gives its width to the risk cards */
 @media(max-width:420px){details.evid{padding-left:10px;padding-right:10px}details.evid .reveal{padding-left:0;padding-right:0;border-left-width:0;border-right-width:0}details.evid .se{padding-left:12px;padding-right:12px}}
 .tw{white-space:nowrap}
+/* 2.0.0.16: the kept-together run is invisible to styling; descendant span rules (.cs span, .choice span, .cn span) must never restyle it */
+span.tw{display:inline!important;font:inherit!important;color:inherit!important;margin:0!important;padding:0!important;opacity:1!important;letter-spacing:inherit!important;text-transform:inherit!important;-webkit-line-clamp:unset!important;overflow:visible!important;background:none!important;border:0!important}
 .dlab{display:block}
 @media(max-width:420px){.choice b{font-size:15px}}
 </style>
