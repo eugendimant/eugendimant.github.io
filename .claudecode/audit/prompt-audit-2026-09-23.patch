@@ -1,0 +1,529 @@
+diff --git a/.claudecode/skills/Website-Editing-Skill.md b/.claudecode/skills/Website-Editing-Skill.md
+index 957fddc..d2ae9e4 100644
+--- a/.claudecode/skills/Website-Editing-Skill.md
++++ b/.claudecode/skills/Website-Editing-Skill.md
+@@ -1,43 +1,24 @@
+ # Eugen Dimant Website - Claude Code Instructions
+ 
+-## ⚠️ CRITICAL RULES
++## Core Rules
+ 
+-### 1. PRESERVE EVERYTHING - ONLY MODIFY WHAT'S REQUESTED
+-**This is the most important rule: ONLY modify what is explicitly requested. Leave all other code exactly as-is.**
++### 1. Change only what was requested
++`index.html` is a single ~2,000-line file holding all content, styles, and JavaScript, so an edit aimed at one section can silently remove or break another (news items, navigation functions, the script block). Leave everything outside the requested change exactly as it is:
++- Read the whole section before editing it
++- Use Edit operations with enough surrounding context to be unique
++- Check with `git diff` that the edit touches only the intended lines
++- Run the validation checks after each change
+ 
+-❌ **Previous mistakes to NEVER repeat:**
+-- Accidentally deleting news items while adding papers
+-- Removing navigation functions while updating talks
+-- Breaking JavaScript while editing CSS
+-- Deleting entire sections "by mistake"
+-
+-✅ **Correct approach:**
+-- Read the ENTIRE section before editing
+-- Use precise Edit operations with sufficient context
+-- Verify the edit only touches the intended lines
+-- Validate immediately after each change
+-
+-### 2. ALWAYS BACKUP FIRST
+-Before ANY edit, create a timestamped backup:
+-```bash
+-mkdir -p backups
+-cp index.html "backups/index_$(date +%Y-%m-%d_%H-%M-%S).html"
+-ls -t backups/index_*.html | tail -n +4 | xargs -r rm  # Keep last 3
+-```
+-
+-**When to backup:**
+-- Before adding/editing papers
+-- Before updating citations
+-- Before modifying news or talks
+-- Before any structural changes
+-- Before experimenting with new features
++### 2. Start from a clean working tree - git is the backup
++Before editing, confirm `git status` is clean (commit or stash anything pending). Every committed state can be restored with `git restore index.html` (uncommitted edits) or `git revert` (committed ones). `backups/` is gitignored, so file copies there are never committed and don't survive a fresh clone or cloud session.
+ 
+ ### 3. VALIDATE AFTER EVERY CHANGE
+ Run these checks immediately after ANY edit:
+ 
+ ```bash
+-# 1. Check JavaScript syntax
+-node -e "const h=require('fs').readFileSync('index.html','utf8');const m=h.match(/<script[^>]*>([\s\S]*?)<\/script>/g);const c=m[m.length-1].replace(/<script[^>]*>/,'').replace(/<\/script>/,'');new Function(c);console.log('✓ JS syntax valid')"
++# 1. Check JavaScript syntax (matches only <script> tags at the start of a line,
++#    so the literal "<script>" inside the HTML comment near <body> is not picked up)
++node -e "const h=require('fs').readFileSync('index.html','utf8');const m=[...h.matchAll(/^<script>([\s\S]*?)^<\/script>/gm)];if(!m.length)throw new Error('no <script> block found');m.forEach(x=>new Function(x[1]));console.log('✓ JS syntax valid ('+m.length+' block)')"
+ 
+ # 2. Verify required elements exist
+ grep -q "const papers=\[" index.html && echo "✓ Papers array" || echo "✗ MISSING: Papers array"
+@@ -47,11 +28,11 @@ grep -q "function renderNews()" index.html && echo "✓ renderNews function" ||
+ grep -q "function renderUpcomingTalks()" index.html && echo "✓ renderUpcomingTalks" || echo "✗ MISSING: renderUpcomingTalks"
+ grep -q "onclick=\"showSection('research')\"" index.html && echo "✓ Navigation" || echo "✗ MISSING: Navigation"
+ 
+-# 3. Check line count (should be ~1270 lines)
+-wc -l index.html
++# 3. Check the size of the change matches the size of the request
++git diff --stat index.html
+ ```
+ 
+-**If any check fails, IMMEDIATELY restore from backup and investigate.**
++If a check fails, find the cause in `git diff`; if the edit can't be repaired, `git restore index.html` and redo it.
+ 
+ ---
+ 
+@@ -63,15 +44,12 @@ wc -l index.html
+ 
+ 1. **Work on feature branch** (e.g., `claude/feature-name-XYZ`)
+    - Make changes to `index.html`
+-   - Create backups before each change
+    - Validate after each change
+    - Commit with clear messages
+    - Push to remote branch
+ 
+-2. **Provide live preview**
+-   - Start local server: `python3 -m http.server 8080 &`
+-   - Give user URL: `http://localhost:8080` or `file:///home/user/eugendimant.github.io/index.html`
+-   - Let user test visually before committing
++2. **Check the rendered page yourself**
++   - See the Rendering Check section below. The user usually can't open a server or file inside your session, so review happens on the PR.
+ 
+ 3. **Create Pull Request**
+    - URL: `https://github.com/eugendimant/eugendimant.github.io/pull/new/BRANCH-NAME`
+@@ -103,18 +81,18 @@ wc -l index.html
+ 
+ Use `grep -n "PATTERN" index.html` to find exact line numbers:
+ 
+-| Section | Pattern | Line # (approx) |
+-|---------|---------|-----------------|
+-| Papers array | `const papers=\[` | ~244 |
+-| News items | `const newsItems=\[` | ~351 |
+-| Upcoming talks | `const talks=\[` | ~375 |
+-| Citation dashboard | `function updateCitationDashboard` | ~365 |
+-| Selected publications | `sortOrder:1` | Various |
+-| DNA visualization | `function initDNA` | ~450 |
+-| Navigation | `function showSection` | ~400 |
+-| Render functions | `function render` | Various |
++| Section | Pattern |
++|---------|---------|
++| Papers array | `const papers=\[` |
++| News items | `const newsItems=\[` |
++| Upcoming talks | `const talks=\[` |
++| Citation dashboard | `function updateCitationDashboard` |
++| Selected publications | `sortOrder:1` |
++| DNA visualization | `function initDNA` |
++| Navigation | `function showSection` |
++| Render functions | `function render` |
+ 
+-**Pro tip:** Always use `grep -n` to get current line numbers before editing, as they shift with changes.
++Line numbers shift with every edit, so look them up with `grep -n` each time.
+ 
+ ---
+ 
+@@ -242,18 +220,9 @@ Use `grep -n "PATTERN" index.html` to find exact line numbers:
+ 
+ ### Task 2: Update Citation Counts
+ 
+-**Method A: Update dashboard metrics**
+-```bash
+-grep -n "function updateCitationDashboard" index.html
+-```
+-Then edit the function to update:
+-```javascript
+-const totalCitations = XXXX;
+-const hIndex = XX;
+-const i10Index = XX;
+-```
++**Dashboard metrics** (total citations, h-index, i10-index) are computed in `updateCitationDashboard()` from the per-paper `citations` fields. Don't hardcode them; update the per-paper counts below and the dashboard follows.
+ 
+-**Method B: Update individual paper citations**
++**Update individual paper citations**
+ 
+ ⚠️ **Use context to avoid wrong matches!** Don't just search for `citations:OLD`, as this might match multiple papers.
+ 
+@@ -331,54 +300,11 @@ To feature a paper in the "Selected Publications" section:
+ 
+ ---
+ 
+-## 🌐 Live Preview Workflow
++## 🌐 Rendering Check
+ 
+-**IMPORTANT:** Before committing changes, ALWAYS provide a live preview for the user to test:
++Before committing, confirm the page renders: load `index.html` in a headless browser if one is available (e.g. Playwright/Chromium), check the console for errors, and look at the sections you changed. If you can't render it, say so in the PR description instead of implying it was tested.
+ 
+-### Starting the Preview Server
+-
+-```bash
+-# Start Python HTTP server in background
+-python3 -m http.server 8080 &
+-
+-# Server will be available at:
+-# http://localhost:8080
+-```
+-
+-**When to provide preview:**
+-- After making ANY changes to index.html
+-- Before asking user to approve changes
+-- When implementing new features
+-- After updating citations or content
+-
+-### Preview Checklist
+-
+-Tell the user to test:
+-1. **Navigation** - All sections load correctly
+-2. **New features** - Any features you added work properly
+-3. **Existing features** - Nothing broke
+-4. **Visual appearance** - Styling looks correct
+-5. **Interactive elements** - Buttons, modals, DNA work
+-6. **Responsive design** - Test at different screen sizes
+-
+-### Stopping the Preview
+-
+-```bash
+-# Find the process
+-ps aux | grep "python3 -m http.server"
+-
+-# Kill it
+-kill <PID>
+-
+-# Or kill all Python servers
+-pkill -f "python3 -m http.server"
+-```
+-
+-**User Experience:**
+-- User opens http://localhost:8080 in their browser
+-- They can click around, test features, explore visually
+-- Only after approval should you commit and push
+-- This ensures user satisfaction before changes go live
++The user reviews the change on the PR, and on the live site after merge. They can't reach a `localhost` server or a `file://` path inside a remote session, so don't send those as preview links. If the user asks to approve before you commit, wait for that approval.
+ 
+ ---
+ 
+@@ -386,7 +312,6 @@ pkill -f "python3 -m http.server"
+ 
+ Before committing ANY changes, verify:
+ 
+-- [ ] **Backup created** in `/backups` folder
+ - [ ] **JS syntax valid** (no console errors)
+ - [ ] **Papers array exists** (`const papers=[`)
+ - [ ] **News items exist** (`const newsItems=[`)
+@@ -394,18 +319,8 @@ Before committing ANY changes, verify:
+ - [ ] **renderNews function exists** (`function renderNews()`)
+ - [ ] **renderUpcomingTalks exists** (`function renderUpcomingTalks()`)
+ - [ ] **Navigation works** (`onclick="showSection('research')"`)
+-- [ ] **Line count reasonable** (~1270 lines, ±50 is OK, ±200 is suspicious)
+-- [ ] **Manual spot check** - Open index.html in browser and verify the changed section looks correct
+-
+-**If unsure, test locally:**
+-```bash
+-# Open in default browser (Linux)
+-xdg-open index.html
+-
+-# Or use Python server
+-python3 -m http.server 8000
+-# Then visit http://localhost:8000
+-```
++- [ ] **Diff matches the request** (`git diff --stat` - no unrelated lines touched)
++- [ ] **Rendering checked** (see Rendering Check)
+ 
+ ---
+ 
+@@ -415,14 +330,11 @@ python3 -m http.server 8000
+ # Stage changes
+ git add index.html
+ 
+-# If backups folder has new files, add it too
+-git add backups/
+-
+ # Commit with descriptive message
+ git commit -m "TYPE: Description"
+ 
+-# Push to branch (use -u first time)
+-git push -u origin claude/create-claude-md-rYTH5
++# Push to the branch you're working on (use -u first time)
++git push -u origin <your-branch>
+ ```
+ 
+ **Commit message prefixes:**
+@@ -560,7 +472,7 @@ High-risk/high-reward, bleeding-edge:
+ - Unconventional layouts
+ 
+ **Process:**
+-1. Always backup first
++1. Start from a clean working tree
+ 2. Create prototype in separate branch if major
+ 3. Validate thoroughly
+ 4. Get user approval before committing
+@@ -576,8 +488,8 @@ High-risk/high-reward, bleeding-edge:
+ # Check syntax
+ node -e "const h=require('fs').readFileSync('index.html','utf8');const m=h.match(/<script[^>]*>([\s\S]*?)<\/script>/g);const c=m[m.length-1].replace(/<script[^>]*>/,'').replace(/<\/script>/,'');new Function(c);"
+ 
+-# If error, restore from backup
+-cp backups/index_$(ls -t backups/ | head -1) index.html
++# If the error can't be fixed in place, discard uncommitted edits
++git restore index.html
+ ```
+ 
+ ### Issue: Missing content after edit
+@@ -588,11 +500,11 @@ grep "const newsItems" index.html
+ grep "const talks" index.html
+ grep "const papers" index.html
+ 
+-# Compare with backup
+-diff index.html backups/index_$(ls -t backups/ | head -1)
++# See exactly what changed since the last commit
++git diff index.html
+ 
+ # Restore if needed
+-cp backups/index_$(ls -t backups/ | head -1) index.html
++git restore index.html
+ ```
+ 
+ ### Issue: Citation count wrong
+@@ -618,16 +530,15 @@ grep -A5 -B5 "Paper Title" index.html | grep citations
+ 
+ ### File Structure
+ ```
+-index.html (~1270 lines)
+-├── Head section (1-50)
+-├── CSS styles (51-240)
+-├── Body/HTML structure (241-243)
+-├── Papers array (244-349)
+-├── renderNews + newsItems (350-363)
+-├── updateCitationDashboard (365-373)
+-├── talks array + renderUpcomingTalks (375-390)
+-├── Other functions (391-1269)
+-└── Closing tags (1270)
++index.html (single file, in this order)
++├── <head> + CSS
++├── <body> HTML (header, nav, sections)
++└── one <script> block
++    ├── papers array
++    ├── renderNews + newsItems
++    ├── updateCitationDashboard
++    ├── talks array + renderUpcomingTalks
++    └── navigation, DNA visualization, other functions
+ ```
+ 
+ ### Field Value Options
+@@ -658,40 +569,21 @@ index.html (~1270 lines)
+ 
+ ---
+ 
+-## 🎯 Best Practices
+-
+-1. **Read before writing** - Always read the section you're editing first
+-2. **Use context** - Include enough context in Edit operations to ensure uniqueness
+-3. **Validate immediately** - Run validation checks after each change
+-4. **Commit frequently** - Small, focused commits are better than large ones
+-5. **Test locally** - When in doubt, open the file in a browser
+-6. **Document changes** - Write clear commit messages
+-7. **Keep backups** - Maintain the last 3 backups at all times
+-8. **Be conservative** - Only change what's requested
+-9. **Ask questions** - If unclear, ask before making assumptions
+-10. **Double-check** - Review your changes before committing
+-
+----
+-
+ ## 🆘 Emergency Rollback
+ 
+ If something goes badly wrong:
+ 
+ ```bash
+-# Option 1: Restore from most recent backup
+-cp "backups/$(ls -t backups/ | head -1)" index.html
+-
+-# Option 2: Git restore
++# Option 1: Discard uncommitted edits
+ git restore index.html
+ 
+-# Option 3: Git reset to previous commit
++# Option 2: Git reset to previous commit
+ git log --oneline -5  # Find commit hash
+ git reset --hard <commit-hash>
+ 
+ # Then validate
+ grep -c "const papers" index.html  # Should be 1
+ grep -c "const newsItems" index.html  # Should be 1
+-wc -l index.html  # Should be ~1270
+ ```
+ 
+ ---
+@@ -701,4 +593,4 @@ wc -l index.html  # Should be ~1270
+ ---
+ 
+ *Last updated: January 2026*
+-*File location: `/home/user/eugendimant.github.io/Website-Editing-Skill.md`*
++*File location: `.claudecode/skills/Website-Editing-Skill.md`*
+diff --git a/.claudecode/skills/website-editing-skill-for-claude.md b/.claudecode/skills/website-editing-skill-for-claude.md
+index 4f9225a..bf207f0 100644
+--- a/.claudecode/skills/website-editing-skill-for-claude.md
++++ b/.claudecode/skills/website-editing-skill-for-claude.md
+@@ -6,25 +6,20 @@
+ 
+ ---
+ 
+-## Critical Rules
++## Core Rules
+ 
+-**PRESERVE EVERYTHING - ONLY MODIFY WHAT'S REQUESTED**
+-- Read entire section before editing
+-- Use precise Edit operations with sufficient context
+-- Never delete unrelated code
+-- Validate immediately after changes
++**Change only what was requested.** `index.html` holds all content, styles, and JavaScript in one file, so an edit aimed at one section can silently break another.
++- Read the whole section before editing
++- Use Edit operations with enough context to be unique
++- Leave unrelated code as it is; check with `git diff`
++- Validate after each change
+ 
+-**ALWAYS BACKUP FIRST**
+-```bash
+-mkdir -p backups
+-cp index.html "backups/index_$(date +%Y-%m-%d_%H-%M-%S).html"
+-ls -t backups/index_*.html | tail -n +4 | xargs -r rm
+-```
++**Start from a clean working tree - git is the backup.** Confirm `git status` is clean before editing; `git restore index.html` undoes uncommitted edits. (`backups/` is gitignored, so copies there are never committed.)
+ 
+-**VALIDATE AFTER EVERY CHANGE**
++**Validate after every change**
+ ```bash
+ # JS syntax check
+-node -e "const h=require('fs').readFileSync('index.html','utf8');const m=h.match(/<script[^>]*>([\s\S]*?)<\/script>/g);const c=m[m.length-1].replace(/<script[^>]*>/,'').replace(/<\/script>/,'');new Function(c);console.log('✓ JS valid')"
++node -e "const h=require('fs').readFileSync('index.html','utf8');const m=[...h.matchAll(/^<script>([\s\S]*?)^<\/script>/gm)];if(!m.length)throw new Error('no <script> block found');m.forEach(x=>new Function(x[1]));console.log('✓ JS valid ('+m.length+' block)')"
+ 
+ # Verify required elements
+ grep -q "const papers=\[" index.html && echo "✓ Papers" || echo "✗ MISSING"
+@@ -36,15 +31,15 @@ grep -q "function renderNews()" index.html && echo "✓ Functions" || echo "✗
+ 
+ ## Standard Workflow
+ 
+-1. **Create backup** before any edit
++1. **Confirm clean working tree** (`git status`)
+ 2. **Read section** to understand structure
+ 3. **Make changes** with precise edits
+ 4. **Validate** JS syntax and elements
+-5. **Provide preview** - Start server: `python3 -m http.server 8080 &`
++5. **Check rendering** - load the page in a headless browser if available and check the console; the user reviews on the PR
+ 6. **Commit** with clear message
+ 7. **Push** to feature branch (format: `claude/feature-name-XXXXX`)
+ 8. **Create PR** for user review
+-9. **ALWAYS provide direct PR link** in response:
++9. **Include the direct PR link** in your response:
+    - Format: `https://github.com/eugendimant/eugendimant.github.io/pull/new/{branch-name}`
+    - Example: `https://github.com/eugendimant/eugendimant.github.io/pull/new/claude/update-publication-names-ds1i4`
+ 10. **After merge** → GitHub Pages auto-deploys (3-10 min)
+@@ -55,7 +50,7 @@ grep -q "function renderNews()" index.html && echo "✓ Functions" || echo "✗
+ 
+ - **Website:** https://eugendimant.github.io
+ - **Repository:** /home/user/eugendimant.github.io/index.html
+-- **Full docs:** /home/user/eugendimant.github.io/Website-Editing-Skill.md
++- **Full docs:** `.claudecode/skills/Website-Editing-Skill.md`
+ - **Deployments:** https://github.com/eugendimant/eugendimant.github.io/actions
+ 
+ ---
+@@ -113,18 +108,13 @@ Add at TOP of newsItems array (most recent first):
+ 
+ ---
+ 
+-## Preview Workflow
++## Rendering Check
+ 
+-**ALWAYS provide preview before committing:**
+-```bash
+-python3 -m http.server 8080 &
+-```
+-User can access at: `file:///home/user/eugendimant.github.io/index.html`
++Before committing, load `index.html` in a headless browser if one is available, check the console for errors, and look at the changed sections. If you can't render it, say so in the PR description. The user can't reach a `localhost` server or `file://` path inside a remote session; they review on the PR and on the live site after merge.
+ 
+-**Tell user to test:**
++**Ask the user to check after deploy:**
+ - Navigation works
+ - New features function properly
+-- No console errors
+ - Existing features still work
+ 
+ ---
+@@ -150,11 +140,10 @@ Hard refresh: Ctrl+F5 (Windows) or Cmd+Shift+R (Mac)
+ ## Validation Checklist
+ 
+ Before commit:
+-- [ ] Backup created in /backups
+ - [ ] JS syntax valid
+ - [ ] All required elements exist
+-- [ ] Line count reasonable (~1383 ±100)
+-- [ ] Preview tested
++- [ ] Diff matches the request (`git diff --stat`)
++- [ ] Rendering checked
+ - [ ] Clear commit message
+ 
+ ---
+@@ -163,11 +152,11 @@ Before commit:
+ 
+ ```bash
+ # Commit
+-git add index.html backups/
++git add index.html
+ git commit -m "TYPE: Description"
+ 
+ # Push
+-git push -u origin claude/feature-name-XXXXX
++git push -u origin <your-branch>
+ 
+ # Create PR
+ https://github.com/eugendimant/eugendimant.github.io/pull/new/BRANCH
+@@ -180,13 +169,10 @@ https://github.com/eugendimant/eugendimant.github.io/pull/new/BRANCH
+ ## Emergency Rollback
+ 
+ ```bash
+-# Restore from backup
+-cp "backups/$(ls -t backups/ | head -1)" index.html
+-
+-# Or git restore
++# Discard uncommitted edits
+ git restore index.html
+ ```
+ 
+ ---
+ 
+-**Full documentation:** Read `Website-Editing-Skill.md` in repository root for complete schemas, examples, debugging, and advanced workflows.
++**Full documentation:** Read `.claudecode/skills/Website-Editing-Skill.md` for complete schemas, examples, debugging, and advanced workflows.
+diff --git a/.claudecode/skills/website-editing.md b/.claudecode/skills/website-editing.md
+index 4b5463a..89181d0 100644
+--- a/.claudecode/skills/website-editing.md
++++ b/.claudecode/skills/website-editing.md
+@@ -7,20 +7,20 @@ Comprehensive instructions for managing and editing eugendimant.github.io websit
+ When the user asks to modify the website (add papers, update citations, modify DNA visualization, etc.), automatically load and follow the instructions from `Website-Editing-Skill.md`.
+ 
+ ## Instructions Source
+-All detailed instructions are in: `/home/user/eugendimant.github.io/Website-Editing-Skill.md`
++All detailed instructions are in: `.claudecode/skills/Website-Editing-Skill.md`
+ 
+ ## Quick Reference
+ 
+-**Critical Rules:**
+-1. ONLY modify what's requested - preserve everything else
+-2. ALWAYS backup before edits (keep last 3 in /backups)
+-3. VALIDATE after every change (JS syntax, required elements)
++**Core Rules:**
++1. Change only what was requested - `index.html` is one file, so edits elsewhere break silently
++2. Start from a clean working tree; git is the backup (`backups/` is gitignored)
++3. Validate after every change (JS syntax, required elements)
+ 
+ **Standard Workflow:**
+-1. Create backup
++1. Confirm `git status` is clean
+ 2. Make changes
+ 3. Validate
+-4. Provide live preview (python3 -m http.server 8080)
++4. Check rendering (headless browser if available; the user reviews on the PR)
+ 5. Commit with clear message
+ 6. Push to feature branch
+ 7. Create PR for user
+@@ -29,4 +29,4 @@ All detailed instructions are in: `/home/user/eugendimant.github.io/Website-Edit
+ **Live Site:** https://eugendimant.github.io
+ **Deployment Monitor:** https://github.com/eugendimant/eugendimant.github.io/actions
+ 
+-For complete details, schemas, examples, and troubleshooting, read the full `Website-Editing-Skill.md` file.
++For complete details, schemas, examples, and troubleshooting, read `.claudecode/skills/Website-Editing-Skill.md`.
