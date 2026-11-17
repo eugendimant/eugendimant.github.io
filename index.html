@@ -107,8 +107,9 @@ nav{display:flex;gap:2rem}nav a{color:var(--text-secondary);text-decoration:none
 .action-btn.podcast{background:rgba(255,166,87,.1);color:var(--accent-orange);border-color:transparent}.action-btn.podcast:hover{background:var(--accent-orange);color:var(--bg-primary)}
 .action-btn.related{background:rgba(126,231,135,.1);color:var(--accent-tertiary);border-color:transparent}.action-btn.related:hover{background:var(--accent-tertiary);color:var(--bg-primary)}
 .action-btn.permalink{background:rgba(201,160,220,.1);color:var(--accent-primary);border-color:transparent}.action-btn.permalink:hover{background:var(--accent-primary);color:var(--bg-primary)}.action-btn.permalink.copied{background:var(--accent-tertiary);color:var(--bg-primary)}
-.paper-card.paper-flash{border-color:var(--accent-primary);box-shadow:0 0 0 2px rgba(201,160,220,.35);animation:paperFlash 2s ease-out}
-@keyframes paperFlash{0%{box-shadow:0 0 0 3px rgba(201,160,220,.6)}100%{box-shadow:0 0 0 2px rgba(201,160,220,0)}}
+.paper-card{scroll-margin-top:7rem}
+.paper-card.paper-focus{border-color:var(--accent-primary);box-shadow:0 0 0 2px rgba(201,160,220,.55),0 0 22px rgba(201,160,220,.25);animation:paperPulse .9s ease-out}
+@keyframes paperPulse{0%{box-shadow:0 0 0 6px rgba(201,160,220,.7),0 0 30px rgba(201,160,220,.45)}100%{box-shadow:0 0 0 2px rgba(201,160,220,.55),0 0 22px rgba(201,160,220,.25)}}
 .related-papers{margin-top:1rem;padding-top:1rem;border-top:1px solid var(--border-light);display:none}.related-papers.show{display:block}.related-papers-title{font-size:.75rem;font-weight:600;color:var(--accent-tertiary);margin-bottom:.5rem}
 .related-paper-item{font-size:.75rem;color:var(--text-secondary);padding:.35rem 0;border-bottom:1px solid var(--border-light);cursor:pointer}.related-paper-item:hover{color:var(--accent-primary)}.related-paper-item:last-child{border-bottom:none}
 .related-tag{font-size:.6rem;padding:.1rem .3rem;border-radius:3px;margin-left:.5rem}.related-tag.topic{background:rgba(201,160,220,.2);color:var(--accent-primary)}.related-tag.coauthor{background:rgba(126,231,135,.2);color:var(--accent-tertiary)}
@@ -1141,7 +1142,6 @@ function renderPaperCard(p){
 
 function toggleAbstract(id){const el=document.getElementById('abstract-'+id);if(el)el.classList.toggle('show');}
 function toggleRelated(id){const el=document.getElementById('related-'+id);if(el)el.classList.toggle('show');}
-function scrollToPaper(id){const el=document.getElementById('paper-'+id);if(el){el.scrollIntoView({behavior:'smooth',block:'center'});el.style.boxShadow='0 0 0 2px var(--accent-primary)';setTimeout(()=>{el.style.boxShadow='';},2000);}}
 function showBibtex(el){document.getElementById('bibtexContent').textContent=decodeURIComponent(el.dataset.bib);document.getElementById('bibtexModal').classList.add('active');}
 function closeBibtexModal(){document.getElementById('bibtexModal').classList.remove('active');}
 function copyBibtex(){navigator.clipboard.writeText(document.getElementById('bibtexContent').textContent).then(()=>{document.getElementById('toast').classList.add('show');setTimeout(()=>{document.getElementById('toast').classList.remove('show');},2000);});}
@@ -1989,12 +1989,41 @@ function fallbackCopyText(text,cb){
     try{document.execCommand('copy');}catch(e){}
     document.body.removeChild(ta);if(cb)cb();
 }
-function scrollToPaper(id){
+// Keep the focused paper highlighted until the user clicks somewhere else
+function clearPaperFocus(){document.querySelectorAll('.paper-card.paper-focus').forEach(c=>c.classList.remove('paper-focus'));}
+document.addEventListener('click',e=>{
+    const f=document.querySelector('.paper-card.paper-focus');
+    if(f&&!f.contains(e.target))clearPaperFocus();
+},true);
+// Centre a paper in the visible area below the sticky header
+function centerPaper(el,behavior){
+    const header=document.querySelector('header');
+    const hh=header?header.offsetHeight:0;
+    const r=el.getBoundingClientRect();
+    const free=window.innerHeight-hh;
+    const top=window.scrollY+r.top-hh-Math.max(16,(free-r.height)/2);
+    window.scrollTo({top:Math.max(0,top),behavior:behavior||'auto'});
+}
+let paperSettleToken=0;
+function scrollToPaper(id,opts){
     const el=document.getElementById('paper-'+id);
     if(!el)return false;
-    el.scrollIntoView({behavior:'smooth',block:'center'});
-    el.classList.remove('paper-flash');void el.offsetWidth;el.classList.add('paper-flash');
-    setTimeout(()=>el.classList.remove('paper-flash'),2200);
+    const settle=!!(opts&&opts.settle);
+    clearPaperFocus();
+    el.classList.add('paper-focus');
+    centerPaper(el,settle?'auto':'smooth');
+    if(settle){
+        // Layout can still shift after first paint (web fonts, native #anchor jump, late images).
+        // Re-centre a few times until the user takes over with their own scroll or click.
+        const token=++paperSettleToken;let active=true;
+        const stop=()=>{active=false;['wheel','touchstart','keydown','mousedown'].forEach(t=>window.removeEventListener(t,stop,true));};
+        ['wheel','touchstart','keydown','mousedown'].forEach(t=>window.addEventListener(t,stop,{capture:true,passive:true}));
+        const again=()=>{if(active&&token===paperSettleToken&&el.isConnected&&el.classList.contains('paper-focus'))centerPaper(el,'auto');};
+        [150,500,1200,2500].forEach(ms=>setTimeout(again,ms));
+        setTimeout(stop,2600);
+        if(document.readyState!=='complete')window.addEventListener('load',()=>setTimeout(again,0),{once:true});
+        if(document.fonts&&document.fonts.ready)document.fonts.ready.then(()=>setTimeout(again,0));
+    }
     return true;
 }
 function handlePaperDeepLink(){
@@ -2010,7 +2039,7 @@ function handlePaperDeepLink(){
     // Clear any active filters so the target paper is guaranteed visible, then render
     resetFilters();
     // Wait for the render to paint, then scroll to & highlight the paper
-    requestAnimationFrame(()=>requestAnimationFrame(()=>scrollToPaper(id)));
+    requestAnimationFrame(()=>requestAnimationFrame(()=>scrollToPaper(id,{settle:true})));
 }
 window.addEventListener('hashchange',handlePaperDeepLink);
 
