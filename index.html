@@ -809,7 +809,7 @@ function updateCitationDashboard(){
 }
 
 function renderUpcomingTalks(){
-    const talks=[{date:"Jan 2026",venue:"ASSA, Philadelphia",expireYear:2026,expireMonth:1},{date:"Mar 2026",venue:"Keynote, AI & Big Data Conference, Bucharest",expireYear:2026,expireMonth:3},{date:"Apr 2026",venue:"Intl. Behavioral Public Policy Workshop, NYU",expireYear:2026,expireMonth:4},{date:"Apr 2026",venue:"University of Michigan",expireYear:2026,expireMonth:4},{date:"May 2026",venue:"Keynote, Young Economists' Meeting (YEM), Brno",expireYear:2026,expireMonth:5},{date:"Jun 2026",venue:"Keynote, Moldova Digital Summit, Chișinău",expireYear:2026,expireMonth:6},{date:"Jun 2026",venue:"University of Amsterdam",expireYear:2026,expireMonth:6},{date:"Jun 2026",venue:"University of Milan Bicocca",expireYear:2026,expireMonth:6},{date:"Jun 2026",venue:"Nuremberg Institute for Market Decisions",expireYear:2026,expireMonth:6},{date:"Jun 2026",venue:"University of Augsburg",expireYear:2026,expireMonth:6},{date:"Jun 2026",venue:"Keynote, Behavioral Insights for Policy, Chișinău",expireYear:2026,expireMonth:6},{date:"Jul 2026",venue:"University of Freiburg",expireYear:2026,expireMonth:7},{date:"Dec 2026",venue:"Keynote, Culture, Social Norms & Inequality Conference, University of Zurich",expireYear:2026,expireMonth:12},{date:"Dec 2026",venue:"Chișinău Business School",expireYear:2026,expireMonth:12},{date:"Feb 2027",venue:"University of Cambridge",expireYear:2027,expireMonth:2},{date:"Feb 2027",venue:"Harvard Business School",expireYear:2027,expireMonth:2},{date:"Apr 2027",venue:"PROSOCIAL Seminar Series",expireYear:2027,expireMonth:4}];
+    const talks=[{date:"2025",venue:"Stanford University (Social Interaction Lab)",expireYear:2025,expireMonth:12},{date:"2025",venue:"University of Cambridge (Judge Business School)",expireYear:2025,expireMonth:12},{date:"2025",venue:"NYU (Department of Economics)",expireYear:2025,expireMonth:12},{date:"2025",venue:"IZA Institute of Labor Economics",expireYear:2025,expireMonth:12},{date:"2025",venue:"Vienna University of Economics and Business",expireYear:2025,expireMonth:12},{date:"2025",venue:"Villanova University",expireYear:2025,expireMonth:12},{date:"2025",venue:"UChicago Advances in Field Experiments",expireYear:2025,expireMonth:12},{date:"2025",venue:"MIT Workshop on Polarization, Social Norms & Trust",expireYear:2025,expireMonth:12},{date:"2025",venue:"CESifo Area Conference on Behavioral Economics, Munich",expireYear:2025,expireMonth:12},{date:"Jan 2026",venue:"ASSA, Philadelphia",expireYear:2026,expireMonth:1},{date:"Mar 2026",venue:"Keynote, AI & Big Data Conference, Bucharest",expireYear:2026,expireMonth:3},{date:"Apr 2026",venue:"Intl. Behavioral Public Policy Workshop, NYU",expireYear:2026,expireMonth:4},{date:"Apr 2026",venue:"University of Michigan",expireYear:2026,expireMonth:4},{date:"May 2026",venue:"Keynote, Young Economists' Meeting (YEM), Brno",expireYear:2026,expireMonth:5},{date:"Jun 2026",venue:"Keynote, Moldova Digital Summit, Chișinău",expireYear:2026,expireMonth:6},{date:"Jun 2026",venue:"University of Amsterdam",expireYear:2026,expireMonth:6},{date:"Jun 2026",venue:"University of Milan Bicocca",expireYear:2026,expireMonth:6},{date:"Jun 2026",venue:"Nuremberg Institute for Market Decisions",expireYear:2026,expireMonth:6},{date:"Jun 2026",venue:"University of Augsburg",expireYear:2026,expireMonth:6},{date:"Jun 2026",venue:"Keynote, Behavioral Insights for Policy, Chișinău",expireYear:2026,expireMonth:6},{date:"Jul 2026",venue:"University of Freiburg",expireYear:2026,expireMonth:7},{date:"Dec 2026",venue:"Keynote, Culture, Social Norms & Inequality Conference, University of Zurich",expireYear:2026,expireMonth:12},{date:"Dec 2026",venue:"Chișinău Business School",expireYear:2026,expireMonth:12},{date:"Feb 2027",venue:"University of Cambridge",expireYear:2027,expireMonth:2},{date:"Feb 2027",venue:"Harvard Business School",expireYear:2027,expireMonth:2},{date:"Apr 2027",venue:"PROSOCIAL Seminar Series",expireYear:2027,expireMonth:4}];
     const now=new Date();
     const currentYear=now.getFullYear();
     const currentMonth=now.getMonth();
@@ -817,8 +817,8 @@ function renderUpcomingTalks(){
     // Filter upcoming talks
     const future=talks.filter(t=>t.expireYear>currentYear||(t.expireYear===currentYear&&t.expireMonth>currentMonth));
 
-    // Filter previous talks from current year only
-    const previous=talks.filter(t=>t.expireYear===currentYear&&t.expireMonth<=currentMonth);
+    // Previous talks, anti-chronological
+    const previous=talks.filter(t=>t.expireYear<currentYear||(t.expireYear===currentYear&&t.expireMonth<=currentMonth)).reverse(); // newest first
 
     // Render upcoming talks
     const section=document.getElementById('upcomingTalks');
@@ -836,7 +836,7 @@ function renderUpcomingTalks(){
     if(previous.length===0){prevSection.style.display='none';}
     else{
         prevSection.style.display='block';
-        prevTitle.textContent='Previous Talks ('+currentYear+')';
+        prevTitle.textContent='Previous Talks';
         prevContainer.innerHTML=previous.map(t=>'<div class="talk-item"><span class="talk-date">'+t.date+'</span><span>'+t.venue+'</span></div>').join('');
     }
 }
